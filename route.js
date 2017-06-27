@@ -27,6 +27,18 @@
       controllerAs: 'vm'
     })
 
+    .state('events',{
+      url : '/events',
+      templateUrl: './components/events/event.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/events/event.controller.js')
+        }]
+      },
+      controller: 'eventsController',
+      controllerAs: 'vm'
+    })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
