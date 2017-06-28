@@ -3,12 +3,13 @@
     .module('fctApp')
     .controller('eventsController', eventsController);// Declaración del controlador
 
-    function eventsController(eventsService){
+    function eventsController(eventsService, academiesService){
 
       var vm = this;
 
       function init(){
         vm.events = eventsService.getEvents();
+        vm.academiesRel = academiesService.getAcademies();
         vm.to = new Date();
       }init();
       // Función que guarda los datos

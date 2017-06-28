@@ -43,10 +43,14 @@
     </div><!--cierre del ng-messages -->
 
     <label for="">Academias:</label>
-    <input type="text" ng-model="vm.academies" name="academies" required>
+    <input list="academyList" type="text" ng-model="vm.academies" name="academies" required>
+    <datalist id="academyList">
+      <option value="">>--Seleccione una academia</option>
+      <option ng-repeat="academy in vm.academiesRel" value="{{academy.name}}">{{vm.academy.name}}</option>
+    </datalist>
     <div ng-messages="frmRegisterEvent.academies.$error">
-      <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+      <div ng-messages-include="components/includes/messages.html"></div> 
+    </div><!--cierre del ng-messages --> 
 
     <label for="">Categorías por edad:</label>
     <select ng-model="vm.categoryAge" name="categoryAge" required>
