@@ -1,0 +1,149 @@
+<!--Registrar Patrocinador-->
+<section>
+
+  <!--Creación del formulario para registro de PATROCINADOR -->
+  <form name="frmRegisterSponsor" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1>Registro de patrocinador</h1>
+    <hr>
+
+    <h2>Datos Generales</h2>
+
+    <label for="">Nombre del representante:</label>
+    <input type="text" ng-model="vm.nameSponsorRep" name="nameSponsorRep" required>
+    <div ng-messages="frmRegisterSponsor.nameSponsorRep.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Primer apellido del representante:</label>
+    <input type="text" ng-model="vm.firstNameSponsorRep" name="firstNameSponsorRep" required>
+    <div ng-messages="frmRegisterSponsor.firstNameSponsorRep.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Segundo Apellido del representante:</label>
+    <input type="text" ng-model="vm.lastNameSponsorRep" name="lastNameSponsorRep" required>
+    <div ng-messages="frmRegisterSponsor.lastNameSponsorRep.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Cédula del representante:</label>
+    <input type="number" ng-model="vm.idSponsorRep" name="idSponsorRep" ng-minlength="7" ng-maxlength="9" required>
+    <div ng-messages="frmRegisterSponsor.idSponsorRep.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Nombre jurídico:</label>
+    <input type="text" ng-model="vm.nameSponsor" name="nameSponsor" required>
+    <div ng-messages="frmRegisterSponsor.nameSponsor.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Compañía:</label>
+    <input type="text" ng-model="vm.nameSponsorCompany" name="nameSponsorCompany" required>
+    <div ng-messages="frmRegisterSponsor.nameSponsorCompany.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <h2>Datos de patrocinio</h2>
+
+    <label for="">Tipo de patrocinio:</label>
+    <select ng-model="vm.sponsorType" name="sponsorType" required>
+      <option value="">--Seleccione una opción--</option>
+      <option value="Monetario">Monetario</option>
+      <option value="Equipo">Equipo</option>
+      <option value="Alimentación">Alimentación</option>
+    </select>
+
+    <label for="">Descripción del patrocinio:</label>
+    <input type="text" ng-model="vm.sponsorDesc" name="sponsorDesc" required>
+    <div ng-messages="frmRegisterSponsor.sponsorDesc.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <label for="">Equivalente monetario:</label>
+    <input type="number" ng-model="vm.sponsorMonetary" name="sponsorMonetary" required>
+    <div ng-messages="frmRegisterSponsor.sponsorMonetary.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <input type="file" ng-model="vm.photo" name="photo" value=" Ingresar Foto del producto" id="photo">
+    <div ng-messages="frmRegisterSponsor.photo.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <input type="file" ng-model="vm.photo" name="photo" value="Logotipo" id="photo">
+    <div ng-messages="frmRegisterSponsor.photo.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+    <!--<input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">-->
+    <hr>
+    <button type="submit" ng-disabled="frmRegisterSponsor.$invalid">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterSponsor.$invalid" ng-click="vm.update(sponsor)">
+  </form>
+  <!--cierre del formulario para registrar de PATROCINADOR-->
+
+  <!--Inicio de tabla para registrar PATROCINADOR-->
+  <table id="tblSponsor">
+    <thead>
+
+    <select ng-model="vm.statusFilter" name="statusFilter">
+      <option value="">--Seleccione un estado--</option>
+      <option value="Activo">Activo</option>
+      <option value="Inhabilitado">Inactivo</option>
+    </select>
+
+      <tr>
+        <th>Nombre del representante</th>
+        <th>Primer apellido del representante</th>
+        <th>Segundo apellido del representante</th>
+        <th>Cédula del representante</th>
+        <th>Nombre jurídico</th>
+        <th>Compañía</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="sponsor in vm.sponsors | filter:{status:vm.statusFilter}">
+          <td>{{sponsor.nameSponsorRep}}</td>
+          <td>{{sponsor.firstNameSponsorRep}}</td>
+          <td>{{sponsor.lastNameSponsorRep}}</td>
+          <td>{{sponsor.idSponsorRep}}</td>
+          <td>{{sponsor.nameSponsor}}</td>
+          <td>{{sponsor.nameSponsorCompany}}</td>
+          <td>{{sponsor.statusSponsor}}</td>
+          <td><input type="button" value="Editar" ng-click="vm.getInfo(sponsor)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Fin de tabla para registrar PATROCINADOR-->
+
+  <!--Inicio de tabla para registrar TIPO DE PATROCINADOR-->
+  <table id="tblSponsorType">
+    <thead>
+      <tr>
+        <th>Tipo de patrocinio</th>
+        <th>Descripción del patrocinio</th>
+        <th>Equivalente monetario</th>
+        <th>Foto del producto</th>
+        <th>Logo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="sponsor in vm.sponsors">
+          <td>{{sponsor.sponsorType}}</td>
+          <td>{{sponsor.sponsorDesc}}</td>
+          <td>{{sponsor.sponsorMonetary}}</td>
+          <td><img ng-src="{{sponsor.photo}}" alt="Description" width="132px" height="170px"/></td>
+          <td><img ng-src="{{sponsor.photo}}" alt="Description" width="132px" height="170px"/></td>
+
+          <td><input type="submit" value="Activo" ng-click="vm.active(sponsor)"></td>
+          <td><input type="submit" value="Inactivo" ng-click="vm.inactive(sponsor)"></td>
+          <td><input type="button" value="Editar" ng-click="vm.getInfo(sponsor)"></td>
+      </tr>
+    </tbody>
+  </table>
+  <!--Fin de tabla para registrar TIPO DE PATROCINADOR-->
+</section>

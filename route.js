@@ -51,6 +51,18 @@
       controllerAs: 'vm'
     })
 
+    .state('sponsors',{
+      url : '/sponsors',
+      templateUrl: './components/sponsors/sponsor.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
+        }]
+      },
+      controller: 'sponsorController',
+      controllerAs: 'vm'
+    })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
