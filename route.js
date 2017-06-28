@@ -39,6 +39,18 @@
       controllerAs: 'vm'
     })
 
+    .state('teachers',{
+      url : '/teachers',
+      templateUrl: './components/teachers/teacher.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
+        }]
+      },
+      controller: 'teacherController',
+      controllerAs: 'vm'
+    })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();

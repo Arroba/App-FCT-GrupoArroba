@@ -1,0 +1,144 @@
+<!-- Inicio de la sección registerTeacher, que contiene el formulario del profesor, registrar, modificar y listar-->
+<section id="registerTeacher">
+
+  <!-- Inicio del formulario  profesor: -->
+  <form name="frmRegisterTeacher" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1>Registro de profesor</h1>
+    <hr>
+
+    <!--Inicio de los inpust para el formulario  -->
+    <label for="">Nombre:</label>
+    <input type="text" ng-model="vm.name" name="name" required>
+    <div ng-messages="frmRegisterTeacher.name.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Primer apellido:</label>
+    <input type="text" ng-model="vm.firstName" name="firstName" required>
+    <div ng-messages="frmRegisterTeacher.firstName.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Segundo Apellido:</label>
+    <input type="text" ng-model="vm.lastName" name="lastName" required>
+    <div ng-messages="frmRegisterTeacher.lastName.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Cédula:</label>
+    <input type="text" ng-model="vm.id" name="id" ng-minlength="7" ng-maxlength="9" required>
+    <div ng-messages="frmRegisterTeacher.id.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Fecha de nacimiento:</label>
+    <input type="date" ng-model="vm.date" name="date" required>
+    <div ng-messages="frmRegisterTeacher.date.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Grado:</label>
+    <select ng-model="vm.grade" name="grade" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Blanco">Blanco</option>
+      <option value="Amarillo">Amarillo</option>
+      <option value="Verde">Verde</option>
+      <option value="Azul">Azul</option>
+      <option value="Rojo">Rojo</option>
+      <option value="Negro">Negro</option>
+    </select>
+    <div ng-messages="frmRegisterTeacher.grade.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Correo electrónico:</label>
+    <input type="email" ng-model="vm.email" name="email">
+    <div ng-messages="frmRegisterTeacher.email.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Télefono:</label>
+    <input type="number" name="telephone" ng-model="vm.telephone" min="1" name="telephone" required>
+    <div ng-messages="frmRegisterTeacher.telephone.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Estado civil:</label>
+    <select ng-model="vm.civilStatus" name="civilStatus" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Casado">Casado</option>
+      <option value="Soltero">Soltero</option>
+      <option value="UnionLibre">Unión libre</option>
+    </select>
+    <div ng-messages="frmRegisterTeacher.civilStatus.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <label for="">Género:</label>
+    <select ng-model="vm.gender" name="gender" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Indefinido">Indefinido</option>
+    </select>
+    <div ng-messages="frmRegisterTeacher.gender.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+    <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
+    <hr>
+    <button type="submit" ng-disabled="frmRegisterTeacher.$invalid">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">
+
+  </form> <!-- Cierre del formulario profesor  -->
+
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+
+      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+        <select ng-model="vm.statusFilter" name="statusFilter">
+          <option value="">--Seleccione un estado--</option>
+          <option value="Activo">Activo</option>
+          <option value="Inhabilitado">Inactivo</option>
+        </select> <!--cierre del filtro  -->
+
+      <tr> <!--Títulos para las tablas  -->
+        <th>Nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Cédula</th>
+        <th>Fecha de nacimiento</th>
+        <th>Grado</th>
+        <th>Correo electrónico</th>
+        <th>Télefono</th>
+        <th>Estado civil</th>
+        <th>Género</th>
+        <th>Estado</th>
+        <th>Foto</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="teacher in vm.teachers | filter:{status:vm.statusFilter}"> <!--Impresión de los datos-->
+        <td>{{teacher.name}}</td>
+        <td>{{teacher.firstName}}</td>
+        <td>{{teacher.lastName}}</td>
+        <td>{{teacher.id}}</td>
+        <td>{{teacher.date | date}}</td>
+        <td>{{teacher.grade}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.telephone}}</td>
+        <td>{{teacher.civilStatus}}</td>
+        <td>{{teacher.gender}}</td>
+        <td>{{teacher.status}}</td>
+        <td><img ng-src="{{teacher.photo}}" alt="Description" width="132px" height="170px"/></td>
+        <!-- Botones para cambiar el estado de las academias y editar-->
+        <td><input type="submit" value="Activo" ng-click="vm.active(teacher)"></td>
+        <td><input type="submit" value="Inactivo" ng-click="vm.inactive(teacher)"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(teacher)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+</section> <!-- Cierre de la sección registerTeacher -->
