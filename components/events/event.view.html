@@ -122,6 +122,8 @@
     <input type="button" value="Modificar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.update(event)">
   </form> <!--fin registro de eventos -->
 
+  <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+
   <!--inicio de tabla-->
   <table><!--Inicio de la Tabla para registrar los datos -->
     <thead>
@@ -149,7 +151,7 @@
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="event in vm.events  | filter:{status:vm.statusFiltrer}"><!--Impresión de los datos-->
+      <tr ng-repeat="event in vm.events  | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter"><!--Impresión de los datos-->
           <td>{{event.eventType}}</td>
           <td>{{event.name}}</td>
           <td>{{event.place}}</td>
