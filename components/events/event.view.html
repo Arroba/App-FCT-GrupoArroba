@@ -108,10 +108,14 @@
     </div><!--cierre del ng-messages -->
 
     <label for="">Patrocinadores:</label>
-    <input type="text" ng-model="vm.sponsors" name="sponsors" required>
+    <input list="lsSponsorsList" type="text" ng-model="vm.sponsors" name="sponsors" required>
+    <datalist id="lsSponsorsList">
+      <option value="">>--Seleccione un patrocinador</option>
+      <option ng-repeat="sponsor in vm.sponsorsRel" value="{{sponsor.nameSponsorCompany}}">{{vm.nameSponsorCompany}}</option>
+    </datalist>
     <div ng-messages="frmRegisterEvent.sponsors.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    </div><!--cierre del ng-messages -->  
 
     <!-- Botones de Registro y Actualizar -->
     <input type="submit" value="Registrar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" >
