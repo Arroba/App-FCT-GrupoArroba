@@ -49,6 +49,10 @@
     <input type="button" value="Modificar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy)">
   </form><!--cierre del formulario para registrar -->
 
+
+  <!--Crear buscar academia -->
+  <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+
   <table><!--Inicio de la Tabla para registrar los datos -->
     <thead>
       <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
@@ -69,7 +73,7 @@
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="academy in vm.academies  | filter:{status:vm.statusFilter}"><!--Impresión de los datos-->
+      <tr ng-repeat="academy in vm.academies  | filter:{status:vm.statusFilter |  filter:vm.nameFilter}"><!--Impresión de los datos-->
           <td>{{academy.name}}</td>
           <td>{{academy.direction}}</td>
           <td>{{academy.phone}}</td>
