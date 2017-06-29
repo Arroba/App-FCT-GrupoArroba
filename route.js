@@ -51,7 +51,11 @@
       controllerAs: 'vm'
     })
 
+<<<<<<< HEAD
     .state('sponsors',{
+=======
+      .state('sponsors',{
+>>>>>>> master
       url : '/sponsors',
       templateUrl: './components/sponsors/sponsor.view.html',
       resolve: {
