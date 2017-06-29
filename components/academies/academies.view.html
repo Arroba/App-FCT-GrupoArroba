@@ -5,11 +5,14 @@
     <h1>Registro de Academias</h1>
     <hr>
     <!--Inicio de los inpust para el formulario  -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Nombre:</label>
     <input type="text" ng-model="vm.name" name="name" required>
     <div ng-messages="frmRegisterAcademies.name.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
+    </md-input-container>
+
 
     <label for="">Dirección:</label>
     <input type="text" ng-model="vm.direction" name="direction" required>
