@@ -1,5 +1,6 @@
 <!--Regristrar academias, listar academias y modificar academias en conjunto con impresión de los datos  -->
 <section>
+  <h1>sfssdfj</h1>
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterAcademies" novalidate autocomplete="off">
     <h1>Registro de Academias</h1>
@@ -73,7 +74,7 @@
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="academy in vm.academies  | filter:{status:vm.statusFilter |  filter:vm.nameFilter}"><!--Impresión de los datos-->
+      <tr ng-repeat="academy in vm.academies  | filter:{status:vm.statusFilter} |  filter:vm.nameFilter"><!--Impresión de los datos-->
           <td>{{academy.name}}</td>
           <td>{{academy.direction}}</td>
           <td>{{academy.phone}}</td>
