@@ -28,7 +28,7 @@
     </div>
 
     <label for="">Cédula del representante:</label>
-    <input type="number" ng-model="vm.idSponsorRep" name="idSponsorRep" ng-minlength="7" ng-maxlength="9" required>
+    <input type="number" ng-model="vm.idSponsorRep" min="1" name="idSponsorRep" ng-minlength="7" ng-maxlength="9" required>
     <div ng-messages="frmRegisterSponsor.idSponsorRep.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div>
@@ -62,8 +62,17 @@
     </div>
 
     <label for="">Equivalente monetario:</label>
-    <input type="number" ng-model="vm.sponsorMonetary" name="sponsorMonetary" required>
+    <input type="number" ng-model="vm.sponsorMonetary" min="1" name="sponsorMonetary" required>
     <div ng-messages="frmRegisterSponsor.sponsorMonetary.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div>
+
+    <select ng-model="vm.sponsorCoinType" name="sponsorCoinType" required>
+      <option value="">--Seleccione el tipo de moneda--</option>
+      <option value="Colones">Colones</option>
+      <option value="Dolares">Dólares</option>
+    </select>
+    <div ng-messages="frmRegisterSponsor.sponsorCoinType.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div>
 
@@ -84,6 +93,9 @@
     <input type="button" value="Actualizar" ng-disabled="frmRegisterSponsor.$invalid" ng-click="vm.update(sponsor)">
   </form>
   <!--cierre del formulario para registrar de PATROCINADOR-->
+
+  <!-- Boton de Busar -->
+  <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- AGREGUE 29 PARA BUSCAR PILI-->
 
   <!--Inicio de tabla para registrar PATROCINADOR-->
   <table id="tblSponsor">
@@ -106,7 +118,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="sponsor in vm.sponsors | filter:{status:vm.statusFilter}">
+      <tr ng-repeat="sponsor in vm.sponsors | filter:{status:vm.statusFilter} | filter:vm.nameFilter">
           <td>{{sponsor.nameSponsorRep}}</td>
           <td>{{sponsor.firstNameSponsorRep}}</td>
           <td>{{sponsor.lastNameSponsorRep}}</td>
@@ -132,7 +144,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr ng-repeat="sponsor in vm.sponsors">
+      <tr ng-repeat="sponsor in vm.sponsors | filter:{status:vm.statusFilter} | filter:vm.nameFilter">
           <td>{{sponsor.sponsorType}}</td>
           <td>{{sponsor.sponsorDesc}}</td>
           <td>{{sponsor.sponsorMonetary}}</td>
