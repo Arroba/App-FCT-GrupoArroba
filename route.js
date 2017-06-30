@@ -39,6 +39,30 @@
       controllerAs: 'vm'
     })
 
+    .state('blazes',{
+      url : '/blazes',
+      templateUrl: './components/blazes/blaze.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/blazes/blaze.controller.js')
+     }]
+    },
+    controller: 'blazeController',
+    controllerAs: 'vm'
+  })
+
+    .state('exhibitions',{
+    url : '/exhibitions',
+    templateUrl: './components/exhibitions/exhibition.view.html',
+    resolve: {
+      load: ['$ocLazyLoad', function($ocLazyLoad){
+        return $ocLazyLoad.load('./components/exhibitions/exhibition.controller.js')
+      }]
+    },
+    controller: 'exhibitionController',
+    controllerAs: 'vm'
+  })
+
     .state('teachers',{
       url : '/teachers',
       templateUrl: './components/teachers/teacher.view.html',

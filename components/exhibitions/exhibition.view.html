@@ -1,0 +1,67 @@
+<!--Regristrar Exhibiciones, listar Exhibiciones y modificar Exhibiciones en conjunto con impresión de los datos  -->
+
+
+<section id="registerExhibition"  ng-controller="exhibitionController as vm">
+  <!--Creación del formulario para registro  -->
+  <form name="frmRegisterExhibition" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1>Registro de Exhibición</h1>
+    <hr>
+    <!--Inicio de los inpust para el formulario  -->
+
+    <label for="">Nombre de la Exhibición:</label>
+    <input type="text" ng-model="vm.nameExhibition" name="nameExhibition" required>
+    <div ng-messages="frmRegisterExhibition.nameExhibition.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Hora a Realizarse:</label>
+    <input type="number" ng-model="vm.hourExhibition" name="hourExhibition" required>
+    <div ng-messages="frmRegisterExhibition.hourExhibition.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Lugar a Realizarse:</label>
+    <input type="text" ng-model="vm.placeExhibition" name="placeExhibition" required>
+    <div ng-messages="frmRegisterExhibition.placeExhibition.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Invitados  Especiales:</label>
+    <input type="text" ng-model="vm.guestsExhibition" name="guestsExhibition" required>
+    <div ng-messages="frmRegisterExhibition.guestsExhibition.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+    <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
+
+    <hr>
+    <button type="submit" ng-disabled="frmRegisterExhibition.$invalid">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterExhibition.$invalid" ng-click="vm.update(exhibition)">
+  </form><!--cierre del formulario para registrar -->
+
+  <table><!--Inicio de la Tabla para registrar los datos -->
+    <thead>
+      <tr><!--Títulos para las tablas  -->
+        <th>Nombre</th>
+        <th>Hora</th>
+        <th>Lugar</th>
+        <th>Invitados</th>
+        <th>Foto</th>
+      </tr><!-- cierre de títulos -->
+    </thead>
+    <tbody>
+      <tr ng-repeat="exhibition in vm.exhibitions"><!--Impresión de los datos-->
+        <td>{{exhibition.nameExhibition}}</td>
+        <td>{{exhibition.hourExhibition}}</td>
+        <td>{{exhibition.placeExhibition}}</td>
+        <td>{{exhibition.guestsExhibition}}</td>
+        <td><img ng-src="{{exhibition.photo}}" alt="Description" width="132px" height="170px"/></td>
+        <!-- Boton para cambiar el editar las exhiciones -->
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(exhibition)"></td>
+          <!-- cierre botones  -->
+      </tr><!--Fin de la impresión de datos  -->
+    </tbody>
+  </table><!--Fin de la tabla para impresión de datos-->
+</section>
