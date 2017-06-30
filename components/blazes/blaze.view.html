@@ -1,0 +1,59 @@
+<!--Regristrar Fogueos, listar v y modificar Fogueos en conjunto con impresión de los datos  -->
+
+
+<section>
+  <!--Creación del formulario para registro  -->
+  <form name="frmRegisterBlaze" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1>Registro de Fogueo</h1>
+    <hr>
+    <!--Inicio de los inpust para el formulario  -->
+
+    <label for="">Nombre del Fogueo:</label>
+    <input type="text" ng-model="vm.nameBlaze" name="nameBlaze" required>
+    <div ng-messages="frmRegisterBlaze.nameBlaze.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Hora a Realizarse:</label>
+    <input type="number" ng-model="vm.hourBlaze" name="hourBlaze" required>
+    <div ng-messages="frmRegisterBlaze.hourBlaze.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Lugar a Realizarse:</label>
+    <input type="text" ng-model="vm.placeBlaze" name="placeBlaze" required>
+    <div ng-messages="frmRegisterBlaze.placeBlaze.$error">
+    <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+    <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
+
+    <hr>
+    <button type="submit" ng-disabled="frmRegisterBlaze.$invalid">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.update(blaze)">
+  </form><!--cierre del formulario para registrar -->
+
+  <table><!--Inicio de la Tabla para registrar los datos -->
+    <thead>
+      <tr><!--Títulos para las tablas  -->
+        <th>Nombre</th>
+        <th>Hora</th>
+        <th>Lugar</th>
+        <th>Foto</th>
+      </tr><!-- cierre de títulos -->
+    </thead>
+    <tbody>
+      <tr ng-repeat="blaze in vm.blazes"><!--Impresión de los datos-->
+        <td>{{blaze.nameBlaze}}</td>
+        <td>{{blaze.hourBlaze}}</td>
+        <td>{{blaze.placeBlaze}}</td>
+        <td><img ng-src="{{blaze.photo}}" alt="Description" width="132px" height="170px"/></td>
+        <!-- Boton para cambiar el editar las fogueos -->
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(blaze)"></td>
+          <!-- cierre botones  -->
+      </tr><!--Fin de la impresión de datos  -->
+    </tbody>
+  </table><!--Fin de la tabla para impresión de datos-->
+</section>
