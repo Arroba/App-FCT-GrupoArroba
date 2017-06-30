@@ -94,6 +94,7 @@
 
   </form> <!-- Cierre del formulario profesor  -->
 
+<input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar profesor -->
   <table> <!-- Inicio de la tabla -->
     <thead> <!-- Inicio del thead -->
 
@@ -120,7 +121,7 @@
       </tr> <!-- cierre de títulos -->
     </thead> <!-- Cierre de la thead -->
     <tbody> <!-- Incio del tbody -->
-      <tr ng-repeat="teacher in vm.teachers | filter:{status:vm.statusFilter}"> <!--Impresión de los datos-->
+      <tr ng-repeat="teacher in vm.teachers | filter:{status:vm.statusFilter} | filter:vm.nameFilter"> <!--Impresión de los datos-->
         <td>{{teacher.name}}</td>
         <td>{{teacher.firstName}}</td>
         <td>{{teacher.lastName}}</td>

@@ -1,6 +1,5 @@
 <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
 <section>
-
   <!--inicio form para registrar -->
   <form name="frmRegisterEvent" novalidate autocomplete="off">
 
@@ -49,8 +48,8 @@
       <option ng-repeat="academy in vm.academiesRel" value="{{academy.name}}">{{vm.academy.name}}</option>
     </datalist>
     <div ng-messages="frmRegisterEvent.academies.$error">
-      <div ng-messages-include="components/includes/messages.html"></div> 
-    </div><!--cierre del ng-messages --> 
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
 
     <label for="">Categorías por edad:</label>
     <select ng-model="vm.categoryAge" name="categoryAge" required>
@@ -123,6 +122,8 @@
     <input type="button" value="Modificar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.update(event)">
   </form> <!--fin registro de eventos -->
 
+  <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+
   <!--inicio de tabla-->
   <table><!--Inicio de la Tabla para registrar los datos -->
     <thead>
@@ -150,7 +151,7 @@
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="event in vm.events  | filter:{status:vm.statusFiltrer}"><!--Impresión de los datos-->
+      <tr ng-repeat="event in vm.events  | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter"><!--Impresión de los datos-->
           <td>{{event.eventType}}</td>
           <td>{{event.name}}</td>
           <td>{{event.place}}</td>
