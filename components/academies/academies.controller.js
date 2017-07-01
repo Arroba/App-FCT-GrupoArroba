@@ -18,7 +18,6 @@
           phone: vm.phone,
           email: vm.email,
           contact: vm.contact,
-          teachers: vm.teachers,
           status: 'Activo'
         }
         academiesService.setAcademies(newAcademy);
@@ -33,7 +32,6 @@
         vm.phone = pAcademy.phone;
         vm.email = pAcademy.email;
         vm.contact = pAcademy.contact;
-        vm.teachers = pAcademy.teachers;
       }//cierrre función info
 
       //función que modifica los datos
@@ -44,7 +42,6 @@
           phone: vm.phone,
           email: vm.email,
           contact: vm.contact,
-          teachers: vm.teachers,
           status: 'Activo'
         }
         academiesService.updateAcademy(updatedAcademy);
@@ -59,7 +56,6 @@
         vm.phone = '';
         vm.email = '';
         vm.contact = '';
-        vm.teachers = '';
       } //cierre función clear
 
       //función que cambia el estado a inabilitado

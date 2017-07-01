@@ -1,6 +1,5 @@
 <!--Regristrar academias, listar academias y modificar academias en conjunto con impresión de los datos  -->
 <section>
-  <h1>sfssdfj</h1>
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterAcademies" novalidate autocomplete="off">
     <h1>Registro de Academias</h1>
@@ -13,43 +12,43 @@
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
     </md-input-container>
-
-
+    
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Dirección:</label>
     <input type="text" ng-model="vm.direction" name="direction" required>
     <div ng-messages="frmRegisterAcademies.direction.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
+    </md-input-container>
 
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Teléfono:</label>
     <input type="number" ng-model="vm.phone" name="phone" min="1" ng-minlength="8" ng-maxlength="8" required>
     <div ng-messages="frmRegisterAcademies.phone.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
-
+    </md-input-container>
+    
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Correo electrónico:</label>
     <input type="email" ng-model="vm.email" name="email">
     <div ng-messages="frmRegisterAcademies.email.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
+    </md-input-container>
 
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Persona de Contacto:</label>
     <input type="text" ng-model="vm.contact" name="contact" required>
     <div ng-messages="frmRegisterAcademies.contact.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
-
-    <label for="">Profesores:</label>
-    <input type="text" ng-model="vm.teachers" name="teachers"  required>
-    <div ng-messages="frmRegisterAcademies.teachers.$error">
-      <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    </md-input-container>
 
     <!-- Botones de Registro y Actualizar -->
     <input type="submit" value="Registrar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.save(academy)" >
     <input type="button" value="Modificar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy)">
   </form><!--cierre del formulario para registrar -->
-
 
   <!--Crear buscar academia -->
   <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
@@ -69,7 +68,6 @@
         <th>Teléfono</th>
         <th>Correo electrónico</th>
         <th>Persona de contacto</th>
-        <th>Profesores</th>
         <th>Estado</th>
       </tr><!-- cierre de títulos -->
     </thead>
@@ -80,7 +78,6 @@
           <td>{{academy.phone}}</td>
           <td>{{academy.email}}</td>
           <td>{{academy.contact}}</td>
-          <td>{{academy.teachers}}</td>
           <td>{{academy.status}}</td>
           <!-- Botones para cambiar el status de las academias -->
           <td><input type="button" value="Editar" ng-click="vm.getInfo(academy)"></td>
