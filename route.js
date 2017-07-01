@@ -87,6 +87,18 @@
       controllerAs: 'vm'
     })
 
+    .state('students',{
+      url : '/students',
+      templateUrl: './components/students/student.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/students/student.controller.js')
+        }]
+      },
+      controller: 'studentController',
+      controllerAs: 'vm'
+    })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();

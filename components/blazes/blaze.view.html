@@ -1,10 +1,8 @@
-<!--Regristrar Fogueos, listar v y modificar Fogueos en conjunto con impresión de los datos  -->
+<!--Regristrar Fogueos, listar v y modificar Fogueos en conjunto con impresión de los datos.(Pamela)-->
 
-
-<section>
+<section id="registerBlaze"  ng-controller="blazeController as vm">
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterBlaze" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
-
     <h1>Registro de Fogueo</h1>
     <hr>
     <!--Inicio de los inpust para el formulario  -->
@@ -37,21 +35,32 @@
 
   <table><!--Inicio de la Tabla para registrar los datos -->
     <thead>
+      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+      <select ng-model="vm.stateFilter" name="stateFilter">
+        <option value="">--Seleccione un estado--</option>
+        <option value="Activo">Activo</option>
+        <option value="Inhabilitado">Inactivo</option>
+      </select> <!--cierre del filtro  -->
       <tr><!--Títulos para las tablas  -->
         <th>Nombre</th>
         <th>Hora</th>
         <th>Lugar</th>
+        <th>Estado</th>
         <th>Foto</th>
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="blaze in vm.blazes"><!--Impresión de los datos-->
+      <tr ng-repeat="blaze in vm.blazes
+      |filter:{state:vm.stateFilter}"><!--Impresión de los datos-->
         <td>{{blaze.nameBlaze}}</td>
         <td>{{blaze.hourBlaze}}</td>
         <td>{{blaze.placeBlaze}}</td>
+        <td>{{blaze.state}}</td>
         <td><img ng-src="{{blaze.photo}}" alt="Description" width="132px" height="170px"/></td>
         <!-- Boton para cambiar el editar las fogueos -->
         <td><input type="button" value="Editar" ng-click="vm.getInfo(blaze)"></td>
+        <td><input type="submit" value="Activo" ng-click="vm.active(blaze)"></td>
+        <td><input type="submit" value="Inactivo" ng-click="vm.inactive(blaze)"></td>
           <!-- cierre botones  -->
       </tr><!--Fin de la impresión de datos  -->
     </tbody>

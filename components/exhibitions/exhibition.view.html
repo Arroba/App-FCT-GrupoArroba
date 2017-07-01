@@ -1,11 +1,10 @@
-<!--Regristrar Exhibiciones, listar Exhibiciones y modificar Exhibiciones en conjunto con impresión de los datos  -->
+<!--Regristrar Exhibiciones, listar Exhibiciones y modificar Exhibiciones en conjunto con impresión de los datos.(Pamela) -->
 
-
-<section>
+<section id="registerExhibition"  ng-controller="exhibitionController as vm">
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterExhibition" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
 
-    <h1>Registro de Exhibición</h1>
+    <h1>Registro de Exhibición jjj</h1>
     <hr>
     <!--Inicio de los inpust para el formulario  -->
 
@@ -35,7 +34,6 @@
 
     <!-- Botones de Selleccione foto, Registrar y Actualizar -->
     <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
-
     <hr>
     <button type="submit" ng-disabled="frmRegisterExhibition.$invalid">Registrar</button>
     <input type="button" value="Actualizar" ng-disabled="frmRegisterExhibition.$invalid" ng-click="vm.update(exhibition)">
@@ -43,25 +41,38 @@
 
   <table><!--Inicio de la Tabla para registrar los datos -->
     <thead>
+      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+      <select ng-model="vm.stateFilter" name="stateFilter">
+        <option value="">--Seleccione un estado--</option>
+        <option value="Activo">Activo</option>
+        <option value="Inhabilitado">Inactivo</option>
+      </select> <!--cierre del filtro  -->
+    </form><!--cierre del formulario para registrar -->
+
       <tr><!--Títulos para las tablas  -->
         <th>Nombre</th>
         <th>Hora</th>
         <th>Lugar</th>
         <th>Invitados</th>
+        <th>Estado</th>
         <th>Foto</th>
       </tr><!-- cierre de títulos -->
     </thead>
     <tbody>
-      <tr ng-repeat="exhibition in vm.exhibitions"><!--Impresión de los datos-->
+      <tr ng-repeat="exhibition in vm.exhibitions
+      |filter:{state:vm.stateFilter}"><!--Impresión de los datos-->
         <td>{{exhibition.nameExhibition}}</td>
         <td>{{exhibition.hourExhibition}}</td>
         <td>{{exhibition.placeExhibition}}</td>
         <td>{{exhibition.guestsExhibition}}</td>
+        <td>{{exhibition.state}}</td>
         <td><img ng-src="{{exhibition.photo}}" alt="Description" width="132px" height="170px"/></td>
         <!-- Boton para cambiar el editar las exhiciones -->
         <td><input type="button" value="Editar" ng-click="vm.getInfo(exhibition)"></td>
+        <td><input type="submit" value="Activo" ng-click="vm.active(exhibition)"></td>
+        <td><input type="submit" value="Inactivo" ng-click="vm.inactive(exhibition)"></td>
           <!-- cierre botones  -->
       </tr><!--Fin de la impresión de datos  -->
     </tbody>
-  </table><!--Fin de la tabla para impresión de datos-->
+  </table><!--Fin de la tabla para impresión de datos.(Pamela)-->
 </section>

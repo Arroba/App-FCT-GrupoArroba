@@ -1,0 +1,231 @@
+<!--Regristrar Estudiantes, listar Estudiantes y modificar Estudiantes en conjunto con impresión de los datos.(Pamela)-->
+
+
+<section id="registerStudent"  ng-controller="studentController as vm">
+
+  <!--Creación del formulario para registro  -->
+  <form name="frmRegisterStudent" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+    <h1>Registro de Estudiante</h1>
+    <hr>
+    <!--Inicio de los inpust para el formulario  -->
+    <label for="">Cédula:</label>
+    <input type="text" ng-model="vm.id" name="id" ng-minlength="7" ng-maxlength="9" required>
+    <div ng-messages="frmRegisterStudent.id.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Primer Nombre:</label>
+    <input type="text" ng-model="vm.firstName" name="firstName" required>
+    <div ng-messages="frmRegisterStudent.firstName.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Segundo Nombre:</label>
+    <input type="text" ng-model="vm.secondName" name="secondName" required>
+    <div ng-messages="frmRegisterStudent.secondName.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Primer Apellido:</label>
+    <input type="text" ng-model="vm.surname" name="surname" required>
+    <div ng-messages="frmRegisterStudent.surname.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Segundo Apellido:</label>
+    <input type="text" ng-model="vm.secondSurname" name="secondSurname" required>
+    <div ng-messages="frmRegisterStudent.secondSurname.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Género:</label>
+    <select ng-model="vm.gender" name="gender" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Masculino">Masculino</option>
+      <option value="Femenino">Femenino</option>
+      <option value="Indefinido">Indefinido</option>
+    </select>
+    <div ng-messages="frmRegisterStudent.gender.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Fecha de nacimiento:</label>
+    <input type="date" ng-model="vm.date" name="date" required>
+    <div ng-messages="frmRegisterStudent.date.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Estado civil:</label>
+    <select ng-model="vm.civilStatus" name="civilStatus" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Casado">Casado</option>
+      <option value="Soltero">Soltero</option>
+      <option value="UnionLibre">Unión libre</option>
+    </select>
+    <div ng-messages="frmRegisterStudent.civilStatus.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Correo electrónico:</label>
+    <input type="email" ng-model="vm.email" name="email">
+    <div ng-messages="frmRegisterStudent.email.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Télefono:</label>
+    <input type="number" name="telephone" ng-model="vm.telephone" min="1" name="telephone" required>
+    <div ng-messages="frmRegisterStudent.telephone.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Dirección:</label>
+    <input type="text" ng-model="vm.address" name="address">
+    <div ng-messages="frmRegisterStudent.address.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Peso:</label>
+    <input type="number" ng-model="vm.weight" name="weight">
+    <div ng-messages="frmRegisterStudent.weight.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Altura:</label>
+    <input type="number" ng-model="vm.height" name="height">
+    <div ng-messages="frmRegisterStudent.weight.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Categoría por Edad:</label>
+    <select ng-model="vm.ageCategory" name="ageCategory" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Infantil">Infantil(4-11 años)</option>
+      <option value="Cadete">Cadete(12-16 años)</option>
+      <option value="Elite">Elite(17-23 años)</option>
+      <option value="Simio">Simio(Mayor de 23 años)</option>
+    </select>
+    <div ng-messages="frmRegisterStudent.ageCategory.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Categoría por Peso:</label>
+    <select ng-model="vm.weightCategory" name="weightCategory" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</option>
+      <option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </option>
+      <option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</option>
+      <option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</option>
+      <option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</option>
+    </select>
+    <div ng-messages="frmRegisterStudent.weightCategory.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Academia:</label>
+    <input list="academyList" type="text" ng-model="vm.academies" name="academies" required>
+    <datalist id="academyList">
+      <option value="">>--Seleccione una academia</option>
+      <option ng-repeat="academy in vm.academiesRel" value="{{academy.name}}">{{vm.academy.name}}</option>
+    </datalist>
+    <div ng-messages="frmRegisterStudent.academies.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+    <label for="">Profesor:</label>
+    <input list="teachersList" type="text" ng-model="vm.teachers" name="teachers" required>
+    <datalist id="teachersList">
+      <option value="">>--Seleccione una academia</option>
+      <option ng-repeat="teacher in vm.teachersRel" value="{{teacher.name}}">{{vm.teacher.name}}</option>
+    </datalist>
+    <div ng-messages="frmRegisterStudent.teachers.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div><!--cierre del ng-messages -->
+
+
+    <label for="">Grado:</label>
+    <select ng-model="vm.grade" name="grade" required>
+      <option value="">--Seleccione una opción</option>
+      <option value="Blanco">Blanco</option>
+      <option value="Amarillo">Amarillo</option>
+      <option value="Verde">Verde</option>
+      <option value="Azul">Azul</option>
+      <option value="Rojo">Rojo</option>
+      <option value="Negro">Negro</option>
+    </select>
+    <div ng-messages="frmRegisterStudent.grade.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
+    <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+    <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
+    <hr>
+    <button type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterStudent.$invalid" ng-click="vm.update(student)">
+  </form><!--cierre del formulario para registrar -->
+
+  <table><!--Inicio de la Tabla para registrar los datos -->
+    <thead>
+      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+      <select ng-model="vm.stateFilter" name="stateFilter">
+        <option value="">--Seleccione un estado--</option>
+        <option value="Activo">Activo</option>
+        <option value="Inhabilitado">Inactivo</option>
+      </select> <!--cierre del filtro  -->
+
+      <tr><!--Títulos para las tablas  -->
+        <th>Cédula</th>
+        <th>Primer Nombre</th>
+        <th>Segundo Nombre</th>
+        <th>Primer apellido</th>
+        <th>Segundo apellido</th>
+        <th>Género</th>
+        <th>Fecha de nacimiento</th>
+        <th>Estado civil</th>
+        <th>Correo electrónico</th>
+        <th>Télefono</th>
+        <th>Dirección</th>
+        <th>Peso</th>
+        <th>Altura</th>
+        <th>Categoría por Edad</th>
+        <th>Categoría por Peso</th>
+        <th>Academias</th>
+        <th>Profesor</th>
+        <th>Grado</th>
+        <th>Estado</th>
+        <th>Foto</th>
+      </tr><!-- cierre de títulos -->
+    </thead>
+    <tbody>
+      <tr ng-repeat="student in vm.students
+      |filter:{state:vm.stateFilter}"><!--Impresión de los datos-->
+          <td>{{student.id}}</td>
+          <td>{{student.firstName}}</td>
+          <td>{{student.secondName}}</td>
+          <td>{{student.surname}}</td>
+          <td>{{student.secondSurname}}</td>
+          <td>{{student.gender}}</td>
+          <td>{{student.date | date}}</td>
+          <td>{{student.civilStatus}}</td>
+          <td>{{student.email}}</td>
+          <td>{{student.telephone}}</td>
+          <td>{{student.address}}</td>
+          <td>{{student.weight}} kg</td>
+          <td>{{student.height}} cm</td>
+          <td>{{student.ageCategory}}</td>
+          <td>{{student.weightCategory}}</td>
+          <td>{{student.academies}}</td>
+          <td>{{student.teachers}}</td>
+          <td>{{student.grade}}</td>
+          <td>{{student.state}}</td>
+          <td><img ng-src="{{student.photo}}" alt="Description" width="132px" height="170px"/></td>
+          <!-- Botones para cambiar el estado de las academias -->
+          <td><input type="button" value="Editar" ng-click="vm.getInfo(student)"></td>
+          <td><input type="submit" value="Activo" ng-click="vm.active(student)"></td>
+          <td><input type="submit" value="Inactivo" ng-click="vm.inactive(student)"></td>
+          <!-- cierre botones  -->
+          <!-- cierre botones  -->
+      </tr><!--Fin de la impresión de datos  -->
+    </tbody>
+  </table><!--Fin de la tabla para impresión de datos.(Pamela)-->
+</section>
