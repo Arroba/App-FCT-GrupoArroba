@@ -38,6 +38,7 @@
           telephone: vm.telephone,
           civilStatus: vm.civilStatus,
           gender: vm.gender,
+          password: vm.password,
           status: 'Activo',
           photo: vm.photo
         } // Cierre de newTeacher
@@ -59,6 +60,7 @@
         vm.telephone = pTeacher.telephone;
         vm.civilStatus = pTeacher.civilStatus;
         vm.gender = pTeacher.gender;
+        vm.password = pTeacher.password;
         vm.photo = pTeacher.photo;
       } // Cierre de la función getInfo
 
@@ -76,6 +78,7 @@
           telephone: vm.telephone,
           civilStatus: vm.civilStatus,
           gender: vm.gender,
+          password: vm.password,
           status: 'Activo',
           photo: vm.photo
         } // Cierre de teacherEdit
@@ -97,6 +100,7 @@
         vm.telephone =  '';
         vm.civilStatus =  '';
         vm.gender =  '';
+        vm.password = '';
         vm.photo = '';
       } // Cierre de la función clean
 

@@ -26,7 +26,7 @@
       <div ng-messages-include="components/includes/messages.html"></div>
     </div> <!--cierre del ng-messages -->
 
-    <label for="">Cédula:</label>
+    <label for="">Identificación:</label>
     <input type="text" ng-model="vm.id" name="id" ng-minlength="7" ng-maxlength="9" required>
     <div ng-messages="frmRegisterTeacher.id.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
@@ -53,7 +53,7 @@
     </div> <!--cierre del ng-messages -->
 
     <label for="">Correo electrónico:</label>
-    <input type="email" ng-model="vm.email" name="email">
+    <input type="email" ng-model="vm.email" name="email" required>
     <div ng-messages="frmRegisterTeacher.email.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div> <!--cierre del ng-messages -->
@@ -86,6 +86,12 @@
       <div ng-messages-include="components/includes/messages.html"></div>
     </div> <!--cierre del ng-messages -->
 
+    <label for="">Contraseña:</label>
+    <input type="password" name="password" ng-model="vm.password" min="1" ng-minlength="7" ng-maxlength="9" name="password" required>
+    <div ng-messages="frmRegisterTeacher.password.$error">
+      <div ng-messages-include="components/includes/messages.html"></div>
+    </div> <!--cierre del ng-messages -->
+
     <!-- Botones de Selleccione foto, Registrar y Actualizar -->
     <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
     <hr>
@@ -109,13 +115,14 @@
         <th>Nombre</th>
         <th>Primer apellido</th>
         <th>Segundo apellido</th>
-        <th>Cédula</th>
+        <th>Identificación</th>
         <th>Fecha de nacimiento</th>
         <th>Grado</th>
         <th>Correo electrónico</th>
         <th>Télefono</th>
         <th>Estado civil</th>
         <th>Género</th>
+        <th>Contraseña</th>
         <th>Estado</th>
         <th>Foto</th>
       </tr> <!-- cierre de títulos -->
@@ -132,6 +139,7 @@
         <td>{{teacher.telephone}}</td>
         <td>{{teacher.civilStatus}}</td>
         <td>{{teacher.gender}}</td>
+        <td>{{teacher.password}}</td>
         <td>{{teacher.status}}</td>
         <td><img ng-src="{{teacher.photo}}" alt="Description" width="132px" height="170px"/></td>
         <!-- Botones para cambiar el estado de las academias y editar-->
