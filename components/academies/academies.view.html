@@ -31,7 +31,7 @@
     
     <md-input-container layout="column" flex="100" flex-gt-sm>
     <label for="">Correo electrónico:</label>
-    <input type="email" ng-model="vm.email" name="email">
+    <input type="email" ng-model="vm.email" name="email" required>
     <div ng-messages="frmRegisterAcademies.email.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
@@ -47,7 +47,7 @@
 
     <!-- Botones de Registro y Actualizar -->
     <input type="submit" value="Registrar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.save(academy)" >
-    <input type="button" value="Modificar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy)">
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy)">
   </form><!--cierre del formulario para registrar -->
 
   <!--Crear buscar academia -->

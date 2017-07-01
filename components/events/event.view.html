@@ -13,7 +13,7 @@
       <option value="Exhibicion">Exhibición</option>
       <option value="Torneo">Torneo</option>
     </select>
-    <div ng-messages="frmRegisterEvent.categoryAge.$error">
+    <div ng-messages="frmRegisterEvent.eventType.$error">
       <div ng-messages-include="components/includes/messages.html"></div>
     </div><!--cierre del ng-messages -->
 
@@ -119,7 +119,7 @@
 
     <!-- Botones de Registro y Actualizar -->
     <input type="submit" value="Registrar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" >
-    <input type="button" value="Modificar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.update(event)">
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.update(event)">
   </form> <!--fin registro de eventos -->
 
   <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
