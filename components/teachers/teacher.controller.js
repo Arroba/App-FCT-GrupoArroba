@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('teacherController', teacherController);
-    function teacherController(teacherService,ImageService,Upload){
+    function teacherController(teacherService,ImageService,Upload,academiesService){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -10,6 +10,7 @@
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
         vm.teachers = teacherService.getTeachers();
+        vm.academiesRel = academiesService.getAcademies();
         vm.to = new Date();
       }init(); // Cierre de la función init
 
@@ -39,6 +40,7 @@
           civilStatus: vm.civilStatus,
           gender: vm.gender,
           password: vm.password,
+          academies: vm.academies,
           status: 'Activo',
           photo: vm.photo
         } // Cierre de newTeacher
@@ -61,6 +63,7 @@
         vm.civilStatus = pTeacher.civilStatus;
         vm.gender = pTeacher.gender;
         vm.password = pTeacher.password;
+        vm.academies = pTeacher.academies;
         vm.photo = pTeacher.photo;
       } // Cierre de la función getInfo
 
@@ -79,6 +82,7 @@
           civilStatus: vm.civilStatus,
           gender: vm.gender,
           password: vm.password,
+          academies: vm.academies,
           status: 'Activo',
           photo: vm.photo
         } // Cierre de teacherEdit
@@ -101,6 +105,7 @@
         vm.civilStatus =  '';
         vm.gender =  '';
         vm.password = '';
+        vm.academies = '';
         vm.photo = '';
       } // Cierre de la función clean
 
