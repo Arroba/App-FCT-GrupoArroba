@@ -48,6 +48,7 @@
           academies: vm.academies,
           teachers: vm.teachers,
           state: 'Activo',
+          password: vm.password,
           photo: vm.photo
 
         }// Cierre de newStudent.(Pamela)
@@ -77,6 +78,7 @@
         vm.academies = pStudent.academies;
         vm.teachers = pStudent.teachers;
         vm.grade = pStudent.grade;
+        vm.password = pStudent.password
         vm.photo = pStudent.photo;
       }// Cierre de la función getInfo.(Pamela)
 
@@ -102,6 +104,7 @@
           teachers: vm.teachers,
           grade: vm.grade,
           state: 'Activo',
+          password: vm.password,
           photo: vm.photo
         }// Cierre de studentEdited.(Pamela)
         studentService.updateStudent(studentEdited);
@@ -129,6 +132,7 @@
         vm.academies = '';
         vm.teachers = '';
         vm.grade =  '';
+        vm.password = '';
         vm.photo = '';
       }// Cierre de la función clear.(Pamela)
 
