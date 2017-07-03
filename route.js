@@ -99,6 +99,18 @@
       controllerAs: 'vm'
     })
 
+    .state('places',{
+      url : '/places',
+      templateUrl: './components/place/place.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/place/place.controller.js')
+        }]
+      },
+      controller: 'placeController',
+      controllerAs: 'vm'
+      })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
