@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload){
+  function exhibitionController(exhibitionService,ImageService,Upload, eventsService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -10,6 +10,7 @@
     // Inicio de la función init que es la que se inicializa de primera.(Pamela)
     function init(){
       vm.exhibitions = exhibitionService.getExhibitions();
+      vm.eventsRel = eventsService.getEvents();
       vm.to = new Date();
     }init();
 
@@ -26,6 +27,7 @@
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
     vm.save= function(){
       var newExhibition = {
+        nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
         hourExhibition: vm.hourExhibition,
         placeExhibition: vm.placeExhibition,
@@ -40,6 +42,7 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pExhibition){
+      vm.nameEvent = pBlaze.nameEvent;
       vm.nameExhibition = pExhibition.nameExhibition;
       vm.hourExhibition = pExhibition.hourExhibition;
       vm.placeExhibition = pExhibition.placeExhibition;
@@ -50,6 +53,7 @@
     // Inicio de la función update, que se encarga de devolver los datos para ser editados.(Pamela)
     vm.update = function(){
       var exhibitionEdited = {
+        nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
         hourExhibition: vm.hourExhibition,
         placeExhibition: vm.placeExhibition,
@@ -64,6 +68,7 @@
 
     // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
     function clear(){
+      vm.nameEvent = '';
       vm.nameExhibition = '';
       vm.hourExhibition =  '';
       vm.placeExhibition =  '';

@@ -16,7 +16,6 @@
       // Función que guarda los datos
       vm.save= function(){// Objeto que obtener
         var newEvent = {
-          eventType: vm.eventType,
           name: vm.name,
           place: vm.place,
           dateStart: vm.dateStart,
@@ -26,7 +25,6 @@
           categoryWeight: vm.categoryWeight,
           categoryGender: vm.categoryGender,
           color: vm.color,         
-          specialGuests: vm.specialGuests,
           sponsors: vm.sponsors,
           status: 'Activo'
 
@@ -38,7 +36,6 @@
 
       //función que toma la información para modificar
       vm.getInfo = function(pEvent){
-        vm.eventType = pEvent.eventType;
         vm.name = pEvent.name;
         vm.place = pEvent.place;
         vm.dateStart = new Date(pEvent.dateStart);
@@ -48,14 +45,12 @@
         vm.categoryWeight = pEvent.categoryWeight;
         vm.categoryGender = pEvent.categoryGender;
         vm.color = pEvent.color;
-        vm.specialGuests = pEvent.specialGuests;
         vm.sponsors = pEvent.sponsors
       }//cierrre función info
 
       //función que modifica los datos
       vm.update = function(){
         var updated = {
-          eventType: vm.eventType,
           name: vm.name,
           place: vm.place,
           dateStart: vm.dateStart,
@@ -65,7 +60,6 @@
           categoryWeight: vm.categoryWeight,
           categoryGender: vm.categoryGender,
           color: vm.color,
-          specialGuests: vm.specialGuests,
           sponsors: vm.sponsors,
           status: 'Activo'
         }
@@ -76,7 +70,6 @@
 
       //función par limpiar los inputs
       function clear(){
-        vm.eventType = '';
         vm.name = '';
         vm.place = '';
         vm.dateStart = '';
@@ -86,7 +79,6 @@
         vm.categoryWeight = '';
         vm.categoryGender = '';
         vm.color = '';
-        vm.specialGuests = '';
         vm.sponsors = '';
       } //cierre función clear
 

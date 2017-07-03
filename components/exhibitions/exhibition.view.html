@@ -4,33 +4,53 @@
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterExhibition" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
 
-    <h1>Registro de Exhibición jjj</h1>
+    <h1>Registro de Exhibición</h1>
     <hr>
     <!--Inicio de los inpust para el formulario  -->
 
-    <label for="">Nombre de la Exhibición:</label>
-    <input type="text" ng-model="vm.nameExhibition" name="nameExhibition" required>
-    <div ng-messages="frmRegisterExhibition.nameExhibition.$error">
-    <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Evento:</label>
+      <input list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent" required>
+      <datalist id="eventsList">
+        <option value="">--Seleccione un evento</option>
+        <option ng-repeat="event in vm.eventsRel" value="{{event.name}}">{{vm.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterExhibition.nameEvent.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container> 
+    
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Nombre de la Exhibición:</label>
+      <input type="text" ng-model="vm.nameExhibition" name="nameExhibition" required>
+      <div ng-messages="frmRegisterExhibition.nameExhibition.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
 
-    <label for="">Hora a Realizarse:</label>
-    <input type="number" ng-model="vm.hourExhibition" name="hourExhibition" required>
-    <div ng-messages="frmRegisterExhibition.hourExhibition.$error">
-    <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Hora a Realizarse:</label>
+      <input type="time" ng-model="vm.hourExhibition" name="hourExhibition" required>
+      <div ng-messages="frmRegisterExhibition.hourExhibition.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container> 
 
-    <label for="">Lugar a Realizarse:</label>
-    <input type="text" ng-model="vm.placeExhibition" name="placeExhibition" required>
-    <div ng-messages="frmRegisterExhibition.placeExhibition.$error">
-    <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Lugar a Realizarse:</label>
+      <input type="text" ng-model="vm.placeExhibition" name="placeExhibition" required>
+      <div ng-messages="frmRegisterExhibition.placeExhibition.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
 
-    <label for="">Invitados  Especiales:</label>
-    <input type="text" ng-model="vm.guestsExhibition" name="guestsExhibition" required>
-    <div ng-messages="frmRegisterExhibition.guestsExhibition.$error">
-    <div ng-messages-include="components/includes/messages.html"></div>
-    </div><!--cierre del ng-messages -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Invitados  Especiales:</label>
+      <input type="text" ng-model="vm.guestsExhibition" name="guestsExhibition" required>
+      <div ng-messages="frmRegisterExhibition.guestsExhibition.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container> 
 
     <!-- Botones de Selleccione foto, Registrar y Actualizar -->
     <input type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
@@ -50,6 +70,7 @@
     </form><!--cierre del formulario para registrar -->
 
       <tr><!--Títulos para las tablas  -->
+        <th>Evento</th>
         <th>Nombre</th>
         <th>Hora</th>
         <th>Lugar</th>
@@ -61,8 +82,9 @@
     <tbody>
       <tr ng-repeat="exhibition in vm.exhibitions
       |filter:{state:vm.stateFilter}"><!--Impresión de los datos-->
+        <td>{{exhibition.nameEvent}}</td>
         <td>{{exhibition.nameExhibition}}</td>
-        <td>{{exhibition.hourExhibition}}</td>
+        <td>{{exhibition.hourExhibition | date:'hh:mm a'}}</td>
         <td>{{exhibition.placeExhibition}}</td>
         <td>{{exhibition.guestsExhibition}}</td>
         <td>{{exhibition.state}}</td>
