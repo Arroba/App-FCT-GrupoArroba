@@ -123,6 +123,30 @@
       controllerAs: 'vm'
       })
 
+      .state('competition',{
+        url : '/competition',
+        templateUrl: './components/competition/competition.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/competition/competition.controller.js')
+          }]
+        },
+        controller: 'competitionController',
+        controllerAs: 'vm'
+        })
+
+        .state('fights',{
+          url : '/fights',
+          templateUrl: './components/fights/fights.view.html',
+          resolve: {
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/fights/fights.controller.js')
+            }]
+          },
+          controller: 'fightsController',
+          controllerAs: 'vm'
+          })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();

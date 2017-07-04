@@ -1,0 +1,241 @@
+<!-- Inicio de la sección registerCompetition, que contiene el formulario del competición, registrar, modificar y listar, Hecho por Fabián Quirós-->
+<section id="registerFights">
+
+  <!-- Inicio del formulario  Competición: -->
+  <form name="frmRegisterFights" novalidate autocomplete="off">
+
+    <h1>Registro de Torneos</h1>
+    <hr>
+
+    <label for="">Primera Competición:</label>
+    <br>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 1:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentOne" name="studentOne" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentOne.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 2:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentTwo" name="studentTwo" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentTwo.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <label for="">Segunda Competición:</label>
+    <br>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 1:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentThree" name="studentThree" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentThree.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 2:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentFour" name="studentFour" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentFour.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <label for="">Tercera Competición:</label>
+    <br>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 1:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentFive" name="studentFive" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentFive.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 2:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentSix" name="studentSix" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentSix.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <label for="">Cuarta Competición:</label>
+    <br>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 1:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentSeven" name="studentSeven" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentSeven.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Seleccione competidor 2:</label>
+      <input list="competitionList" type="text" ng-model="vm.studentEight" name="studentEight" required>
+      <datalist id="competitionList">
+        <option value="">--Seleccione un competidor--</option>
+        <option ng-repeat="competition in vm.competitionRel" value="{{competition.name}}">{{vm.competition.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.studentEight.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <!-- Botones de Selleccione Registrar y Actualizar -->
+    <button type="submit" ng-disabled="frmRegisterFights.$invalid" ng-click="vm.save(fights)">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="frmRegisterFights.$invalid" ng-click="vm.update(fights)">
+
+  </form> <!-- Cierre del formulario Competición  -->
+
+  <h2>Primera competición</h2>
+  <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar competición -->
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+      <tr> <!--Títulos para las tablas  -->
+        <th>Competidores</th>
+        <th>Estado</th>
+        <th>Asignación de puntos</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentOne}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeOne(fights)" ng-maxlength="1"> {{fights.pointsOne}} <input type="submit" value="+" ng-click="vm.assingPointsOne(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentTwo}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeTwo(fights)" ng-maxlength="1"> {{fights.pointsTwo}} <input type="submit" value="+" ng-click="vm.assingPointsTwo(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+
+  <h2>Segunda competición</h2>
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+      <tr> <!--Títulos para las tablas  -->
+        <th>Competidores</th>
+        <th>Estado</th>
+        <th>Asignación de puntos</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentThree}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" ng-click="vm.removeThree(fights)"> {{fights.pointsThree}} <input type="submit" value="+" ng-click="vm.assingPointsThree(fights)"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentFour}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" ng-click="vm.removeFour(fights)"> {{fights.pointsFour}} <input type="submit" value="+" ng-click="vm.assingPointsFour(fights)"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+
+  <h2>Tercera competición</h2>
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+      <tr> <!--Títulos para las tablas  -->
+        <th>Competidores</th>
+        <th>Estado</th>
+        <th>Asignación de puntos</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentFive}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeFive(fights)" ng-maxlength="1"> {{fights.pointsFive}} <input type="submit" value="+" ng-click="vm.assingPointsFive(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentSix}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeSix(fights)" ng-maxlength="1"> {{fights.pointsSix}} <input type="submit" value="+" ng-click="vm.assingPointsSix(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+
+  <h2>Cuarta competición</h2>
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+      <tr> <!--Títulos para las tablas  -->
+        <th>Competidores</th>
+        <th>Estado</th>
+        <th>Asignación de puntos</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentSeven}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeSeven(fights)" ng-maxlength="1"> {{fights.pointsSeven}} <input type="submit" value="+" ng-click="vm.assingPointsSeven(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+      <tr ng-repeat="fights in vm.fights | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{fights.studentEight}}</td>
+        <td>{{fights.status}}</td>
+        <!-- Botones para cambiar el estado de las competidores, asignar puntos, descalificar y editar-->
+        <td><input type="submit" value="-" min="0" max="4" ng-click="vm.removeEight(fights)" ng-maxlength="1"> {{fights.pointsEight}} <input type="submit" value="+" ng-click="vm.assingPointsEight(fights)" min="0" max="4" ng-maxlength="1"></td>
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(fights)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+
+</section> <!-- Cierre de la sección registerTeacher -->
