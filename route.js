@@ -123,6 +123,18 @@
       controllerAs: 'vm'
       })
 
+      .state('competition',{
+        url : '/competition',
+        templateUrl: './components/competition/competition.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/competition/competition.controller.js')
+          }]
+        },
+        controller: 'competitionController',
+        controllerAs: 'vm'
+        })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
