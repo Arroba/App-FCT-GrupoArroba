@@ -1,0 +1,89 @@
+<!-- Inicio de la sección registerPlace, que contiene el formulario del lugar, registrar, modificar y listar, Hecho por Wilken -->
+<section id="registerBeneficient">
+
+  <!-- Inicio del formulario  Competición: -->
+  <form name="frmRegisterBeneficient" novalidate autocomplete="off">
+
+    <h1>Registro de Asociación Benéfica</h1>
+    <hr>
+
+    <!--Inicio de los inpust para el formulario  -->
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Persona Encargada</label>
+      <input type="text" ng-model="vm.person" name="person" required>
+      <div ng-messages="frmRegisterBeneficient.person.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Nombre Jurídico:</label>
+      <input type="text" ng-model="vm.name" name="name" required>
+      <div ng-messages="frmRegisterBeneficient.name.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div> <!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container flex="100">
+    <label>Tipo de asociación:</label>
+    <md-select ng-model="vm.type" name="type" required>
+      <md-option value="">--Seleccione un tipo de asociación</md-option>
+      <md-option value="Asociaciones Cientificas.">Asociaciones Cientificas.</md-option>
+      <md-option value="Asociaciones Cultural.">Asociaciones Cultural.</md-option>
+      <md-option value="Asociaciones Religiosa.">Asociaciones Religiosa.</md-option>
+      <md-option value="Asociaciones Educativa.">Asociaciones Educativa.</md-option>
+      <md-option value="Asociaciones Benéficas.">Asociaciones Benéficas.</md-option>
+      <md-option value="Asociaciones Solidaristas.">Asociaciones Solidaristas.</md-option>
+      <md-option value="Asociaciones Deportivas.">Asociaciones Deportivas.</md-option>
+      <md-option value="Asociaciones de Desarrollo Comunal.">Asociaciones de Desarrollo Comunal.</md-option>
+      <md-option value="Asociaciones Declaradas de Utilidad Pública.">Asociaciones Declaradas de Utilidad Pública.</md-option>
+      <md-option value="Asociaciones de Bienestar Social.">Asociaciones de Bienestar Social.</md-option>
+      <md-option value="otra">Otra.</md-option>
+    </md-select>
+    <div ng-messages="frmRegisterBeneficient.type.$error">
+      <div ng-message="required">*Este campo es requerido</div>
+    </div> <!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container layout="column" flex="100" flex-gt-sm>
+      <label for="">Descripción:</label>
+      <input type="text" ng-model="vm.description" name="description" required>
+      <div ng-messages="frmRegisterBeneficient.description.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div> <!--cierre del ng-messages -->
+    </md-input-container>
+
+    <!-- Botones de Selleccione Registrar y Actualizar -->
+    <button type="submit" ng-disabled="registerBeneficient.$invalid" ng-click="vm.save(beneficient)">Registrar</button>
+    <input type="button" value="Actualizar" ng-disabled="registerBeneficient.$invalid" ng-click="vm.update(beneficient)">
+
+  </form> <!-- Cierre del formulario  -->
+
+<input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar competición -->
+  <table> <!-- Inicio de la tabla -->
+    <thead> <!-- Inicio del thead -->
+      <tr> <!--Títulos para las tablas  -->
+        <th>Persona Encargada</th>
+        <th>Nombre Jurídico</th>
+        <th>Tipo de asociación</th>
+        <th>Descripción</th>
+      </tr> <!-- cierre de títulos -->
+    </thead> <!-- Cierre de la thead -->
+    <tbody> <!-- Incio del tbody -->
+      <tr ng-repeat="beneficient in vm.beneficient | filter:vm.nameFilter"> <!--Impresión de los datos-->
+        <td>{{beneficient.person}}</td>
+        <td>{{beneficient.name}}</td>
+        <td>{{beneficient.type}}</td>
+        <td>{{beneficient.description}}</td>
+        <!-- Botones para cambiar el estado de las academias y editar-->
+        <td><input type="button" value="Editar" ng-click="vm.getInfo(beneficient)"></td>
+        <!-- cierre botones  -->
+      </tr> <!--Fin de la impresión de datos  -->
+    </tbody> <!-- Cierre de la tbody -->
+  </table> <!-- Cierre de la tabla -->
+</section> <!-- Cierre de la sección registerTeacher -->
+
+
+
+
+

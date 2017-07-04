@@ -111,6 +111,18 @@
       controllerAs: 'vm'
       })
 
+    .state('beneficient',{
+      url : '/beneficients',
+      templateUrl: './components/beneficientAssociation/beneficient.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/beneficientAssociation/beneficient.controller.js')
+        }]
+      },
+      controller: 'beneficientController',
+      controllerAs: 'vm'
+      })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
