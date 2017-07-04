@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload, eventsService){
+  function exhibitionController(exhibitionService,ImageService,Upload, eventsService,placeService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -11,6 +11,7 @@
     function init(){
       vm.exhibitions = exhibitionService.getExhibitions();
       vm.eventsRel = eventsService.getEvents();
+      vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();
 
@@ -29,8 +30,8 @@
       var newExhibition = {
         nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
-        hourExhibition: vm.hourExhibition,
-        placeExhibition: vm.placeExhibition,
+        time: vm.time,
+        place: vm.place,
         guestsExhibition: vm.guestsExhibition,
         state: 'Activo',
         photo: vm.photo
@@ -44,8 +45,8 @@
     vm.getInfo = function(pExhibition){
       vm.nameEvent = pBlaze.nameEvent;
       vm.nameExhibition = pExhibition.nameExhibition;
-      vm.hourExhibition = pExhibition.hourExhibition;
-      vm.placeExhibition = pExhibition.placeExhibition;
+      vm.time = new Date (pBlaze.time);
+      vm.place = pExhibition.place;
       vm.guestsExhibition = pExhibition.guestsExhibition;
       vm.photo = pExhibition.photo;
     }// Cierre de la función getInfo.(Pamela)
@@ -55,8 +56,8 @@
       var exhibitionEdited = {
         nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
-        hourExhibition: vm.hourExhibition,
-        placeExhibition: vm.placeExhibition,
+        time: vm.time,
+        place: vm.place,
         guestsExhibition: vm.guestsExhibition,
         state: 'Activo',
         photo: vm.photo
@@ -70,8 +71,8 @@
     function clear(){
       vm.nameEvent = '';
       vm.nameExhibition = '';
-      vm.hourExhibition =  '';
-      vm.placeExhibition =  '';
+      vm.time =  '';
+      vm.place =  '';
       vm.guestsExhibition =  '';
       vm.photo =  '';
     }// Cierre de la función clear.(Pamela)

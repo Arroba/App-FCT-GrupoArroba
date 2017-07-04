@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('blazeController', blazeController);
-  function blazeController(blazeService,ImageService,Upload, eventsService){
+  function blazeController(blazeService,ImageService,Upload, eventsService,placeService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -11,6 +11,7 @@
     function init(){
       vm.blazes = blazeService.getBlazes();
       vm.eventsRel = eventsService.getEvents();
+      vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();
 
@@ -29,8 +30,8 @@
       var newBlaze = {
         nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
-        hourBlaze: vm.hourBlaze,
-        placeBlaze: vm.placeBlaze,
+        time: vm.time,
+        place: vm.place,
         state: 'Activo',
         photo: vm.photo
       }// Cierre de newBlaze.(Pamela)
@@ -43,8 +44,8 @@
     vm.getInfo = function(pBlaze){
       vm.nameEvent = pBlaze.nameEvent;
       vm.nameBlaze = pBlaze.nameBlaze;
-      vm.hourBlaze = pBlaze.hourBlaze;
-      vm.placeBlaze = pBlaze.placeBlaze;
+      vm.time = new Date (pBlaze.time);
+      vm.place = pBlaze.place;
       vm.photo = pBlaze.photo;
     }// Cierre de la función getInfo.(Pamela)
 
@@ -53,8 +54,8 @@
       var blazeEdited = {
         nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
-        hourBlaze: vm.hourBlaze,
-        placeBlaze: vm.placeBlaze,
+        time: vm.time,
+        place: vm.place,
         state: 'Activo',
         photo: vm.photo
       }// Cierre de blazeEdited.(Pamela)
@@ -67,8 +68,8 @@
     function clear(){
       vm.nameEvent = '';
       vm.nameBlaze = '';
-      vm.hourBlaze =  '';
-      vm.placeBlaze =  '';
+      vm.time =  '';
+      vm.place =  '';
       vm.photo =  '';
     }// Cierre de la función clear.(Pamela)
 
@@ -100,4 +101,3 @@
     }// Cierre de la funcion active.(Pamela)
   }// Cierre de la función studentController.(Pamela)
 })();
-
