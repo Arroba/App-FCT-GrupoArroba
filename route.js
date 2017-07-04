@@ -135,6 +135,18 @@
         controllerAs: 'vm'
         })
 
+        .state('fights',{
+          url : '/fights',
+          templateUrl: './components/fights/fights.view.html',
+          resolve: {
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/fights/fights.controller.js')
+            }]
+          },
+          controller: 'fightsController',
+          controllerAs: 'vm'
+          })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
