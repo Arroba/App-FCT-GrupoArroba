@@ -24,7 +24,7 @@
 
       vm.save= function(){//Función de guardar
         var newSponsor = {
-            state:'Activo',
+            status:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -58,7 +58,7 @@
 
       vm.update = function(){//Función que actualiza
         var sponsorEdited = {
-            state:'Activo',
+            status:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -94,8 +94,8 @@
         var sponsorsList = sponsorsService.getSponsors();
           for (var i = 0; i < sponsorsList.length; i++) {//Inicia ciclo for
             if (sponsorsList[i].email == pSponsor.email) {//Inicia función if
-              sponsorsList[i].state = 'inhabilitado';
-              console.log(sponsorsList[i].state)
+              sponsorsList[i].status = 'inhabilitado';
+              console.log(sponsorsList[i].status)
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);
@@ -106,8 +106,8 @@
         var sponsorsList = sponsorsService.getSponsors();
           for (var i = 0; i < sponsorsList.length; i++) {
             if (sponsorsList[i].email == pAcademy.email) {
-              sponsorsList[i].state = 'Activo';
-              console.log(sponsorsList[i].state)
+              sponsorsList[i].status = 'Activo';
+              console.log(sponsorsList[i].status)
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);

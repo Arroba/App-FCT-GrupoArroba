@@ -1,4 +1,5 @@
 <!-- Inicio de la sección registerCompetition, que contiene el formulario del competición, registrar, modificar y listar, Hecho por Fabián Quirós-->
+<!-- Ingreso de cards y ajustes Pili-->
 <section id="registerCompetition">
 
   <!-- Inicio del formulario  Competición: -->
@@ -46,7 +47,7 @@
         <md-option value="">--Seleccione una opción--</md-option>
         <md-option value="Infantil">Infantil (4-11 años)</md-option>
         <md-option value="Cadete">Cadete (12-16 años)</md-option>
-        <md-option value="Elite">Elite (17-23 años)</md-option>
+        <md-option value="Elite">Élite (17-23 años)</md-option>
         <md-option value="Simio">Sénior (Mayor de 23 años)</md-option>
       </md-select>
       <div ng-messages="frmRegisterCompetition.ageCategory.$error">
@@ -107,7 +108,7 @@
 
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Peso:</label>
-      <input type="number" name="weight" ng-model="vm.weight" min="1" name="weight" required>
+      <input type="number" name="weight" placeholder="Kg" ng-model="vm.weight" min="1" name="weight" required>
       <div ng-messages="frmRegisterCompetition.weight.$error">
         <div ng-messages-include="components/includes/messages.html"></div>
       </div> <!--cierre del ng-messages -->
@@ -115,7 +116,7 @@
 
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Costo de inscripción:</label>
-      <input type="number" name="cost" ng-model="vm.cost" min="1" name="cost" required>
+      <input type="number" name="cost" placeholder="₡" ng-model="vm.cost" min="1" name="cost" required>
       <div ng-messages="frmRegisterCompetition.cost.$error">
         <div ng-messages-include="components/includes/messages.html"></div>
       </div> <!--cierre del ng-messages -->
@@ -128,50 +129,36 @@
   </form> <!-- Cierre del formulario Competición  -->
 
 <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar competición -->
-  <table> <!-- Inicio de la tabla -->
-    <thead> <!-- Inicio del thead -->
-      <!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
-        <select ng-model="vm.statusFilter" name="statusFilter">
-          <option value="">--Seleccione un estado--</option>
-          <option value="Activo">Activo</option>
-          <option value="Inhabilitado">Inactivo</option>
-          <option value="Descalificado">Descalificado</option>
-        </select> <!--cierre del filtro  -->
-      <tr> <!--Títulos para las tablas  -->
-        <th>Nombre</th>
-        <th>Hora</th>
-        <th>Lugar</th>
-        <th>Categoría por Edad</th>
-        <th>Categoría por Peso</th>
-        <th>Grado</th>
-        <th>Genero</th>
-        <th>Edad</th>
-        <th>Peso</th>
-        <th>Costo</th>
-        <th>Estado</th>
-      </tr> <!-- cierre de títulos -->
-    </thead> <!-- Cierre de la thead -->
-    <tbody> <!-- Incio del tbody -->
-      <tr ng-repeat="competition in vm.competition | filter:{status:vm.statusFilter} | filter:vm.nameFilter"> <!--Impresión de los datos-->
-        <td>{{competition.name}}</td>
-        <td>{{competition.time | date:'shortTime'}}</td>
-        <td>{{competition.place}}</td>
-        <td>{{competition.ageCategory}}</td>
-        <td>{{competition.weightCategory}}</td>
-        <td>{{competition.grade}}</td>
-        <td>{{competition.gender}}</td>
-        <td>{{competition.age}}</td>
-        <td>{{competition.weight}}</td>
-        <td>{{competition.cost}}</td>
-        <td>{{competition.status}}</td>
-        <!-- Botones para cambiar el estado de las academias y editar-->
-        <td><input type="button" value="Editar" ng-click="vm.getInfo(competition)"></td>
-        <td><input type="submit" value="Activo" ng-click="vm.active(competition)"></td>
-        <td><input type="submit" value="Inactivo" ng-click="vm.inactive(competition)"></td>
-        <td><input type="button" value="Descalificar" ng-click="vm.Disqualify(competition)"></td>
-        <!-- cierre botones  -->
-      </tr> <!--Fin de la impresión de datos  -->
-    </tbody> <!-- Cierre de la tbody -->
-  </table> <!-- Cierre de la tabla -->
+
+<div flex-xs flex-gt-xs="50" layout-gt-xs = "row">
+   <md-card ng-repeat="competition in vm.competition | filter:vm.nameFilter">
+   <md-card-header>
+     <md-card-header-text>
+       <span class="md-title">{{competition.name}}</span>
+       <span class="md-title">{{competition.place}}</span>
+     </md-card-header-text>
+   </md-card-header>
+   <md-card-title>
+     <md-card-title-text>
+       <span class="md-subhead">Hora{{competition.time | date:'shortTime'}}</span>
+       <span class="md-subhead">Categoría edad: {{competition.ageCategory}}</span>
+       <span class="md-subhead">Categoría peso:{{competition.weightCategory}}</span>
+       <span class="md-subhead">Grado:{{competition.grade}}</span>
+       <span class="md-subhead">Género:{{competition.gender}}</span>
+       <span class="md-subhead">Edad:{{competition.age}}</span>
+       <span class="md-subhead">Peso:{{competition.weight}} Kg</span>
+       <span class="md-subhead">Costo: ₡ {{competition.cost}} </span>
+       <span class="md-subhead">Estado:{{competition.status}}</span>
+     </md-card-title-text>
+   </md-card-title>
+<!--Select necesario para filtrar los datos por estado (activos e inactivos únicamente)  -->
+   <md-card-actions layout="row" layout-align="end center">
+     <md-button ng-click="vm.getInfo(competition)">Editar</md-button>
+     <md-button ng-click="vm.active(competition)">Activo</md-button>
+     <md-button ng-click="vm.inactive(competition)">Inactivo</md-button>
+     <md-button ng-click="vm.Disqualify(competition)">Descalificado</md-button>
+   <md-card-icon-actions>
+
+ </div> <!-- Cierre de la card -->
 
 </section> <!-- Cierre de la sección registerTeacher -->
