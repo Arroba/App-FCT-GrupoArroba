@@ -20,13 +20,13 @@
       var teachersList = _getTeachers();
 
       teachersList.push(pTeacher);
-      localStorage.setItem('lsTeachersList', JSON.stringify(teachersList));
+      localStorage.setItem('lsUsersList', JSON.stringify(teachersList));
     } // Cierre de la función setTeachers
 
 
     // Inicio de la función getTeachers, que se encarga de obtener los datos más actualizados
     function _getTeachers(){
-      var teachersList = JSON.parse(localStorage.getItem('lsTeachersList'));
+      var teachersList = JSON.parse(localStorage.getItem('lsUsersList'));
       if(teachersList == null){
         teachersList = teachers;
       } // Cierre del if
@@ -42,14 +42,14 @@
           teachersList[i] = pobjTeacher;
         } // Cierre del if
       } // Cierre del ciclo
-      localStorage.setItem('lsTeachersList', JSON.stringify(teachersList));
+      localStorage.setItem('lsUsersList', JSON.stringify(teachersList));
     }// Fin de la función updateTeacher
 
 
     //función que actualiza el estado
       function _updateState(pTeacherList){
 
-        localStorage.setItem('lsTeachersList', JSON.stringify(pTeacherList));
+        localStorage.setItem('lsUsersList', JSON.stringify(pTeacherList));
       }//cierre función updateState
 
 

@@ -19,12 +19,12 @@
       var studentsList = _getStudents();
 
       studentsList.push(pStudent);
-      localStorage.setItem('lsStudentsList', JSON.stringify(studentsList));
+      localStorage.setItem('lsUsersList', JSON.stringify(studentsList));
     }// Cierre de la función setStudents.(Pamela)
 
     // Inicio de la función getStudents, que se encarga de obtener los datos más actualizados.(Pamela)
     function _getStudents(){
-      var studentsList = JSON.parse(localStorage.getItem('lsStudentsList'));
+      var studentsList = JSON.parse(localStorage.getItem('lsUsersList'));
       if(studentsList == null){
         studentsList = students;
       }
@@ -39,13 +39,13 @@
           studentsList[i] = pobjStudent;
         }
       }
-      localStorage.setItem('lsStudentsList', JSON.stringify(studentsList));
+      localStorage.setItem('lsUsersList', JSON.stringify(studentsList));
     }// Cierre de la función updateStudent.(Pamela)
 
     //función que actualiza el estado.(Pamela)
     function _updateState(pStudentsList){
 
-      localStorage.setItem('lsStudentsList', JSON.stringify(pStudentsList));
+      localStorage.setItem('lsUsersList', JSON.stringify(pStudentsList));
     }//cierre función updateState.(Pamela)
 
   }//Fin función studentService.(Pamela)

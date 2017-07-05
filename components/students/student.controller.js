@@ -47,9 +47,10 @@
           grade: vm.grade,
           academies: vm.academies,
           teachers: vm.teachers,
-          state: 'Activo',
+          status: 'Activo',
           password: vm.password,
-          photo: vm.photo
+          photo: vm.photo,
+          userType: 'student'
 
         }// Cierre de newStudent.(Pamela)
         studentService.setStudents(newStudent);
@@ -103,7 +104,7 @@
           academies: vm.academies,
           teachers: vm.teachers,
           grade: vm.grade,
-          state: 'Activo',
+          status: 'Activo',
           password: vm.password,
           photo: vm.photo
         }// Cierre de studentEdited.(Pamela)
