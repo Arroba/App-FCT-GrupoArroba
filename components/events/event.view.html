@@ -16,10 +16,14 @@
     
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Lugar del evento:</label>
-      <input type="text" ng-model="vm.place" name="place" required>
+      <input type="text" list="placeList" ng-model="vm.place" name="place" required>
+      <datalist id="placeList">
+        <option value="">--Seleccione un lugar--</option>
+        <option ng-repeat="place in vm.placeRel" value="{{place.namePlace}}">{{vm.place.namePlace}}</option>
+      </datalist>
       <div ng-messages="frmRegisterEvent.place.$error">
-       <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div> <!--cierre del ng-messages -->
     </md-input-container>
     
     <md-input-container layout="column" flex="100" flex-gt-sm>
@@ -50,7 +54,7 @@
       </div><!--cierre del ng-messages -->
      </md-input-container>   
 
-    <md-input-container flex="100">
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label>Categorías por edad:</label>
     <md-select name="categoryAge" ng-model="vm.categoryAge" required>
       <md-option value="">--Seleccione una categoría</md-option>
@@ -65,7 +69,7 @@
     </div> <!--cierre del ng-messages -->
     </md-input-container>
 
-    <md-input-container flex="100">
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label>Categorías por peso:</label>
     <md-select name="categoryWeight" ng-model="vm.categoryWeight" required>
       <md-option value="">--Seleccione una categoría</md-option>
@@ -80,7 +84,7 @@
     </div> <!--cierre del ng-messages -->
     </md-input-container>
 
-    <md-input-container flex="100">
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label>Categorías por género:</label>
     <md-select name="categoryGender" ng-model="vm.categoryGender" required>
       <md-option value="">--Seleccione una categoría</md-option>
@@ -93,7 +97,7 @@
     </div> <!--cierre del ng-messages -->
     </md-input-container>
 
-    <md-input-container flex="100">
+    <md-input-container layout="column" flex="100" flex-gt-sm>
     <label>Color del cinturón</label>
     <md-select name="favoriteColor" ng-model="vm.color" required>
       <md-option value="">--Seleccione una categoría</md-option>
