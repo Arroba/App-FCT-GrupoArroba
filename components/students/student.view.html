@@ -1,6 +1,6 @@
 <!--Regristrar Estudiantes, listar Estudiantes y modificar Estudiantes en conjunto con impresión de los datos.(Pamela)-->
 
-<section id="registerStudent"  ng-controller="studentController as vm">
+<section id="registerStudent">
 
   <!--Creación del formulario para registro  -->
   <form name="frmRegisterStudent" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
@@ -91,7 +91,7 @@
 
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Télefono:</label>
-      <input type="number" name="telephone" ng-model="vm.telephone" min="1" name="telephone" required>
+      <input type="number" name="telephone" ng-model="vm.telephone" min="1" ng-maxlength="8" name="telephone" required>
       <div ng-messages="frmRegisterStudent.telephone.$error">
         <div ng-messages-include="components/includes/messages.html"></div>
       </div><!--cierre del ng-messages -->
@@ -192,7 +192,7 @@
 
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Contraseña:</label>
-      <input type="password" ng-model="vm.password" name="password" min="1" ng-minlength="7" ng-maxlength="9" required>
+      <input type="password" ng-model="vm.password" name="password" min="1" ng-minlength="7" ng-maxlength="11" required>
       <div ng-messages="frmRegisterStudent.password.$error">
         <div ng-messages-include="components/includes/messages.html"></div>
       </div><!--cierre del ng-messages -->
@@ -212,43 +212,42 @@
   <!--inicio de los cards -->
   <div flex-xs flex-gt-xs="50" layout-gt-xs = "row">
     <md-card ng-repeat="student in vm.students
-    |filter:{state:vm.stateFilter} | filter:vm.nameFilter">
-    <md-card-header>
-      <md-card-header-text>
-        <span class="md-title">{{student.firstName}} {{student.secondName}} {{student.surname}} {{student.secondName}}</span>
-        <span class="md-subhead">{{student.id}}</span>
-      </md-card-header-text>
-    </md-card-header>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-subhead">{{student.gender}}</span>
-        <span class="md-subhead">{{student.date | date}}</span>
-        <span class="md-subhead">Estado Civil: {{student.civilStatus}}</span>
-        <span class="md-subhead">{{student.email}}</span>
-        <span class="md-subhead">{{student.telephone}}</span>
-        <span class="md-subhead">Dirección: {{student.address}}</span>
-        <span class="md-subhead">Peso: {{student.weight}} Kg</span>
-        <span class="md-subhead">Altura: {{student.height}} M</span>
-        <span class="md-subhead">Categoría Edad: {{student.ageCategory}}</span>
-        <span class="md-subhead">Categoría Peso: {{student.weightCategory}}</span>
-        <span class="md-subhead">Academia: {{student.academies}}</span>
-        <span class="md-subhead">Profesor: {{student.teachers}}</span>
-        <span class="md-subhead">Grado: {{student.grade}}</span>
-        <span class="md-subhead">Contraseña: {{student.password}}</span>
-        <span class="md-subhead">Estado: {{student.status}}</span>
-      </md-card-title-text>
-      <md-card-title-media>
-        <div class="md-media-lg card-media">
-          <img img ng-src="{{student.photo}}" alt="Description" width="132px" height="170px"  class="photoStudent">
-        </div>
-      </md-card-title-media>
-    </md-card-title>
-    <!-- Boton para cambiar el editar las estudiantes -->
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="vm.getInfo(student)">Editar</md-button>
-      <md-button ng-click="vm.active(student)">Activo</md-button>
-      <md-button ng-click="vm.inactive(student)">Inactivo</md-button>
-      <md-card-icon-actions><!-- cierre botones  -->
-  </div>
-  <!--fin de los cards -->
+      |filter:{status:vm.statusFilter} | filter:vm.nameFilter">
+      <md-card-header>
+        <md-card-header-text>
+          <span class="md-title">{{student.firstName}} {{student.secondName}} {{student.surname}} {{student.secondName}}</span>
+          <span class="md-subhead">{{student.id}}</span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-title>
+        <md-card-title-text>
+          <span class="md-subhead">{{student.gender}}</span>
+          <span class="md-subhead">{{student.date | date}}</span>
+          <span class="md-subhead">Estado Civil: {{student.civilStatus}}</span>
+          <span class="md-subhead">{{student.email}}</span>
+          <span class="md-subhead">{{student.telephone}}</span>
+          <span class="md-subhead">Dirección: {{student.address}}</span>
+          <span class="md-subhead">Peso: {{student.weight}} Kg</span>
+          <span class="md-subhead">Altura: {{student.height}} M</span>
+          <span class="md-subhead">Categoría Edad: {{student.ageCategory}}</span>
+          <span class="md-subhead">Categoría Peso: {{student.weightCategory}}</span>
+          <span class="md-subhead">Academia: {{student.academies}}</span>
+          <span class="md-subhead">Profesor: {{student.teachers}}</span>
+          <span class="md-subhead">Grado: {{student.grade}}</span>
+          <span class="md-subhead">Contraseña: {{student.password}}</span>
+          <span class="md-subhead">Estado: {{student.status}}</span>
+        </md-card-title-text>
+        <md-card-title-media>
+          <div class="md-media-lg card-media">
+            <img img ng-src="{{student.photo}}" alt="Description" width="132px" height="170px"  class="photoStudent">
+          </div>
+        </md-card-title-media>
+      </md-card-title>
+      <!-- Boton para cambiar el editar las estudiantes -->
+      <md-card-actions layout="row" layout-align="end center">
+        <md-button ng-click="vm.getInfo(student)">Editar</md-button>
+        <md-button ng-click="vm.active(student)">Activo</md-button>
+        <md-button ng-click="vm.inactive(student)">Inactivo</md-button>
+        <md-card-icon-actions><!-- cierre botones  -->
+  </div><!--fin de los cards -->
 </section>
