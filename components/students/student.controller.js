@@ -137,14 +137,14 @@
         vm.photo = '';
       }// Cierre de la función clear.(Pamela)
 
-      // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
+      // Inicio de la función inactive, que se encarga de cambiar el estado del estudiante.(Pamela)
       //función que cambia el estado a inabilitado.(Pamela)
       vm.inactive = function(pStudent){
         var studentsList = studentService.getStudents();
         for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].email == pStudent.email) {
-            studentsList[i].state = 'inhabilitado';
-            console.log(studentsList[i].state)
+          if (studentsList[i].id == pStudent.id) {
+            studentsList[i].status = 'inhabilitado';
+            console.log(studentsList[i].status)
           }// Cierre del if.(Pamela)
         }// Cierre del ciclo.(Pamela)
         studentService.updateState(studentsList);
@@ -155,9 +155,9 @@
       vm.active = function(pStudent){
         var studentsList = studentService.getStudents();
         for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].email == pStudent.email) {
-            studentsList[i].state = 'Activo';
-            console.log(studentsList[i].state)
+          if (studentsList[i].id == pStudent.id) {
+            studentsList[i].status = 'Activo';
+            console.log(studentsList[i].status)
           }// Cierre del if.(Pamela)
         }// Cierre del ciclo.(Pamela)
         studentService.updateState(studentsList);
@@ -165,4 +165,4 @@
       }// Cierre de la funcion active.(Pamela)
 
     }// Cierre de la función studentController.(Pamela)
-})();
+  })();

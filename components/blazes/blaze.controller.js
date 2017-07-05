@@ -32,7 +32,7 @@
         nameBlaze: vm.nameBlaze,
         time: vm.time,
         place: vm.place,
-        state: 'Activo',
+        status: 'Activo',
         photo: vm.photo
       }// Cierre de newBlaze.(Pamela)
       blazeService.setBlazes(newBlaze);
@@ -56,7 +56,7 @@
         nameBlaze: vm.nameBlaze,
         time: vm.time,
         place: vm.place,
-        state: 'Activo',
+        status: 'Activo',
         photo: vm.photo
       }// Cierre de blazeEdited.(Pamela)
       blazeService.updateBlazes(blazeEdited);
@@ -79,8 +79,8 @@
       var blazesList = blazeService.getBlazes();
       for (var i = 0; i < blazesList.length; i++) {
         if (blazesList[i].nameBlaze == pBlaze.nameBlaze) {
-          blazesList[i].state = 'inhabilitado';
-          console.log(blazesList[i].state)
+          blazesList[i].status = 'inhabilitado';
+          console.log(blazesList[i].status)
         }// Cierre del if.(Pamela)
       }// Cierre del ciclo.(Pamela)
       blazeService.updateState(blazesList);
@@ -92,8 +92,8 @@
       var blazesList = blazeService.getBlazes();
       for (var i = 0; i < blazesList.length; i++) {
         if (blazesList[i].nameBlaze == pBlaze.nameBlaze) {
-          blazesList[i].state = 'Activo';
-          console.log(blazesList[i].state)
+          blazesList[i].status = 'Activo';
+          console.log(blazesList[i].status)
         }// Cierre del if.(Pamela)
       }// Cierre del ciclo.(Pamela)
       blazeService.updateState(blazesList);

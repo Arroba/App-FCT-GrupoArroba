@@ -34,7 +34,7 @@
 
     <md-input-container layout="column" flex="100" flex-gt-sm>
       <label for="">Teléfono:</label>
-      <input type="number" ng-model="vm.phone" min="1" name="phone" required>
+      <input type="number" ng-model="vm.phone" min="1" ng-maxlength="8" name="phone" required>
       <div ng-messages="frmRegisterPlace.phone.$error">
         <div ng-messages-include="components/includes/messages.html"></div>
       </div> <!--cierre del ng-messages -->
@@ -93,33 +93,28 @@
   </form> <!-- Cierre del formulario Competición  -->
 
 <input type="text" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar..."> <!-- input de buscar competición -->
-  <table> <!-- Inicio de la tabla -->
-    <thead> <!-- Inicio del thead -->
-      <tr> <!--Títulos para las tablas  -->
-        <th>Nombre del lugar</th>
-        <th>Ubicación</th>
-        <th>Capacidad</th>
-        <th>Teléfono</th>
-        <th>Disponibilidad</th>
-        <th>Nombre de persona de contacto</th>
-        <th>Primer apellido de persona de contacto</th>
-        <th>Segundo apellido de persona de contacto</th>
-      </tr> <!-- cierre de títulos -->
-    </thead> <!-- Cierre de la thead -->
-    <tbody> <!-- Incio del tbody -->
-      <tr ng-repeat="place in vm.place | filter:vm.nameFilter"> <!--Impresión de los datos-->
-        <td>{{place.namePlace}}</td>
-        <td>{{place.location}}</td>
-        <td>{{place.capacity}} personas</td>
-        <td>{{place.phone}}</td>
-        <td>{{place.timestart | date:'shortTime'}} - {{place.timeFinish | date:'shortTime'}}</td>
-        <td>{{place.nameContact}}</td>
-        <td>{{place.firstName}}</td>
-        <td>{{place.secondName}}</td>
-        <!-- Botones para cambiar el estado de las academias y editar-->
-        <td><input type="button" value="Editar" ng-click="vm.getInfo(place)"></td>
-        <!-- cierre botones  -->
-      </tr> <!--Fin de la impresión de datos  -->
-    </tbody> <!-- Cierre de la tbody -->
-  </table> <!-- Cierre de la tabla -->
+
+  <!--inicio de los cards -->
+  <div flex-xs flex-gt-xs="50" layout-gt-xs = "row">
+    <md-card ng-repeat="place in vm.place | filter:vm.nameFilter">
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title">Nombre del lugar:{{place.namePlace}}</span>
+        <span class="md-subhead">Ubicación:{{place.location}}</span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-subhead">Capacidad:{{place.capacity}} personas</span>
+        <span class="md-subhead">Teléfono:{{place.phone}}</span>
+        <span class="md-subhead">Disponibilidad:{{place.timestart | date:'shortTime'}} - {{place.timeFinish | date:'shortTime'}}</span>
+        <span class="md-subhead">Persona de contacto:{{place.nameContact}} {{place.firstName}} {{place.secondName}}</span>
+      </md-card-title-text>
+    </md-card-title>
+    <!-- Boton para cambiar el editar las eventos -->
+    <md-card-actions layout="row" layout-align="end center">
+      <md-button ng-click="vm.getInfo(place)">Editar</md-button>
+      <md-card-icon-actions><!-- cierre botones  -->
+  </div>
+  <!--fin de los cards -->
 </section> <!-- Cierre de la sección registerTeacher -->
