@@ -147,6 +147,18 @@
           controllerAs: 'vm'
           })
 
+        .state('login',{
+            url : '/login',
+            templateUrl: './components/login/login.view.html',
+            resolve: {
+              load: ['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load('./components/login/login.controller.js')
+              }]
+            },
+            controller: 'LoginController',
+            controllerAs: 'vm'
+          })  //Olman
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();

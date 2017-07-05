@@ -42,7 +42,8 @@
           password: vm.password,
           academies: vm.academies,
           status: 'Activo',
-          photo: vm.photo
+          photo: vm.photo,
+          userType: 'teacher'
         } // Cierre de newTeacher
         teacherService.setTeachers(newTeacher);
         init();
