@@ -13,6 +13,7 @@
     .state('landingPage',{
       url : '/landing',
       templateUrl: 'components/landingPage/landing.view.html',
+      css:'css/styleLanding.css'
     })
 
     .state('academies',{
