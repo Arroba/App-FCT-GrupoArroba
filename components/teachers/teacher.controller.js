@@ -1,8 +1,9 @@
+// Hecho por Fabián
 (function(){
   angular
     .module('fctApp')
     .controller('teacherController', teacherController);
-    function teacherController(teacherService,ImageService,Upload,academiesService){
+    function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -11,6 +12,7 @@
       function init(){
         vm.teachers = teacherService.getTeachers();
         vm.academiesRel = academiesService.getAcademies();
+        vm.foundCredentials = userService.findUsers(userService.getCookie());
         vm.to = new Date();
       }init(); // Cierre de la función init
 
@@ -45,11 +47,40 @@
           photo: vm.photo,
           userType: 'teacher'
         } // Cierre de newTeacher
-        teacherService.setTeachers(newTeacher);
-        init();
-        clean();
-      } // Cierre de la función save
+      // intento de restringir los usuarios que se registran
+      if(vm.teachers.length == 0){
+         teacherService.setTeachers(newTeacher);
+         document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+         console.log(vm.teachers);
+         clean();
+         init();
+         return;
+      }else{
+        for(var i = 0; i < vm.teachers.length; i++){
+          if(newTeacher.id == vm.teachers[i].id){
+             document.querySelector('.failId').innerHTML = '**El número de cédula ya  está registrado, por favor ingrese otro**';
+             return;
+          }
+          else if(newTeacher.email == vm.teachers[i].email){
+                   document.querySelector('.failEmail').innerHTML = 'El correo electrónico ya está registrado, por favor ingrese otro';
+                   document.querySelector('.failId').innerHTML = '';
+                   return;
+          }
+            else{
+                 console.log(newTeacher);
+                 teacherService.setTeachers(newTeacher);
+                 document.querySelector('.failId').innerHTML = '';
+                 document.querySelector('.failEmail').innerHTML = '';
+                 document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+                 console.log(vm.teachers);
+                 clean();
+                 init();
+                 return;
+            }
+          }
+        }
 
+      }// Cierre de la función save.(Fabián)
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pTeacher){
