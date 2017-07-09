@@ -172,6 +172,19 @@
       css:'css/styleMenu.css'
       })
 
+      .state('landingPageEvents',{
+        url : '/landingPageEvents',
+        templateUrl: 'components/landingPageEvents/landingPageEvents.view.html',
+        css:'css/styleLandingEvents.css'
+      })
+
+      .state('landingGallery',{
+        url : '/landingGallerys',
+        templateUrl: 'components/landingGallery/landingGallery.view.html',
+        css:'css/styleGallery.css'
+      })
+
+    
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
