@@ -25,7 +25,8 @@
         }]
       },
       controller: 'academiesController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('events',{
@@ -37,7 +38,8 @@
         }]
       },
       controller: 'eventsController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('blazes',{
@@ -49,7 +51,8 @@
         }]
       },
       controller: 'blazeController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('exhibitions',{
@@ -61,7 +64,8 @@
        }]
       },
       controller: 'exhibitionController',
-     controllerAs: 'vm'
+     controllerAs: 'vm',
+     css:'css/styleMenu.css'
     })
 
     .state('teachers',{
@@ -73,7 +77,8 @@
         }]
       },
       controller: 'teacherController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('sponsors',{
@@ -85,7 +90,8 @@
         }]
       },
       controller: 'sponsorController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('students',{
@@ -97,7 +103,8 @@
         }]
       },
       controller: 'studentController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('places',{
@@ -109,7 +116,8 @@
         }]
       },
       controller: 'placeController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('beneficient',{
@@ -121,7 +129,8 @@
         }]
       },
       controller: 'beneficientController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('fights',{
@@ -133,7 +142,8 @@
         }]
       },
       controller: 'fightsController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
     })
 
     .state('login',{
