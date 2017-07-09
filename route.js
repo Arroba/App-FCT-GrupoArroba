@@ -159,6 +159,19 @@
       controllerAs: 'vm'
     })  //Olman
 
+    .state('tickets',{
+      url : '/tickets',
+      templateUrl: './components/tickets/tickets.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/tickets/tickets.controller.js')
+        }]
+      },
+      controller: 'ticketsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+      })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
