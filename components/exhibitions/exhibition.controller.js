@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload, eventsService,placeService){
+  function exhibitionController(exhibitionService,ImageService,Upload,eventsService,placeService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -43,9 +43,9 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pExhibition){
-      vm.nameEvent = pExhibition.nameEvent;
+      vm.nameEvent = pBlaze.nameEvent;
       vm.nameExhibition = pExhibition.nameExhibition;
-      vm.time = new Date (pExhibition.time);
+      vm.time = new Date (pBlaze.time);
       vm.place = pExhibition.place;
       vm.guestsExhibition = pExhibition.guestsExhibition;
       vm.photo = pExhibition.photo;
