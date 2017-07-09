@@ -46,11 +46,11 @@
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/blazes/blaze.controller.js')
-     }]
-    },
-    controller: 'blazeController',
-    controllerAs: 'vm'
-  })
+        }]
+      },
+      controller: 'blazeController',
+      controllerAs: 'vm'
+    })
 
     .state('exhibitions',{
     url : '/exhibitions',
@@ -58,11 +58,11 @@
     resolve: {
       load: ['$ocLazyLoad', function($ocLazyLoad){
         return $ocLazyLoad.load('./components/exhibitions/exhibition.controller.js')
-      }]
-    },
-    controller: 'exhibitionController',
-    controllerAs: 'vm'
-  })
+       }]
+      },
+      controller: 'exhibitionController',
+     controllerAs: 'vm'
+    })
 
     .state('teachers',{
       url : '/teachers',
@@ -110,7 +110,7 @@
       },
       controller: 'placeController',
       controllerAs: 'vm'
-      })
+    })
 
     .state('beneficient',{
       url : '/beneficients',
@@ -122,43 +122,32 @@
       },
       controller: 'beneficientController',
       controllerAs: 'vm'
-      })
+    })
 
-      .state('competition',{
-        url : '/competition',
-        templateUrl: './components/competition/competition.view.html',
-        resolve: {
-          load: ['$ocLazyLoad', function($ocLazyLoad){
-            return $ocLazyLoad.load('./components/competition/competition.controller.js')
-          }]
-        },
-        controller: 'competitionController',
-        controllerAs: 'vm'
-        })
+    .state('fights',{
+      url : '/fights',
+      templateUrl: './components/fights/fights.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/fights/fights.controller.js')
+        }]
+      },
+      controller: 'fightsController',
+      controllerAs: 'vm'
+    })
 
-        .state('fights',{
-          url : '/fights',
-          templateUrl: './components/fights/fights.view.html',
-          resolve: {
-            load: ['$ocLazyLoad', function($ocLazyLoad){
-              return $ocLazyLoad.load('./components/fights/fights.controller.js')
-            }]
-          },
-          controller: 'fightsController',
-          controllerAs: 'vm'
-          })
-
-        .state('login',{
-            url : '/login',
-            templateUrl: './components/login/login.view.html',
-            resolve: {
-              load: ['$ocLazyLoad', function($ocLazyLoad){
-                return $ocLazyLoad.load('./components/login/login.controller.js')
-              }]
-            },
-            controller: 'LoginController',
-            controllerAs: 'vm'
-          })  //Olman
+    .state('login',{
+      url : '/login',
+      templateUrl: './components/login/login.view.html',
+      css:'css/styleLogin.css',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/login/login.controller.js')
+        }]
+      },
+      controller: 'LoginController',
+      controllerAs: 'vm'
+    })  //Olman
 
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
