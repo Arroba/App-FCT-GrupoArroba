@@ -15,7 +15,9 @@
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newBeneficient = {
-          person: vm.person,
+          personName: vm.personName,
+          surname: vm.surname,
+          secondSurname: vm.secondSurname,
           name: vm.name,
           type: vm.type,
           description: vm.description,
@@ -27,7 +29,10 @@
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pBeneficient){
-        vm.person = pBeneficient.person;
+        vm.personName = pBeneficient.personName;
+        vm.surname = pBeneficient.surname;
+        vm.secondSurname = pBeneficient.secondSurname;
+        vm.name = pBeneficient.name;
         vm.name = pBeneficient.name;
         vm.type = pBeneficient.type;
         vm.description = pBeneficient.description;
@@ -36,7 +41,9 @@
       // Inicio de la función update, que se encarga de devolver los datos para ser editados
       vm.update = function(){
         var beneficientEdit = {
-          person: vm.person,
+          personName: vm.personName,
+          surname: vm.surname,
+          secondSurname: vm.secondSurname,
           name: vm.name,
           type: vm.type,
           description: vm.description,
@@ -48,7 +55,9 @@
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
-        vm.person = '';
+        vm.personName = '';
+        vm.surname = '';
+        vm.secondSurname = '';
         vm.name = '';
         vm.type = '';
         vm.description = '';
@@ -56,4 +65,3 @@
 
     }// Cierre de la función beneficientController
 })();
-
