@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('studentController', studentController);
-    function studentController(studentService,ImageService,Upload,academiesService,teacherService){
+    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -12,7 +12,7 @@
         vm.students = studentService.getStudents();
         vm.academiesRel = academiesService.getAcademies();
         vm.teachersRel = teacherService.getTeachers();
-
+        vm.foundCredentials = userService.findUsers(userService.getCookie());
         vm.to = new Date();
       }init();
 
@@ -53,11 +53,41 @@
           userType: 'student'
 
         }// Cierre de newStudent.(Pamela)
-        studentService.setStudents(newStudent);
-        init();
-        clear();
-      }// Cierre de la función save.(Pamela)
 
+    // intento de restringir los usuarios que se registran
+      if(vm.students.length == 0){
+         studentService.setStudents(newStudent);
+         document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+         console.log(vm.students);
+         clear();
+         init();
+         return;
+      }else{
+        for(var i = 0; i < vm.students.length; i++){
+          if(newStudent.id == vm.students[i].id){
+             document.querySelector('.failId').innerHTML = '**El número de cédula ya  está registrado, por favor ingrese otro**';
+             return;
+          }
+          else if(newStudent.email == vm.students[i].email){
+                  document.querySelector('.failEmail').innerHTML = 'El correo electrónico ya está registrado, por favor ingrese otro';
+                  document.querySelector('.failId').innerHTML = '';
+                  return;
+                }
+                else{
+                  console.log(newStudent);
+                  studentService.setStudents(newStudent);
+                  document.querySelector('.failId').innerHTML = '';
+                  document.querySelector('.failEmail').innerHTML = '';
+                  document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+                  console.log(vm.students);
+                  clear();
+                  init();
+                  return;
+                }
+               }
+          }
+
+      }// Cierre de la función save.(Pamela)
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
       vm.getInfo = function(pStudent){
@@ -137,12 +167,12 @@
         vm.photo = '';
       }// Cierre de la función clear.(Pamela)
 
-      // Inicio de la función inactive, que se encarga de cambiar el estado del estudiante.(Pamela)
+      // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
       //función que cambia el estado a inabilitado.(Pamela)
       vm.inactive = function(pStudent){
         var studentsList = studentService.getStudents();
         for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].id == pStudent.id) {
+          if (studentsList[i].email == pStudent.email) {
             studentsList[i].status = 'inhabilitado';
             console.log(studentsList[i].status)
           }// Cierre del if.(Pamela)
@@ -155,7 +185,7 @@
       vm.active = function(pStudent){
         var studentsList = studentService.getStudents();
         for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].id == pStudent.id) {
+          if (studentsList[i].email == pStudent.email) {
             studentsList[i].status = 'Activo';
             console.log(studentsList[i].status)
           }// Cierre del if.(Pamela)
@@ -165,4 +195,4 @@
       }// Cierre de la funcion active.(Pamela)
 
     }// Cierre de la función studentController.(Pamela)
-  })();
+})();

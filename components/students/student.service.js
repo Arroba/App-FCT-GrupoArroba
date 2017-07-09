@@ -3,7 +3,7 @@
   .module('fctApp')
   .service('studentService', studentService);
 
-  // Inicio de función studentService.(Pamela)
+  // Inicio de función exhibitionService.(Pamela)
   function studentService(){
     var students = [];
     var publicAPI = {
