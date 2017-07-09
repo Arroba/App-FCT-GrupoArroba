@@ -24,7 +24,7 @@
 
       vm.save= function(){//Función de guardar
         var newSponsor = {
-            status:'Activo',
+            state:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -32,6 +32,7 @@
             nameSponsor: vm.nameSponsor,
             nameSponsorCompany: vm.nameSponsorCompany,
             sponsorType: vm.sponsorType,
+            sponsorCoinType: vm.sponsorCoinType,
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
             photo: vm.photo,
@@ -50,6 +51,7 @@
         vm.nameSponsor = pSponsor.nameSponsor;
         vm.nameSponsorCompany = pSponsor.nameSponsorCompany;
         vm.sponsorType = pSponsor.sponsorType;
+        vm.sponsorCoinType = pSponsor.sponsorCoinType;
         vm.sponsorDesc = pSponsor.sponsorDesc;
         vm.sponsorMonetary = pSponsor.sponsorMonetary;
         vm.photo = pSponsor.photo;
@@ -58,7 +60,7 @@
 
       vm.update = function(){//Función que actualiza
         var sponsorEdited = {
-            status:'Activo',
+            state:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -66,6 +68,7 @@
             nameSponsor: vm.nameSponsor,
             nameSponsorCompany: vm.nameSponsorCompany,
             sponsorType: vm.sponsorType,
+            sponsorCoinType: vm.sponsorCoinType,
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
             photo: vm.photo,
@@ -84,6 +87,7 @@
         vm.nameSponsor =  '';
         vm.nameSponsorCompany =  '';
         vm.sponsorType =  '';
+        vm.sponsorCoinType =  '';
         vm.sponsorDesc =  '';
         vm.sponsorMonetary =  '';
         vm.photo =  '';
@@ -94,8 +98,8 @@
         var sponsorsList = sponsorsService.getSponsors();
           for (var i = 0; i < sponsorsList.length; i++) {//Inicia ciclo for
             if (sponsorsList[i].email == pSponsor.email) {//Inicia función if
-              sponsorsList[i].status = 'inhabilitado';
-              console.log(sponsorsList[i].status)
+              sponsorsList[i].state = 'inhabilitado';
+              console.log(sponsorsList[i].state)
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);
@@ -106,8 +110,8 @@
         var sponsorsList = sponsorsService.getSponsors();
           for (var i = 0; i < sponsorsList.length; i++) {
             if (sponsorsList[i].email == pAcademy.email) {
-              sponsorsList[i].status = 'Activo';
-              console.log(sponsorsList[i].status)
+              sponsorsList[i].state = 'Activo';
+              console.log(sponsorsList[i].state)
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);
