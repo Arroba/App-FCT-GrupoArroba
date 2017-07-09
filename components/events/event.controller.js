@@ -25,7 +25,7 @@
           categoryAge: vm.categoryAge,
           categoryWeight: vm.categoryWeight,
           categoryGender: vm.categoryGender,
-          color: vm.color,         
+          color: vm.color,
           sponsors: vm.sponsors,
           status: 'Activo'
 
