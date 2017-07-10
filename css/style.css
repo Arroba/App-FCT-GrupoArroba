@@ -1,5 +1,55 @@
+@font-face{
+  font-family: roboto;
+  src: url(fonts/Roboto-Regular.ttf);
+}
+/*Estilos del form*/
+section h1{
+  text-align: left;
+  color: #50666B;
+}
+section hr{
+  background: #dcdcdc;
+  height: 1px;
+}
+/*Estilos de botones*/
+.button{
+  padding: 5px 15px;
+  background: #e67e22;
+  color: #fff;
+  margin-top: 25px;
+  font-size: 1em;
+  margin-bottom: 30px
+}
+.edit{
+  background:#00cbfe;
+  color: #fff;
+  border-radius: 8px;
+}
+.Active{
+  background:#e67e22;
+  color: #fff;
+  border-radius: 8px;
+}
+#registrar .Active:hover{
+  background: #00cbfe;
+  color: #fff;
+}
+#actualizar .edit:hover{
+  background: #e67e22;
+  color: #fff;
+}
+#buttons .Active:hover{
+  background: #00cbfe;
+  color: #fff;
+}
+#buttons .edit:hover{
+  background: #e67e22;
+  color: #fff;
+}
+/*Fin de estilos de botones*/
+
 section{
-  background-color: rgb(250,250,250)
+  font-family: roboto;
 }
 .photoStudent{
   height: 90px;
@@ -14,14 +64,6 @@ section{
 .check{
   padding-top: 34px;
 }
-.button{
-  padding: 12px 10px;
-  background: #e67e22;
-  border-radius: 8px;
-  color: #fff;
-  margin-top: 25px;
-  margin-bottom: 30px
-}
 .buttonphoto{
   padding: 12px 10px;
   border-radius: 8px;
@@ -29,7 +71,7 @@ section{
   margin-bottom: 30px
 }
 label{
-  margin-left: 25px;
+  margin-left: 16px;
 }
 span{
   display: block;
@@ -46,21 +88,12 @@ span{
 #ModInfo span{
   display: block;
 }
-.edit{
-  background:#00cbfe;
-  color: #fff;
-  border-radius: 12px;
+#inputSearch{
+  margin-bottom: 30px;
 }
-.Active{
-  background:#e67e22;
-  color: #fff;
-  border-radius: 12px;
-}
-#searchButton{
-  border-radius: 8px;
-  padding-right: 5px;
-  margin-bottom: 25px;
-}
-h1{
-  text-align: center;
+/*Fin de los estilos del form*/
+
+/*Estilos generales*/
+.displayNone{
+    display: none;
 }
