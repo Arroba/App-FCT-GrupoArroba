@@ -20,6 +20,8 @@
         var newTickets = {
           nameEvent: vm.nameEvent,
           name: vm.name,
+          firstName: vm.firstName,
+          secondName: vm.secondName,
           email: vm.email,
           reservedTickets: Number(vm.reservedTickets)
         } // Cierre de newFights
@@ -32,15 +34,26 @@
       vm.getInfo = function(pTickets){
         vm.nameEvent = pTickets.nameEvent;
         vm.name = pTickets.name;
+        vm.firstName = pTickets.firstName;
+        vm.secondName = pTickets.secondName
         vm.email = pTickets.email;
         vm.reservedTickets = Number(pTickets.reservedTickets);
       } // Cierre de la función getInfo
 
+      vm.hideButton = function(){
+        document.querySelector('#actualizar').classList.remove('displayNone');
+        document.querySelector('#registrar').classList.add('displayNone');
+      }
+
       // Inicio de la función update, que se encarga de devolver los datos para ser editados
       vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
         var ticketsEdit = {
           nameEvent: vm.nameEvent,
           name: vm.name,
+          firstName: vm.firstName,
+          secondName: vm.secondName,
           email: vm.email,
           reservedTickets: Number(vm.reservedTickets)
         } // Cierre de ticketsEdit
@@ -53,6 +66,8 @@
       function clean(){
         vm.nameEvent = '';
         vm.name = '';
+        vm.firstName = '';
+        vm.secondName = '';
         vm.email = '';
         vm.reservedTickets = '';
       } // Cierre de la función clean
