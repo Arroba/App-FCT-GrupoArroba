@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('studentController', studentController);
-    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies){
+    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies,fightsService,eventsService){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -13,6 +13,8 @@
         vm.academiesRel = academiesService.getAcademies();
         vm.teachersRel = teacherService.getTeachers();
         vm.foundCredentials = userService.findUsers(userService.getCookie());
+        vm.eventsRel = eventsService.getEvents();
+        vm.fights = fightsService.getFights();
         vm.to = new Date();
       }init();
 
@@ -25,6 +27,15 @@
             vm.save(newStudent);
           }); // Cierre de la función success.(Pamela)
       } // Cierre de la función presave.(Pamela)
+
+             vm.show= function(){
+        document.querySelector('#showRanking').classList.remove('displayNone');
+      }
+
+         vm.hide= function(){
+        document.querySelector('#showRanking').classList.add('displayNone');
+      }
+
 
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
       vm.save= function(){

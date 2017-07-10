@@ -23,7 +23,7 @@
               <i class="pe-7s-mail-open"></i><p>Contacto</p></a>
           </li>
         </ul>
-    	</div>
+      </div>
     </div>
     <div class="main-panel">
       <nav class="navbar-default">
@@ -42,50 +42,59 @@
 
   <!-- Page Content -->
     <section>
-      <div col-xs-12 >
-      <div>
-        <md-card>
-          <md-card-header>
-          <md-card-header-text>
-            <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
-            <h1>Bienvenido (a)</h1>
-            <span class="md-title">{{vm.foundCredentials.firstName}} {{vm.foundCredentials.secondName}} {{vm.foundCredentials.surname}}</span>
-            <span class="md-subhead">{{student.id}}</span>
-          </md-card-header-text>
-          </md-card-header>
-          <md-card-title-media>
-            <div class="md-media-lg card-media col-md-offset-9">
-              <img ng-src="{{vm.foundCredentials.photo}}" alt="Description" class="photoTeacherProfile">
-            </div>
-          </md-card-title-media>
-
-          <md-card-title>
-            <md-card-title-text>
-              <span class="md-subhead">Género: {{vm.foundCredentials.gender}}</span>
-              <span class="md-subhead">Fecha Nacimiento: {{vm.foundCredentials.date | date}}</span>
-              <span class="md-subhead">Estado Civil: {{vm.foundCredentials.civilStatus}}</span>
-              <span class="md-subhead">Correo: {{vm.foundCredentials.email}}</span>
-              <input class="md-subhead" ng-model="vm.foundCredentials.telephone"></input>
-              <input class="md-subhead" ng-model="vm.foundCredentials.address"></input>
-              <span class="md-subhead ">Peso: {{vm.foundCredentials.weight}}</span>
-              <span class="md-subhead ">Altura: {{vm.foundCredentials.height}}</span>
-              <span class="md-subhead ">Categoría por edad: {{vm.foundCredentials.ageCategory}}</span>
-              <span class="md-subhead ">Categoría por peso: {{vm.foundCredentials.weightCategory}}</span>
-              <span class="md-subhead ">Academia: {{vm.foundCredentials.academies}}</span>
-              <span class="md-subhead ">Profesor a cargo: {{vm.foundCredentials.teachers}}</span>
-              <span class="md-subhead ">Color de cinturón: {{vm.foundCredentials.grade}}</span>
-              <span class="md-subhead ">Clave: {{vm.foundCredentials.password}}</span>
-              <span class="md-subhead ">Estado: {{vm.foundCredentials.status}}</span>
-            </md-card-title-text>
-
-          </md-card-title>
-          <!-- Boton para cambiar el editar las estudiantes -->
-          <md-card-actions id="buttons" layout="row" layout-align="end center">
-            <md-button class="edit" ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
-            <md-button class="Active" ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
-            <md-card-icon-actions><!-- cierre botones  -->
-        </md-card>
+    <div col-xs-12 >
+      <md-card>
+        <md-card-header>
+        <md-card-header-text>
+        <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
+         <h1>Bienvenido (a)</h1>
+          <span class="md-title">{{vm.foundCredentials.firstName}} {{vm.foundCredentials.secondName}} {{vm.foundCredentials.surname}}</span>
+          <span class="md-subhead">{{student.id}}</span>
+        </md-card-header-text>
+        </md-card-header>
+        <md-card-title-media>
+          <div class="md-media-lg card-media col-md-offset-9">
+            <img ng-src="{{vm.foundCredentials.photo}}" alt="Description" class="photoTeacherProfile">
+          </div>
+        </md-card-title-media>
+        <md-card-title>
+        <md-card-title-text>
+          <span class="md-subhead">Género: {{vm.foundCredentials.gender}}</span>
+          <span class="md-subhead">Fecha Nacimiento: {{vm.foundCredentials.date | date}}</span>
+          <span class="md-subhead">Estado Civil: {{vm.foundCredentials.civilStatus}}</span>
+          <span class="md-subhead">Correo: {{vm.foundCredentials.email}}</span>
+          <input class="md-subhead" ng-model="vm.foundCredentials.telephone"></input>
+          <input class="md-subhead" ng-model="vm.foundCredentials.address"></input>
+          <span class="md-subhead ">Peso: {{vm.foundCredentials.weight}}</span>
+          <span class="md-subhead ">Altura: {{vm.foundCredentials.height}}</span>
+          <span class="md-subhead ">Categoría por edad: {{vm.foundCredentials.ageCategory}}</span>
+          <span class="md-subhead ">Categoría por peso: {{vm.foundCredentials.weightCategory}}</span>
+          <span class="md-subhead ">Academia: {{vm.foundCredentials.academies}}</span>
+          <span class="md-subhead ">Profesor a cargo: {{vm.foundCredentials.teachers}}</span>
+          <span class="md-subhead ">Color de cinturón: {{vm.foundCredentials.grade}}</span>
+          <span class="md-subhead ">Clave: {{vm.foundCredentials.password}}</span>
+          <span class="md-subhead ">Estado: {{vm.foundCredentials.status}}</span>
+        </md-card-title-text>
+        </md-card-title>
+        <!-- Boton para cambiar el editar las estudiantes -->
+        <md-card-actions id="buttons" layout="row" layout-align="end center">
+          <md-button class="edit" ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
+          <md-button class="Active" ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
+          <md-button class="edit" ng-click="vm.show()">Ver Ranking</md-button>
+      <md-card-icon-actions><!-- cierre botones  -->
+      </md-card>
+      <md-card>
+      <div class="displayNone" id="showRanking">
+        <h1>Eventos Participados</h1>
+        <span ng-repeat="fights in vm.fights" class="md-subhead ">{{fights.nameEvent}}</span>
+        <h1>Máximo Puntaje Obtenido en competiciones</h1>
+        <span ng-repeat="fights in vm.fights" class="md-subhead ">{{fights.points1Compe1}}</span>
+        <md-button class="edit" ng-click="vm.hide()">Ocultar Ranking</md-button>
       </div>
-            <!--fin de los cards -->
-    </section>
+    </md-card>
+  </section>
   </div>
+  </div>
+  </div>
+
+    

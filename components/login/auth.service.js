@@ -36,7 +36,7 @@
     function _redirectTo(pValidUser){
       switch (pValidUser.userType) {
         case 'administrator':
-          $location.path('/adminProfile');
+          $location.path('/academies');
           break;
         case 'assistant':
           $location.path('/assistantProfile');
