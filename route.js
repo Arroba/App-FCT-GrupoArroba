@@ -184,13 +184,32 @@
         css:'css/styleGallery.css'
       })
 
-      .state('landingPageContact',{
-        url : '/landingContact',
-        templateUrl: 'components/landingPageContact/landingPageContact.view.html',
-        css:'css/styleLandingContact.css'
+      .state('studentProfile',{
+        url : '/studentProfile',
+        templateUrl: './components/students/profile.student.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/students/student.controller.js')
+          }]
+        },
+        controller: 'studentController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
       })
 
-    
+      .state('teacherProfile',{
+        url : '/teacherProfile',
+        templateUrl: './components/teachers/profile.teacher.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
+          }]
+        },
+        controller: 'teacherController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();

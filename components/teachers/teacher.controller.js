@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('teacherController', teacherController);
-    function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService){
+    function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService,$cookies){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -15,6 +15,7 @@
         vm.to = new Date();
       }init(); // Cierre de la función init
 
+
       // Inicio de la función presave
       vm.presave= function(newTeacher){
         vm.cloudObj.data.file = document.getElementById("photo").files[0];
@@ -24,6 +25,7 @@
             vm.save(newTeacher);
           }); // Cierre de la función success
       } // Cierre de la función presave
+
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
@@ -96,15 +98,9 @@
         vm.photo = pTeacher.photo;
       } // Cierre de la función getInfo
 
-      vm.hideButton = function(){
-        document.querySelector('#actualizar').classList.remove('displayNone');
-        document.querySelector('#registrar').classList.add('displayNone');
-      }
 
       // Inicio de la función update, que se encarga de devolver los datos para ser editados
       vm.update = function(){
-        document.querySelector('#actualizar').classList.add('displayNone');
-        document.querySelector('#registrar').classList.remove('displayNone');
         var teacherEdit = {
           name: vm.name,
           firstName: vm.firstName,
@@ -126,6 +122,7 @@
         clean();
       } // Cierre de la función update
 
+
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
         vm.name = '';
@@ -142,6 +139,7 @@
         vm.academies = '';
         vm.photo = '';
       } // Cierre de la función clean
+
 
       // Inicio de la función inactive, que se encarga de cambiar el estado del profesor
       //función que cambia el estado a inabilitado
@@ -169,6 +167,10 @@
         teacherService.updateState(teacherList);
         init();
       }// Cierre de la funcion active
+
+      vm.logOut = function(){
+        AuthService.logOut();
+      }
 
     }// Cierre de la función teacherController
 })();

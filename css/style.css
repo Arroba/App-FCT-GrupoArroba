@@ -49,11 +49,15 @@ section hr{
 /*Fin de estilos de botones*/
 
 section{
-  font-family: roboto;
+  font-family: helvetica;
 }
 .photoStudent{
   height: 90px;
   width: 152px;
+}
+.photoTeacherProfile{
+  height: 150px;
+  width: 150px;
 }
 .select{
   padding-top: 24px;
@@ -92,6 +96,10 @@ span{
   margin-bottom: 30px;
 }
 /*Fin de los estilos del form*/
+
+.pull-right {
+float: right !important;
+}
 
 /*Estilos generales*/
 .displayNone{

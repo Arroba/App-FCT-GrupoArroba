@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('studentController', studentController);
-    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService){
+    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -113,15 +113,8 @@
         vm.photo = pStudent.photo;
       }// Cierre de la función getInfo.(Pamela)
 
-      vm.hideButton = function(){
-        document.querySelector('#actualizar').classList.remove('displayNone');
-        document.querySelector('#registrar').classList.add('displayNone');
-      }
-
       // Inicio de la función update, que se encarga de devolver los datos para ser editados.(Pamela)
       vm.update = function(){
-        document.querySelector('#actualizar').classList.add('displayNone');
-        document.querySelector('#registrar').classList.remove('displayNone');
         var studentEdited = {
           id: vm.id,
           firstName: vm.firstName,
@@ -200,6 +193,10 @@
         studentService.updateState(studentsList);
         init();
       }// Cierre de la funcion active.(Pamela)
+
+      vm.logOut = function(){
+        AuthService.logOut();
+      }
 
     }// Cierre de la función studentController.(Pamela)
 })();

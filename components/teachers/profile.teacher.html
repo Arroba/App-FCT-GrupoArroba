@@ -1,9 +1,9 @@
 <div class="wrapper">
   <div class="sidebar" data-color="wilken">
     <div class="sidebar-wrapper">
-        <div class="logo">
-           <a href="images/logoFederacion.png"></a>
-        </div>
+      <div class="logo">
+        <img src="images/logoFederacion.png" width="100px">
+      </div>
         <ul class="nav">
           <li class=>
             <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
@@ -44,50 +44,45 @@
       </nav>
 
   <!-- Page Content -->
+    <section>
+      <div col-xs-12 >
+      <div>
+        <md-card>
+          <md-card-header>
+          <md-card-header-text>
+            <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
+            <h1>Bienvenido (a)</h1>
+            <span class="md-title">{{vm.foundCredentials.name}} {{vm.foundCredentials.firstName}} {{vm.foundCredentials.lastName}}</span>
+            <span class="md-subhead">{{teacher.id}}</span>
+          </md-card-header-text>
+          </md-card-header>
+          <md-card-title-media>
+            <div class="md-media-lg card-media col-md-offset-9">
+              <img ng-src="{{vm.foundCredentials.photo}}" alt="Description" class="photoTeacherProfile">
+            </div>
+          </md-card-title-media>
 
-  <div class="container-fluid">
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">Género: {{vm.foundCredentials.gender}}</span>
+              <span class="md-subhead">Correo: {{vm.foundCredentials.email}}</span>
+              <span class="md-subhead">Fecha Nacimiento: {{vm.foundCredentials.date | date}}</span>
+              <span class="md-subhead">Estado Civil: {{vm.foundCredentials.civilStatus}}</span>
+              <input class="md-subhead" ng-model="vm.foundCredentials.telephone"></input>
+              <span class="md-subhead ">Color de cinturón: {{vm.foundCredentials.grade}}</span>
+              <span class="md-subhead ">Clave: {{vm.foundCredentials.password}}</span>
+              <span class="md-subhead ">Academia: {{vm.foundCredentials.academies}}</span>
+              <span class="md-subhead ">Estado: {{vm.foundCredentials.status}}</span>
+            </md-card-title-text>
 
-<section>
-  <div class="col-xs-12">
-    <md-card>
-    <md-card-header>
-    <md-card-header-text>
-      <h1>Hola!</h1>
-      <hr>
-      <span class="md-title">{{vm.foundCredentials.name}} {{vm.foundCredentials.firstName}} {{vm.foundCredentials.lastName}}</span>
-      <span class="md-subhead">{{teacher.id}}</span>
-    </md-card-header-text>
-    </md-card-header>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-subhead ">{{vm.foundCredentials.gender}}</span>
-        <span class="md-subhead ">{{vm.foundCredentials.email}}</span>
-        <span class="md-subhead ">{{vm.foundCredentials.date | date}}</span>
-        <span class="md-subhead">{{vm.foundCredentials.civilStatus}}</span>
-        <input class="md-subhead" ng-model="vm.foundCredentials.telephone"></input>
-        <span class="md-subhead ">{{vm.foundCredentials.grade}} Kg</span>
-        <span class="md-subhead ">{{vm.foundCredentials.password}} M</span>
-        <span class="md-subhead ">{{vm.foundCredentials.academies}}</span>
-        <span class="md-subhead ">{{vm.foundCredentials.status}}</span>
-      </md-card-title-text>
-      <md-card-title-media>
-        <div class="md-media-lg card-media">
-          <img ng-src="{{vm.foundCredentials.photo}}" alt="Description" class="photo">
-        </div>
-      </md-card-title-media>
-    </md-card-title>
-    <!-- Boton para cambiar el editar las estudiantes -->
-    <md-card-actions layout="row" id="buttons" layout-align="end center">
-      <md-button class="edit" ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
-      <md-button class="Active" ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
-      <md-button class="edit" ng-click="vm.active(teacher)">Activo</md-button>
-      <md-button class="Active" ng-click="vm.inactive(teacher)">Inactivo</md-button>
-      <md-card-icon-actions><!-- cierre botones  -->
+          </md-card-title>
+          <!-- Boton para cambiar el editar las estudiantes -->
+          <md-card-actions id="buttons" layout="row" layout-align="end center">
+            <md-button class="edit" ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
+            <md-button class="Active" ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
+            <md-card-icon-actions><!-- cierre botones  -->
+        </md-card>
       </div>
-    </md-card>
-        <!--fin de los cards -->
-
-</section>
-</div>
-</div>
-</div>
+            <!--fin de los cards -->
+    </section>
+  </div>

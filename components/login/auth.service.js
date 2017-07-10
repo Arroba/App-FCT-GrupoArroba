@@ -36,19 +36,22 @@
     function _redirectTo(pValidUser){
       switch (pValidUser.userType) {
         case 'administrator':
-          $location.path('/academies');
+          $location.path('/adminProfile');
           break;
         case 'assistant':
-          $location.path('/events');
+          $location.path('/assistantProfile');
           break;
         case 'teacher':
-          $location.path('/sponsors');
+          $location.path('/teacherProfile');
           break;
         case 'student':
-          $location.path('/students');
+          $location.path('/studentProfile');
+        break;
+        case'':
+          document.querySelector('.blocked').innerHTML = 'Usuario o contraseña incorrectos';
         break;
         default:
-          document.querySelector('.blocked').innerHTML = 'Usuario o contraseña incorrectos';
+        $location.path('/login');
         break;
 
       }
