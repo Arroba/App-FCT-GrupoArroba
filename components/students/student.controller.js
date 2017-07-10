@@ -113,8 +113,15 @@
         vm.photo = pStudent.photo;
       }// Cierre de la función getInfo.(Pamela)
 
+      vm.hideButton = function(){
+        document.querySelector('#actualizar').classList.remove('displayNone');
+        document.querySelector('#registrar').classList.add('displayNone');
+      }
+
       // Inicio de la función update, que se encarga de devolver los datos para ser editados.(Pamela)
       vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
         var studentEdited = {
           id: vm.id,
           firstName: vm.firstName,

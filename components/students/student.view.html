@@ -44,10 +44,27 @@
       </nav>
           <!-- Page Content -->
           <!--Regristrar Estudiantes, listar Estudiantes y modificar Estudiantes en conjunto con impresión de los datos.(Pamela)-->
+          <div class="container-fluid">
+
             <section id="registerStudent">
+
+              <h1>Registro de Estudiante</h1>
+              <hr>
+              <section id="inputSearch">
+                <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+                    <form action="" class="search-form">
+                        <div class="form-group has-feedback">
+                        <label for="Buscar" class="sr-only">Buscar</label>
+                        <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                          <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                      </div>
+                    </form>
+                </div>
+              </section>
+
+
               <form class="form" name="frmRegisterStudent" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
-                <h1>Registro de Estudiante</h1>
-                <hr>
+
                 <div class="row">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <p class="failId"></p>
@@ -117,7 +134,7 @@
 
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Télefono:</label>
-                      <input type="number" name="telephone" ng-model="vm.telephone" min="8" ng-minlength="8" ng-maxlength="8" placeholder="(22222222)" name="telephone" required>
+                      <input type="number" name="telephone" ng-model="vm.telephone" min="8" ng-minlength="8" ng-maxlength="8" placeholder="22222222" name="telephone" required>
                       <div ng-messages="frmRegisterStudent.telephone.$error">
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
@@ -173,7 +190,7 @@
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                     <label for="">Altura:</label>
-                    <input type="number" ng-model="vm.height" name="height" required placeholder="ej: 1.62 m" min="2" ng-maxlength="4">
+                    <input type="number" ng-model="vm.height" name="height" required placeholder="162 cm" min="2" ng-maxlength="4">
                     <div ng-messages="frmRegisterStudent.weight.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div><!--cierre del ng-messages -->
@@ -260,23 +277,19 @@
               <div class="col-xs-offset-3 col-sm-offset-0 col-md-offset-0 col-xs-12 col-sm-6 col-md-4">
                 <input class="buttonphoto" type="file" ng-model="vm.photo"  name="photo" id="photo">
               </div>
-              <div class="col-xs-offset-2 col-sm-offset-0 col-md-offset-0 col-xs-2 col-sm-2 col-md-4">
-                <button class="button" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
+              <div class="col-xs-12">
+              <div id="registrar">
+                <md-button class="button Active" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
               </div>
-              <div class="col-xs-offset-3 col-sm-offset-0 col-md-offset-0 col-xs-2 col-sm-2 col-md-4">
-                <input  class="button" type="button" value="Actualizar" ng-disabled="frmRegisterStudent.$invalid" ng-click="vm.update(student)">
+              <div class="displayNone" id="actualizar">
+                <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student)">Actualizar</md-button>
               </div>
               <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
             </div>
           </form><!--cierre del formulario para registrar -->
-        <!--Inicio Botón Buscar-->
-          <section class="inputSearch">
-            <input type="text" class="col-xs-offset-8 col-md-offset-10 col-md-1" id="searchButton" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-          </section>
-          <!--Fin Botón Buscar -->
-          <div class="col-xs-12 col-sm-12 col-md-12">
-        <md-card  class="col-xs-12 col-sm-12 col-md-5" ng-repeat="student in vm.students
-            |filter:{status:vm.statusFilter} | filter:vm.nameFilter">
+
+          <div class="col-xs-12">
+        <md-card  class="container-fluid col-md-6" ng-repeat="student in vm.students | filter:vm.nameFilter">
             <md-card-header>
               <md-card-header-text>
                 <span class="md-title">{{student.firstName}} {{student.secondName}} {{student.surname}} {{student.secondSurname}}</span>
@@ -293,7 +306,7 @@
                   <span class="md-subhead">Estado Civil: {{student.civilStatus}}</span>
                   <span class="md-subhead">Peso: {{student.weight}} Kg</span>
                   <span class="md-subhead">Categoría Peso: {{student.weightCategory}}</span>
-                  <span class="md-subhead">Altura: {{student.height}} m</span>
+                  <span class="md-subhead">Altura: {{student.height}} cm</span>
                   <span class="md-subhead">Categoría Edad: {{student.ageCategory}}</span>
                   <span class="md-subhead">Grado: {{student.grade}}</span>
                   <span class="md-subhead">Academia: {{student.academies}}</span>
@@ -309,11 +322,12 @@
               </md-card-title-media>
             </md-card-title>
             <!-- Boton para cambiar el editar las estudiantes -->
-              <md-card-actions class="col-xs-offset-0 col-sm-offset-7 col-md-offset-0 col-xs-12 col-sm-12 col-md-12">
-                <md-button class="edit" ng-click="vm.getInfo(student)">Editar</md-button>
+              <md-card-actions id="buttons">
+                <md-button class="edit" ng-click="vm.getInfo(student);vm.hideButton()">Editar</md-button>
                 <md-button class="Active"ng-click="vm.active(student)">Activo</md-button>
                 <md-button class="edit" ng-click="vm.inactive(student)">Inactivo</md-button>
                 <md-card-icon-actions><!-- cierre botones  -->
             </div><!--fin de los cards -->
       </section>
+</div>
 </div>
