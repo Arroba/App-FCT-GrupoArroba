@@ -1,15 +1,23 @@
-.imageTaek{
-  background-image: url("../images/taekwondoLogin.jpg");
-  background-repeat: no-repeat;
-  width: 100%;
-  max-width: 2800px;
-  background-size: 100%;
-  height:60em;
-  max-height: 90em;
-  background-color: #ecf0f1; 
+
+
+/* contact-Styles*/
+i{
+  margin-right: 3%;
+}
+.contact-us{
+
+  color: white;
 }
 
-/*      light colors         */
+.fa{
+  color: #e67e22;
+}
+
+.style{
+  font-family: 'roboto';
+}
+
+/*light colors */
 @keyframes spin {
   from {
     transform: rotate(0deg);
@@ -397,14 +405,16 @@ body > .navbar-collapse[data-image]:after,
 body > .navbar-collapse.has-image:after {
   opacity: .77;
 }
+
+
 .sidebar[data-color="wilken"]:after, body > .navbar-collapse[data-color="wilken"]:after {
-  background: #34495e;
-  background: -moz-linear-gradient(top, #34495e 0%, #2c3e50 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #34495e), color-stop(100%, #2c3e50));
-  background: -webkit-linear-gradient(top, #34495e 0%, #2c3e50 100%);
-  background: -o-linear-gradient(top, #34495e 0%, #2c3e50 100%);
-  background: -ms-linear-gradient(top, #34495e 0%, #2c3e50 100%);
-  background: linear-gradient(to bottom, #34495e 0%, #2c3e50 100%);
+  background: #212123;
+  background: -moz-linear-gradient(top, #212123 0%, #212123 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #212123), color-stop(100%, #212123));
+  background: -webkit-linear-gradient(top, #212123 0%, #212123 100%);
+  background: -o-linear-gradient(top, #212123 0%, #212123 100%);
+  background: -ms-linear-gradient(top, #212123 0%, #212123 100%);
+  background: linear-gradient(to bottom, #212123 0%, #212123 100%);
   background-size: 150% 150%;
 }
 
@@ -457,7 +467,6 @@ body > .navbar-collapse.has-image:after {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
-  /*   this code is for fixing safari bug with hidden overflow for border-radius   */
   -webkit-mask: url("../img/mask.png") 0 0 no-repeat;
   -webkit-mask-size: 60px 24px;
   mask: url("../img/mask.png") 0 0 no-repeat;
@@ -2613,4 +2622,3 @@ footer p {
   font-family: 'roboto';
   color:black;
 }
-
