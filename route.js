@@ -184,6 +184,12 @@
         css:'css/styleGallery.css'
       })
 
+      .state('landingPageContact',{
+        url : '/landingContact',
+        templateUrl: 'components/landingPageContact/landingPageContact.view.html',
+        css:'css/styleLandingContact.css'
+      })
+
     
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
