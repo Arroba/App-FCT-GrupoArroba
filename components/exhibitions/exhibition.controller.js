@@ -66,9 +66,9 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pExhibition){
-      vm.nameEvent = pBlaze.nameEvent;
+      vm.nameEvent = pExhibition.nameEvent;
       vm.nameExhibition = pExhibition.nameExhibition;
-      vm.time = new Date (pBlaze.time);
+      vm.time = new Date (pExhibition.time);
       vm.place = pExhibition.place;
       vm.guestsExhibition = pExhibition.guestsExhibition;
       vm.photo = pExhibition.photo;
