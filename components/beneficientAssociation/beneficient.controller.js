@@ -38,8 +38,16 @@
         vm.description = pBeneficient.description;
       } // Cierre de la función getInfo
 
+      //función que cambia boton segun la información para modificar
+      vm.hideButton = function(){
+        document.querySelector('#actualizar').classList.remove('displayNone');
+        document.querySelector('#registrar').classList.add('displayNone');
+      }
+
       // Inicio de la función update, que se encarga de devolver los datos para ser editados
       vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
         var beneficientEdit = {
           personName: vm.personName,
           surname: vm.surname,
