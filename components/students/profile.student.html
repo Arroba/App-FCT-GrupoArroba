@@ -1,8 +1,59 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+           <a href="images/logoFederacion.png"></a>
+        </div>
+        <ul class="nav">
+          <li class=>
+            <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          </li>
+
+          <li>
+            <a href="#!/login"><i class="pe-7s-user"></i><p>Iniciar Sesión</p></a>
+          </li>
+
+          <li>
+            <a href=""><i class="pe-7s-note2"></i><p>Eventos</p></a>
+          </li>
+
+          <li>
+            <a href=""><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
+          </li>
+
+          <li>
+            <a href="">
+              <i class="pe-7s-mail-open"></i><p>Contacto</p></a>
+          </li>
+        </ul>
+    	</div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse"></div>
+      </nav>
+
+  <!-- Page Content -->
+
+  <div class="container-fluid">
+
 <section>
-  <div flex-xs flex-gt-xs="50" layout-gt-xs = "row"  >
+  <div class="col-xs-12">
     <md-card>
     <md-card-header>
     <md-card-header-text>
+      <h1>Hola!</h1>
+      <hr>
       <span class="md-title">{{vm.foundCredentials.firstName}} {{vm.foundCredentials.secondName}} {{vm.foundCredentials.surname}} {{vm.foundCredentials.secondName}}</span>
       <span class="md-subhead">{{student.id}}</span>
     </md-card-header-text>
@@ -16,7 +67,7 @@
         <input class="md-subhead" ng-model="vm.foundCredentials.telephone"></input>
         <input class="md-subhead" ng-model="vm.foundCredentials.address"></input>
         <span class="md-subhead ">{{vm.foundCredentials.weight}} Kg</span>
-        <span class="md-subhead ">{{vm.foundCredentials.height}} M</span>
+        <span class="md-subhead ">{{vm.foundCredentials.height}} cm</span>
         <span class="md-subhead ">{{vm.foundCredentials.ageCategory}}</span>
         <span class="md-subhead ">{{vm.foundCredentials.weightCategory}}</span>
         <span class="md-subhead ">{{vm.foundCredentials.academies}}</span>
@@ -32,14 +83,17 @@
       </md-card-title-media>
     </md-card-title>
     <!-- Boton para cambiar el editar las estudiantes -->
-    <md-card-actions layout="row" layout-align="end center">
-      <md-button ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
-      <md-button ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
-      <md-button ng-click="vm.active(student)">Activo</md-button>
-      <md-button ng-click="vm.inactive(student)">Inactivo</md-button>
+    <md-card-actions layout="row" id="buttons" layout-align="end center">
+      <md-button class="edit" ng-click="vm.getInfo(vm.foundCredentials)">Editar Perfil</md-button>
+      <md-button class="Active" ng-click="vm.update(vm.foundCredentials)">Actualizar</md-button>
+      <md-button class="edit" ng-click="vm.active(student)">Activo</md-button>
+      <md-button class="Active" ng-click="vm.inactive(student)">Inactivo</md-button>
       <md-card-icon-actions><!-- cierre botones  -->
       </div>
     </md-card>
         <!--fin de los cards -->
 
 </section>
+</div>
+</div>
+</div>
