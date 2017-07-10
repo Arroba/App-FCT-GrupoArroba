@@ -100,14 +100,8 @@
 
         var studentFiltered = [];
 
-        for (var i = 0; i < studentList.length; i++) {
-          if (studentList[i].userType === 'student' && studentList[i].gender === eventList[i].genderComp1 && studentList[i].ageCategory === eventList[i].ageCategoryComp1 &&  studentList[i].weightCategory === eventList[i].weightCategoryComp1 && studentList[i].academies === eventList[i].academies[i] ) {
-            studentFiltered.push(studentList[i]);
-          }else {
             return studentList;
-          }
-        }// fin del ciclo
-        return studentFiltered;
+
       }// fin de la función encargada de filtrar los datalist
 
 
