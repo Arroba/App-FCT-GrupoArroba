@@ -22,10 +22,33 @@
           type: vm.type,
           description: vm.description,
         } // Cierre de newBeneficient
-        beneficientService.setBeneficient(newBeneficient);
-        init();
-        clean();
-      } // Cierre de la función save
+        // intento de restringir los usuarios que se registran
+        if(vm.beneficient.length == 0){
+          beneficientService.setBeneficient(newBeneficient);
+          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+          console.log(vm.beneficient);
+          clean();
+          init();
+          return;
+        }else{
+          for(var i = 0; i < vm.beneficient.length; i++){
+            if(newBeneficient.name == vm.beneficient[i].name){
+              document.querySelector('.failId').innerHTML = '**El Nombre Jurídico ya  está registrado, por favor ingrese otro**';
+              return;
+            }
+            else{
+              console.log(newBeneficient);
+              beneficientService.setBeneficient(newBeneficient);
+              document.querySelector('.failId').innerHTML = '';
+              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+              console.log(vm.beneficient);
+              clean();
+              init();
+              return;
+            }
+          }
+        }
+      }// Cierre de la función save.
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pBeneficient){

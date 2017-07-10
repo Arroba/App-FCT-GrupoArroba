@@ -35,10 +35,34 @@
         status: 'Activo',
         photo: vm.photo
       }// Cierre de newBlaze.(Pamela)
-      blazeService.setBlazes(newBlaze);
-      init();
-      clear();
+      // intento de restringir los usuarios que se registran
+      if(vm.blazes.length == 0){
+        blazeService.setBlazes(newBlaze);
+        document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+        console.log(vm.blazes);
+        clear();
+        init();
+        return;
+      }else{
+        for(var i = 0; i < vm.blazes.length; i++){
+          if(newBlaze.nameBlaze == vm.blazes[i].nameBlaze){
+            document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+            return;
+          }
+          else{
+            console.log(newBlaze);
+            blazeService.setBlazes(newBlaze);
+            document.querySelector('.failId').innerHTML = '';
+            document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+            console.log(vm.blazes);
+            clear();
+            init();
+            return;
+          }
+        }
+      }
     }// Cierre de la función save.(Pamela)
+
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pBlaze){

@@ -30,10 +30,33 @@
           status: 'Activo'
 
         }
-        eventsService.setEvents(newEvent);
-        init();
-        clear();
-      }//cierre de la función save
+        // intento de restringir los usuarios que se registran
+        if(vm.events.length == 0){
+          eventsService.setEvents(newEvent);
+          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+          console.log(vm.events);
+          clear();
+          init();
+          return;
+        }else{
+          for(var i = 0; i < vm.events.length; i++){
+            if(newEvent.name == vm.events[i].name){
+              document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+              return;
+            }
+            else{
+              console.log(newEvent);
+              eventsService.setEvents(newEvent);
+              document.querySelector('.failId').innerHTML = '';
+              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+              console.log(vm.events);
+              clear();
+              init();
+              return;
+            }
+          }
+        }
+      }// Cierre de la función save.()
 
       //función que toma la información para modificar
       vm.getInfo = function(pEvent){

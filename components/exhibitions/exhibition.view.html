@@ -80,6 +80,7 @@
             </md-input-container>
 
             <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+              <p class="failId"></p>
               <label for="">Nombre de la Exhibición:</label>
               <input type="text" ng-model="vm.nameExhibition" name="nameExhibition" ng-maxlength="20" required>
                 <div ng-messages="frmRegisterExhibition.nameExhibition.$error">
@@ -130,6 +131,7 @@
           <div class="displayNone" id="actualizar">
             <md-button class="button edit" type="button" ng-disabled="frmRegisterExhibition.$invalid" ng-click="vm.update(exhibition)">Actualizar</md-button>
           </div>
+          <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
         </div>
       </form><!--cierre del formulario para registrar -->
 

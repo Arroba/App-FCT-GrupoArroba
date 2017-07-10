@@ -36,9 +36,32 @@
         status: 'Activo',
         photo: vm.photo
       }// Cierre de newExhibition.(Pamela)
-      exhibitionService.setExhibitions(newExhibition);
-      init();
-      clear();
+      // intento de restringir los usuarios que se registran
+      if(vm.exhibitions.length == 0){
+        exhibitionService.setExhibitions(newExhibition);
+        document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+        console.log(vm.exhibitions);
+        clear();
+        init();
+        return;
+      }else{
+        for(var i = 0; i < vm.exhibitions.length; i++){
+          if(newExhibition.nameExhibition == vm.exhibitions[i].nameExhibition){
+            document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+            return;
+          }
+          else{
+            console.log(newExhibition);
+            exhibitionService.setExhibitions(newExhibition);
+            document.querySelector('.failId').innerHTML = '';
+            document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+            console.log(vm.exhibitions);
+            clear();
+            init();
+            return;
+          }
+        }
+      }
     }// Cierre de la función save.(Pamela)
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)

@@ -20,10 +20,39 @@
           contact: vm.contact,
           status: 'Activo'
         }
-        academiesService.setAcademies(newAcademy);
-        init();
-        clear();
-      }//cierre de la función save
+        // intento de restringir los usuarios que se registran
+        if(vm.academies.length == 0){
+          academiesService.setAcademies(newAcademy);
+          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+          console.log(vm.academies);
+          clear();
+          init();
+          return;
+        }else{
+          for(var i = 0; i < vm.academies.length; i++){
+            if(newAcademy.name == vm.academies[i].name){
+              document.querySelector('.failId').innerHTML = '**El nombre ya está registrado, por favor ingrese otro**';
+              return;
+            }
+            else if(newAcademy.email == vm.academies[i].email){
+              document.querySelector('.failEmail').innerHTML = 'El correo electrónico ya está registrado, por favor ingrese otro';
+              document.querySelector('.failId').innerHTML = '';
+              return;
+            }
+            else{
+              console.log(newAcademy);
+              academiesService.setAcademies(newAcademy);
+              document.querySelector('.failId').innerHTML = '';
+              document.querySelector('.failEmail').innerHTML = '';
+              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+              console.log(vm.academies);
+              clear();
+              init();
+              return;
+            }
+          }
+        }
+      }// Cierre de la función save.()
 
       //función que toma la información para modificar
       vm.getInfo = function(pAcademy){

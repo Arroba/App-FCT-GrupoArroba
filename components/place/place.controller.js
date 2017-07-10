@@ -25,11 +25,34 @@
           firstName: vm.firstName,
           secondName: vm.secondName,
         } // Cierre de newCompetition
-        placeService.setPlace(newPlace);
-        init();
-        clean();
-      } // Cierre de la función save
-
+        // intento de restringir los usuarios que se registran
+        if(vm.place.length == 0){
+          placeService.setPlace(newPlace);
+          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+          console.log(vm.place);
+          clean();
+          init();
+          return;
+        }else{
+          for(var i = 0; i < vm.place.length; i++){
+            if(newPlace.namePlace == vm.place[i].namePlace){
+              document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+              return;
+            }
+            else{
+              console.log(newPlace);
+              placeService.setPlace(newPlace);
+              document.querySelector('.failId').innerHTML = '';
+              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
+              console.log(vm.place);
+              clean();
+              init();
+              return;
+            }
+          }
+        }
+      }// Cierre de la función save.()
+      
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pPlace){
         vm.namePlace = pPlace.namePlace;

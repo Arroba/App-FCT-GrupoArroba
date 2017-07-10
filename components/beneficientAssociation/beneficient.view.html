@@ -98,6 +98,7 @@
                   <h2>Información de la Asociación</h2>
                   <br>
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                      <p class="failId"></p>
                       <label for="">Nombre Jurídico:</label>
                       <input type="text" ng-model="vm.name" name="name" ng-maxlength="20" required>
                       <div ng-messages="frmRegisterBeneficient.name.$error">
@@ -142,6 +143,7 @@
               <div class="displayNone" id="actualizar">
                 <md-button class="button edit" type="button" ng-disabled="frmRegisterBeneficient.$invalid" ng-click="vm.update(beneficient)">Actualizar</md-button>
               </div>
+              <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
             </form>
 
             <!--Cards asociacion -->
