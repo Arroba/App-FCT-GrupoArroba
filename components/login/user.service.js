@@ -33,6 +33,8 @@
         email: 'pilarGA@gmail.com',
         telephone: 83043948,
         password: 123456789,
+        resident: 'Montes de Oca',
+        year: '12 de Julio 1998',
         status: 'Activo',
         userType: 'administrator'
       } // Cierre del objeto Administrator
@@ -46,10 +48,11 @@
         email: 'wilkenCA@gmail.com',
         telephone: 83043948,
         password: 123456789,
+        resident: 'Montes de Oca',
+        year: '25 de Julio 1990',
         status: 'Activo',
         userType: 'assistant'
       } // Cierre del objeto Assistant
-
 
       if(usersList == null){
         usersList = users;

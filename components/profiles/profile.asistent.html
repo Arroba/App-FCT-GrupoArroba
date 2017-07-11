@@ -48,30 +48,30 @@
   <div>
     <md-card>
       <div class="col-md-12">
-      <md-card-header>
+
+        <md-card-header>
         <md-card-header-text>
           <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
           <h1>Bienvenido!</h1>
           <hr>
-          <span class="md-title">{{'Wilken'}} {{'Chacón'}} {{'Acosta'}}</span>
-          <span class="md-subhead">{{'Asistente'}} {{'1-0186-0278'}}</span>
+          <span style="font-size:25px; " class="md-title">{{vm.foundCredentials.name}} {{vm.foundCredentials.firstName}} {{vm.foundCredentials.lastName}}</span>
         </md-card-header-text>
         </md-card-header>
         <md-card-title class="col-md-10">
-          <md-card-title-text>
-            <span class="md-subhead">{{'Email: wilkenCA@gmail.com'}}</span>
-            <span class="md-subhead">{{'Residencia: Montes de Oca'}}</span>
-            <span class="md-subhead">{{'Télefono: 8304-3948'}}</span>
-            <span class="md-subhead">{{'Nacimiento: 25 de Agosto 1995'}}</span>
-            <span class="md-subhead">{{'Estado: Activo'}}</span>
+          <md-card-title-text >
+            <span class="md-subhead">Email: {{vm.foundCredentials.email}}</span>
+            <span class="md-subhead">Residencia: {{vm.foundCredentials.resident}}</span>
+            <span class="md-subhead">Teléfono: {{vm.foundCredentials.telephone}}</span>
+            <span class="md-subhead">Nacimiento: {{vm.foundCredentials.year}}</span>
+            <span class="md-subhead">Estado: {{vm.foundCredentials.status}}</span>
           </md-card-title-text>
         </md-card-title>
-        <md-card-title-media class="col-md-2">
-          <div class="md-media-lg card-media">
-            <img img ng-src="images/wilken.jpg" alt="Description" >
-          </div>
-        </md-card-title-media>
-    </div>
+          <md-card-title-media class="col-md-2">
+            <div class="md-media-lg card-media">
+              <img img ng-src="images/wilken.jpg" alt="Description">
+            </div>
+          </md-card-title-media>
+      </div>
 
     <!-- Boton para cambiar el editar las estudiantes -->
     <md-card-actions layout="row" layout-align="end center">
