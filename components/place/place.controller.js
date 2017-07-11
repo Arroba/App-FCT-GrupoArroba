@@ -54,7 +54,7 @@
           }
         }
       }// Cierre de la función save.()
-      
+
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pPlace){
         vm.namePlace = pPlace.namePlace;
@@ -98,20 +98,6 @@
         clean();
       } // Cierre de la función update
 
-      // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
-      function clean(){
-        vm.namePlace = '';
-        vm.location = '';
-        vm.capacity = '';
-        vm.phone = '';
-        vm.timestart = '';
-        vm.timeFinish = '';
-        vm.nameContact = '';
-        vm.firstName = '';
-        vm.secondName = '';
-        vm.latitud  = '';
-        vm.longitud  = '';
-      } // Cierre de la función clean
 
       // mapas
       vm.getCurrentPosition = function(){
@@ -142,7 +128,7 @@
         var mapita = new google.maps.Map(
           document.querySelector('#mapa'), mapOptions
         );
-        
+
 
         var marker = new google.maps.Marker({
           position: coords,
@@ -177,6 +163,19 @@
         }
         document.querySelector('#mapa').innerHTML = sMsjError;
       }
+      // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
+      function clean(){
+        vm.namePlace = '';
+        vm.location = '';
+        vm.capacity = '';
+        vm.phone = '';
+        vm.timestart = '';
+        vm.timeFinish = '';
+        vm.nameContact = '';
+        vm.firstName = '';
+        vm.secondName = '';
+      } // Cierre de la función clean
+
 
     }// Cierre de la función placeController
 })();
