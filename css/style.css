@@ -1,7 +1,8 @@
-@font-face{
-  font-family: roboto;
+/*@font-face{
+  font-family: "Roboto";
   src: url(fonts/Roboto-Regular.ttf);
-}
+}*/
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 /*Estilos del form*/
 section h1{
   text-align: left;
@@ -96,9 +97,27 @@ span{
   margin-bottom: 30px;
 }
 /*Fin de los estilos del form*/
-
 .pull-right {
 float: right !important;
+}
+.navbar-collapse{
+line-height: 25px;
+}
+#title{
+  text-align: center;
+  line-height: 35px;
+}
+#title-text{
+  text-align: center;
+}
+#eventsTitle{
+  text-align: center;
+  line-height: 35px;
+  color: #e67e22;
+}
+#line-height{
+  text-align: justify;
+  line-height: 35px;
 }
 
 /*Estilos generales*/
