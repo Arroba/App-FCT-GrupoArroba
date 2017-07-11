@@ -320,6 +320,31 @@
         css:'css/styleMenu.css'
       })
 
+      .state('profileAdmi',{
+        url : '/profileAdmi',
+        templateUrl: './components/profiles/profile.admi.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/profiles/profileAdmin.controller.js')
+          }]
+        },
+        controller: 'profileAdminController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('profileAsistent',{
+        url : '/profileAsistent',
+        templateUrl: './components/profiles/profile.asistent.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/profiles/profileAsistent.controller.js')
+          }]
+        },
+        controller: 'profileAsistentController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
 
 
     $urlRouterProvider.otherwise('/landing');
