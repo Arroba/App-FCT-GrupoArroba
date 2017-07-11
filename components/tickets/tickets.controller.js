@@ -25,7 +25,6 @@
         for (var i = 0; i < ticketsList.length; i++) {
           if (ticketsList[i].place = placeList[i].namePlace) {
             disponible = placeList[i].capacity - ticketsList[i].reservedTickets;
-            document.querySelector('#disponible').value = disponible;
             updateCapacity(disponible);
           }
         }

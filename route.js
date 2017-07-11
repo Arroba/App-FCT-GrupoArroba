@@ -359,6 +359,19 @@
         css:'css/styleMenu.css'
       })
 
+      .state('totalfights',{
+        url : '/totalfights',
+        templateUrl: './components/events/totalfights.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/events/event.controller.js')
+          }]
+        },
+        controller: 'eventsController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
 
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
