@@ -307,6 +307,19 @@
         css:'css/styleMenu.css'
       })
 
+      .state('totalsponsors',{
+        url : '/totalsponsors',
+        templateUrl: './components/sponsors/totalsponsors.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
+          }]
+        },
+        controller: 'sponsorController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
 
 
     $urlRouterProvider.otherwise('/landing');
