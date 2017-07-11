@@ -44,6 +44,8 @@
           <!-- Page Content -->
 
 <md-content class="image-responsive imageTaek md-padding"  layout-align="left">
+  <div class="container-fluid">
+
   <form id="form-background" ng-submit="vm.login()" novalidate name="frmLogin" id="formLogin" autocomplete="off">
     <div  layout-align="center">
       <div layout="row">
@@ -60,11 +62,13 @@
       </div>
       <p class="blocked"></p>
       <div layout="row" layout-align="left">
-        <md-button class="md-raised md-warn"id="login-button" layout="column" type="submit" ng-disabled="frmLogin.$invalid">Entrar</md-button>
+        <md-button class="md-raised md-warn Active" id="login-button" layout="column" type="submit" ng-disabled="frmLogin.$invalid">Entrar</md-button>
       </div>
      </div>
   </form>
-</md-content>
-<footer>
-    <p class="style-footer">©Arroba - All rights reserved 2017.</p>
+  <footer>
+      <p class="style-footer">©Arroba - All rights reserved 2017.</p>
   </footer>
+</div>
+
+</md-content>

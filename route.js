@@ -149,14 +149,14 @@
     .state('login',{
       url : '/login',
       templateUrl: './components/login/login.view.html',
-      css:'css/styleLogin.css',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/login/login.controller.js')
         }]
       },
       controller: 'LoginController',
-      controllerAs: 'vm'
+      controllerAs: 'vm',
+      css:'css/styleLogin.css'
     })  //Olman
 
     .state('tickets',{

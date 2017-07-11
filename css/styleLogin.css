@@ -1,12 +1,29 @@
+#form-background label{
+  margin-left: 0px;
+  color: #4e4d4d;
+}
+#form-background{
+  margin-top: 170px;
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+.Active{
+  background:#e67e22;
+  color: #fff;
+  border-radius: 8px;
+}
+#login-button.Active:hover{
+  background: #00cbfe;
+  color: #fff;
+}
 .imageTaek{
   background-image: url("../images/taekwondoLogin.jpg");
-  background-repeat: no-repeat;
+  margin:0px;
+  height:100%;
   width: 100%;
+  background-repeat: no-repeat;
   max-width: 2800px;
   background-size: 100%;
-  height:60em;
-  max-height: 90em;
-  background-color: #ecf0f1; 
 }
 
 /*      light colors         */
@@ -2600,18 +2617,15 @@ body > .navbar-collapse.has-image:after {
 
 footer{
   text-align: center;
-  color: black;
   width: 100%;
-}
-
-footer p {
-  padding: 10.5px;
-  margin: 0px;
-  line-height: 100%;
+  padding: 0;
+  margin: 0;
+  bottom: 0;
+  left: 0;
+  position: fixed;
 }
 
 .style-footer{
   font-family: 'roboto';
-  color:black;
+  color: #777676;
 }
-
