@@ -36,6 +36,7 @@
         resident: 'Montes de Oca',
         year: '12 de Julio 1998',
         status: 'Activo',
+        photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755560/pilar_ay71zu.jpg',
         userType: 'administrator'
       } // Cierre del objeto Administrator
 
@@ -51,6 +52,7 @@
         resident: 'Montes de Oca',
         year: '25 de Julio 1990',
         status: 'Activo',
+        photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755417/wilken_inimbl.jpg',
         userType: 'assistant'
       } // Cierre del objeto Assistant
 
