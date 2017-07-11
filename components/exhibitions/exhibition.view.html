@@ -61,7 +61,7 @@
 
 <!--Registrar Exhibiciones, listar Exhibiciones y modificar Exhibiciones en conjunto con impresión de los datos.(Pamela) -->
   <div class="container-fluid">
-    <section id="registerExhibition" ng-controller="exhibitionController as vm">
+    <section id="registerExhibition">
     <!--Creación del formulario para registro  -->
       <h1>Registro de Exhibición</h1>
       <hr>
@@ -141,7 +141,7 @@
             <input class="buttonphoto" type="file" ng-model="vm.photo" value="Seleccione foto" name="photo" id="photo">
           </div>
           <div id="registrar">
-            <md-button class="button Active" type="button" ng-disabled="frmRegisterExhibition.$invalid" ng-click="vm.save(exhibition)">Registrar</md-button>
+            <md-button class="button Active" type="submit" ng-disabled="frmRegisterExhibition.$invalid">Registrar</md-button>
           </div>
           <div class="displayNone" id="actualizar">
             <md-button class="button edit" type="button" ng-disabled="frmRegisterExhibition.$invalid" ng-click="vm.update(exhibition)">Actualizar</md-button>
