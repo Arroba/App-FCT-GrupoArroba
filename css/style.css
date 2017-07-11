@@ -11,7 +11,23 @@ section hr{
   background: #dcdcdc;
   height: 1px;
 }
+.table th{
+  text-align: center;
+}
+.table h1{
+  text-align: center;
+}
 /*Estilos de botones*/
+.buttonsFights{
+  border-radius: 15px;
+  background: #e67e22;
+  color: #fff;
+}
+.buttonFights{
+  border-radius: 15px;
+  background: #00cbfe;
+  color: #fff;
+}
 .button{
   padding: 5px 15px;
   background: #e67e22;
@@ -20,12 +36,30 @@ section hr{
   font-size: 1em;
   margin-bottom: 30px
 }
+.tabla{
+  border: none;
+}
+tbody td{
+  text-align: center;
+}
 .edit{
   background:#00cbfe;
   color: #fff;
   border-radius: 8px;
 }
 .Active{
+  background:#e67e22;
+  color: #fff;
+  border-radius: 8px;
+}
+.atras{
+  padding:10px 15px;
+  background:#00cbfe;
+  color: #fff;
+  border-radius: 8px;
+}
+.siguiente{
+  padding: 10px 15px;
   background:#e67e22;
   color: #fff;
   border-radius: 8px;
@@ -94,6 +128,10 @@ span{
 }
 #inputSearch{
   margin-bottom: 30px;
+}
+.puntajes h2,h5{
+  text-align: center;
+  font-size: 16px;
 }
 /*Fin de los estilos del form*/
 
