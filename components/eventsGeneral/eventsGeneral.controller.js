@@ -49,8 +49,15 @@
         vm.sponsors = pEvent.sponsors
       }//cierrre función info
 
+      vm.hideButton = function(){
+          document.querySelector('#actualizar').classList.remove('displayNone');
+          document.querySelector('#registrar').classList.add('displayNone');
+        }
+
       //función que modifica los datos
       vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
         var updated = {
           name: vm.name,
           place: vm.place,

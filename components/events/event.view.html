@@ -69,6 +69,18 @@
     <h1>Registro de Torneos</h1>
     <hr>
 
+    <section class="inputSearch">
+      <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+        <form action="" class="search-form">
+          <div class="form-group has-feedback">
+            <label for="Buscar" class="sr-only">Buscar</label>
+            <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
       <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
@@ -401,11 +413,6 @@
     </div>
   </form>
 
-</div>
-  <!--Crear buscar evento -->
-  <section class="inputSearch">
-    <input type="text" class="col-xs-offset-8 col-md-offset-10 col-md-1" id="searchButton" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-  </section>
 
   <!--inicio de los cards -->
 <div class="col-xs-12 col-sm-12 col-md-12">
