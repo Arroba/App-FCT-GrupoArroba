@@ -24,6 +24,8 @@
           nameContact: vm.nameContact,
           firstName: vm.firstName,
           secondName: vm.secondName,
+          latitud: vm.latitud,
+          longitud: vm.longitud
         } // Cierre de newCompetition
         // intento de restringir los usuarios que se registran
         if(vm.place.length == 0){
@@ -64,6 +66,8 @@
         vm.nameContact = pPlace.nameContact;
         vm.firstName = pPlace.firstName;
         vm.secondName = pPlace.secondName;
+        vm.latitud = pPlace.vm.latitud;
+        vm.longitud = pPlace.vm.longitud;
       } // Cierre de la función getInfo
 
       //función que cambia boton segun la información para modificar
@@ -86,6 +90,8 @@
           nameContact: vm.nameContact,
           firstName: vm.firstName,
           secondName: vm.secondName,
+          latitud: vm.latitud,
+          longitud: vm.longitud
         } // Cierre de competitionEdit
         placeService.updatePlace(placeEdit);
         init();
@@ -103,7 +109,74 @@
         vm.nameContact = '';
         vm.firstName = '';
         vm.secondName = '';
+        vm.latitud  = '';
+        vm.longitud  = '';
       } // Cierre de la función clean
+
+      // mapas
+      vm.getCurrentPosition = function(){
+        var latitud = vm.latitud;
+        var longitud = vm.longitud;
+        var Posicion = [];
+
+
+        Posicion.push(latitud,longitud);
+        mostrarDatos(Posicion);
+      }
+
+      function mostrarDatos(pPosicion){
+      var latitud = pPosicion[0];
+          longitud = pPosicion[1];
+
+          document.querySelector('#txtLatitud').value = latitud;
+          document.querySelector('#txtLongitud').value = longitud;
+
+        var coords = new google.maps.LatLng(latitud,longitud);
+
+        var mapOptions = {
+          zoom: 16,
+          center: coords,
+          mapTypeControl: false,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var mapita = new google.maps.Map(
+          document.querySelector('#mapa'), mapOptions
+        );
+        
+
+        var marker = new google.maps.Marker({
+          position: coords,
+          map: mapita,
+          title: 'Posición actual'
+        });
+        var trafficLayer = new google.maps.TrafficLayer();
+        trafficLayer.setMap(mapita);
+      }
+
+      function mostrarError(pError){
+        var sMsjError = '';
+
+        switch(pError){
+          case pError.PERMISSION_DENIED:
+            sMsjError = 'El usuario denego el acceso a la ubicación';
+          break;
+
+          case pError.POSITION_UNAVAILABLE:
+            sMsjError = 'No se pudo acceder a la posición';
+          break;
+          case pError.TIMEOUT:
+            sMsjError = 'EL tiempo de espera excedió el límite';
+          break;
+          case pError.UNKNOWN_ERROR:
+            sMsjError = 'Sucedió un error inesperado';
+          break;
+          default:
+            sMsjError = 'Sucedió un error inesperado';
+          break;
+
+        }
+        document.querySelector('#mapa').innerHTML = sMsjError;
+      }
 
     }// Cierre de la función placeController
 })();

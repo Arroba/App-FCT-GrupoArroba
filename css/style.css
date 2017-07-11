@@ -158,6 +158,13 @@ line-height: 25px;
   line-height: 35px;
 }
 
+/*Estilos del mapa*/
+#mapa{
+  width:500px;
+  height: 500px;
+  border: 2px solid #000;
+}
+
 /*Estilos generales*/
 .displayNone{
     display: none;
