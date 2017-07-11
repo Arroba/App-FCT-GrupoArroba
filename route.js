@@ -346,6 +346,19 @@
         css:'css/styleMenu.css'
       })
 
+      .state('eventsGeneral',{
+        url : '/eventsGeneral',
+        templateUrl: './components/eventsGeneral/eventsGeneral.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+          }]
+        },
+        controller: 'eventsGeneralController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
 
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas

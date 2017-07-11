@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload,eventsService,placeService){
+  function exhibitionController(exhibitionService,ImageService,Upload,eventsGeneralService,placeService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -10,7 +10,7 @@
     // Inicio de la función init que es la que se inicializa de primera.(Pamela)
     function init(){
       vm.exhibitions = exhibitionService.getExhibitions();
-      vm.eventsRel = eventsService.getEvents();
+      vm.eventsRel = eventsGeneralService.getEvents();
       vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();

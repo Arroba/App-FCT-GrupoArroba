@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('blazeController', blazeController);
-  function blazeController(blazeService,ImageService,Upload, eventsService,placeService){
+  function blazeController(blazeService,ImageService,Upload, eventsGeneralService,placeService){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -10,7 +10,7 @@
     // Inicio de la función init que es la que se inicializa de primera.(Pamela)
     function init(){
       vm.blazes = blazeService.getBlazes();
-      vm.eventsRel = eventsService.getEvents();
+      vm.eventsRel = eventsGeneralService.getEvents();
       vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();

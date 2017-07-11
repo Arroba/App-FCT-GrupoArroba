@@ -97,10 +97,16 @@
         vm.academies = pTeacher.academies;
         vm.photo = pTeacher.photo;
       } // Cierre de la función getInfo
-
+                              //función que cambia boton segun la información para modificar Pili
+    vm.hideButton = function(){
+      document.querySelector('#actualizar').classList.remove('displayNone');
+      document.querySelector('#registrar').classList.add('displayNone');
+    }
 
       // Inicio de la función update, que se encarga de devolver los datos para ser editados
       vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
         var teacherEdit = {
           name: vm.name,
           firstName: vm.firstName,
