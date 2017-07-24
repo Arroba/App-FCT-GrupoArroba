@@ -3,7 +3,7 @@
   angular
     .module('fctApp')
     .controller('beneficientController', beneficientController);
-    function beneficientController(beneficientService){
+    function beneficientController(beneficientService,$scope){
 
       var vm = this;
 
@@ -11,6 +11,18 @@
       function init(){
         vm.beneficient = beneficientService.getBeneficient();
       }init(); // Cierre de la función init
+
+      $scope.pagina = 1;
+        $scope.siguiente = function() {
+          $scope.pagina++;
+        }
+
+        $scope.anterior = function() {
+          $scope.pagina--;
+        }
+        $scope.registro1 = function() {
+          $scope.pagina = 1;
+        }
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
@@ -25,25 +37,38 @@
         // intento de restringir los usuarios que se registran
         if(vm.beneficient.length == 0){
           beneficientService.setBeneficient(newBeneficient);
-          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-          console.log(vm.beneficient);
           clean();
           init();
+
+          swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        })
           return;
         }else{
           for(var i = 0; i < vm.beneficient.length; i++){
             if(newBeneficient.name == vm.beneficient[i].name){
-              document.querySelector('.failId').innerHTML = '**El Nombre Jurídico ya  está registrado, por favor ingrese otro**';
+              swal({
+               type: 'error',
+               title: '¡El nombre jurídico ya existe!',
+               timer: 3000,
+               showConfirmButton: false
+             })
               return;
             }
             else{
-              console.log(newBeneficient);
               beneficientService.setBeneficient(newBeneficient);
-              document.querySelector('.failId').innerHTML = '';
-              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-              console.log(vm.beneficient);
               clean();
               init();
+
+              swal({
+              type: 'success',
+              title: '¡Registro completado!',
+              timer: 3000,
+              showConfirmButton: false
+            })
               return;
             }
           }
@@ -79,6 +104,12 @@
           type: vm.type,
           description: vm.description,
         } // Cierre de beneficientEdit
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
         beneficientService.updateBeneficient(beneficientEdit);
         init();
         clean();

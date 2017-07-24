@@ -60,33 +60,27 @@
       </nav>
           <!-- Page Content -->
       <!--Registrar asociacion, listar y modificar en conjunto con impresión de los datos  -->
-      <div class="container-fluid">
-        <section id="registerBeneficient">
-          <h1>Registro de Asociación Benéfica</h1>
-          <hr>
+      <div class="container-fluid" ng-show="pagina==1">
 
-          <!--Crear buscar academia-->
-          <section class="inputSearch">
-            <div class="col-md-3 col-md-offset-9">
-              <form action="" class="search-form">
-                <div class="form-group has-feedback">
-                  <label for="Buscar" class="sr-only">Buscar</label>
-                  <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                </div>
-              </form>
-            </div>
-          </section>
+        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+            <md-button>Registro</md-button>
+            <md-button ng-click="siguiente()">Asociaciones benéficas registradas</md-button>
+            <span flex></span>
+        </md-toolbar>
+
+        <section id="registerBeneficient">
+          <h1>Registro de asociación benéfica</h1>
+          <hr>
 
           <!-- Inicio del formulario asociacion: -->
           <form name="frmRegisterBeneficient" novalidate autocomplete="off">
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
                 <!--Inicio de los input para el formulario  -->
-                <h2>Persona Encargada</h2>
+                <h2>Persona encargada</h2>
                 <br>
                   <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                    <label for="">Nombre</label>
+                    <label for="">Nombre:</label>
                     <input type="text" ng-model="vm.personName" name="personName" ng-maxlength="20" required>
                     <div ng-messages="frmRegisterBeneficient.personName.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
@@ -94,7 +88,7 @@
                   </md-input-container>
 
                   <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                    <label for="">Primer Apellido</label>
+                    <label for="">Primer apellido:</label>
                     <input type="text" ng-model="vm.surname" name="surname" ng-maxlength="20" required>
                     <div ng-messages="frmRegisterBeneficient.surname.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
@@ -102,7 +96,7 @@
                   </md-input-container>
 
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                      <label for="">Segundo Apellido</label>
+                      <label for="">Segundo apellido:</label>
                       <input type="text" ng-model="vm.secondSurname" name="secondSurname" ng-maxlength="20" required>
                       <div ng-messages="frmRegisterBeneficient.secondSurname.$error">
                         <div ng-messages-include="components/includes/messages.html"></div>
@@ -111,38 +105,39 @@
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
-                  <h2>Información de la Asociación</h2>
+                  <h2>Información de la asociación</h2>
                   <br>
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                      <p class="failId"></p>
-                      <label for="">Nombre Jurídico:</label>
-                      <input type="text" ng-model="vm.name" name="name" ng-maxlength="20" required>
+                      <label for="">Nombre jurídico:</label>
+                      <input type="text" ng-model="vm.name" name="name" ng-maxlength="80" required>
                       <div ng-messages="frmRegisterBeneficient.name.$error">
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div> <!--cierre del ng-messages -->
                     </md-input-container>
 
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <md-input-container class="col-xs-12 col-sm-4 col-md-4 select2" layout="column">
                     <label>Tipo de asociación:</label>
                     <md-select class="select" ng-model="vm.type" name="type" required>
-                      <md-option value="">--Seleccione un tipo de asociación--</md-option>
-                      <md-option value="Asociaciones Cientificas">Asociaciones Científicas</md-option>
-                      <md-option value="Asociaciones Cultural">Asociaciones Culturales</md-option>
-                      <md-option value="Asociaciones Religiosa">Asociaciones Religiosas</md-option>
-                      <md-option value="Asociaciones Educativa">Asociaciones Educativas</md-option>
-                      <md-option value="Asociaciones Benéficas">Asociaciones Benéficas</md-option>
-                      <md-option value="Asociaciones Solidaristas">Asociaciones Solidaristas</md-option>
-                      <md-option value="Asociaciones Deportivas">Asociaciones Deportivas</md-option>
-                      <md-option value="Asociaciones de Desarrollo Comunal">Asociaciones de Desarrollo Comunal</md-option>
-                      <md-option value="Asociaciones Declaradas de Utilidad Pública">Asociaciones Declaradas de Utilidad Pública</md-option>
-                      <md-option value="Asociaciones de Bienestar Social">Asociaciones de Bienestar Social</md-option>
-                      <md-option value="otra">Otra</md-option>
+                      <md-optgroup label="Seleccione un tipo de asociación">
+                        <md-option value="Asociaciones científicas">Asociaciones científicas</md-option>
+                        <md-option value="Asociaciones culturales">Asociaciones culturales</md-option>
+                        <md-option value="Asociaciones religiosas">Asociaciones religiosas</md-option>
+                        <md-option value="Asociaciones educativas">Asociaciones educativas</md-option>
+                        <md-option value="Asociaciones benéficas">Asociaciones benéficas</md-option>
+                        <md-option value="Asociaciones solidaristas">Asociaciones solidaristas</md-option>
+                        <md-option value="Asociaciones deportivas">Asociaciones deportivas</md-option>
+                        <md-option value="Asociaciones de desarrollo comunal">Asociaciones de desarrollo comunal</md-option>
+                        <md-option value="Asociaciones declaradas de utilidad pública">Asociaciones declaradas de utilidad pública</md-option>
+                        <md-option value="Asociaciones de bienestar social">Asociaciones de bienestar social</md-option>
+                        <md-option value="Otra">Otra</md-option>
+                      </md-optgroup>
                     </md-select>
                     <div ng-messages="frmRegisterBeneficient.type.$error">
-                      <div ng-message="required">*Este campo es requerido</div>
+                      <div ng-messages-include="components/includes/messages.html"></div>
                     </div> <!--cierre del ng-messages -->
                     </md-input-container>
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+
+                    <md-input-container class="col-xs-12 col-sm-4 col-md-4 select2" layout="column">
                       <label for="">Descripción de la asociación:</label>
                       <input type="text" ng-model="vm.description" name="description" ng-maxlength="100" required>
                       <div ng-messages="frmRegisterBeneficient.description.$error">
@@ -162,27 +157,38 @@
               <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
             </form>
 
-            <!--Cards asociacion -->
-            <div class="col-md-12">
-              <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
-                    | filter:vm.nameFilter">
-                <md-card-header>
-                  <md-card-header-text>
-                    <span class="md-title">{{beneficient.name}}</span>
-                  </md-card-header-text>
-                </md-card-header>
-                <md-card-title>
-                  <md-card-title-text>
-                    <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
-                    <span class="md-subhead">Tipo de Asociación: {{beneficient.type}}</span>
-                    <span class="md-subhead">Descripción: {{beneficient.description}}</span>
-                  </md-card-title-text>
-                </md-card-title>
 
-                <md-card-actions id="buttons">
-                  <md-button class="edit" ng-click="vm.getInfo(beneficient);vm.hideButton()">Editar</md-button>
-                <md-card-icon-actions>
-              </div>
+
           </section> <!-- Cierre de la sección registerAsociacion -->
       </div><!-- Cierre container-fluid -->
+      <!--Cards asociacion -->
+      <div class= "col-md-12" ng-show="pagina==2">
+
+        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+            <md-button ng-click="anterior()">Registro</md-button>
+            <md-button >Asociaciones benéficas registradas</md-button>
+            <span flex></span>
+        </md-toolbar>
+
+        <h2>Asociaciones benéficas Registradas</h2>
+        <hr>
+        <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
+              | filter:vm.nameFilter">
+          <md-card-header>
+            <md-card-header-text>
+              <span class="md-title">{{beneficient.name}}</span>
+            </md-card-header-text>
+          </md-card-header>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
+              <span class="md-subhead">Tipo de asociación: {{beneficient.type}}</span>
+              <span class="md-subhead">Descripción: {{beneficient.description}}</span>
+            </md-card-title-text>
+          </md-card-title>
+
+          <md-card-actions id="buttons">
+            <md-button class="edit" ng-click="vm.getInfo(beneficient);vm.hideButton();registro1()">Editar</md-button>
+          <md-card-icon-actions>
+        </div>
 </div>

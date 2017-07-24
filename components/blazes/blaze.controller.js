@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('blazeController', blazeController);
-  function blazeController(blazeService,ImageService,Upload, eventsGeneralService,placeService){
+  function blazeController(blazeService,ImageService,Upload, eventsGeneralService,placeService,$scope){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -14,6 +14,18 @@
       vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();
+
+    $scope.pagina = 1;
+      $scope.siguiente = function() {
+        $scope.pagina++;
+      }
+
+      $scope.anterior = function() {
+        $scope.pagina--;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
     // Inicio de la función presave.(Pamela)
     vm.presave= function(newBlaze){
@@ -30,7 +42,10 @@
       var newBlaze = {
         nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
-        time: vm.time,
+        date1: vm.date1,
+        time1: vm.time1,
+        time2: vm.time2,
+        date2: vm.date2,
         place: vm.place,
         status: 'Activo',
         photo: vm.photo
@@ -38,25 +53,39 @@
       // intento de restringir los usuarios que se registran
       if(vm.blazes.length == 0){
         blazeService.setBlazes(newBlaze);
-        document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-        console.log(vm.blazes);
         clear();
         init();
+
+        swal({
+        type: 'success',
+        title: '¡Registro completado!',
+        timer: 3000,
+        showConfirmButton: false
+      })
         return;
       }else{
         for(var i = 0; i < vm.blazes.length; i++){
           if(newBlaze.nameBlaze == vm.blazes[i].nameBlaze){
-            document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+
+            swal({
+           type: 'error',
+           title: '¡El nombre de fogueo ya existe!',
+           timer: 3000,
+           showConfirmButton: false
+         })
+
             return;
           }
           else{
-            console.log(newBlaze);
             blazeService.setBlazes(newBlaze);
-            document.querySelector('.failId').innerHTML = '';
-            document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-            console.log(vm.blazes);
             clear();
             init();
+            swal({
+            type: 'success',
+            title: '¡Registro completado!',
+            timer: 3000,
+            showConfirmButton: false
+          })
             return;
           }
         }
@@ -68,7 +97,10 @@
     vm.getInfo = function(pBlaze){
       vm.nameEvent = pBlaze.nameEvent;
       vm.nameBlaze = pBlaze.nameBlaze;
-      vm.time = new Date (pBlaze.time);
+      vm.date1 = new Date (pBlaze.date1);
+      vm.time1 = new Date (pBlaze.time1);
+      vm.time2 = new Date (pBlaze.time2);
+      vm.date2 = new Date (pBlaze.date2);
       vm.place = pBlaze.place;
       vm.photo = pBlaze.photo;
     }// Cierre de la función getInfo.(Pamela)
@@ -86,11 +118,22 @@
       var blazeEdited = {
         nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
-        time: vm.time,
+        date1: vm.date1,
+        time1: vm.time1,
+        time2: vm.time2,
+        date2: vm.date2,
         place: vm.place,
         status: 'Activo',
         photo: vm.photo
       }// Cierre de blazeEdited.(Pamela)
+
+      swal({
+       type: 'success',
+       title: '¡Información actualizada!',
+       timer: 3000,
+       showConfirmButton: false
+      })
+      
       blazeService.updateBlazes(blazeEdited);
       init();
       clear();
@@ -100,7 +143,10 @@
     function clear(){
       vm.nameEvent = '';
       vm.nameBlaze = '';
-      vm.time =  '';
+      vm.date1 =  '';
+      vm.time1 =  '';
+      vm.time2 =  '';
+      vm.date2 =  '';
       vm.place =  '';
       vm.photo =  '';
     }// Cierre de la función clear.(Pamela)

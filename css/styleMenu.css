@@ -160,13 +160,13 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
 .ui-slider-handle:focus,
 .navbar-toggle,
-input:focus {
+inut:focus {
   outline: 0 !important;
 }
 
 /*           Animations              */
 .form-control,
-.input-group-addon,
+.inut-grou-addon,
 .tagsinput,
 .navbar,
 .navbar .alert {
