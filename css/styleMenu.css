@@ -284,11 +284,14 @@ inut:focus {
   margin: 5px 15px;
   opacity: .86;
   border-radius: 4px;
+  font-family: roboto;
 }
 .sidebar .nav li:hover > a {
   text-decoration: underline;
   color:  orange;
   opacity: 1;
+  background-color: #212123;
+  cursor: pointer;
 }
 .sidebar .nav li.active > a {
   color: #FFFFFF;
