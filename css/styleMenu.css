@@ -301,7 +301,7 @@ inut:focus {
 .sidebar .nav p {
   margin: 0;
   line-height: 30px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -309,7 +309,21 @@ inut:focus {
   font-size: 28px;
   float: left;
   margin-right: 15px;
-  line-height: 30px;
+  line-height: 20px;
+  width: 30px;
+  text-align: center;
+}
+.sidebar .nav a{
+  margin: 0;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 400;
+}
+.sidebar .dropdown-menu i {
+  font-size: 22px;
+  float: left;
+  margin-right: 15px;
+  line-height: 20px;
   width: 30px;
   text-align: center;
 }
