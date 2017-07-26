@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('studentController', studentController);
-    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies,fightsService,eventsService){
+    function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies,fightsService,eventsService,$scope){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -17,6 +17,18 @@
         vm.fights = fightsService.getFights();
         vm.to = new Date();
       }init();
+
+      $scope.pagina = 1;
+        $scope.siguiente = function() {
+          $scope.pagina++;
+        }
+
+        $scope.anterior = function() {
+          $scope.pagina--;
+        }
+        $scope.registro1 = function() {
+          $scope.pagina = 1;
+        }
 
       // Inicio de la función presave.(Pamela)
       vm.presave= function(newStudent){
@@ -66,33 +78,48 @@
         }// Cierre de newStudent.(Pamela)
 
     // intento de restringir los usuarios que se registran
+    
       if(vm.students.length == 0){
          studentService.setStudents(newStudent);
-         document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-         console.log(vm.students);
          clear();
          init();
+         swal({
+         type: 'success',
+         title: '¡Registro completado!',
+         timer: 3000,
+         showConfirmButton: false
+       })
          return;
       }else{
         for(var i = 0; i < vm.students.length; i++){
           if(newStudent.id == vm.students[i].id){
-             document.querySelector('.failId').innerHTML = '**El número de cédula ya  está registrado, por favor ingrese otro**';
+             swal({
+            type: 'error',
+            title: '¡La identificación ya existe!',
+            timer: 3000,
+            showConfirmButton: false
+          })
              return;
           }
           else if(newStudent.email == vm.students[i].email){
-                  document.querySelector('.failEmail').innerHTML = 'El correo electrónico ya está registrado, por favor ingrese otro';
-                  document.querySelector('.failId').innerHTML = '';
+                  swal({
+                 type: 'error',
+                 title: '¡El correo electrónico ya existe!',
+                 timer: 3000,
+                 showConfirmButton: false
+               })
                   return;
                 }
                 else{
-                  console.log(newStudent);
                   studentService.setStudents(newStudent);
-                  document.querySelector('.failId').innerHTML = '';
-                  document.querySelector('.failEmail').innerHTML = '';
-                  document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-                  console.log(vm.students);
                   clear();
                   init();
+                  swal({
+                  type: 'success',
+                  title: '¡Registro completado!',
+                  timer: 3000,
+                  showConfirmButton: false
+                })
                   return;
                 }
                }
@@ -156,6 +183,14 @@
           password: vm.password,
           photo: vm.photo
         }// Cierre de studentEdited.(Pamela)
+
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
+
         studentService.updateStudent(studentEdited);
         init();
         clear();

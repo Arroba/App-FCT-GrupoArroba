@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('teacherController', teacherController);
-    function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService,$cookies){
+    function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService,$cookies,$scope){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -14,6 +14,18 @@
         vm.foundCredentials = userService.findUsers(userService.getCookie());
         vm.to = new Date();
       }init(); // Cierre de la función init
+
+      $scope.pagina = 1;
+        $scope.siguiente = function() {
+          $scope.pagina++;
+        }
+
+        $scope.anterior = function() {
+          $scope.pagina--;
+        }
+        $scope.registro1 = function() {
+          $scope.pagina = 1;
+        }
 
 
       // Inicio de la función presave
@@ -49,31 +61,48 @@
       // intento de restringir los usuarios que se registran
       if(vm.teachers.length == 0){
          teacherService.setTeachers(newTeacher);
-         document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-         console.log(vm.teachers);
          clean();
          init();
+         swal({
+         type: 'success',
+         title: '¡Registro completado!',
+         timer: 3000,
+         showConfirmButton: false
+       })
+
          return;
       }else{
         for(var i = 0; i < vm.teachers.length; i++){
           if(newTeacher.id == vm.teachers[i].id){
-             document.querySelector('.failId').innerHTML = '**El número de cédula ya  está registrado, por favor ingrese otro**';
+            swal({
+           type: 'error',
+           title: '¡La identificación ya existe!',
+           timer: 3000,
+           showConfirmButton: false
+         })
              return;
           }
           else if(newTeacher.email == vm.teachers[i].email){
-                   document.querySelector('.failEmail').innerHTML = 'El correo electrónico ya está registrado, por favor ingrese otro';
-                   document.querySelector('.failId').innerHTML = '';
+                   swal({
+                  type: 'error',
+                  title: '¡El correo electrónico ya existe!',
+                  timer: 3000,
+                  showConfirmButton: false
+                })
+
                    return;
           }
             else{
-                 console.log(newTeacher);
                  teacherService.setTeachers(newTeacher);
-                 document.querySelector('.failId').innerHTML = '';
-                 document.querySelector('.failEmail').innerHTML = '';
-                 document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-                 console.log(vm.teachers);
                  clean();
                  init();
+                 swal({
+                 type: 'success',
+                 title: '¡Registro completado!',
+                 timer: 3000,
+                 showConfirmButton: false
+               })
+
                  return;
             }
           }
@@ -123,6 +152,12 @@
           status: 'Activo',
           photo: vm.photo
         } // Cierre de teacherEdit
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
         teacherService.updateTeacher(teacherEdit);
         init();
         clean();
