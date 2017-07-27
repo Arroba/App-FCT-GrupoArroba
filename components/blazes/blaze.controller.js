@@ -40,7 +40,6 @@
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
     vm.save= function(){
       var newBlaze = {
-        nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
         date1: vm.date1,
         time1: vm.time1,
@@ -95,7 +94,6 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pBlaze){
-      vm.nameEvent = pBlaze.nameEvent;
       vm.nameBlaze = pBlaze.nameBlaze;
       vm.date1 = new Date (pBlaze.date1);
       vm.time1 = new Date (pBlaze.time1);
@@ -116,7 +114,6 @@
       document.querySelector('#actualizar').classList.add('displayNone');
       document.querySelector('#registrar').classList.remove('displayNone');
       var blazeEdited = {
-        nameEvent: vm.nameEvent,
         nameBlaze: vm.nameBlaze,
         date1: vm.date1,
         time1: vm.time1,
@@ -133,7 +130,7 @@
        timer: 3000,
        showConfirmButton: false
       })
-      
+
       blazeService.updateBlazes(blazeEdited);
       init();
       clear();
@@ -141,7 +138,6 @@
 
     // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
     function clear(){
-      vm.nameEvent = '';
       vm.nameBlaze = '';
       vm.date1 =  '';
       vm.time1 =  '';

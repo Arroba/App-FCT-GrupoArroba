@@ -1,6 +1,66 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+          <img src="images/logoFederacion.png" style="width: 100px;">
+        </div>
+        <ul class="nav">
+          <li class=>
+            <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalteachers"><i class="pe-7s-note"></i><p>Profesores</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalstudents"><i class="pe-7s-study"></i><p>Estudiantes</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalblazes"><i class="pe-7s-gym"></i><p>Fogueos</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalfights"><i class="pe-7s-cup"></i><p>Torneos</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalexhibitions"><i class="pe-7s-timer"></i><p>Exhibiciones</p></a>
+          </li>
+
+          <li>
+            <a href="#!/totalplaces"><i class="pe-7s-photo"></i><p>Lugar</p></a>
+          </li>
+
+          <li>
+            <a href="#!/landingPageEvents"><i class="pe-7s-note2"></i><p>Eventos</p></a>
+          </li>
+
+          <li>
+            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse"></div>
+      </nav>
+          <!-- Page Content -->
 <section>
     <div class=" col-md-12">
-      <h1>Exhibición</h1>
+      <h1>Exhibiciones registradas</h1>
       <!--Crear buscar academia-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
@@ -15,23 +75,30 @@
       </section>
 
       <md-card class="container-fluid col-md-6" ng-repeat="exhibition in vm.exhibitions | filter:vm.nameFilter"><!--Impresión de los datos-->
-       <md-card-header>
-         <md-card-header-text>
-          <span class="md-title">Evento: {{exhibition.nameEvent}}</span>
-          <span class="md-subhead">Nombre Exhibición: {{exhibition.nameExhibition}}</span>
-        </md-card-header-text>
-      </md-card-header>
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-subhead">Hora: {{exhibition.time | date: "hh:mm a"}}</span>
-          <span class="md-subhead">Lugar a Realizarse: {{exhibition.place}}</span>
-          <span class="md-subhead">Invitados Especiales: {{exhibition.guestsExhibition}}</span>
-          <span class="md-subhead">Estado: {{exhibition.status}}</span>
-        </md-card-title-text>
-        <md-card-title-media>
-          <div class="md-media-lg card-media">
-            <img ng-src="{{exhibition.photo}}" alt="Description" class="photoStudent">
-          </div>
-        </md-card-title-media>
-      </md-card-title>
-  </section>
+        <md-card-header>
+          <md-card-header-text>
+           <span class="md-subhead">Nombre de la exhibición: {{exhibition.nameExhibition}}</span>
+           <span class="md-subhead">Fecha: {{exhibition.date}}</span>
+         </md-card-header-text>
+       </md-card-header>
+       <md-card-title>
+         <md-card-title-text>
+           <span class="md-subhead">Hora: {{exhibition.time | date: "hh:mm a"}}</span>
+           <span class="md-subhead">Lugar a Realizarse: {{exhibition.place}}</span>
+           <span class="md-subhead">Invitados Especiales: {{exhibition.guestsExhibition}}</span>
+           <span class="md-subhead">Estado: {{exhibition.status}}</span>
+         </md-card-title-text>
+         <md-card-title-media>
+           <div class="md-media-lg card-media">
+             <img ng-src="{{exhibition.photo}}" alt="Description" class="photoStudent">
+           </div>
+         </md-card-title-media>
+       </md-card-title>
+       <!-- Boton para cambiar el editar las exhibiciones -->
+       <md-card-actions id="buttons">
+         <md-button class="edit" ng-click="vm.getInfo(exhibition);vm.hideButton()">Editar</md-button>
+         <md-button class="Active" ng-click="vm.active(exhibition)">Activo</md-button>
+         <md-button class="edit" ng-click="vm.inactive(exhibition)">Inactivo</md-button>
+       <md-card-icon-actions><!-- cierre botones  -->
+     </div><!--fin de los cards -->
+   </section>

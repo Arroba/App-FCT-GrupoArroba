@@ -2,7 +2,7 @@
   angular
   .module('fctApp')
   .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload,eventsGeneralService,placeService){
+  function exhibitionController(exhibitionService,ImageService,Upload,eventsGeneralService,placeService,$scope){
 
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
@@ -14,6 +14,18 @@
       vm.placeRel = placeService.getPlace();
       vm.to = new Date();
     }init();
+
+    $scope.pagina = 1;
+      $scope.siguiente = function() {
+        $scope.pagina++;
+      }
+
+      $scope.anterior = function() {
+        $scope.pagina--;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
     // Inicio de la función presave.(Pamela)
     vm.presave= function(newExhibition){
@@ -28,8 +40,8 @@
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
     vm.save= function(){
       var newExhibition = {
-        nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
+        date: vm.date,
         time: vm.time,
         place: vm.place,
         guestsExhibition: vm.guestsExhibition,
@@ -66,8 +78,8 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pExhibition){
-      vm.nameEvent = pExhibition.nameEvent;
       vm.nameExhibition = pExhibition.nameExhibition;
+      vm.Date = new Date (pExhibition.date);
       vm.time = new Date (pExhibition.time);
       vm.place = pExhibition.place;
       vm.guestsExhibition = pExhibition.guestsExhibition;
@@ -85,8 +97,8 @@
       document.querySelector('#actualizar').classList.add('displayNone');
       document.querySelector('#registrar').classList.remove('displayNone');
       var exhibitionEdited = {
-        nameEvent: vm.nameEvent,
         nameExhibition: vm.nameExhibition,
+        date: vm.date,
         time: vm.time,
         place: vm.place,
         guestsExhibition: vm.guestsExhibition,
@@ -100,8 +112,8 @@
 
     // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
     function clear(){
-      vm.nameEvent = '';
       vm.nameExhibition = '';
+      vm.date = '';
       vm.time =  '';
       vm.place =  '';
       vm.guestsExhibition =  '';
