@@ -30,25 +30,36 @@
         // intento de restringir los usuarios que se registran
         if(vm.place.length == 0){
           placeService.setPlace(newPlace);
-          document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-          console.log(vm.place);
           clean();
           init();
+          swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        })
           return;
         }else{
           for(var i = 0; i < vm.place.length; i++){
             if(newPlace.namePlace == vm.place[i].namePlace){
-              document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+              swal({
+              type: 'error',
+              title: '¡Nombre ya registrado!',
+              timer: 3000,
+              showConfirmButton: false
+            })
               return;
             }
             else{
-              console.log(newPlace);
               placeService.setPlace(newPlace);
-              document.querySelector('.failId').innerHTML = '';
-              document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-              console.log(vm.place);
               clean();
               init();
+              swal({
+              type: 'success',
+              title: '¡Registro completado!',
+              timer: 3000,
+              showConfirmButton: false
+            })
               return;
             }
           }
@@ -93,6 +104,14 @@
           latitud: vm.latitud,
           longitud: vm.longitud
         } // Cierre de competitionEdit
+
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
+        
         placeService.updatePlace(placeEdit);
         init();
         clean();

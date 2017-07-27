@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('sponsorController', sponsorController);
-    function sponsorController(sponsorService,ImageService,Upload){
+    function sponsorController(sponsorService,ImageService,Upload,$scope){
 
       var vm = this;
       vm.cloudObj = ImageService.getConfiguration();
@@ -10,6 +10,18 @@
       function init(){//Función de inicializar
         vm.sponsors = sponsorService.getSponsors();
       }init();//Fin función
+
+      $scope.pagina = 1;
+        $scope.siguiente = function() {
+          $scope.pagina++;
+        }
+
+        $scope.anterior = function() {
+          $scope.pagina--;
+        }
+        $scope.registro1 = function() {
+          $scope.pagina = 1;
+        }
 
       // Inicio de la función presave
           vm.presave= function(newSponsor){
@@ -38,6 +50,14 @@
             photo: vm.photo,
             photo: vm.photo
         }
+
+        swal({
+        type: 'success',
+        title: '¡Registro completado!',
+        timer: 3000,
+        showConfirmButton: false
+      })
+
         sponsorService.setSponsors(newSponsor);
         init();
         clear();
@@ -82,6 +102,14 @@
             photo: vm.photo,
             photo: vm.photo
         }
+
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
+
         sponsorService.updateSponsor(sponsorEdited);
         init();
         clear();
