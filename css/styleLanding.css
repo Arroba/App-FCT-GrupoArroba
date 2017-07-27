@@ -352,7 +352,6 @@ input:focus {
   border-radius: 4px;
 }
 .sidebar .nav li:hover > a {
-  text-decoration: underline;
   color:  orange;
   opacity: 1;
 }
@@ -364,7 +363,7 @@ input:focus {
 .sidebar .nav p {
   margin: 0;
   line-height: 30px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -2669,6 +2668,3 @@ footer p {
   font-family: 'roboto';
   color:black;
 }
-
-
- 
