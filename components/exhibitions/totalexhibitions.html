@@ -43,7 +43,7 @@
         </ul>
       </div>
     </div>
-    <div class="main-panel">
+  <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
           <div class="navbar-header">
@@ -58,9 +58,10 @@
         <div class="collapse navbar-collapse"></div>
       </nav>
           <!-- Page Content -->
-<section>
+  <section>
     <div class=" col-md-12">
-      <h1>Exhibiciones registradas</h1>
+      <h1>Eventos de tipo exhibición registrados</h1>
+      <hr>
       <!--Crear buscar academia-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
@@ -74,13 +75,14 @@
         </div>
       </section>
 
+    <div class="col-xs-12">
       <md-card class="container-fluid col-md-6" ng-repeat="exhibition in vm.exhibitions | filter:vm.nameFilter"><!--Impresión de los datos-->
         <md-card-header>
           <md-card-header-text>
            <span class="md-subhead">Nombre de la exhibición: {{exhibition.nameExhibition}}</span>
            <span class="md-subhead">Fecha: {{exhibition.date}}</span>
-         </md-card-header-text>
-       </md-card-header>
+          </md-card-header-text>
+        </md-card-header>
        <md-card-title>
          <md-card-title-text>
            <span class="md-subhead">Hora: {{exhibition.time | date: "hh:mm a"}}</span>
@@ -101,4 +103,6 @@
          <md-button class="edit" ng-click="vm.inactive(exhibition)">Inactivo</md-button>
        <md-card-icon-actions><!-- cierre botones  -->
      </div><!--fin de los cards -->
+     </div>
    </section>
+  </div>

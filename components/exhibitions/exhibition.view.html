@@ -61,20 +61,20 @@
       <div class="container-fluid" ng-show="pagina==1">
         <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
           <div class="btn-group">
-           <md-button class="btn" type="button">Exhibiciones</md-button>
+           <md-button class="btn" type="button">Fogueos</md-button>
            <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
            <ul class="dropdown-menu">
-            <li><a ng-click="siguiente()">Exhibiciones registradas</a></li>
-            <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
+            <li><a ng-click="siguiente()">Fogueos registrados</a></li>
+             <li><a href="#!/blazes">Registro de fogueos</a></li>
            </ul>
           </div>
 
           <div class="btn-group">
-           <md-button ng-click="siguiente()" class="btn" type="button">Fogueos</md-button>
+           <md-button ng-click="siguiente()" class="btn" type="button">Exhibiciones</md-button>
            <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
            <ul class="dropdown-menu">
-            <li><a href="#!/totalblazes">Fogueos registrados</a></li>
-             <li><a href="#!/blazes">Registro de fogueos</a></li>
+            <li><a href="#!/totalexhibitions">Exhibiciones registradas</a></li>
+             <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
            </ul>
           </div>
 
@@ -104,7 +104,6 @@
         <div class="row">
           <div class="col-xs-12 col-sm-12 col-md-12">
             <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-              <p class="failId"></p>
               <label for="">Nombre de la Exhibición:</label>
               <input type="text" ng-model="vm.nameExhibition" name="nameExhibition" ng-maxlength="20" required>
                 <div ng-messages="frmRegisterExhibition.nameExhibition.$error">
@@ -149,7 +148,7 @@
                   <div ng-messages-include="components/includes/messages.html"></div>
                 </div><!--cierre del ng-messages -->
             </md-input-container>
-          </div>
+
         </div>
         <!-- Botones de Seleccione foto, Registrar y Actualizar -->
         <div class="col-xs-12 col-sm-12 col-md-12">
@@ -169,18 +168,41 @@
           <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
         </div>
       </form><!--cierre del formulario para registrar -->
-
+    </section>
+</div>
       <div class=" col-md-12" ng-show="pagina==2">
 
         <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
           <div class="btn-group">
-           <md-button class="btn" type="button">Exhibición</md-button>
+           <md-button class="btn" type="button">Fogueos</md-button>
            <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
            <ul class="dropdown-menu">
-            <li><a ng-click="siguiente()">Exhibiciones registradas</a></li>
-             <li><a ng-click="anterior()">Registro de exhibiciones</a></li>
+            <li><a ng-click="siguiente()">Fogueos registrados</a></li>
+             <li><a href="#!/blazes">Registro de fogueos</a></li>
            </ul>
           </div>
+
+          <div class="btn-group">
+           <md-button ng-click="siguiente()" class="btn" type="button">Exhibiciones</md-button>
+           <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
+           <ul class="dropdown-menu">
+            <li><a href="#!/totalexhibitions">Exhibiciones registradas</a></li>
+             <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
+           </ul>
+          </div>
+
+          <div class="btn-group">
+            <md-button ng-click="siguiente()" class="btn" type="button">Torneos</md-button>
+            <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
+              <ul class="dropdown-menu">
+                <li><a href="#!/totalFights">Torneos registrados</a></li>
+                <li><a href="#!/fightsAdmin">Registro de competidores</a></li>
+                <li><a href="#!/fights">Registro de competiciones</a></li>
+                <li><a href="#!/fights">Registro de torneo</a></li>
+                <li><a href="#">Ver calendarios</a></li>
+              </ul>
+            </div>
+            <span flex></span>
         </md-toolbar>
 
     <h1>Eventos de tipo exhibición registrados</h1>
@@ -227,6 +249,5 @@
           <md-button class="edit" ng-click="vm.inactive(exhibition)">Inactivo</md-button>
         <md-card-icon-actions><!-- cierre botones  -->
       </div><!--fin de los cards -->
-    </section>
   </div>
 </div>

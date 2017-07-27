@@ -14,8 +14,8 @@
       function init(){
         vm.fights = fightsService.getFights();
         vm.eventsRel = eventsService.getEvents();
-        vm.studentRel = datalistFilter();
         vm.academiesRel = academiesService.getAcademies();
+        vm.studentsRel = studentService.getStudents();
       }init(); // Cierre de la función init
 
     // Funciones encargadas de devolver o adelantar la página
@@ -200,8 +200,6 @@
         status: 'Activo'
       } // Cierre de la función clean
 
-
-
       //Puntuación competición 1
       //función que asigna puntos
       vm.assingPointsOneName1Comp1 = function(pFights){
@@ -265,9 +263,6 @@
       }// Cierre de la funcion assingPoints
       // cierre asignación de puntos para la primera competición
 
-
-
-
       //Puntuación competición 2
       //función que asigna puntos
       vm.assingPointsOneName1Comp2 = function(pFights){
@@ -329,8 +324,6 @@
         fightsService.updateState(fightsList);
         init();
       }// Cierre de la funcion assingPoints
-
-
 
       //Puntuación competición 3
       //función que asigna puntos
@@ -394,10 +387,6 @@
         init();
       }// Cierre de la funcion assingPoints
 
-
-
-
-
       //Puntuación competición 4
       //función que asigna puntos
       vm.assingPointsOneName1Comp4 = function(pFights){
@@ -459,15 +448,6 @@
         fightsService.updateState(fightsList);
         init();
       }// Cierre de la funcion assingPoints4
-
-
-
-
-
-
-
-
-
 
     }// Cierre de la función fightsController
 })();

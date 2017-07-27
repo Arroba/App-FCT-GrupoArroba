@@ -96,7 +96,7 @@
       <span flex></span>
   </md-toolbar>
 
-  <section id="registerBlaze" >
+  <section id="registerBlaze">
     <h1>Registro de Fogueo</h1>
     <hr>
 
@@ -184,8 +184,6 @@
 
   </section>
 
-
-
 </div>
 
 <div class=" col-md-12" ng-show="pagina==2">
@@ -196,10 +194,33 @@
      <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
      <ul class="dropdown-menu">
       <li><a ng-click="siguiente()">Fogueos registrados</a></li>
-       <li><a ng-click="anterior()">Registro de fogueos</a></li>
+       <li><a href="#!/blazes">Registro de fogueos</a></li>
      </ul>
     </div>
+
+    <div class="btn-group">
+     <md-button ng-click="siguiente()" class="btn" type="button">Exhibiciones</md-button>
+     <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
+     <ul class="dropdown-menu">
+      <li><a href="#!/totalexhibitions">Exhibiciones registradas</a></li>
+       <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
+     </ul>
+    </div>
+
+    <div class="btn-group">
+      <md-button ng-click="siguiente()" class="btn" type="button">Torneos</md-button>
+      <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
+        <ul class="dropdown-menu">
+          <li><a href="#!/totalFights">Torneos registrados</a></li>
+          <li><a href="#!/fightsAdmin">Registro de competidores</a></li>
+          <li><a href="#!/fights">Registro de competiciones</a></li>
+          <li><a href="#!/fights">Registro de torneo</a></li>
+          <li><a href="#">Ver calendarios</a></li>
+        </ul>
+      </div>
+      <span flex></span>
   </md-toolbar>
+
 
 <h1>Eventos de tipo fogueo registrados</h1>
 <hr>
@@ -216,33 +237,32 @@
   </div>
 </section>
 
-<div class="col-xs-12">
-<md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
-| filter:vm.nameFilter"><!--Impresión de los datos-->
-  <md-card-header>
-    <md-card-header-text>
-      <span class="md-subhead">Fogueo: {{blaze.nameBlaze}}</span>
-    </md-card-header-text>
-  </md-card-header>
-  <md-card-title>
-    <md-card-title-text>
-        <span class="md-subhead">Hora a realizarse: {{blaze.time | date: "hh:mm a"}}</span>
-        <span class="md-subhead">Lugar: {{blaze.place}}</span>
-        <span class="md-subhead">Estado: {{blaze.status}}</span>
-    </md-card-title-text>
-    <md-card-title-media>
-      <div class="md-media-lg card-media">
-        <img ng-src="{{blaze.photo}}" alt="Description" class="photoStudent">
-      </div>
-    </md-card-title-media>
-  </md-card-title>
-  <!-- Boton para cambiar el editar las fogueos -->
-  <md-card-actions id="buttons" >
-    <md-button class="edit" ng-click="vm.getInfo(blaze);vm.hideButton();registro1()">Editar</md-button>
-    <md-button class="Active" ng-click="vm.active(blaze)">Activo</md-button>
-    <md-button class="edit" ng-click="vm.inactive(blaze)">Inactivo</md-button>
-<md-card-icon-actions><!-- cierre botones  -->
-</div>
-</div>
-
+    <div class="col-xs-12">
+      <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
+      | filter:vm.nameFilter"><!--Impresión de los datos-->
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-subhead">Fogueo: {{blaze.nameBlaze}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-title>
+          <md-card-title-text>
+              <span class="md-subhead">Hora a realizarse: {{blaze.time | date: "hh:mm a"}}</span>
+              <span class="md-subhead">Lugar: {{blaze.place}}</span>
+              <span class="md-subhead">Estado: {{blaze.status}}</span>
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-lg card-media">
+              <img ng-src="{{blaze.photo}}" alt="Description" class="photoStudent">
+            </div>
+          </md-card-title-media>
+        </md-card-title>
+        <!-- Boton para cambiar el editar las fogueos -->
+        <md-card-actions id="buttons" >
+          <md-button class="edit" ng-click="vm.getInfo(blaze);vm.hideButton();registro1()">Editar</md-button>
+          <md-button class="Active" ng-click="vm.active(blaze)">Activo</md-button>
+          <md-button class="edit" ng-click="vm.inactive(blaze)">Inactivo</md-button>
+      <md-card-icon-actions><!-- cierre botones  -->
+    </div>
+  </div>
 </div>
