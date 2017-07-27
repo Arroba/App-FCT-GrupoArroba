@@ -3,7 +3,7 @@
   angular
     .module('fctApp')
     .controller('ticketsController', ticketsController);
-    function ticketsController(ticketsService,placeService,eventsGeneralService){
+    function ticketsController(ticketsService,placeService,eventsGeneralService,$scope){
 
       var vm = this;
 
@@ -14,6 +14,18 @@
         vm.placeRel = placeService.getPlace();
 
       }init(); // Cierre de la función init
+
+      $scope.pagina = 1;
+        $scope.siguiente = function() {
+          $scope.pagina++;
+        }
+
+        $scope.anterior = function() {
+          $scope.pagina--;
+        }
+        $scope.registro1 = function() {
+          $scope.pagina = 1;
+        }
 
       // funcion que resta los tickets
 
@@ -53,6 +65,14 @@
           email: vm.email,
           reservedTickets: Number(vm.reservedTickets)
         } // Cierre de newFights
+
+        swal({
+        type: 'success',
+        title: '¡Registro completado!',
+        timer: 3000,
+        showConfirmButton: false
+      })
+
         ticketsService.setTickets(newTickets);
         init();
         clean();
@@ -87,6 +107,14 @@
           email: vm.email,
           reservedTickets: Number(vm.reservedTickets)
         } // Cierre de ticketsEdit
+
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        })
+
         ticketsService.updateTicket(ticketsEdit);
         init();
         clean();

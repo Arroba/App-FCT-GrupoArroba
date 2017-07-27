@@ -59,25 +59,18 @@
       </nav>
 
   <!-- Page Content -->
-<div class="container-fluid">
+  <div class="container-fluid" ng-show="pagina==1">
+    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+        <md-button>Reserva</md-button>
+        <md-button ng-click="siguiente()">Entradas reservadas</md-button>
+        <span flex></span>
+    </md-toolbar>
 
     <!-- Inicio de la sección registerTickets, que contiene el formulario de entradas, registrar, modificar y listar, Hecho por Fabián Quirós-->
     <section id="registerTickets">
 
       <h1>Reserva de entradas</h1>
       <hr>
-
-      <section id="inputSearch">
-        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-            <form action="" class="search-form">
-                <div class="form-group has-feedback">
-                <label for="Buscar" class="sr-only">Buscar</label>
-                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
-              </div>
-            </form>
-        </div>
-      </section>
 
       <!-- Inicio del formulario  entradas: -->
       <form name="frmRegisterTickets" novalidate autocomplete="off">
@@ -113,7 +106,7 @@
             <div ng-messages-include="components/includes/messages.html"></div>
           </div><!--cierre del ng-messages -->
         </md-input-container>
-        
+
         <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
           <label for="">Primer apellido:</label>
           <input type="text" ng-model="vm.firstName" name="firstName" required>
@@ -158,28 +151,60 @@
 
       </form> <!-- Cierre del formulario entradas  -->
 
-      <div class="col-xs-12">
-        <!--inicio de los cards -->
-          <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">{{tickets.nameEvent}}</span>
-                <span class="md-subhead">{{tickets.name}} {{tickets.firstName}} {{tickets.secondName}}</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-subhead">{{tickets.email}}</span>
-                <span class="md-subhead">Entradas: <br><input type="submit" value="Cancelar" ng-click="vm.cancel(tickets)"> {{tickets.reservedTickets}} reservadas <input type="submit" value="Reservar" ng-click="vm.reserve(tickets)"></span>
-              </md-card-title-text>
-            </md-card-title>
-            <!-- Boton para cambiar el editar las profesores -->
-            <md-card-actions id="buttons">
-              <md-button class="edit" ng-click="vm.getInfo(tickets);vm.hideButton()">Editar</md-button>
-              <md-card-icon-actions><!-- cierre botones  -->
-        <!--fin de los cards -->
-      </div>
+
       </section> <!-- Cierre de la sección registerTickets -->
     </div>
+
   </div>
+
+
+
+  <div class="col-md-12" ng-show="pagina==2">
+
+    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+        <md-button ng-click="anterior()">Reserva</md-button>
+        <md-button >Entradas reservadas</md-button>
+        <span flex></span>
+    </md-toolbar>
+
+    <h1>Entradas reservadas</h1>
+    <hr>
+
+    <section class="inputSearch">
+      <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+        <form action="" class="search-form">
+          <div class="form-group has-feedback">
+            <label for="Buscar" class="sr-only">Buscar</label>
+            <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!--inicio de los cards -->
+    <div class="col-xs-12">
+
+      <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-title">{{tickets.nameEvent}}</span>
+            <span class="md-subhead">{{tickets.name}} {{tickets.firstName}} {{tickets.secondName}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">{{tickets.email}}</span>
+            <span class="md-subhead">Entradas: <br><input type="submit" value="Cancelar" ng-click="vm.cancel(tickets)"> {{tickets.reservedTickets}} reservadas <input type="submit" value="Reservar" ng-click="vm.reserve(tickets)"></span>
+          </md-card-title-text>
+        </md-card-title>
+        <!-- Boton para cambiar el editar las profesores -->
+        <md-card-actions id="buttons">
+          <md-button class="edit" ng-click="vm.getInfo(tickets);vm.hideButton();registro1()">Editar</md-button>
+          <md-card-icon-actions><!-- cierre botones  -->
+    <!--fin de los cards -->
+  </div>
+</div>
+
+</div>
 </div>
