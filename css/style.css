@@ -44,11 +44,11 @@ tbody td{
   text-align: center;
 }
 .edit{
-  background:#801e82;
+  background:#6d3f96;
   color: #fff;
   border-radius: 8px;
 }
-.Active{
+.Active{ 
   background:#e67e22;
   color: #fff;
   border-radius: 8px;
@@ -61,24 +61,24 @@ tbody td{
 }
 .siguiente{
   padding: 10px 15px;
-  background:#e67e22;
+  background:#fdc05d;
   color: #fff;
   border-radius: 8px;
 }
 #registrar .Active:hover{
-  background: #801e82;
+  background: #6d3f96; /*morado*/
   color: #fff;
 }
 #actualizar .edit:hover{
-  background: #e67e22;
+  background: #fdc05d; /*naranja*/
   color: #fff;
 }
 #buttons .Active:hover{
-  background: #00cbfe;
+  background: #6d3f96; /*morado*/
   color: #fff;
 }
 #buttons .edit:hover{
-  background: #e67e22;
+  background: #fdc05d;/*naranja*/
   color: #fff;
 }
 /*Fin de estilos de botones*/

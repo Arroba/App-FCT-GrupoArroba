@@ -372,6 +372,33 @@
         css:'css/styleMenu.css'
       })
 
+        .state('products',{
+        url : '/products',
+        templateUrl: './components/products/product.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/products/product.controller.js')
+          }]
+        },
+        controller: 'productController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+        })
+
+        .state('totalProducts',{
+          url : '/totalProducts',
+          templateUrl: './components/products/totaProducts.html',
+          resolve: {
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/products/product.controller.js')
+            }]
+          },
+          controller: 'productController',
+          controllerAs: 'vm',
+          css:'css/styleMenu.css'
+        })
+
+
 
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas

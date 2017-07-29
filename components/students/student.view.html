@@ -296,13 +296,13 @@
               </div>
 
               <div class="col-xs-12">
-              <div id="registrar">
-                <md-button class="button Active" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
+                <div id="registrar">
+                  <md-button class="button Active" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
+                </div>
+                <div class="displayNone" id="actualizar">
+                  <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student)">Actualizar</md-button>
+                </div>
               </div>
-              <div class="displayNone" id="actualizar">
-                <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student)">Actualizar</md-button>
-              </div>
-            </div>
           </form><!--cierre del formulario para registrar -->
         </div>
       </div>
@@ -312,12 +312,12 @@
 
         <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
             <md-button ng-click="anterior()">Registro</md-button>
-            <md-button >Estudiantes registrados</md-button>
+            <md-button>Estudiantes registrados</md-button>
             <span flex></span>
         </md-toolbar>
 
-           <h1>Estudiantes registrados</h1>
-           <hr>
+        <h1>Estudiantes registrados</h1>
+        <hr>
           <!--Crear buscar academia-->
            <section class="inputSearch">
              <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
@@ -330,6 +330,7 @@
              </form>
            </div>
           </section>
+          
           <div class="col-xs-12">
            <md-card  class="container-fluid col-md-6" ng-repeat="student in vm.students | filter:vm.nameFilter">
            <md-card-header>

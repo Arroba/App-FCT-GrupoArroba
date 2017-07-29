@@ -1,0 +1,42 @@
+<section>
+	<div class="col-md-12">
+		<h1>Estudiantes registrados</h1>
+        <hr>
+          <!--Crear buscar producto-->
+          <section class="inputSearch">
+            <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+             <form action="" class="search-form">
+               <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+               </div>
+             </form>
+            </div>
+          </section>
+
+          <div class="col-xs-12">
+           <md-card  class="container-fluid col-md-6" ng-repeat="product in vm.products | filter:vm.nameFilter">
+           <md-card-header>
+           <md-card-header-text>
+             <span class="md-title">Nombre: {{product.nameProduct}}</span>
+             <span class="md-subhead">Tipo: {{product.productType}}</span>
+           </md-card-header-text>
+           </md-card-header>
+           <md-card-title>
+             <md-card-title-text>
+               <div>
+                 <span class="md-subhead">Marca: {{product.brandProduct}}</span>
+                 <span class="md-subhead">Detalle: {{product.detailProduct}}</span>
+               </div>
+             </md-card-title-text>
+             <md-card-title-media>
+               <div class="md-media-lg card-media">
+                 <img ng-src="{{product.photo}}" alt="Description">
+               </div>
+             </md-card-title-media>
+            </md-card-title>
+          </div><!--fin de los cards -->
+
+	</div>
+</section>
