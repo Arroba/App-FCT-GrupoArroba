@@ -387,7 +387,7 @@
 
         .state('totalProducts',{
           url : '/totalProducts',
-          templateUrl: './components/products/totaProducts.html',
+          templateUrl: './components/products/totalProducts.html',
           resolve: {
             load: ['$ocLazyLoad', function($ocLazyLoad){
               return $ocLazyLoad.load('./components/products/product.controller.js')
