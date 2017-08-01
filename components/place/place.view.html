@@ -217,6 +217,13 @@
           </div>
         </div>
 
+        <!--inicio estructura de los mapas -->
+        <h2>Ingrese el lugar deseado</h2>
+        <div><input type="text" maxlength="100" id="address" placeholder="Dirección" />
+        <input type="button" ng-click="vm.getAddress()" id="search" value="Buscar" />
+        </div><br/>
+        <div id='map_canvas' style="width:600px; height:400px;"></div>
+        <!--Final estructura para creación de mapas -->
 
         <!-- Botones de Selleccione Registrar y Actualizar -->
         <div id="registrar">
