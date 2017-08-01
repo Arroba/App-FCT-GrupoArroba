@@ -10,6 +10,7 @@
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
         vm.place = placeService.getPlace();
+        load_map();
       }init(); // Cierre de la función init
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
@@ -137,7 +138,7 @@
       var map;
 
       function load_map() {
-          var myLatlng = new google.maps.LatLng(20.68009, -101.35403);
+          var myLatlng = new google.maps.LatLng(9.748916999999999, -83.75342799999999);
           var myOptions = {
               zoom: 4,
               center: myLatlng,
