@@ -176,9 +176,26 @@
           } else {
               // En caso de no haber resultados o que haya ocurrido un error
               // lanzamos un mensaje con el error
+              vm.showAlert();
           }
       }
       // cierre funciones para mapas
+      // inicio función de retorno para error en geocódigo
+    vm.showAlert = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    // Modal dialogs should fully cover application
+    // to prevent interaction outside of dialog
+    $mdDialog.show(
+      $mdDialog.alert()
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
+        .title('La dirección es incorrecta')
+        .textContent('Por favor ingrese otra')
+        .ariaLabel('')
+        .targetEvent(ev)
+    );
+  };
+      // fin función de retorno para error en geocódigo
 
 
     }// Cierre de la función placeController
