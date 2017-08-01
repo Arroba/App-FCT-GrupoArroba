@@ -138,7 +138,7 @@
       var map;
 
       function load_map() {
-          var myLatlng = new google.maps.LatLng(9.748916999999999, -83.75342799999999);
+          var myLatlng = new google.maps.LatLng(9.748917, -83.753428);
           var myOptions = {
               zoom: 4,
               center: myLatlng,
@@ -149,7 +149,7 @@
 
       vm.getAddress = function(){
           // Obtenemos la dirección y la asignamos a una variable
-          var address = $('#address').val();
+          var address = $('#address').val() + ',Costa Rica';
           // Creamos el Objeto Geocoder
           var geocoder = new google.maps.Geocoder();
           // Hacemos la petición indicando la dirección e invocamos la función
