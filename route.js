@@ -109,10 +109,10 @@
 
     .state('places',{
       url : '/places',
-      templateUrl: './components/place/place.view.html',
+      templateUrl: './components/places/place.view.html',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
-          return $ocLazyLoad.load('./components/place/place.controller.js')
+          return $ocLazyLoad.load('./components/places/place.controller.js')
         }]
       },
       controller: 'placeController',
@@ -230,9 +230,9 @@
         css:'css/styleMenu.css'
       })
 
-      .state('totalAcademiesAsistant',{
-        url : '/totalAcademiesAsistant',
-        templateUrl: './components/academies/totalAcademiesAsistant.html',
+      .state('totalAcademiesAssistant',{
+        url : '/totalAcademiesAssistant',
+        templateUrl: './components/academies/totalAcademiesAssistant.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/academies/academies.controller.js')
@@ -256,9 +256,9 @@
         css:'css/styleMenu.css'
       })
 
-      .state('totalBeneficientsAsistant',{
-        url : '/totalBeneficientsAsistant',
-        templateUrl: './components/beneficientAssociation/totalBeneficientsAsistant.html',
+      .state('totalBeneficientsAssistant',{
+        url : '/totalBeneficientsAssistant',
+        templateUrl: './components/beneficientAssociation/totalBeneficientsAssistant.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/beneficientAssociation/beneficient.controller.js')
@@ -308,9 +308,9 @@
         css:'css/styleMenu.css'
       })
 
-      .state('totalBlazesAsistant',{
-        url : '/totalBlazesAsistant',
-        templateUrl: './components/blazes/totalBlazesAsistant.html',
+      .state('totalBlazesAssistant',{
+        url : '/totalBlazesAssistant',
+        templateUrl: './components/blazes/totalBlazesAssistant.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/blazes/blaze.controller.js')
@@ -347,9 +347,9 @@
        css:'css/styleMenu.css'
       })
 
-      .state('totalExhibitionsAsistant',{
-      url : '/totalExhibitionsAsistant',
-      templateUrl: './components/exhibitions/totalExhibitionsAsistant.html',
+      .state('totalExhibitionsAssistant',{
+      url : '/totalExhibitionsAssistant',
+      templateUrl: './components/exhibitions/totalExhibitionsAssistant.html',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/exhibitions/exhibition.controller.js')
@@ -386,22 +386,35 @@
        css:'css/styleMenu.css'
       })
 
-      .state('totalPlaces',{
+       .state('totalPlaces',{
         url : '/totalPlaces',
-        templateUrl: './components/place/totalPlaces.html',
+        templateUrl: './components/places/totalPlaces.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
-            return $ocLazyLoad.load('./components/place/place.controller.js')
-          }]
-        },
+            return $ocLazyLoad.load('./components/places/place.controller.js')
+           }]
+          },
         controller: 'placeController',
         controllerAs: 'vm',
         css:'css/styleMenu.css'
       })
 
-      .state('totalstudents',{
-        url : '/totalstudents',
-        templateUrl: './components/students/totalstudents.html',
+      .state('totalPlacesAssistant',{
+        url : '/totalPlacesAssistant',
+        templateUrl: './components/places/totalPlacesAssistant.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/places/place.controller.js')
+           }]
+          },
+        controller: 'placeController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('totalStudents',{
+        url : '/totalStudents',
+        templateUrl: './components/students/totalStudents.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/students/student.controller.js')
@@ -412,9 +425,35 @@
         css:'css/styleMenu.css'
       })
 
-      .state('totalteachers',{
-        url : '/totalteachers',
-        templateUrl: './components/teachers/totalteachers.html',
+      .state('totalStudentsAssistant',{
+        url : '/totalStudentsAssistant',
+        templateUrl: './components/students/totalStudentsAssistant.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/students/student.controller.js')
+          }]
+        },
+        controller: 'studentController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('totalStudentsTeacher',{
+        url : '/totalStudentsTeacher',
+        templateUrl: './components/students/totalStudentsTeacher.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/students/student.controller.js')
+          }]
+        },
+        controller: 'studentController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('totalTeachers',{
+        url : '/totalTeachers',
+        templateUrl: './components/teachers/totalTeachers.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
@@ -425,9 +464,35 @@
         css:'css/styleMenu.css'
       })
 
-      .state('totalsponsors',{
-        url : '/totalsponsors',
-        templateUrl: './components/sponsors/totalsponsors.html',
+      .state('totalTeachersAssistant',{
+        url : '/totalTeachersAssistant',
+        templateUrl: './components/teachers/totalTeachersAssistant.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
+          }]
+        },
+        controller: 'teacherController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('totalSponsors',{
+        url : '/totalSponsors',
+        templateUrl: './components/sponsors/totalSponsors.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
+          }]
+        },
+        controller: 'sponsorController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
+
+      .state('totalSponsorsAssistant',{
+        url : '/totalSponsorsAssistant',
+        templateUrl: './components/sponsors/totalSponsorsAssistant.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
@@ -506,6 +571,19 @@
         .state('totalProducts',{
           url : '/totalProducts',
           templateUrl: './components/products/totalProducts.html',
+          resolve: {
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/products/product.controller.js')
+            }]
+          },
+          controller: 'productController',
+          controllerAs: 'vm',
+          css:'css/styleMenu.css'
+        })
+
+        .state('totalProductsAssistant',{
+          url : '/totalProductsAssistant',
+          templateUrl: './components/products/totalProductsAssistant.html',
           resolve: {
             load: ['$ocLazyLoad', function($ocLazyLoad){
               return $ocLazyLoad.load('./components/products/product.controller.js')
