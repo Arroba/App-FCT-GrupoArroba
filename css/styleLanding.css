@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
 a body {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     overflow-y: scroll;
     overflow-x: hidden;
+    font-size: 16px;
 }
 p {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 14px;
 }
 
@@ -72,7 +75,7 @@ p {
     }
     .navbar-default .navbar-nav>li>a {
         color: #B5B5B5;
-        font-family: 'Raleway', sans-serif;
+        font-family: 'Roboto', sans-serif;
     }
     .navbar-default .navbar-nav>li>a:hover {
         color: #f39c12;
@@ -607,7 +610,7 @@ div.carousel-inner .item img {
     background: rgba(0, 0, 0, .4);
 }
 .single_fun_facts {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .single_fun_facts i {
     color: #f39c12;
@@ -621,11 +624,11 @@ div.carousel-inner .item img {
     font-size: 35px;
     margin-top: 15px;
     margin-bottom: 1px;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .single_fun_facts h2 span {
     font-weight: 300;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 .single_fun_facts p {
     color: #D7DADB;
@@ -633,7 +636,7 @@ div.carousel-inner .item img {
     margin-top: 0px;
     font-weight: 300;
     text-transform: uppercase;
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -951,8 +954,8 @@ div.carousel-inner .item img {
 
 .copyright {
     background-color: #1A1D22;
-    padding-bottom: 65px;
-    padding-top: 65px;
+    padding-bottom: 30px;
+    padding-top: 30px;
     border-bottom: 3px solid #f39c12;
 }
 
