@@ -107,7 +107,8 @@
   <!-- Page Content -->
 <section>
     <div class=" col-md-12">
-      <h1>Lugares Registrados</h1>
+      <h1>Asociaciones benéficas registradas</h1>
+      <hr>
       <!--Crear buscar academia-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
@@ -121,19 +122,27 @@
         </div>
       </section>
 
-      <md-card class="container-fluid col-md-4" ng-repeat="place in vm.place | filter:vm.nameFilter">
-        <md-card-header>
-          <md-card-header-text>
-            <span class="md-title">Nombre del lugar:{{place.namePlace}}</span>
-            <span class="md-subhead">Ubicación:{{place.location}}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-subhead">Capacidad:{{place.capacity}} personas</span>
-            <span class="md-subhead">Teléfono:{{place.phone}}</span>
-            <span class="md-subhead">Disponibilidad:{{place.timestart | date:'shortTime'}} - {{place.timeFinish | date:'shortTime'}}</span>
-            <span class="md-subhead">Persona de contacto:{{place.nameContact}} {{place.firstName}} {{place.secondName}}</span>
-          </md-card-title-text>
-        </md-card-title>
+      <div class="col-xs-12">
+        <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
+              | filter:vm.nameFilter">
+          <md-card-header>
+            <md-card-header-text>
+              <span class="md-title">Asociación: {{beneficient.name}}</span>
+            </md-card-header-text>
+          </md-card-header>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
+              <span class="md-subhead">Tipo de Asociación: {{beneficient.type}}</span>
+              <span class="md-subhead">Descripción: {{beneficient.description}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-actions id="buttons">
+            <md-button class="edit" ng-click="vm.getInfo(beneficient);vm.hideButton()">Editar</md-button>
+          <md-card-icon-actions>
+      </div>
+    </div>
   </section>
+
+</div>
+</div>
