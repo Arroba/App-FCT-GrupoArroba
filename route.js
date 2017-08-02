@@ -120,7 +120,7 @@
       css:'css/styleMenu.css'
     })
 
-    .state('beneficient',{
+    .state('beneficients',{
       url : '/beneficients',
       templateUrl: './components/beneficientAssociation/beneficient.view.html',
       resolve: {
@@ -206,7 +206,7 @@
 
       .state('totalAcademies',{
         url : '/totalAcademies',
-        templateUrl: './components/academies/totalAcademies.html',
+        templateUrl: './components/academies/totalacademies.html',
         resolve: {
           load: ['$ocLazyLoad', function($ocLazyLoad){
             return $ocLazyLoad.load('./components/academies/academies.controller.js')
