@@ -1,0 +1,345 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#!/landing"><img src="images/logoFederacion.png" width="100px"></a>
+      </div>
+      <ul class="nav">
+       <li>
+          <a href="#!/profileAdmi"><i class="pe-7s-user"></i><p>Perfil</p></a>
+      </li>
+
+      <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registrar<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/academies"><i class="pe-7s-users"></i>Academia</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/teachers"><i class="pe-7s-note"></i>Profesor</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/students"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/places"><i class="pe-7s-map-marker"></i>Lugar</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/products"><i class="pe-7s-shopbag"></i>Producto</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/sponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/beneficients"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+              </li>
+            </li>
+          </ul>
+
+          <li class="dropdown">
+              <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
+              <div class="dropdown-backdrop"></div>
+                <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalacademies"><i class="pe-7s-users"></i>Academia</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalteachers"><i class="pe-7s-note"></i>Profesor</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalstudents"><i class="pe-7s-study"></i>Estudiante</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalplaces"><i class="pe-7s-map-marker"></i>Lugar</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalProducts"><i class="pe-7s-shopbag"></i>Producto</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalsponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalbeneficient"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+                  </li>
+                </li>
+              </ul>
+      <li>
+          <a href="#"><i class="pe-7s-note2"></i><p>Bitácora</p></a>
+      </li>
+
+      <li class=>
+          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+      </li>
+
+          <li>
+            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
+          </li>
+          <li>
+            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
+          </li>
+
+        </ul>
+    	</div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse"></div>
+      </nav>
+
+
+  <!-- Page Content -->
+  <div class="container-fluid" ng-show="pagina==1">
+    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+        <md-button>Registro</md-button>
+        <md-button ng-click="siguiente()">Profesores registradas</md-button>
+        <span flex></span>
+    </md-toolbar>
+          <!-- Inicio de la sección registerTeacher, que contiene el formulario del profesor, registrar, modificar y listar, hecho por Fabián-->
+          <section id="registerTeacher">
+
+            <h1>Registro de profesor</h1>
+            <hr>
+
+            <!-- Inicio del formulario  profesor: -->
+            <form name="frmRegisterTeacher" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <!--Inicio de los inpust para el formulario  -->
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Identificación:</label>
+                    <input type="text" ng-model="vm.id" name="id" ng-minlength="7" ng-maxlength="9" required>
+                    <div ng-messages="frmRegisterTeacher.id.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Nombre:</label>
+                    <input type="text" ng-model="vm.name" name="name" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterTeacher.name.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Primer apellido:</label>
+                    <input type="text" ng-model="vm.firstName" name="firstName" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterTeacher.firstName.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Segundo apellido:</label>
+                    <input type="text" ng-model="vm.lastName" name="lastName" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterTeacher.lastName.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Género:</label>
+                    <md-select class="select" ng-model="vm.gender" name="gender" required>
+                      <md-optgroup label="Seleccione un género">
+                        <md-option value="Masculino">Masculino</md-option>
+                        <md-option value="Femenino">Femenino</md-option>
+                        <md-option value="Indefinido">Indefinido</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterTeacher.gender.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Fecha de nacimiento:</label>
+                    <input type="date" ng-model="vm.date" name="date" required>
+                    <div ng-messages="frmRegisterTeacher.date.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label>Academias:</label>
+                    <md-select class="select" ng-model="vm.academies" md-on-close="clearSearchTerm()" name='academies' data-md-container-class="selectdemoSelectHeader" multiple required>
+                      <md-optgroup label="Seleccione una o más academias">
+                        <md-option value="{{academy.name}}" ng-repeat="academy in vm.academiesRel | filter:searchTerm">{{academy.name}}</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterTeacher.academies.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div><!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Estado civil:</label>
+                    <md-select class="select" ng-model="vm.civilStatus" name="civilStatus" required>
+                      <md-optgroup label="Seleccione un estado civil">
+                        <md-option value="Casado">Casado</md-option>
+                        <md-option value="Soltero">Soltero</md-option>
+                        <md-option value="Unión libre">Unión libre</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterTeacher.civilStatus.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Grado:</label>
+                    <md-select class="select" ng-model="vm.grade" name="grade" required>
+                      <md-optgroup label="Seleccione un color de cinturón">
+                        <md-option value="Blanco">Blanco</md-option>
+                        <md-option value="Amarillo">Amarillo</md-option>
+                        <md-option value="Verde">Verde</md-option>
+                        <md-option value="Azul">Azul</md-option>
+                        <md-option value="Rojo">Rojo</md-option>
+                        <md-option value="Negro">Negro</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterTeacher.grade.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div> <!--cierre del ng-messages -->
+                  </md-input-container>
+                </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                <label for="">Télefono:</label>
+                <input class="select" type="number" name="telephone" ng-model="vm.telephone" min="0" ng-minlength="8" ng-maxlength="8" placeholder="22222222" name="telephone"  required>
+                <div ng-messages="frmRegisterTeacher.telephone.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div> <!--cierre del ng-messages -->
+              </md-input-container>
+
+
+              <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                <label for="">Correo electrónico:</label>
+                <input class="select" type="email" ng-model="vm.email" placeholder="nombre@dominio.com" name="email" required>
+                <div ng-messages="frmRegisterTeacher.email.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div> <!--cierre del ng-messages -->
+              </md-input-container>
+
+              <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                <label for="">Contraseña:</label>
+                <input class="select" type="password" name="password" ng-model="vm.password" ng-minlength="7" ng-maxlength="11" name="password" required>
+                <div ng-messages="frmRegisterTeacher.password.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div> <!--cierre del ng-messages -->
+              </md-input-container>
+            </div>
+          </div>
+
+              <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                  <label class="input-group-btn">
+                      <span class="btn btn-info">
+                          Seleccionar foto
+                          <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
+                      </span>
+                  </label>
+                </div>
+
+                <div class="col-xs-12">
+                  <div id="registrar">
+                    <md-button class="button Active" type="submit" ng-disabled="frmRegisterTeacher.$invalid">Registrar</md-button>
+                  </div>
+
+                  <div class="displayNone" id="actualizar">
+                    <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">Actualizar</md-button>
+                  </div>
+                </div>
+              </div>
+            </section> <!-- Cierre de la sección registerTeacher -->
+
+
+
+                </div>
+
+
+            </form> <!-- Cierre del formulario profesor  -->
+
+            <div class=" col-md-12" ng-show="pagina==2">
+              <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+                  <md-button ng-click="anterior()">Registro</md-button>
+                  <md-button>Profesores registradas</md-button>
+                  <span flex></span>
+              </md-toolbar>
+
+              <h1>Profesores registrados</h1>
+              <hr>
+              <!--Crear buscar academia-->
+              <section class="inputSearch">
+                <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+                  <form action="" class="search-form">
+                    <div class="form-group has-feedback">
+                      <label for="Buscar" class="sr-only">Buscar</label>
+                      <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                      <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                    </div>
+                  </form>
+                </div>
+              </section>
+              <div class="col-xs-12">
+              <!--inicio de los cards -->
+                <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
+                  <md-card-header>
+                    <md-card-header-text>
+                      <span class="md-title">{{teacher.name}} {{teacher.firstName}} {{teacher.lastName}}</span>
+                      <span class="md-subhead">{{teacher.id}}</span>
+                    </md-card-header-text>
+                  </md-card-header>
+                  <md-card-title>
+                  <md-card-title-text>
+                    <span class="md-subhead">Género: {{teacher.gender}}</span>
+                    <span class="md-subhead">Correo electrónico: {{teacher.email}}</span>
+                    <span class="md-subhead">Fecha de nacimiento: {{teacher.date | date}}</span>
+                    <span class="md-subhead">Estado civil: {{teacher.civilStatus}}</span>
+                    <span class="md-subhead">Teléfono: {{teacher.telephone}}</span>
+                    <span class="md-subhead">Grado: {{teacher.grade}}</span>
+                    <span class="md-subhead">Academias: {{teacher.academies}}</span>
+                    <span class="md-subhead">Estado: {{teacher.status}}</span>
+                  </md-card-title-text>
+                  <md-card-title-media>
+                    <div class="md-media-lg card-media">
+                      <img ng-src="{{teacher.photo}}" alt="Description" class="photoStudent">
+                    </div>
+                  </md-card-title-media>
+                  </md-card-title>
+                  <!-- Boton para cambiar el editar las profesores -->
+                  <md-card-actions id="buttons">
+                    <md-button class="edit" ng-click="vm.getInfo(teacher);vm.hideButton();registro1()">Editar</md-button>
+                    <md-button class="Active" ng-click="vm.active(teacher)">Activo</md-button>
+                    <md-button class="edit" ng-click="vm.inactive(teacher)">Inactivo</md-button>
+                    <md-card-icon-actions><!-- cierre botones  -->
+                <!--fin de los cards -->
+                </div>
+
+        </div>
+      </div>
+    </div>

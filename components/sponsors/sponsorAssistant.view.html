@@ -1,0 +1,308 @@
+<!-- Patrocinador Pili -->
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#!/landing"><img src="images/logoFederacion.png" width="100px"></a>
+      </div>
+      <ul class="nav">
+       <li>
+          <a href="#!/profileAdmi"><i class="pe-7s-user"></i><p>Perfil</p></a>
+      </li>
+
+      <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registrar<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/academies"><i class="pe-7s-users"></i>Academia</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/teachers"><i class="pe-7s-note"></i>Profesor</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/students"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/places"><i class="pe-7s-map-marker"></i>Lugar</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/products"><i class="pe-7s-shopbag"></i>Producto</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/sponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/beneficients"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+              </li>
+            </li>
+          </ul>
+
+          <li class="dropdown">
+              <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
+              <div class="dropdown-backdrop"></div>
+                <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalacademies"><i class="pe-7s-users"></i>Academia</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalteachers"><i class="pe-7s-note"></i>Profesor</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalstudents"><i class="pe-7s-study"></i>Estudiante</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalplaces"><i class="pe-7s-map-marker"></i>Lugar</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalProducts"><i class="pe-7s-shopbag"></i>Producto</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalsponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalbeneficient"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+                  </li>
+                </li>
+              </ul>
+      <li>
+          <a href="#"><i class="pe-7s-note2"></i><p>Bitácora</p></a>
+      </li>
+
+      <li class=>
+          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+      </li>
+
+          <li>
+            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
+          </li>
+          <li>
+            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
+          </li>
+
+        </ul>
+    	</div>
+    </div>
+    <div class="main-panel">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse"></div>
+      </nav>
+
+
+  <!-- Page Content -->
+      <!--Registrar Patrocinador-->
+      <div class="container-fluid" ng-show="pagina==1">
+        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+            <md-button>Registro</md-button>
+            <md-button ng-click="siguiente()">Patrocinadores registrados</md-button>
+            <span flex></span>
+        </md-toolbar>
+
+        <section id="registerSponsor">
+          <h1>Registro de patrocinador</h1>
+          <hr>
+
+            <!--Creación del formulario para registro de PATROCINADOR -->
+            <form class="form" name="frmRegisterSponsor" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+              <div class="row">
+                <div  class="col-xs-12 col-sm-12 col-md-12">
+                  <h2>Datos Generales</h2>
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Nombre del representante:</label>
+                    <input type="text" ng-model="vm.nameSponsorRep"  name="nameSponsorRep" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterSponsor.nameSponsorRep.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Primer apellido del representante:</label>
+                    <input type="text" ng-model="vm.firstNameSponsorRep"  name="firstNameSponsorRep" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterSponsor.firstNameSponsorRep.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Segundo Apellido del representante:</label>
+                    <input type="text" ng-model="vm.lastNameSponsorRep" name="lastNameSponsorRep" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterSponsor.lastNameSponsorRep.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div  class="col-xs-12 col-sm-12 col-md-12">
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Identificación del representante:</label>
+                    <input type="text" ng-model="vm.idSponsorRep"  name="idSponsorRep" ng-minlength="7" ng-maxlength="9" required>
+                    <div ng-messages="frmRegisterSponsor.idSponsorRep.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Nombre jurídico:</label>
+                    <input type="text" ng-model="vm.nameSponsor" name="nameSponsor"ng-maxlength="50" required>
+                    <div ng-messages="frmRegisterSponsor.nameSponsor.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Compañía que representa:</label>
+                    <input type="text" ng-model="vm.nameSponsorCompany" name="nameSponsorCompany" ng-maxlength="20" required>
+                    <div ng-messages="frmRegisterSponsor.nameSponsorCompany.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <h2>Datos del patrocinio</h2>
+                  <div>
+                    <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
+                      <label>Tipos de patrocinios:</label>
+                      <md-select ng-model="vm.sponsorType" class="select" md-on-close="clearSearchTerm()" name='sponsorType' data-md-container-class="selectdemoSelectHeader" multiple required>
+                        <md-optgroup label="Seleccione un o más tipos de patrocinio">
+                          <md-option value="Monetario">Monetario</md-option>
+                          <md-option value="Equipo">Equipo</md-option>
+                          <md-option value="Alimentación">Alimentación</md-option>
+                        </md-optgroup>
+                      </md-select>
+                      <div ng-messages="frmRegisterSponsor.sponsorType.$error">
+                        <div ng-messages-include="components/includes/messages.html"></div>
+                      </div><!--cierre del ng-messages -->
+                    </md-input-container>
+                  </div>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4"layout="column">
+                    <label for="">Tipo de Moneda</label>
+                    <md-select class="select" ng-model="vm.sponsorCoinType" name="sponsorCoinType" required>
+                      <md-optgroup label="Seleccione un o más tipos de patrocinio">
+                        <md-option value="₡">Colones</md-option>
+                        <md-option value="$">Dólares</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterSponsor.sponsorCoinType.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Equivalente monetario:</label>
+                    <input type="number" ng-model="vm.sponsorMonetary" min="1" name="sponsorMonetary" required>
+                    <div ng-messages="frmRegisterSponsor.sponsorMonetary.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+                <div class="col-xs-12 col-sm-12 col-md-12">
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label for="">Descripción del patrocinio:</label>
+                    <input type="text" ng-model="vm.sponsorDesc" name="sponsorDesc" ng-maxlength="100" required>
+                    <div ng-messages="frmRegisterSponsor.sponsorDesc.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div>
+                  </md-input-container>
+                </div>
+
+              </div>
+
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="input-group">
+                  <label class="input-group-btn">
+                    <span class="btn btn-info">Seleccionar foto
+                      <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
+                    </span>
+                  </label>
+                </div>
+
+                <div>
+                  <div id="registrar">
+                    <md-button class="button Active" type="submit" ng-disabled="frmRegisterSponsor.$invalid">Registrar</md-button>
+                  </div>
+                  <div class="displayNone" id="actualizar">
+                    <md-button class="button edit" type="button" ng-disabled="frmRegisterSponsor.$invalid" ng-click="vm.update(sponsor)">Actualizar</md-button>
+                  </div>
+                </div>
+              </div>
+            </form><!--cierre del formulario para registrar de PATROCINADOR-->
+
+        </section>
+
+      </div>
+
+      <!--Cards  -->
+      <div class= "col-md-12" ng-show="pagina==2">
+
+        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
+          <md-button ng-click="anterior()">Registro</md-button>
+          <md-button>Patrocinadores registrados</md-button>
+          <span flex></span>
+        </md-toolbar>
+
+        <h2>Patrocinadores</h2>
+        <hr>
+
+        <section class="inputSearch">
+          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+        <div class="col-xs-12">
+          <md-card class="container-fluid col-md-6" ng-repeat="sponsor in vm.sponsors | filter:vm.nameFilter">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">{{sponsor.nameSponsorRep}} {{sponsor.firstNameSponsorRep}} {{sponsor.lastNameSponsorRep}}</span>
+                <span class="md-subhead">Id. representante: {{sponsor.idSponsorRep}}</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-subhead">Nombre Jurídico: {{sponsor.nameSponsor}}</span>
+                <span class="md-subhead">Compañía que representa: {{sponsor.nameSponsorCompany}}</span>
+                <span class="md-subhead">{{sponsor.statusSponsor}}</span>
+                <span class="md-subhead">Tipo de Patrocinio: {{sponsor.sponsorType}}</span>
+                <span class="md-subhead">Equivalente Monetario: {{sponsor.sponsorCoinType}} {{sponsor.sponsorMonetary}}</span>
+                <span class="md-subhead">Descripción: {{sponsor.sponsorDesc}}</span>
+              </md-card-title-text>
+            <md-card-title-media>
+            <div class="md-media-lg card-media">
+              <img ng-src="{{sponsor.photo}}" alt="Description" class="photoStudent">
+            </div>
+          </md-card-title-media>
+          </md-card-title>
+          <!--Inicio de boton edición PATROCINADOR-->
+          <md-card-actions id="buttons">
+            <md-button class="edit" ng-click="vm.getInfo(sponsor);vm.hideButton();registro1()">Editar</md-button>
+          <md-card-icon-actions><!--Fin de boton edición PATROCINADOR-->
+        <!--Fin de cards PATROCINADOR-->
+      </div>
+      </div>
