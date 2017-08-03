@@ -778,6 +778,13 @@
       css:'css/styleMenu.css'
     })
 
+    //ranking
+    .state('gRanking',{
+      url : '/generalRanking',
+      templateUrl: 'components/generalRanking/generalRanking.view.html',
+      css:'css/ranking.css'
+    })
+    
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
