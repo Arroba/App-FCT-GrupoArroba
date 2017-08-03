@@ -123,7 +123,7 @@
                     </md-input-container>
 
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column" >
-                      <label for="">Primer nombre:</label>
+                      <label for="">Nombre:</label>
                       <input type="text" ng-model="vm.firstName" name="firstName" ng-maxlength="20" required>
                       <div ng-messages="frmRegisterStudent.firstName.$error">
                         <div ng-messages-include="components/includes/messages.html"></div>
@@ -131,23 +131,15 @@
                     </md-input-container>
 
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                      <label for="">Segundo nombre:</label>
-                      <input type="text" ng-model="vm.secondName" name="secondName" ng-maxlength="20" required>
-                      <div ng-messages="frmRegisterStudent.secondName.$error">
-                        <div ng-messages-include="components/includes/messages.html"></div>
-                      </div><!--cierre del ng-messages -->
-                    </md-input-container>
-                  </div>
-
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Primer apellido:</label>
                       <input type="text" ng-model="vm.surname" name="surname" ng-maxlength="20" required>
                       <div ng-messages="frmRegisterStudent.surname.$error">
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
+                    </div>
 
+                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Segundo apellido:</label>
                       <input type="text" ng-model="vm.secondSurname"  name="secondSurname" ng-maxlength="20" required>
@@ -168,9 +160,7 @@
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
-                  </div>
 
-                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Fecha de nacimiento:</label>
                       <input type="date" ng-model="vm.date" name="date" required>
@@ -178,7 +168,9 @@
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
+                  </div>
 
+                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Télefono:</label>
                       <input type="number" name="telephone" ng-model="vm.telephone" min="0" ng-minlength="8" ng-maxlength="8" placeholder="22222222" name="telephone" required>
@@ -194,9 +186,7 @@
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
-                  </div>
 
-                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Estado civil:</label>
                       <md-select class="select" ng-model="vm.civilStatus" name="civilStatus" required>
@@ -210,7 +200,9 @@
                         <div ng-messages-include="components/includes/messages.html"></div>
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
+                  </div>
 
+                  <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Peso:</label>
                       <input type="number" ng-model="vm.weight" name="weight" required placeholder="Kg" min="1">
@@ -220,42 +212,9 @@
                     </md-input-container>
 
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                      <label for="">Categoría por peso:</label>
-                      <md-select class="select" ng-model="vm.weightCategory" name="weightCategory" required>
-                        <md-optgroup label="Seleccione una categoría de peso">
-                          <md-option value="il-Yang (Pluma Menos de 51kg)">Pluma(Menos de 51kg)</md-option>
-                          <md-option value="i-Yang (Gallo 52kg a 59kg) ">Gallo(52kg a 59kg) </md-option>
-                          <md-option value="o-Yang (Supergallo 60kg a 65kg)">Supergallo(60kg a 65kg)</md-option>
-                          <md-option value="Sam-Yang (Wélter 66kg a 74kg)">Wélter(66kg a 74kg)</md-option>
-                          <md-option value="Siu-Yang (Pesado Mayor a 75kg)">Pesado(Mayor a 75kg)</md-option>
-                        </md-optgroup>
-                      </md-select>
-                      <div ng-messages="frmRegisterStudent.weightCategory.$error">
-                        <div ng-messages-include="components/includes/messages.html"></div>
-                      </div><!--cierre del ng-messages -->
-                    </md-input-container>
-                  </div>
-
-                  <div class="col-xs-12 col-sm-12 col-md-12">
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                     <label for="">Altura:</label>
                     <input type="number" ng-model="vm.height" name="height" required placeholder="162 cm" min="1">
                     <div ng-messages="frmRegisterStudent.weight.$error">
-                      <div ng-messages-include="components/includes/messages.html"></div>
-                    </div><!--cierre del ng-messages -->
-                  </md-input-container>
-
-                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-                    <label for="">Categoría por edad:</label>
-                    <md-select class="select" ng-model="vm.ageCategory" name="ageCategory" required>
-                      <md-optgroup label="Seleccione una categoría por edad">
-                        <md-option value="Infantil(4-11 años)">Infantil(4-11 años)</md-option>
-                        <md-option value="Cadete(12-16 años)">Cadete(12-16 años)</md-option>
-                        <md-option value="Elite(17-23 años)">Elite(17-23 años)</md-option>
-                        <md-option value="Senior(Mayor de 23 años)">Senior(Mayor de 23 años)</md-option>
-                      </md-optgroup>
-                    </md-select>
-                    <div ng-messages="frmRegisterStudent.ageCategory.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div><!--cierre del ng-messages -->
                   </md-input-container>
@@ -276,7 +235,7 @@
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div> <!--cierre del ng-messages -->
                   </md-input-container>
-                </div>
+                  </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <md-input-container class="select2 col-xs-12 col-sm-4 col-md-4" layout="column">
