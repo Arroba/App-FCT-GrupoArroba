@@ -205,6 +205,18 @@
       <!--Cards asociacion -->
       <div class="col-xs-12" ng-show="pagina==2">
 
+        <section class="inputSearch">
+          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+
 
         <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
               | filter:vm.nameFilter">

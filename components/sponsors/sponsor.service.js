@@ -31,7 +31,7 @@
     function _updateSponsor(pobjSponsor){//Funcíon que actualiza patrocinador
       var sponsorsList = _getSponsors();
       for(var i = 0; i < sponsorsList.length; i++){
-        if(sponsorsList[i].idSponsorRep == pobjSponsor.idSponsorRep){
+        if(sponsorsList[i].idSponsorRep === pobjSponsor.idSponsorRep){
           sponsorsList[i] = pobjSponsor;
         }
       }
