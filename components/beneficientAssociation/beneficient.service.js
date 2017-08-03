@@ -34,7 +34,7 @@
     function _updateBeneficient(pobjbeneficient){
       var beneficientList = _getBeneficient();
       for(var i = 0; i < beneficientList.length; i++){
-        if(beneficientList[i].nameBeneficient == pobjbeneficient.nameBeneficient){  //ojo aqui
+        if(beneficientList[i].name == pobjbeneficient.name){  //ojo aqui
           beneficientList[i] = pobjbeneficient;
         } // Cierre del if
       } // Cierre del ciclo
