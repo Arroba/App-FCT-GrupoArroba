@@ -37,7 +37,7 @@
       css:'css/styleLogin.css'
     })
 
-//ACADEMIES//
+//ACADEMIES  ADMI//
     .state('academies',{
       url : '/academies',
       templateUrl: './components/academies/academies.view.html',
@@ -50,7 +50,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //VISTA DEL REGISTRO - ASISTENTE
+    //REGISTRO Academias - ASISTENTE
     .state('academiesAssistant',{
       url : '/academiesAssistant',
       templateUrl: './components/academies/academiesAssistant.view.html',
@@ -63,7 +63,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //VISTA TOTAL 
+    //TOTAL ACADEMIAS ADMI
     .state('totalAcademies',{
       url : '/totalAcademies',
       templateUrl: './components/academies/totalacademies.html',
@@ -76,7 +76,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-      //VISTA TOTAL PROFESOR
+      //ACADEMIAS TOTAL PROFESOR
     .state('totalAcademiesTeacher',{
       url : '/totalAcademiesTeacher',
       templateUrl: './components/academies/totalAcademiesTeacher.html',
@@ -89,7 +89,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //VISTA TOTAL ASISTENTE
+    //TOTAL ACADEMIAS ASISTENTE
     .state('totalAcademiesAssistant',{
       url : '/totalAcademiesAssistant',
       templateUrl: './components/academies/totalAcademiesAssistant.html',
@@ -314,7 +314,7 @@
       css:'css/styleMenu.css'
     })
 
-//PROFESOR
+//Registro PROFESOR ADMI
     .state('teachers',{
       url : '/teachers',
       templateUrl: './components/teachers/teacher.view.html',
@@ -327,7 +327,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PROFESOR REGISTRO ASISTENTE
+    //REGISTRO PROFESOR  ASISTENTE
     .state('teacherAssistant',{
       url : '/teacherAssistant',
       templateUrl: './components/teachers/teacherAssistant.view.html',
@@ -353,10 +353,10 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PROFESORES REGISTRADOS
+    //TOTAL PROFESORES ADMI
     .state('totalTeachers',{
       url : '/totalTeachers',
-      templateUrl: './components/teachers/totalTeachers.html',
+      templateUrl: './components/teachers/totalteachers.html',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
@@ -366,7 +366,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PROFESORES REGISTRADOS ASISTENTE
+    //TOTAL PROFESORES ASISTENTE
     .state('totalTeachersAssistant',{
       url : '/totalTeachersAssistant',
       templateUrl: './components/teachers/totalTeachersAssistant.html',
@@ -380,7 +380,7 @@
       css:'css/styleMenu.css'
     })
 
-//PATROCINADOR
+  //REGISTRO PATROCINADOR  ADMI
     .state('sponsors',{
       url : '/sponsors',
       templateUrl: './components/sponsors/sponsor.view.html',
@@ -393,7 +393,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PATROCINADOR REGISTRO ASISTENTE
+    //REGISTRO PATROCINADOR  ASISTENTE
     .state('sponsorAssistant',{
       url : '/sponsorAssistant',
       templateUrl: './components/sponsors/sponsorAssistant.view.html',
@@ -406,7 +406,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PATROCINADOR REGISTRADOS
+    //TOTAL PATROCINADORES ADMI
     .state('totalSponsors',{
       url : '/totalSponsors',
       templateUrl: './components/sponsors/totalSponsors.html',
@@ -419,7 +419,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PATROCINADOR REGISTRADOS ASISTENTE
+    //TOTAL PATROCINADORES ASISTENTE
     .state('totalSponsorsAssistant',{
       url : '/totalSponsorsAssistant',
       templateUrl: './components/sponsors/totalSponsorsAssistant.html',
@@ -433,7 +433,7 @@
       css:'css/styleMenu.css'
     })
 
-//ESTUDIANTES
+//REGISTROS ESTUDIANTES ADMI
     .state('students',{
       url : '/students',
       templateUrl: './components/students/student.view.html',
@@ -446,7 +446,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ESTUDIANTES REGISTRO ASISTENTE
+    //REGISTRO ESTUDIANTES  ASISTENTE
     .state('studentAssistant',{
       url : '/studentAssistant',
       templateUrl: './components/students/studentAssistant.view.html',
@@ -459,7 +459,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ESTUDIANTES REGISTRO PROFESOR
+    //REGISTRO ESTUDIANTES  PROFESOR
     .state('studentTeacher',{
       url : '/studentTeacher',
       templateUrl: './components/students/studentTeacher.view.html',
@@ -485,7 +485,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ESTUDIANTES REGISTRADOS
+    //TOTAL ESTUDIANTES ADMI
     .state('totalStudents',{
       url : '/totalStudents',
       templateUrl: './components/students/totalStudents.html',
@@ -498,7 +498,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ESTUDIANTES REGISTRADOS ASISTENTE
+    //TOTAL ESTUDIANTES  ASISTENTE
     .state('totalStudentsAssistant',{
       url : '/totalStudentsAssistant',
       templateUrl: './components/students/totalStudentsAssistant.html',
@@ -511,7 +511,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ESTUDIANTES REGISTRADOS PROFESOR
+    //TOTAL ESTUDIANTES  PROFESOR
     .state('totalStudentsTeacher',{
       url : '/totalStudentsTeacher',
       templateUrl: './components/students/totalStudentsTeacher.html',
@@ -525,7 +525,7 @@
       css:'css/styleMenu.css'
     })
 
-//LUGARES
+// REGISTRO LUGARES ADMI
     .state('places',{
       url : '/places',
       templateUrl: './components/places/place.view.html',
@@ -538,7 +538,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //LUGARES REGISTRO ASISTENTE
+    //REGISTRO LUGARES  ASISTENTE
     .state('placeAssistant',{
       url : '/placeAssistant',
       templateUrl: './components/places/placeAssistant.view.html',
@@ -551,7 +551,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //LUGARES REGISTRADOS
+    //TOTAL LUGARES ADMI
     .state('totalPlaces',{
       url : '/totalPlaces',
       templateUrl: './components/places/totalPlaces.html',
@@ -564,7 +564,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //LUGARES REGISTRADOS ASISTENTE
+    //TOTAL LUGARES  ASISTENTE
     .state('totalPlacesAssistant',{
       url : '/totalPlacesAssistant',
       templateUrl: './components/places/totalPlacesAssistant.html',
@@ -578,7 +578,7 @@
       css:'css/styleMenu.css'
     })
 
-//ASOCIACION
+//REGISTRO ASOCIACION ADMI
     .state('beneficients',{
       url : '/beneficients',
       templateUrl: './components/beneficientAssociation/beneficient.view.html',
@@ -591,7 +591,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ASOCIACION REGISTRO ASISTENTE
+    //REGISTRO ASOCIACION  ASISTENTE
     .state('beneficientAssistant',{
       url : '/beneficientAssistant',
       templateUrl: './components/beneficientAssociation/beneficientAssistant.view.html',
@@ -604,7 +604,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ASOCIACIONES REGISTRADAS
+    //TOTAL ASOCIACIONES ADMI
     .state('totalBeneficients',{
       url : '/totalBeneficients',
       templateUrl: './components/beneficientAssociation/totalBeneficients.html',
@@ -617,7 +617,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //ASOCIACIONES REGISTRADAS ASISTENTE
+    //TOTAL ASOCIACIONES  ASISTENTE
     .state('totalBeneficientsAssistant',{
       url : '/totalBeneficientsAssistant',
       templateUrl: './components/beneficientAssociation/totalBeneficientsAssistant.html',
@@ -631,7 +631,7 @@
       css:'css/styleMenu.css'
     })
 
-//PRODUCTOS
+// REGISTRO PRODUCTOS ADMI
     .state('products',{
       url : '/products',
       templateUrl: './components/products/product.view.html',
@@ -644,7 +644,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PRODUCTOS REGISTRO ASISTENTE
+    //REGISTRO PRODUCTOS  ASISTENTE
     .state('productAssistant',{
       url : '/productAssistant',
       templateUrl: './components/products/productAssistant.view.html',
@@ -657,7 +657,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PRODUCTOS REGISTRADOS
+    //TOTAL PRODUCTOS ADMI
     .state('totalProducts',{
       url : '/totalProducts',
       templateUrl: './components/products/totalProducts.html',
@@ -670,7 +670,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-    //PRODUCTOS REGISTRADOS ASISTENTE
+    //TOTAL PRODUCTOS  ASISTENTE
     .state('totalProductsAssistant',{
       url : '/totalProductsAssistant',
       templateUrl: './components/products/totalProductsAssistant.html',
@@ -684,7 +684,7 @@
       css:'css/styleMenu.css'
     })
 
-//ENTRADAS REGISTRO
+//REGISTRO ENTRADAS ADMI
     .state('tickets',{
       url : '/tickets',
       templateUrl: './components/tickets/tickets.view.html',
@@ -697,7 +697,7 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
       })
-      //ENTRADAS REGISTRO ASISTENTE
+      //REGISTRO ENTRADAS  ASISTENTE
      .state('ticketAssistant',{
         url : '/ticketAssistant',
         templateUrl: './components/tickets/ticketAssistant.view.html',
@@ -710,7 +710,7 @@
         controllerAs: 'vm',
         css:'css/styleMenu.css'
       })
-     //ENTRADAS REGISTRO PUBLICO
+     //REGISTRO ENTRADAS  PUBLICO
      .state('ticketPublic',{
         url : '/ticketPublic',
         templateUrl: './components/tickets/ticketPublic.view.html',
@@ -723,7 +723,7 @@
         controllerAs: 'vm',
         css:'css/styleMenu.css'
       })
-     //ENTRADAS REGISTRO ESTUDIANTE
+     //REGISTRO ENTRADAS  ESTUDIANTE
      .state('ticketStudent',{
         url : '/ticketStudent',
         templateUrl: './components/tickets/ticketStudent.view.html',
@@ -736,7 +736,7 @@
         controllerAs: 'vm',
         css:'css/styleMenu.css'
       })
-     //ENTRADAS REGISTRO PROFESOR
+     //REGISTRO ENTRADAS  PROFESOR
      .state('ticketTeacher',{
         url : '/ticketTeacher',
         templateUrl: './components/tickets/ticketTeacher.view.html',
@@ -751,7 +751,7 @@
       })
 
 //PERFILES
-     //ADMINISTRADOR 
+     //ADMINISTRADOR
     .state('profileAdmi',{
       url : '/profileAdmi',
       templateUrl: './components/profiles/profile.admi.html',
