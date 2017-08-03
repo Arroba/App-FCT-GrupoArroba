@@ -98,21 +98,21 @@
 
   <!-- Page Content -->
             <!--Regristrar Estudiantes, listar Estudiantes y modificar Estudiantes en conjunto con impresión de los datos.(Pamela)-->
-          <div class="container-fluid" ng-show="pagina==1">
-            <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-                <md-button>Registro</md-button>
-                <md-button ng-click="siguiente()">Estudiantes registrados</md-button>
-                <span flex></span>
-            </md-toolbar>
+          <div class="container-fluid">
 
             <section id="registerStudent">
 
-              <h1>Registro de Estudiante ADMI</h1>
+              <h1>Estudiantes</h1>
               <hr>
 
               <form class="form" name="frmRegisterStudent" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
 
-                <div class="row">
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+                  <li><a data-toggle="tab" ng-click="siguiente()" href="">Estudiantes registrados</a></li>
+                </ul>
+
+                <div class="row" ng-show="pagina==1">
                   <div class="col-xs-12 col-sm-12 col-md-12">
                     <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Identificación:</label>
@@ -279,7 +279,6 @@
                   </div><!--cierre del ng-messages -->
                 </md-input-container>
               </div>
-            </div>
         <!-- Botones de Selleccione foto, Registrar y Actualizar -->
             <div class="col-xs-12 col-sm-12 col-md-12">
 
@@ -297,24 +296,17 @@
                   <md-button class="button Active" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
                 </div>
                 <div class="displayNone" id="actualizar">
-                  <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student)">Actualizar</md-button>
+                  <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student);siguiente()">Actualizar</md-button>
                 </div>
               </div>
+            </div>
+
           </form><!--cierre del formulario para registrar -->
         </div>
       </div>
 
 
       <div class= "col-md-12" ng-show="pagina==2">
-
-        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-            <md-button ng-click="anterior()">Registro</md-button>
-            <md-button>Estudiantes registrados</md-button>
-            <span flex></span>
-        </md-toolbar>
-
-        <h1>Estudiantes registrados</h1>
-        <hr>
           <!--Crear buscar academia-->
            <section class="inputSearch">
              <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
