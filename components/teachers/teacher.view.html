@@ -97,22 +97,23 @@
 
 
   <!-- Page Content -->
-  <div class="container-fluid" ng-show="pagina==1">
-    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-        <md-button>Registro</md-button>
-        <md-button ng-click="siguiente()">Profesores registradas</md-button>
-        <span flex></span>
-    </md-toolbar>
+  <div class="container-fluid" >
+
           <!-- Inicio de la sección registerTeacher, que contiene el formulario del profesor, registrar, modificar y listar, hecho por Fabián-->
           <section id="registerTeacher">
 
-            <h1>Registro de profesor ADMI</h1>
+            <h1>Profesor</h1>
             <hr>
 
             <!-- Inicio del formulario  profesor: -->
             <form name="frmRegisterTeacher" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
 
-              <div class="row">
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+                <li><a data-toggle="tab" ng-click="siguiente()" href="">Profesores registrados</a></li>
+              </ul>
+
+              <div class="row" ng-show="pagina==1">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                   <!--Inicio de los inpust para el formulario  -->
                   <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
@@ -244,7 +245,6 @@
                 </div> <!--cierre del ng-messages -->
               </md-input-container>
             </div>
-          </div>
 
               <!-- Botones de Selleccione foto, Registrar y Actualizar -->
               <div class="col-xs-12 col-sm-12 col-md-12">
@@ -263,10 +263,12 @@
                   </div>
 
                   <div class="displayNone" id="actualizar">
-                    <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">Actualizar</md-button>
+                    <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher);siguiente()">Actualizar</md-button>
                   </div>
                 </div>
               </div>
+            </div>
+
             </section> <!-- Cierre de la sección registerTeacher -->
 
 
@@ -277,14 +279,7 @@
             </form> <!-- Cierre del formulario profesor  -->
 
             <div class=" col-md-12" ng-show="pagina==2">
-              <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-                  <md-button ng-click="anterior()">Registro</md-button>
-                  <md-button>Profesores registradas</md-button>
-                  <span flex></span>
-              </md-toolbar>
-
-              <h1>Profesores registrados</h1>
-              <hr>
+      
               <!--Crear buscar academia-->
               <section class="inputSearch">
                 <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">

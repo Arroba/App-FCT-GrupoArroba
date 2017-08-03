@@ -16,16 +16,15 @@
       }init(); // Cierre de la función init
 
       $scope.pagina = 1;
-        $scope.siguiente = function() {
-          $scope.pagina++;
-        }
-
-        $scope.anterior = function() {
-          $scope.pagina--;
-        }
-        $scope.registro1 = function() {
-          $scope.pagina = 1;
-        }
+      $scope.siguiente = function() {
+        $scope.pagina = 2;
+      }
+      $scope.anterior = function() {
+        $scope.pagina = 1;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
 
       // Inicio de la función presave
