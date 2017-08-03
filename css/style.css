@@ -8,6 +8,9 @@ section h1{
   text-align: left;
   color: #50666B;
 }
+.inputSearch .search-form{
+  padding-top: 25px;
+}
 section hr{
   background: #dcdcdc;
   height: 1px;
@@ -48,7 +51,7 @@ tbody td{
   color: #fff;
   border-radius: 8px;
 }
-.Active{ 
+.Active{
   background:#e67e22;
   color: #fff;
   border-radius: 8px;
