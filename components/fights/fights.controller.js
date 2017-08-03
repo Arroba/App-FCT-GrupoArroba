@@ -18,76 +18,55 @@
       }init(); // Cierre de la función init
 
     // Funciones encargadas de devolver o adelantar la página
-      $scope.pagina = 1;
-      $scope.siguiente = function() {
-        $scope.pagina++;
-      }
+      // $scope.pagina = 1;
+      // $scope.siguiente = function() {
+      //   $scope.pagina++;
+      // }
 
-      $scope.anterior = function() {
-        $scope.pagina--;
-      }
+      // $scope.anterior = function() {
+      //   $scope.pagina--;
+      // }
 
-      $scope.registro1 = function() {
-        $scope.pagina = 1;
-      }
+      // $scope.registro1 = function() {
+      //   $scope.pagina = 1;
+      // }
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newFights = {
-          nameEvent: vm.nameEvent,
-          // datos de la primera competición
-          name1Compe1: vm.name1Compe1,
-          name2Compe1: vm.name2Compe1,
-          name3Compe1: vm.name3Compe1,
-          name4Compe1: vm.name4Compe1,
-          name5Compe1: vm.name5Compe1,
-          points1Compe1: Number(0),
-          points2Compe1: Number(0),
-          points3Compe1: Number(0),
-          points4Compe1: Number(0),
-          points5Compe1: Number(0),
-          // fin datos primera competición
-          // datos de la segunda competición
-          name1Compe2: vm.name1Compe2,
-          name2Compe2: vm.name2Compe2,
-          name3Compe2: vm.name3Compe2,
-          name4Compe2: vm.name4Compe2,
-          name5Compe2: vm.name5Compe2,
-          points1Compe2: Number(0),
-          points2Compe2: Number(0),
-          points3Compe2: Number(0),
-          points4Compe2: Number(0),
-          points5Compe2: Number(0),
-          // fin datos segunda competición
-          // datos de la tercera competición
-          name1Compe3: vm.name1Compe3,
-          name2Compe3: vm.name2Compe3,
-          name3Compe3: vm.name3Compe3,
-          name4Compe3: vm.name4Compe3,
-          name5Compe3: vm.name5Compe3,
-          points1Compe3: Number(0),
-          points2Compe3: Number(0),
-          points3Compe3: Number(0),
-          points4Compe3: Number(0),
-          points5Compe3: Number(0),
-          // Inicio datos cuarta competición
-          name1Compe4: vm.name1Compe4,
-          name2Compe4: vm.name2Compe4,
-          name3Compe4: vm.name3Compe4,
-          name4Compe4: vm.name4Compe4,
-          name5Compe4: vm.name5Compe3,
-          points1Compe4: Number(0),
-          points2Compe4: Number(0),
-          points3Compe4: Number(0),
-          points4Compe4: Number(0),
-          points5Compe4: Number(0),
-          // fin datos cuarta competición
-          status: 'Activo'
+          competition: vm.competition,
+          competitor: vm.competitor
         } // Cierre de newFights
+        registerTo(newFights)
         fightsService.setFights(newFights);
         init();
         clean();
       } // Cierre de la función save
+
+      function registerTo(pNewFights){
+      switch (pNewFights.competition) {
+        case 'primera':
+          $location.path('/profileAdmi');
+          break;
+        case 'segunda':
+          $location.path('/profileAsistent');
+          break;
+        case 'tercera':
+          $location.path('/teacherProfile');
+          break;
+        case 'cuarta':
+          $location.path('/studentProfile');
+        break;
+        case'':
+          document.querySelector('.blocked').innerHTML = 'Usuario o contraseña incorrectos';
+        break;
+        default:
+        $location.path('/login');
+        break;
+
+      }
+    }
+
 
       // funcion de filtro para los datalist competición 1
 
@@ -435,7 +414,7 @@
       $scope.showConfirm = function(fightsList) {
       // Appending dialog to document.body to cover sidenav in docs app
       var confirm = $mdDialog.confirm()
-            .title('¿Desea asignar un punto a este competidor?')
+            .title('¿Desea asignar a este competidor como ganador?')
             .textContent('')
             .ariaLabel('Lucky day')
             .targetEvent(fightsList)
@@ -444,7 +423,7 @@
 
       $mdDialog.show(confirm).then(function() {
         fightsService.updateState(fightsList);
-        // init();
+        init();
         $scope.status = 'Punto confirmado';
       }, function() {
         $scope.status = 'Punto denegado';

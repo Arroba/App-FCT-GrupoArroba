@@ -107,330 +107,88 @@
 
   <!-- Page Content -->
 
+  <section id="registerFights container-fluid">
 
-<div ng-show="pagina==1">
-  <div class="container-fluid">
-  <section id="registerFights">
+    <form name="frmRegisterFights" novalidate autocomplete="off">
 
-  <form name="frmRegisterFights" novalidate autocomplete="off">
-
-      <h1>Asignación de Estudiantes a una competición</h1>
+        <h1>Asignación de Estudiantes a una competición</h1>
 
 
-        <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
-          <label for="">Nombre del Evento:</label>
-          <input list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
-          <datalist id="eventsList">
-          <option value="">--Seleccione un evento--</option>
-          <option ng-repeat="event in vm.eventsRel" value="{{event.name}}">{{vm.name}}</option>
-          </datalist>
-          <div ng-messages="frmRegisterFights.nameEvent.$error">
-          <div ng-messages-include="components/includes/messages.html"></div>
-          </div><!--cierre del ng-messages -->
-        </md-input-container>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <label for="">Selección de Estudiantes Primera Competición :</label>
-          <br>
-          <!--Academia del estudiante  -->
-          <!--Selección estudiantes primera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 1</label>
-            <input list="studentsList" type="text" ng-model="vm.name1Compe1" name="name1Compe1" required>
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}} | {{students.id}}">{{vm.students.firstName}}</option>
+          <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
+            <label for="">Nombre del Evento:</label>
+            <input list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
+            <datalist id="eventsList">
+            <option value="">--Seleccione un evento--</option>
+            <option ng-repeat="event in vm.eventsRel" value="{{event.name}}">{{vm.name}}</option>
             </datalist>
-            <div ng-messages="frmRegisterFights.name1Compe1.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
+            <div ng-messages="frmRegisterFights.nameEvent.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+            </div><!--cierre del ng-messages -->
           </md-input-container>
 
           <!--Primera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 2</label>
-            <input list="studentsList" type="text" ng-model="vm.name2Compe1" name="name2Compe1" required>
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name2Compe1.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
+          <div class="col-xs-12 col-sm-12 col-md-12 row">
 
-          <!--Primera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 3</label>
-            <input list="studentsList" type="text" ng-model="vm.name3Compe1" name="name3Compe1" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name3Compe1.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
+              <md-input-container class="col-md-3" layout="column">
+                <label for="">Competición:</label>
+                <md-select class="select" ng-model="vm.competition" name="competition" required>
+                  <md-optgroup label="Seleccione una competición">
+                    <md-option value="primera">Primera</md-option>
+                    <md-option value="segunda">Segunda</md-option>
+                    <md-option value="tercera">Tercera</md-option>
+                    <md-option value="cuarta">Cuarta</md-option>
+                  </md-optgroup>
+                </md-select>
+                <div ng-messages="frmRegisterStudent.competition.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div><!--cierre del ng-messages -->
+              </md-input-container>
 
-          <!--Primera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 4</label>
-            <input list="studentsList" type="text" ng-model="vm.name4Compe1" name="name4Compe1" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name4Compe1.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-        </div>
-        <div class="col-xs-12 col-sm-12col-md-12 row">
-          <!--Primera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 5</label>
-            <input list="studentsList" type="text" ng-model="vm.name5Compe1" name="name5Compe1" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name5Compe1.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-          <!--Fin de la primera competición-->
-        </div>
+              <md-input-container class="col-md-3" layout="column">
+                <label for="">Seleccione al Competidor</label>
+                <input list="studentsList" type="text" ng-model="vm.competitor" name="" required>
+                <datalist id="studentsList">
+                  <option value="">--Seleccione un competidor--</option>
+                  <option ng-repeat="students in vm.studentRel" value="{{students.firstName}} | {{students.id}}">{{vm.students.firstName}}</option>
+                </datalist>
+                <div ng-messages="frmRegisterFights.competitor.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div> <!--cierre del ng-messages -->
+              </md-input-container>
 
-        <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <!--Inicio segunda competición  -->
-          <label for="">Selección de Estudiantes Segunda Competición:</label>
-          <br>
-          <!--Selección de estudiantes Segunda Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 1</label>
-            <input list="studentsList" type="text" ng-model="vm.name1Compe2" name="name1Compe2" required>
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name1Compe2.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--Segunda Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 2</label>
-            <input list="studentsList" type="text" ng-model="vm.name2Compe2" name="name2Compe2" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name2Compe2.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--Segunda Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 3</label>
-            <input list="studentsList" type="text" ng-model="vm.name3Compe2" name="name3Compe2" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name3Compe2.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--Segunda Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 4</label>
-            <input list="studentsList" type="text" ng-model="vm.name4Compe2" name="name4Compe2" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name4Compe2.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
+              <div id="registrar" class="col-md-3" >
+                <md-button class="button Active" type="submit" ng-click="vm.save(fights)">Registrar</button>
+              </div>
+              <div id="registrar" class="col-md-3" >
+                <md-button class="button Active" type="submit" ng-click="vm.save(fights)">Ver Calendario</button>
+              </div>
           </div>
 
-          <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 5</label>
-            <input list="studentsList" type="text" ng-model="vm.name5Compe2" name="name5Compe2" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name5Compe2.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-          <!--Fin de la segunda competición-->
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <!-- Inicio tercerra sección -->
-          <label for="">Selección de Estudiantes Tercera Competición :</label>
-          <br>
-
-          <!--Selección de estudiantes tercera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 1</label>
-            <input list="studentsList" type="text" ng-model="vm.name1Compe3" name="name1Compe3" required>
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name1Compe3.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--tercera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 2</label>
-            <input list="studentsList" type="text" ng-model="vm.name2Compe3" name="name2Compe3" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name2Compe3.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--tercera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 3</label>
-            <input list="studentsList" type="text" ng-model="vm.name3Compe3" name="name3Compe3" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name3Compe3.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--tercera Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 4</label>
-            <input list="studentsList" type="text" ng-model="vm.name4Compe3" name="name4Compe3" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name4Compe3.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-        </div>
-        <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 5</label>
-            <input list="studentsList" type="text" ng-model="vm.name5Compe3" name="name5Compe3" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name5Compe3.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-          <!--Fin de la tercera competición-->
-        </div>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <!--Inicio cuarta competición  -->
-          <label for="">Selección de Estudiantes Cuarta Competición:</label>
-          <br>
-
-          <!--Selección de estudiantes cuarta Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 1</label>
-            <input list="studentsList" type="text" ng-model="vm.name1Compe4" name="name1Compe4" required>
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name1Compe4.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--cuarta Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 2</label>
-            <input list="studentsList" type="text" ng-model="vm.name2Compe4" name="name2Compe4" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name2Compe4.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--cuarta Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 3</label>
-            <input list="studentsList" type="text" ng-model="vm.name3Compe4" name="name3Compe4" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name3Compe4.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-
-          <!--cuarta Competición -->
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 4</label>
-            <input list="studentsList" type="text" ng-model="vm.name4Compe4" name="name4Compe4" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name4Compe4.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-          </div>
-
-          <div class="col-xs-12 col-sm-12 col-md-12 row">
-          <md-input-container class="col-md-3" layout="column">
-            <label for="">Competidor 5</label>
-            <input list="studentsList" type="text" ng-model="vm.name5Compe4" name="name5Compe4" >
-            <datalist id="studentsList">
-              <option value="">--Seleccione un competidor--</option>
-              <option ng-repeat="students in vm.studentRel" value="{{students.firstName}}">{{vm.students.firstName}}</option>
-            </datalist>
-            <div ng-messages="frmRegisterFights.name5Compe4.$error">
-              <div ng-messages-include="components/includes/messages.html"></div>
-            </div> <!--cierre del ng-messages -->
-          </md-input-container>
-          <!--Fin de la cuarta competición-->
-        </div>
     </form> <!-- Cierre del formulario Competición  -->
+</section>
 
-      <div class="col-xs-12 col-sm-12 col-md-12">
-        <!-- Botones de Selleccione Registrar y Actualizar -->
-        <div id="registrar">
-          <md-button class="button Active" type="submit" ng-disabled="frmRegisterFights.$invalid" ng-click="vm.save(fights)">Registrar</button>
-        </div>
-        <div id="registrar">
-          <md-button class="button Active" ng-click="siguiente()">Ver Calendarios</button>
-        </div>
-      </div>
-  </div>
-  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   <div ng-show="pagina==2">
