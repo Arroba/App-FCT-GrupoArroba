@@ -206,6 +206,7 @@ inut:focus {
 .wrapper {
   position: relative;
   top: 0;
+  height: 70px;
 }
 .sidebar {
   position: absolute;
