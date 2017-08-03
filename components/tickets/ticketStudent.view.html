@@ -78,8 +78,8 @@
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
         </ul>
-    	</div>
-    </div>
+    	</div><!--cierre de sidebar-wrapper -->
+    </div><!--cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -90,8 +90,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--cierre de navbar-header -->
+        </div><!--cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -113,6 +113,8 @@
       <!-- Inicio del formulario  entradas: -->
       <form name="frmRegisterTickets" novalidate autocomplete="off">
 
+        <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
         <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
           <label for="">Nombre del Evento:</label>
           <input list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
@@ -136,8 +138,10 @@
             <div ng-messages-include="components/includes/messages.html"></div>
           </div> <!--cierre del ng-messages -->
         </md-input-container>
+      </div>
 
-        <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
           <label for="">Nombre:</label>
           <input type="text" ng-model="vm.name" name="name" required>
           <div ng-messages="frmRegisterTickets.name.$error">
@@ -145,7 +149,7 @@
           </div><!--cierre del ng-messages -->
         </md-input-container>
 
-        <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
           <label for="">Primer apellido:</label>
           <input type="text" ng-model="vm.firstName" name="firstName" required>
           <div ng-messages="frmRegisterTickets.firstName.$error">
@@ -153,15 +157,17 @@
           </div><!--cierre del ng-messages -->
         </md-input-container>
 
-        <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
           <label for="">Segundo apellido:</label>
           <input type="text" ng-model="vm.secondName" name="secondName" required>
           <div ng-messages="frmRegisterTickets.secondName.$error">
             <div ng-messages-include="components/includes/messages.html"></div>
           </div><!--cierre del ng-messages -->
         </md-input-container>
+      </div>
 
-        <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
           <label for="">Correo electrónico:</label>
           <input type="email" ng-model="vm.email" name="email" placeholder="nombre@dominio.com" required>
           <div ng-messages="frmRegisterTickets.email.$error">
@@ -169,13 +175,16 @@
           </div><!--cierre del ng-messages -->
         </md-input-container>
 
-        <md-input-container layout="column" class="col-sm-6 col-md-6" flex-gt-sm>
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
           <label for="">Cantidad de entradas</label>
           <input type="number" min="0" value="0" ng-model="vm.reservedTickets" name="reservedTickets" required>
           <div ng-messages="frmRegisterTickets.reservedTickets.$error">
             <div ng-messages-include="components/includes/messages.html"></div>
           </div><!--cierre del ng-messages -->
         </md-input-container>
+      </div>
+      </div><!--cierre de row -->
+
 
         <!-- Botones de Registro y Actualizar -->
       <div class="col-xs-12">
@@ -185,13 +194,13 @@
         <div class="displayNone" id="actualizar">
           <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(tickets)">Actualizar</md-button>
         </div>
-      </div>
+      </div><!-- Cierre de botones -->>
     </form> <!-- Cierre del formulario entradas  -->
 
       </section> <!-- Cierre de la sección registerTickets -->
 
 
-  </div>
+  </div> <!-- Cierre pagina1 -->
 
 
 
@@ -206,7 +215,7 @@
     <h1>Entradas reservadas</h1>
     <hr>
 
-    <section class="inputSearch">
+    <section class="inputSearch"><!--inicio botón busqueda -->
       <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
         <form action="" class="search-form">
           <div class="form-group has-feedback">
@@ -215,7 +224,7 @@
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
         </form>
-      </div>
+      </div><!--cierre botón busqueda -->
     </section>
 
     <!--inicio de los cards -->
@@ -238,8 +247,9 @@
         <md-card-actions id="buttons">
           <md-button class="edit" ng-click="vm.getInfo(tickets);vm.hideButton();registro1()">Editar</md-button>
           <md-card-icon-actions><!-- cierre botones  -->
-    <!--fin de los cards -->
-  </div>
-</div>
 
-</div>
+  </div><!--fin de los cards -->
+</div><!--cierre de pagina2-->
+
+</div><!--cierre de main-panel-->
+</div><!--cierre del wraper -->
