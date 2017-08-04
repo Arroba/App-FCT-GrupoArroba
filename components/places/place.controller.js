@@ -2,7 +2,7 @@
   angular
     .module('fctApp')
     .controller('placeController', placeController);
-    function placeController(placeService){
+    function placeController(placeService,$scope){
 
       var vm = this;
       vm.to = new Date();
@@ -12,6 +12,17 @@
         vm.place = placeService.getPlace();
         load_map();
       }init(); // Cierre de la función init
+
+      $scope.pagina = 1;
+      $scope.siguiente = function() {
+        $scope.pagina = 2;
+      }
+      $scope.anterior = function() {
+        $scope.pagina = 1;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
@@ -112,7 +123,7 @@
          timer: 3000,
          showConfirmButton: false
         })
-        
+
         placeService.updatePlace(placeEdit);
         init();
         clean();

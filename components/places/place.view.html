@@ -75,16 +75,8 @@
       </li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
-
-          <li>
-            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
-          </li>
-          <li>
-            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
-          </li>
-
         </ul>
     	</div>
     </div>
@@ -110,26 +102,18 @@
 <!-- Inicio de la sección registerPlace, que contiene el formulario del lugar, registrar, modificar y listar, Hecho por Fabián Quirós-->
       <div class="container-fluid">
         <section id="registerPlace">
-          <h1>Registro de Lugar ADMI</h1>
+          <h1>Mantenimiento de lugares</h1>
           <hr>
-
-          <!--Crear buscar lugar-->
-            <section class="inputSearch">
-              <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-                <form action="" class="search-form">
-                  <div class="form-group has-feedback">
-                    <label for="Buscar" class="sr-only">Buscar</label>
-                    <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                  </div>
-                </form>
-              </div>
-            </section>
 
       <!-- Inicio del formulario  Competición: -->
       <form name="frmRegisterPlace" novalidate autocomplete="off">
 
-        <div class="row">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+          <li><a data-toggle="tab" ng-click="siguiente()" href="">Lugares registrados</a></li>
+        </ul>
+
+        <div class="row" ng-show="pagina==1">
           <div class="col-xs-12 col-sm-12 col-md-12">
           <!--Inicio de los inpust para el formulario  -->
             <md-input-container class="col-xs-12 col-sm-4 col-md-4"layout="column">
@@ -217,7 +201,6 @@
               </div> <!--cierre del ng-messages -->
             </md-input-container>
           </div>
-        </div>
 
         <!--inicio estructura de los mapas -->
         <h2>Ingrese el lugar deseado</h2>
@@ -232,12 +215,13 @@
           <md-button class="button Active" type="button" ng-disabled="frmRegisterCompetition.$invalid" ng-click="vm.save(place); vm.getCurrentPosition(place)">Registrar</md-button>
         </div>
         <div class="displayNone" id="actualizar">
-          <md-button class="button edit" type="button" ng-disabled="frmRegisterCompetition.$invalid" ng-click="vm.update(place)">Actualizar</md-button>
+          <md-button class="button edit" type="button" ng-disabled="frmRegisterCompetition.$invalid" ng-click="vm.update(place);siguiente()">Actualizar</md-button>
         </div>
-        <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
+      </div>
+
       </form> <!-- Cierre del formulario Competición  -->
 
-          <div class="col-md-12">
+          <div class="col-md-12" ng-show="pagina==2">
           <!--inicio de los cards -->
             <md-card class="container-fluid col-md-6" ng-repeat="place in vm.place | filter:vm.nameFilter">
               <md-card-header>
@@ -258,7 +242,7 @@
               </md-card-title>
               <!-- Boton para cambiar el editar las eventos -->
               <md-card-actions id="buttons">
-                <md-button class="edit" ng-click="vm.getInfo(place);vm.hideButton()">Editar</md-button>
+                <md-button class="edit" ng-click="vm.getInfo(place);vm.hideButton();registro1()">Editar</md-button>
               <md-card-icon-actions><!-- cierre botones  -->
           <!--fin de los cards -->
           </div>

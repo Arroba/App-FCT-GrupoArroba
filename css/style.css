@@ -6,7 +6,28 @@
 /*Estilos del form*/
 section h1{
   text-align: left;
-  color: #50666B;
+  color: #1C1C1C;
+}
+form .nav-tabs a, a:focus{
+  color: #eaa824;
+}
+form .nav-tabs a:hover, a:focus{
+  color: #eaa824;
+}
+form .input-group .btn-info{
+  background: #e67e22;
+  border: 2px solid;
+  border-radius: 50px;
+}
+
+/*Inicio estilos del buscador*/
+.inputSearch .search-form{
+  padding-top: 25px;
+}
+/*Fin estilos del buscador*/
+
+form .row{
+  margin-top: 30px;
 }
 section hr{
   background: #dcdcdc;
@@ -48,7 +69,7 @@ tbody td{
   color: #fff;
   border-radius: 8px;
 }
-.Active{ 
+.Active{
   background:#e67e22;
   color: #fff;
   border-radius: 8px;

@@ -75,19 +75,11 @@
       </li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
-
-          <li>
-            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
-          </li>
-          <li>
-            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
-          </li>
-
         </ul>
-    	</div>
-    </div>
+    	</div><!-- cierre de sidebar-wrapper -->
+    </div><!-- cierre de sidebar -->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -98,8 +90,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!-- cierre de navbar-header -->
+        </div><!-- cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -109,7 +101,7 @@
     <div class=" col-md-12">
       <h1>Profesores ADMI</h1>
       <hr>
-      <!--Crear buscar academia-->
+      <!--inicio de botón buscar -->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -119,9 +111,11 @@
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           </form>
-        </div>
+        </div><!--cierre de botón buscar -->
       </section>
 
+      <!--inicio de los cards -->
+        <div class="col-xs-12">
       <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
         <md-card-header>
           <md-card-header-text>
@@ -147,4 +141,7 @@
           </md-card-title-media>
         </md-card-title>
   </section>
-</div>
+</div><!--cierre de cards -->
+</div><!--cierre de div despues de section -->
+</div><!--cierre de main-panel -->
+</div><!--cierre de wrapper -->

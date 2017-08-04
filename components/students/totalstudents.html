@@ -75,19 +75,12 @@
       </li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
-
-          <li>
-            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
-          </li>
-          <li>
-            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
-          </li>
-
         </ul>
-    	</div>
-    </div>
+      </div><!--cierre de sidebar-wrapper-->
+    </div><!--cierre de sidebar -->
+
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -98,15 +91,16 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--cierre de navbar-header-->
+        </div><!--cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
 
   <!-- Page Content -->
   <section>
-    <div class=" col-md-12">
+    <div class=" col-md-12"> <!-- inicio cards -->
+
       <h1>Estudiantes ADMI</h1>
       <hr>
       <!--Crear buscar academia-->
@@ -119,7 +113,7 @@
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           </form>
-        </div>
+        </div><!-- cierre busqueda -->
       </section>
 
       <md-card  class="container-fluid col-md-6" ng-repeat="student in vm.students | filter:vm.nameFilter">
@@ -155,4 +149,6 @@
             </md-card-title-media>
           </md-card-title>
   </section>
-  </div>
+</div><!-- cierre cards -->
+</div><!--cierre de main-panel -->
+</div><!--cierre de wraper-->

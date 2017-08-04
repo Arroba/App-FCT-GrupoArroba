@@ -19,16 +19,15 @@
       }init();
 
       $scope.pagina = 1;
-        $scope.siguiente = function() {
-          $scope.pagina++;
-        }
-
-        $scope.anterior = function() {
-          $scope.pagina--;
-        }
-        $scope.registro1 = function() {
-          $scope.pagina = 1;
-        }
+      $scope.siguiente = function() {
+        $scope.pagina = 2;
+      }
+      $scope.anterior = function() {
+        $scope.pagina = 1;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
       // Inicio de la función presave.(Pamela)
       vm.presave= function(newStudent){
@@ -78,7 +77,7 @@
         }// Cierre de newStudent.(Pamela)
 
     // intento de restringir los usuarios que se registran
-    
+
       if(vm.students.length == 0){
          studentService.setStudents(newStudent);
          clear();

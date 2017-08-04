@@ -12,16 +12,17 @@
       }init();
       // Función que guarda los datos
       $scope.pagina = 1;
-        $scope.siguiente = function() {
-          $scope.pagina++;
-        }
+      $scope.siguiente = function() {
+        $scope.pagina = 2;
+      }
+      $scope.anterior = function() {
+        $scope.pagina = 1;
+      }
+      $scope.registro1 = function() {
+        $scope.pagina = 1;
+      }
 
-        $scope.anterior = function() {
-          $scope.pagina--;
-        }
-        $scope.registro1 = function() {
-          $scope.pagina = 1;
-        }
+
 
       vm.save= function(){// Objeto que obtener
         var newAcademy = {

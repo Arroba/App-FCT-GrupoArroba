@@ -73,19 +73,12 @@
       <li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
 
-          <li>
-            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
-          </li>
-          <li>
-            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
-          </li>
-
         </ul>
-    	</div>
-    </div>
+    	</div><!--cierre de sidebar-wrapper -->
+    </div><!--cierre de sidebar -->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -96,8 +89,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--cierre de navbar-header -->
+        </div><!--cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -326,10 +319,9 @@
                   </div><!--cierre del ng-messages -->
                 </md-input-container>
               </div>
-            </div>
+            </div><!--cierre de row-->
         <!-- Botones de Selleccione foto, Registrar y Actualizar -->
             <div class="col-xs-12 col-sm-12 col-md-12">
-
               <div class="input-group">
                 <label class="input-group-btn">
                     <span class="btn btn-info">
@@ -338,7 +330,6 @@
                     </span>
                 </label>
               </div>
-
               <div class="col-xs-12">
                 <div id="registrar">
                   <md-button class="button Active" type="submit" ng-disabled="frmRegisterStudent.$invalid">Registrar</button>
@@ -348,8 +339,8 @@
                 </div>
               </div>
           </form><!--cierre del formulario para registrar -->
-        </div>
-      </div>
+        </div><!-- Cierre Botones de Selleccione foto, Registrar y Actualizar -->
+      </div><!--cierre de pagina1 -->
 
 
       <div class= "col-md-12" ng-show="pagina==2">
@@ -362,7 +353,7 @@
 
         <h1>Estudiantes registrados</h1>
         <hr>
-          <!--Crear buscar academia-->
+          <!--Crear buscar estudiante-->
            <section class="inputSearch">
              <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
              <form action="" class="search-form">
@@ -372,10 +363,10 @@
                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
                </div>
              </form>
-           </div>
+           </div><!--Crear buscar estudiante-->
           </section>
 
-          <div class="col-xs-12">
+          <div class="col-xs-12"><!--inicio cards-->
            <md-card  class="container-fluid col-md-6" ng-repeat="student in vm.students | filter:vm.nameFilter">
            <md-card-header>
            <md-card-header-text>
@@ -415,5 +406,6 @@
              <md-button class="edit" ng-click="vm.inactive(student)">Inactivo</md-button>
              <md-card-icon-actions><!-- cierre botones  -->
            </div><!--fin de los cards -->
-
-         </div>
+         </div><!--cierre de pagina2 -->
+         </div><!--cierre de main-panel -->
+         </div><!--cierre de wrapper -->

@@ -75,16 +75,8 @@
       </li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
-
-          <li>
-            <a href="#!/landingGallerys"><i class="pe-7s-photo-gallery"></i><p>Galería</p></a>
-          </li>
-          <li>
-            <a href="#!/landingPageContact"><i class="pe-7s-mail-open"></i><p>Contacto</p></a>
-          </li>
-
         </ul>
     	</div>
     </div>
@@ -108,21 +100,21 @@
 
 
 <!--Regristrar academias, listar academias y modificar academias en conjunto con impresión de los datos  -->
-  <div class="container-fluid" ng-show="pagina==1">
-    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-        <md-button>Registro</md-button>
-        <md-button ng-click="siguiente()">Academias registradas</md-button>
-        <span flex></span>
-    </md-toolbar>
+  <div class="container-fluid" >
 
     <section id="registerAcademy">
-      <h1>Registro de Academias ADMI</h1>
+      <h1>Academias</h1>
       <hr>
 
         <!--Creación del formulario para registro  -->
       <form name="frmRegisterAcademies" novalidate autocomplete="off">
 
-        <div class="row">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+          <li><a data-toggle="tab" ng-click="siguiente()" href="">Academias registradas</a></li>
+        </ul>
+
+        <div class="row" ng-show="pagina==1">
           <div class="col-xs-12 col-sm-12 col-md-12">
             <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
               <label for="">Nombre de la academia:</label>
@@ -166,16 +158,16 @@
               </div><!--cierre del ng-messages -->
             </md-input-container>
           </div>
-        </div>
 
       <!-- Botones de Registro y Actualizar -->
         <div id="registrar">
           <md-button class="button Active" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.save(academy)">Registrar</md-button>
         </div>
         <div class="displayNone" id="actualizar">
-          <md-button class="button edit" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy)">Actualizar</md-button>
+          <md-button class="button edit" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy);siguiente()">Actualizar</md-button>
         </div>
       </form>
+    </div>
 
     </section>
 
@@ -183,16 +175,7 @@
 
   <div class= "col-md-12" ng-show="pagina==2">
 
-    <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-      <md-button ng-click="anterior()">Registro</md-button>
-      <md-button >Academias registradas</md-button>
-      <span flex></span>
-    </md-toolbar>
 
-      <!-- <button class="atras" ng-click="anterior()">Registro</button>
-      <button class="siguiente">Academias registradas</button> -->
-      <h1>Academias registradas</h1>
-      <hr>
       <!--Crear buscar academia-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
@@ -231,7 +214,6 @@
             <!-- cierre botones  -->
       </div><!--Fin de la tabla para impresión de datos-->
 
-  </div><!--Fin -->
-
-</div>
-</div>
+  </div><!-- cierre paguina2-->
+</div><!-- cierre main-panel-->
+</div> <!-- cierre main-panel-->
