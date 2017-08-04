@@ -77,8 +77,8 @@
       </li>
 
         </ul>
-    	</div>
-    </div>
+    	</div><!-- cierre de sidebar-wrapper -->
+    </div><!-- cierre de sidebar -->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -89,8 +89,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!-- cierre de navbar-header -->
+        </div><!-- cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -243,7 +243,7 @@
                 </div> <!--cierre del ng-messages -->
               </md-input-container>
             </div>
-          </div>
+          </div><!--cierre de row -->
 
               <!-- Botones de Selleccione foto, Registrar y Actualizar -->
               <div class="col-xs-12 col-sm-12 col-md-12">
@@ -265,12 +265,9 @@
                     <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">Actualizar</md-button>
                   </div>
                 </div>
-              </div>
+              </div><!-- Cierre de botones -->
             </section> <!-- Cierre de la sección registerTeacher -->
-
-
-
-                </div>
+          </div><!-- Cierre de pagina1 -->
 
 
             </form> <!-- Cierre del formulario profesor  -->
@@ -296,8 +293,8 @@
                   </form>
                 </div>
               </section>
-              <div class="col-xs-12">
-              <!--inicio de los cards -->
+
+              <div class="col-xs-12"><!--inicio de los cards -->
                 <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
                   <md-card-header>
                     <md-card-header-text>
@@ -331,6 +328,6 @@
                 <!--fin de los cards -->
                 </div>
 
-        </div>
-      </div>
-    </div>
+        </div><!-- Cierre de pagina2 -->
+      </div><!--cierre de main-panel -->
+    </div><!--cierre de wrapper -->

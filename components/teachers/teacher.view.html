@@ -78,8 +78,8 @@
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
         </ul>
-    	</div>
-    </div>
+    	</div><!-- cierre de sidebar-wrapper -->
+    </div><!-- cierre de sidebar -->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -90,8 +90,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!-- cierre de navbar-header -->
+        </div><!-- cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -266,14 +266,14 @@
                     <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher);siguiente()">Actualizar</md-button>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div><!-- cierre de Botones de Selleccione foto, Registrar y Actualizar -->
+            </div><!-- Cierre de pagina1 -->
 
             </section> <!-- Cierre de la sección registerTeacher -->
 
 
 
-                </div>
+          </div><!-- cierre de container -->
 
 
             </form> <!-- Cierre del formulario profesor  -->
@@ -290,8 +290,10 @@
                       <span class="glyphicon glyphicon-search form-control-feedback"></span>
                     </div>
                   </form>
+                  <!--Crear buscar academia-->
                 </div>
               </section>
+              
               <div class="col-xs-12">
               <!--inicio de los cards -->
                 <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
@@ -324,9 +326,9 @@
                     <md-button class="Active" ng-click="vm.active(teacher)">Activo</md-button>
                     <md-button class="edit" ng-click="vm.inactive(teacher)">Inactivo</md-button>
                     <md-card-icon-actions><!-- cierre botones  -->
-                <!--fin de los cards -->
-                </div>
 
-        </div>
-      </div>
-    </div>
+                </div>  <!--fin de los cards -->
+
+        </div><!--cierre de pagina2-->
+      </div><!--cierre de main-panel -->
+    </div><!--cierre de wrapper -->
