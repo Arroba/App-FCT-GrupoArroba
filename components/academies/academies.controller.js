@@ -11,6 +11,7 @@
         vm.academies = academiesService.getAcademies();
       }init();
       // Función que guarda los datos
+
       $scope.pagina = 1;
       $scope.siguiente = function() {
         $scope.pagina = 2;
