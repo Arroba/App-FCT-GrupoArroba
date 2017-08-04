@@ -778,6 +778,22 @@
       css:'css/styleMenu.css'
     })
 
+    // CALENDARIOS ADMINISTRADOR
+    //TORNEO
+    .state('calendar',{
+      url : '/calendar',
+      templateUrl: './components/fights/calendar.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/fights/fights.controller.js')
+        }]
+      },
+      controller: 'fightsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
+
 })();
