@@ -7,35 +7,38 @@
       <ul class="nav">
        <li>
           <a href="#!/teacherProfile"><i class="pe-7s-user"></i><p>Perfil</p></a>
-      </li>
+       </li>
 
-      <li class="dropdown">
-          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
-          <div class="dropdown-backdrop"></div>
-            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
-              <li style="background-color: #FFFFFF;">
-                <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
-              </li>
+       <li class="dropdown">
+        <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
+        <div class="dropdown-backdrop"></div>
+          <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+            <li style="background-color: #FFFFFF;">
+              <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+            </li>
           </ul>
+       </li>
 
-              <li class="dropdown">
-                  <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Listar<span class="caret"></span></p></a>
-                  <div class="dropdown-backdrop"></div>
-                    <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
-                      <li style="background-color: #FFFFFF;">
-                        <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
-                      </li>
-                      <li style="background-color: #FFFFFF;">
-                        <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
-                      </li>
-                  </ul>
+       <li class="dropdown">
+        <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Listar<span class="caret"></span></p></a>
+        <div class="dropdown-backdrop"></div>
+          <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+            <li style="background-color: #FFFFFF;">
+              <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
+            </li>
+            <li style="background-color: #FFFFFF;">
+              <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+            </li>
+          </ul>
+       </li>
 
-      <li class=>
+       <li > <!-- borre class= PILI -->
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
-      </li>
-        </ul>
-    	</div>
-    </div>
+       </li>
+      </ul><!-- cierre nav -->
+    </div><!-- Cierre sidebar-wrapper -->
+  </div><!-- Cierre sidebar -->
+  
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -49,14 +52,11 @@
           </div>
         </div>
         <div class="collapse navbar-collapse"></div>
-      </nav>
+      </nav><!-- Cierre navbar-default -->
 
-
-  <!-- Page Content -->
-
-
-  <div class="container-fluid">
-    <h1>Academias registradas PROFE</h1>
+      <!-- Page Content -->
+      <div class="container-fluid">
+        <h1>Academias registradas PROFE</h1>
         <hr>
         <!--Crear buscar academia-->
         <section class="inputSearch">
@@ -69,10 +69,10 @@
               </div>
             </form>
           </div>
-        </section>
+        </section><!-- Cierre inputSearch -->
 
         <div class="col-xs-12">
-          <md-card class="container-fluid col-md-6" ng-repeat="academy in vm.academies | filter:vm.nameFilter"><!--Impresión de los datos-->
+          <md-card class="container-fluid col-md-6" ng-repeat="academy in vm.academies | filter:vm.nameFilter"><!--Impresión de datos-->
             <md-card-header>
               <md-card-header-text>
                 <span class="md-title">Academia: {{academy.name}}</span>
@@ -94,7 +94,7 @@
               <md-button class="edit"  ng-click="vm.inactive(academy)">Inactivo</md-button>
             <md-card-icon-actions>
               <!-- cierre botones  -->
-        </div><!--Fin de la tabla para impresión de datos-->
-  </div>
- </div>
-</div>
+        </div><!--Fin de la card para impresión de datos-->
+      </div><!-- cierre container-fluid-->
+    </div><!-- cierre main-panel-->
+</div><!-- cierre wrapper-->
