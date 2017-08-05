@@ -47,7 +47,7 @@
 
       vm.showCalendar= function(pCompetition){
         var fightsList = fightsService.getFights();
-        var competitors = {};
+        var competitors = [];
           switch (pCompetition) {
             case 'primera':
             for (var i = 0; i < fightsList.length; i++) {
