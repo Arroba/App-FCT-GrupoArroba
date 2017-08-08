@@ -79,8 +79,8 @@
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
         </ul>
-    	</div>
-    </div>
+      </div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -91,8 +91,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -107,13 +107,15 @@
 
             <!--Creación del formulario para registro de PATROCINADOR -->
             <form class="form" name="frmRegisterSponsor" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
-
+              <!--inicio tabs -->
               <ul class="nav nav-tabs">
                 <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
                 <li><a data-toggle="tab" ng-click="siguiente()" href="">Patrocinadores registrados</a></li>
-              </ul>
+              </ul>  <!--cierre tabs -->
 
-              <div class="row" ng-show="pagina==1">
+              <!-- Page Content -->
+              <!--Registrar Patrocinador-->
+              <div class="row" ng-show="pagina==1"><!--inicio pagina1 -->
                 <div  class="col-xs-12 col-sm-12 col-md-12">
                   <h2>Datos Generales</h2>
                   <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
@@ -218,7 +220,7 @@
                   </md-input-container>
                 </div>
 
-
+                <!-- Botones Foto, Registro y Actualizar -->
               <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="input-group">
                   <label class="input-group-btn">
@@ -236,19 +238,19 @@
                     <md-button class="button edit" type="button" ng-disabled="frmRegisterSponsor.$invalid" ng-click="vm.update(sponsor);siguiente()">Actualizar</md-button>
                   </div>
                 </div>
-              </div>
-            </div>
+              </div>  <!--cierre Botones Foto, Registro y Actualizar -->
+            </div><!--cierre pagina1-->
 
             </form><!--cierre del formulario para registrar de PATROCINADOR-->
 
-        </section>
+        </section><!-- Cierre de la sección registerTickets -->
 
-      </div>
+      </div><!--Fin Registrar Patrocinador-->
 
       <!--Cards  -->
       <div class= "col-md-12" ng-show="pagina==2">
 
-
+        <!-- buscar patrocinador -->
         <section class="inputSearch">
           <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
             <form action="" class="search-form">
@@ -259,9 +261,9 @@
               </div>
             </form>
           </div>
-        </section>
+        </section><!-- fin buscar patrocinador -->
 
-        <div class="col-xs-12">
+        <div class="col-xs-12"><!--Inicio de cards PATROCINADOR-->
           <md-card class="container-fluid col-md-6" ng-repeat="sponsor in vm.sponsors | filter:vm.nameFilter">
             <md-card-header>
               <md-card-header-text>
@@ -288,6 +290,7 @@
           <md-card-actions id="buttons">
             <md-button class="edit" ng-click="vm.getInfo(sponsor);vm.hideButton();registro1()">Editar</md-button>
           <md-card-icon-actions><!--Fin de boton edición PATROCINADOR-->
-        <!--Fin de cards PATROCINADOR-->
-      </div>
-      </div>
+          </div><!--Fin de cards PATROCINADOR-->
+        </div><!--Cierre de segunda pagína -->
+      </div><!-- cierre main-panel-->
+    </div> <!-- cierre wrapper-->

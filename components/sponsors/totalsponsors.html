@@ -79,8 +79,8 @@
       </li>
 
         </ul>
-    	</div>
-    </div>
+    	</div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -91,8 +91,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -101,7 +101,7 @@
 <section>
     <div class=" col-md-12">
       <h1>Patrocinadores ADMI</h1>
-      <!--Crear buscar academia-->
+      <!--Crear buscar patrocinador-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -111,7 +111,7 @@
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           </form>
-        </div>
+        </div><!--Fin buscar patrocinador-->
       </section>
 
       <md-card class="container-fluid col-md-6" ng-repeat="sponsor in vm.sponsors | filter:vm.nameFilter">
@@ -138,3 +138,6 @@
         </md-card-title-media>
         </md-card-title>
   </section>
+</div> <!-- cierre col-md-12-->
+</div><!-- cierre main-panel-->
+</div> <!-- cierre wrapper-->
