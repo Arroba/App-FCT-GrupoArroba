@@ -104,13 +104,15 @@
           <h1>Productos</h1>
           <hr>
 
-          <ul class="nav nav-tabs">
-            <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
-            <li><a data-toggle="tab" ng-click="siguiente()" href="">Productos registrados</a></li>
-          </ul>
+
 
             <!--Creación del formulario para registro de PRODUCTOS -->
             <form class="form" name="frmRegisterProduct" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+
+              <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a></li>
+                <li><a data-toggle="tab" ng-click="siguiente()" href="">Productos registrados</a></li>
+              </ul>
 
               <div class="row" ng-show="pagina==1"><!--inicio de pagina1 -->
                 <div  class="col-xs-12 col-sm-12 col-md-12">
@@ -167,7 +169,7 @@
 
               <!-- Botones de Registro y Actualizar -->
                 <div id="registrar">
-                  <md-button class="button Active" type="button" ng-disabled="frmRegisterProduct.$invalid" ng-click="vm.save(product)">Registrar</md-button>
+                  <md-button class="button Active" type="submit" ng-disabled="frmRegisterProduct.$invalid" >Registrar</md-button>
                 </div>
                 <div class="displayNone" id="actualizar">
                   <md-button class="button edit" type="button" ng-disabled="frmRegisterProduct.$invalid" ng-click="vm.update(product);siguiente()">Actualizar</md-button>
