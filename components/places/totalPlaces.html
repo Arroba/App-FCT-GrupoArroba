@@ -78,8 +78,8 @@
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
         </ul>
-    	</div>
-    </div>
+    	</div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -90,17 +90,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
 
   <!-- Page Content -->
 <section>
-    <div class=" col-md-12">
+    <div class=" col-md-12"><!-- inicio col-md-12-->
       <h1>Lugares para eventos Registrados ADMI</h1>
-      <!--Crear buscar academia-->
+      <!--Crear buscar places-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -111,7 +111,7 @@
             </div>
           </form>
         </div>
-      </section>
+      </section><!--fin buscar places-->
 
       <md-card class="container-fluid col-md-4" ng-repeat="place in vm.place | filter:vm.nameFilter">
         <md-card-header>
@@ -128,4 +128,7 @@
             <span class="md-subhead">Persona de contacto:{{place.nameContact}} {{place.firstName}} {{place.secondName}}</span>
           </md-card-title-text>
         </md-card-title>
-  </section>
+      </div><!-- cierre col-md-12-->
+    </section><!-- cierre page content-->
+    </div><!-- cierre main-panel-->
+    </div><!-- cierre wrapper-->
