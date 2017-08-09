@@ -88,9 +88,6 @@
         init();
       }
     // fin filtrar los datos para calendarios
-      function callListCompetitor(competitors){
-        init();
-      }
 
       // funcion de filtro para los datalist competición 1
 
