@@ -45,6 +45,10 @@
 
       // Filtrar los datos para calendarios
 
+      vm.callCalendar = function(pCompetition){
+        showCalendar(pCompetition);
+      }
+
       function showCalendar(pCompetition){
         var fightsList = fightsService.getFights();
         var competitors = [];
@@ -53,14 +57,12 @@
             for (var i = 0; i < fightsList.length; i++) {
               if (fightsList[i].competition == pCompetition) {
                 competitors.push(fightsList[i]);
-                vm.fights = competitors;
               }
             } // Cierre del ciclo
           case 'segunda':
             for (var i = 0; i < fightsList.length; i++) {
               if (fightsList[i].competition == pCompetition) {
                 competitors.push(fightsList[i]);
-                vm.fights = competitors;
               }
             } // Cierre del ciclo
           break;
@@ -68,7 +70,6 @@
             for (var i = 0; i < fightsList.length; i++) {
               if (fightsList[i].competition == pCompetition) {
                 competitors.push(fightsList[i]);
-                vm.fights = competitors;
               }
             } // Cierre del ciclo
           break;
@@ -76,16 +77,15 @@
             for (var i = 0; i < fightsList.length; i++) {
               if (fightsList[i].competition == pCompetition) {
                 competitors.push(fightsList[i]);
-                vm.fights = competitors;
               }
             } // Cierre del ciclo
           break;
           default:
-          console.log(fightsList)
           break;
 
         }
         return competitors;
+        init();
       }
     // fin filtrar los datos para calendarios
 
