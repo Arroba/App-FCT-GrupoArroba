@@ -11,7 +11,7 @@
 
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
-        vm.fights = showCalendar();
+        vm.fights;
         vm.eventsRel = eventsService.getEvents();
         vm.studentRel = datalistFilter();
         vm.academiesRel = academiesService.getAcademies();
@@ -84,11 +84,13 @@
           break;
 
         }
-        return competitors;
+        vm.fights = competitors;
         init();
       }
     // fin filtrar los datos para calendarios
-
+      function callListCompetitor(competitors){
+        init();
+      }
 
       // funcion de filtro para los datalist competición 1
 
