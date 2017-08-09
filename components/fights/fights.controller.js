@@ -11,7 +11,7 @@
 
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
-        vm.fights = vm.showCalendar();
+        vm.fights = showCalendar();
         vm.eventsRel = eventsService.getEvents();
         vm.studentRel = datalistFilter();
         vm.academiesRel = academiesService.getAcademies();
@@ -45,7 +45,7 @@
 
       // Filtrar los datos para calendarios
 
-      vm.showCalendar= function(pCompetition){
+      function showCalendar(pCompetition){
         var fightsList = fightsService.getFights();
         var competitors = [];
           switch (pCompetition) {
