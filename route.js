@@ -778,14 +778,21 @@
       css:'css/styleMenu.css'
     })
 
-    //ranking
+    //generalRanking
     .state('gRanking',{
       url : '/generalRanking',
       templateUrl: 'components/generalRanking/generalRanking.view.html',
       css:'css/ranking.css'
     })
-    
 
+     //individualRanking
+    .state('iRanking',{
+      url : '/individualRanking',
+      templateUrl: 'components/individualRanking/individualRanking.view.html',
+      css:'css/ranking.css'
+    })
+    
+    //calendar
     .state('calendar',{
     url : '/calendar',
     templateUrl: './components/fights/calendar.view.html',
