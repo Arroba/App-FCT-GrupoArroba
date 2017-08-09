@@ -11,7 +11,7 @@
 
       // Inicio de la función init que es la que se inicializa de primiera
       function init(){
-        // vm.fights = fightsService.getFights();
+        vm.fights = vm.showCalendar();
         vm.eventsRel = eventsService.getEvents();
         vm.studentRel = datalistFilter();
         vm.academiesRel = academiesService.getAcademies();
@@ -57,19 +57,35 @@
               }
             } // Cierre del ciclo
           case 'segunda':
-          $location.path('/profileAsistent');
+            for (var i = 0; i < fightsList.length; i++) {
+              if (fightsList[i].competition == pCompetition) {
+                competitors.push(fightsList[i]);
+                vm.fights = competitors;
+              }
+            } // Cierre del ciclo
           break;
           case 'tercera':
-          $location.path('/teacherProfile');
+            for (var i = 0; i < fightsList.length; i++) {
+              if (fightsList[i].competition == pCompetition) {
+                competitors.push(fightsList[i]);
+                vm.fights = competitors;
+              }
+            } // Cierre del ciclo
           break;
           case 'cuarta':
-          $location.path('/studentProfile');
+            for (var i = 0; i < fightsList.length; i++) {
+              if (fightsList[i].competition == pCompetition) {
+                competitors.push(fightsList[i]);
+                vm.fights = competitors;
+              }
+            } // Cierre del ciclo
           break;
           default:
           console.log(fightsList)
           break;
 
         }
+        return competitors;
       }
     // fin filtrar los datos para calendarios
 
