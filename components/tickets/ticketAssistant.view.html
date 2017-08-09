@@ -90,19 +90,23 @@
         <div class="collapse navbar-collapse"></div>
       </nav>
       <!-- Page Content -->
-      <div class="container-fluid" ng-show="pagina==1">
-        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-          <md-button>Reserva</md-button>
-          <md-button ng-click="siguiente()">Entradas reservadas</md-button>
-          <span flex></span>
-        </md-toolbar>
-        <!-- Inicio de la sección registerTickets, que contiene el formulario de entradas, registrar, modificar y listar, Hecho por Fabián Quirós-->
+        <!-- Inicio de la sección tickets, que contiene el formulario del lugar, registrar, modificar y listar-->
+      <div class="container-fluid" >
         <section id="registerTickets">
-          <h1>Reserva de entradas ASIS</h1>
+
+          <h1>Reserva de entradas Asis</h1>
           <hr>
+
           <!-- Inicio del formulario  entradas: -->
           <form name="frmRegisterTickets" novalidate autocomplete="off">
-            <div class="row">
+
+            <!-- inicio de tabs -->
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Reserva Entradas</a></li>
+              <li><a data-toggle="tab" ng-click="siguiente()" href="">Entradas Reservas</a></li>
+            </ul><!-- Cierre de tabs   -->
+
+            <div class="row" ng-show="pagina==1">
             <div class="col-xs-12 col-sm-12 col-md-12">
             <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
               <label for="">Nombre del Evento:</label>
@@ -172,32 +176,24 @@
               </div><!--cierre del ng-messages -->
             </md-input-container>
           </div>
-        </div><!--cierre de row -->
-
 
             <!-- Botones de Registro y Actualizar -->
-            <div class="col-xs-12">
-              <div id="registrar">
-                <md-button class="button Active" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.save(tickets); vm.ticketsDisp()">Reservar</md-button>
-              </div>
-              <div class="displayNone" id="actualizar">
-                <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(tickets)">Actualizar</md-button>
-              </div>
+          <div class="col-xs-12">
+            <div id="registrar">
+              <md-button class="button Active" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.save(tickets); vm.ticketsDisp()">Reservar</md-button>
             </div>
-          </form> <!-- Cierre del formulario entradas  -->
+            <div class="displayNone" id="actualizar">
+              <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(tickets)">Actualizar</md-button>
+            </div>
+          </div><!-- Cierre de botones -->
+        </div><!--cierre de pagina1 -->
         </section> <!-- Cierre de la sección registerTickets -->
-      </div><!--Cierre de primer pagína -->
+        </form> <!-- Cierre del formulario entradas  -->
+
+
 
       <div class="col-md-12" ng-show="pagina==2">
-        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-          <md-button ng-click="anterior()">Reserva</md-button>
-          <md-button >Entradas reservadas</md-button>
-          <span flex></span>
-        </md-toolbar>
-
-        <h1>Entradas reservadas</h1>
-        <hr>
-
+        <!--Crear buscar academia-->
         <section class="inputSearch">
           <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
             <form action="" class="search-form">
@@ -207,11 +203,12 @@
                 <span class="glyphicon glyphicon-search form-control-feedback"></span>
               </div>
             </form>
-          </div><!--Cierre de botón de busqueda -->
+          </div>
         </section>
 
         <!--inicio de los cards -->
         <div class="col-xs-12">
+
           <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
             <md-card-header>
               <md-card-header-text>
@@ -228,8 +225,9 @@
             <!-- Boton para cambiar el editar las profesores -->
             <md-card-actions id="buttons">
               <md-button class="edit" ng-click="vm.getInfo(tickets);vm.hideButton();registro1()">Editar</md-button>
-            </md-card-actions><!-- cierre botones  -->
-          </div><!--Cierre de segunda pagína -->
-        </div>
-      </div><!-- cierre main-panel-->
-    </div> <!-- cierre wrapper-->
+              <md-card-icon-actions><!-- cierre botones  -->
+      </div><!--fin de los cards -->
+    </div><!--cierre de pagina2 -->
+    </div><!--cierre de pagina1 -->
+    </div><!--cierre de main-panel -->
+    </div><!--cierre de wrapper -->
