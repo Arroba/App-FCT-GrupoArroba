@@ -201,13 +201,16 @@
             </md-input-container>
           </div><!--labels -->
 
-        <!--inicio estructura de los mapas -->
-        <h2>Ingrese el lugar deseado</h2>
-        <div><input type="text" maxlength="100" id="address" placeholder="Dirección" />
-        <input type="button" ng-click="vm.getAddress()" id="search" value="Buscar" />
-        </div><br/>
-        <div id='map_canvas' style="width:600px; height:400px;"></div>
-        <!--Final estructura para creación de mapas -->
+          <div class="col-xs-12 col-sm-12 col-md-12"><!--labels -->
+
+          <!--inicio estructura de los mapas -->
+          <h2>Ingrese el lugar deseado</h2>
+          <div><input type="text" maxlength="100" id="address" placeholder="Dirección" />
+          <input type="button" ng-click="vm.getAddress()" id="search" value="Buscar" />
+          </div><br/>
+          <div id='map_canvas' style="width:600px; height:400px;"></div>
+          <!--Final estructura para creación de mapas -->
+        </div><!--labels -->
 
         <!-- Botones de Selleccione Registrar y Actualizar -->
         <div id="registrar">
@@ -221,6 +224,20 @@
     </form> <!-- Cierre del formulario Places  -->
 
           <div class="col-md-12" ng-show="pagina==2"><!--inicio de los cards -->
+
+            <!--Crear buscar estudiante-->
+             <section class="inputSearch">
+               <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+               <form action="" class="search-form">
+                 <div class="form-group has-feedback">
+                   <label for="Buscar" class="sr-only">Buscar</label>
+                   <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                   <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                 </div>
+               </form>
+             </div>
+           </section><!--Cierre buscar estudiante-->
+
             <md-card class="container-fluid col-md-6" ng-repeat="place in vm.place | filter:vm.nameFilter">
               <md-card-header>
                 <md-card-header-text>
@@ -244,7 +261,7 @@
               <md-card-icon-actions><!-- cierre botones  -->
 
                 </div><!--fin de los segunda pagína  -->
-              </section> <!-- Cierre de la sección registerPlayer -->
+              </section> <!-- Cierre de la sección place -->
             </div><!--Cierre de Container Fluid-->
           </div><!-- cierre main-panel-->
         </div> <!-- cierre wrapper-->

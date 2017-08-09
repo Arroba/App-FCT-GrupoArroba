@@ -38,7 +38,7 @@
               <a href="#!/beneficientAssistant"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
             </li>
           </ul>
-       </li>   
+       </li>
 
        <li class="dropdown">
         <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
@@ -94,21 +94,21 @@
 
     <!-- Page Content -->
     <!--Registrar asociacion, listar y modificar en conjunto con impresión de los datos  -->
-      <div class="container-fluid" ng-show="pagina==1">
-
-        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-          <md-button>Registro</md-button>
-          <md-button ng-click="siguiente()">Asociaciones benéficas registradas</md-button>
-          <span flex></span>
-        </md-toolbar>
-
+      <div class="container-fluid" >
         <section id="registerBeneficient">
           <h1>Registro de asociación benéfica ASIS</h1>
           <hr>
 
           <!-- Inicio del formulario asociacion: -->
           <form name="frmRegisterBeneficient" novalidate autocomplete="off">
-            <div class="row">
+            <ul class="nav nav-tabs">
+              <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro</a>
+              </li>
+              <li><a data-toggle="tab" ng-click="siguiente()" href="">Asociaciones registradas</a>
+              </li>
+            </ul><!-- Cierre nav-tabs -->
+
+            <div class="row" ng-show="pagina==1">
               <div class="col-xs-12 col-sm-12 col-md-12">
                 <!--Inicio de los input para el formulario  -->
                 <h2>Persona encargada</h2>
@@ -179,15 +179,16 @@
                     </div> <!--cierre del ng-messages -->
                   </md-input-container>
               </div>
+              <!-- Botones de Seleccione Registrar y Actualizar -->
+              <div id="registrar">
+                  <md-button class="button Active" type="button" ng-disabled="frmRegisterBeneficient.$invalid" ng-click="vm.save(beneficient)">Registrar</md-button>
+              </div>
+              <div class="displayNone" id="actualizar">
+                <md-button class="button edit" type="button" ng-disabled="frmRegisterBeneficient.$invalid" ng-click="vm.update(beneficient)">Actualizar</md-button>
+              </div>
             </div><!-- Cierre row -->
 
-            <!-- Botones de Seleccione Registrar y Actualizar -->
-            <div id="registrar">
-                <md-button class="button Active" type="button" ng-disabled="frmRegisterBeneficient.$invalid" ng-click="vm.save(beneficient)">Registrar</md-button>
-            </div>
-            <div class="displayNone" id="actualizar">
-              <md-button class="button edit" type="button" ng-disabled="frmRegisterBeneficient.$invalid" ng-click="vm.update(beneficient)">Actualizar</md-button>
-            </div>
+
           </form><!-- Cierre form -->
 
         </section> <!-- Cierre de la sección registerBeneficient -->
@@ -195,15 +196,19 @@
 
       <!--Cards asociacion -->
       <div class= "col-md-12" ng-show="pagina==2">
+        <section class="inputSearch">
+          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </section><!-- Cierre inputSearch -->
 
-        <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-          <md-button ng-click="anterior()">Registro</md-button>
-          <md-button >Asociaciones benéficas registradas</md-button>
-          <span flex></span>
-        </md-toolbar>
 
-        <h2>Asociaciones benéficas Registradas</h2>
-        <hr>
         <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
               | filter:vm.nameFilter">
           <md-card-header>

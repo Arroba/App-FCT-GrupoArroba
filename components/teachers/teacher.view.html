@@ -293,7 +293,7 @@
                   <!--Crear buscar academia-->
                 </div>
               </section>
-              
+
               <div class="col-xs-12">
               <!--inicio de los cards -->
                 <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
@@ -315,9 +315,7 @@
                     <span class="md-subhead">Estado: {{teacher.status}}</span>
                   </md-card-title-text>
                   <md-card-title-media>
-                    <div class="md-media-lg card-media">
-                      <img ng-src="{{teacher.photo}}" alt="Description" class="photoStudent">
-                    </div>
+                    <img ng-src="{{teacher.photo}}" alt="Description" class="photoStudent">
                   </md-card-title-media>
                   </md-card-title>
                   <!-- Boton para cambiar el editar las profesores -->
@@ -326,9 +324,7 @@
                     <md-button class="Active" ng-click="vm.active(teacher)">Activo</md-button>
                     <md-button class="edit" ng-click="vm.inactive(teacher)">Inactivo</md-button>
                     <md-card-icon-actions><!-- cierre botones  -->
-
-                </div>  <!--fin de los cards -->
-
-        </div><!--cierre de pagina2-->
-      </div><!--cierre de main-panel -->
+                  </div><!--cierre de cards -->
+                </div>  <!--cierre de pagina2 -->
+        </div><!--cierre de main-panel-->
     </div><!--cierre de wrapper -->

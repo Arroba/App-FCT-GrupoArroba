@@ -98,14 +98,9 @@
 
   <!-- Page Content -->
       <div class="container-fluid" >
-
-
         <section id="registerProducts">
           <h1>Productos</h1>
           <hr>
-
-
-
             <!--Creación del formulario para registro de PRODUCTOS -->
             <form class="form" name="frmRegisterProduct" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
 
@@ -155,6 +150,9 @@
                     </div><!--cierre del ng-messages -->
                   </md-input-container>
                 </div>
+
+                <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+                <div class="col-xs-12 col-sm-12 col-md-12">
                   <!-- seleccione foto -->
                   <div class="input-group">
                     <label class="input-group-btn">
@@ -174,6 +172,7 @@
                 <div class="displayNone" id="actualizar">
                   <md-button class="button edit" type="button" ng-disabled="frmRegisterProduct.$invalid" ng-click="vm.update(product);siguiente()">Actualizar</md-button>
                 </div>
+              </div>
               </div><!--cierre de pagina1 -->
 
             </form><!--cierre del formulario para registrar de PRODUCTO-->
