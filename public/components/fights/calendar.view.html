@@ -125,10 +125,10 @@
         <h5 ng-if="$first">Competición: {{fight.competition}}</h5>
       </div>
 
-      <div class="col-xs-6 col-sm-6 col-md-6" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
-        <h1>Competidores Registrados</h1>
+      <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+        <h4 ng-if="$first">Competidores Registrados</h2>
       </div>
-      <div class="col-xs-6 col-sm-6 col-md-6" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+      <div class="col-xs-12 col-sm-2 col-md-2" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
         <div class="col-xs-12">
           <label>Competidor: {{fight.competitor}}</label>
         </div>
