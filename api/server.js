@@ -8,7 +8,7 @@ var express = require('express'),
 
 // Se establece una conexión con mongoose por medio de las siguientes variables
 var db = mongoose.connection,
-    dburl = 'mongodb://<admin>:<Arroba345>@ds051863.mlab.com:51863/bd_arroba_proyecto_fct',
+    dburl = 'mongodb://admin:Arroba345@ds051863.mlab.com:51863/bd_arroba_proyecto_fct',
     port = 3000;
 // se le indica al servidor la tarea a ejecutar
 var server = app.listen(port,_server());
@@ -58,7 +58,6 @@ app.use('/api', academiesRoutes);
 app.use('/api', beneficientsRoutes);
 app.use('/api', blazesRoutes);
 app.use('/api', eventsRoutes);
-app.use('/api', academiesRoutes);
 app.use('/api', eventsGeneralRoutes);
 app.use('/api', exhibitionsRoutes);
 app.use('/api', fightsRoutes);

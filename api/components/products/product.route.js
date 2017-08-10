@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var productsController = require('./products.controller.js');
+var productsController = require('./product.controller.js');
 
 //para aquellas rutas que ocupen un id
 

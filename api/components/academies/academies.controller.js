@@ -1,4 +1,4 @@
-var academy = require('./academy.model.js');
+var Academy = require('./academy.model.js');
 
 module.exports.save = function(req, res){
   var newAcademy = new Academy({

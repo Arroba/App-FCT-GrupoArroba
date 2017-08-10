@@ -7,7 +7,7 @@ var ExbitionSchema = new mongoose.Schema({
   time: Date,
   place: String,
   guestsExhibition: String,
-  photo: File,
+  photo: String,
   status: String
 
 });

@@ -2,12 +2,13 @@
   angular
     .module('fctApp')
     .controller('academiesController', academiesController);// Declaración del controlador
-    academiesController.$inject = ['academiesService'];
+    academiesController.$inject = ['academiesService','$scope'];
 
     function academiesController(academiesService,$scope){
 
       var vm = this;
       vm.academies = ""; 
+      loadAcademies();
 
       function loadAcademies(){
         academiesService.getAcademies().then(function (response) {
@@ -31,11 +32,11 @@
 
       vm.save= function(){// Objeto que obtener
         var newAcademy = {
-          name: academiesCtrl.name,
-          direction: academiesCtrl.direction,
-          phone: academiesCtrl.phone,
-          email: academiesCtrl.email,
-          contact: academiesCtrl.contact,
+          name: vm.name,
+          direction: vm.direction,
+          phone: vm.phone,
+          email: vm.email,
+          contact: vm.contact,
           status: 'Activo'
         }
 
@@ -43,7 +44,7 @@
         if(vm.academies.length == 0){
           academiesService.setAcademies(newAcademy);
           clear();
-          init();
+          loadAcademies();
 
           swal({
           type: 'success',
@@ -111,16 +112,17 @@
       }
 
       //función que modifica los datos
-      vm.update = function(objAcademies){
+      vm.update = function(){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var updatedAcademy = {
-          vm.name = objAcademies._name;
-          vm.direction = objAcademies._name;
-          vm.phone = objAcademies._name;
-          vm.email = objAcademies._name;
-          vm.contact = objAcademies._name;
-          vm.status = 'Activo';
+        var newAcademy = {
+          _id : vm.id,
+          name : vm.name,
+          direction : vm.direction,
+          phone : vm.phone,
+          email : vm.email,
+          contact : vm.contact,
+          status : 'Activo'
         }
         swal({
          type: 'success',
@@ -128,7 +130,7 @@
          timer: 3000,
          showConfirmButton: false
         })
-        academiesService.updateAcademy(updatedAcademy);
+        academiesService.updateAcademy(newAcademy);
         loadAcademies();
         clear();
       }//cierre funcion update
@@ -152,7 +154,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         academiesService.updateState(academiesList);
-        init();
+        loadAcademies();
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
@@ -165,7 +167,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         academiesService.updateState(academiesList);
-        init();
+        loadAcademies();
       }// Cierre de la funcion active
 
     }//Cierre de la función para el controlador

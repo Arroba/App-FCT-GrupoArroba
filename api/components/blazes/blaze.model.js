@@ -8,7 +8,7 @@ var BlazeSchema = new mongoose.Schema({
   time2: Date,
   date2: Date,
   place: String,
-  photo: File,
+  photo: String,
   status: String
 
 });

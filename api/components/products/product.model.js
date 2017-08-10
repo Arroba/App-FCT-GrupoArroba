@@ -6,7 +6,7 @@ var ProductSchema = new mongoose.Schema({
   brandProduct: String,
   detailProduct: String,
   productType: String,
-  photo: File,
+  photo: String,
   status: String
 
 });

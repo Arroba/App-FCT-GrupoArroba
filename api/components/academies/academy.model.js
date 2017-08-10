@@ -5,7 +5,7 @@ var AcademySchema = new mongoose.Schema({
   name:String,
   direction: String,
   phone: Number,
-  email: Email,
+  email: String,
   contact: String,
   status: String
 });

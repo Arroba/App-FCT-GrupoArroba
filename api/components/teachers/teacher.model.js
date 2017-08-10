@@ -14,7 +14,7 @@ var TeacherSchema = new mongoose.Schema({
   gender: String,
   password: String,
   academies: String,
-  photo: File,
+  photo: String,
   userType: String,
   status: String
 

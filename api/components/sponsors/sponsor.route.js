@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var sponsorsController = require('./sponsors.controller.js');
+var sponsorsController = require('./sponsor.controller.js');
 
 //para aquellas rutas que ocupen un id
 

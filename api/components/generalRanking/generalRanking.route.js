@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var generalRankingController = require('./generalRankings.controller.js');
+var generalRankingController = require('./generalRanking.controller.js');
 
 //para aquellas rutas que ocupen un id
 

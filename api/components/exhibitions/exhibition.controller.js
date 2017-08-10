@@ -1,4 +1,4 @@
-var exhibition = require('./exhibition.model.js');
+var Exhibition = require('./exhibition.model.js');
 
 module.exports.save = function(req, res){
   var newExhibition = new Exhibition({
@@ -10,7 +10,7 @@ module.exports.save = function(req, res){
     status: req.body.status
   });
 
-  newExhibition.save(function(err){
+  Exhibition.save(function(err){
     if(err){
       res.json({success:false, msg:'No se pudo registrar la exhibition' + err});
     }else{

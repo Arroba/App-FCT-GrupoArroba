@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var exhibitionsController = require('./exhibitions.controller.js');
+var exhibitionsController = require('./exhibition.controller.js');
 
 //para aquellas rutas que ocupen un id
 

@@ -24,7 +24,7 @@
       }//cierre de la función getAcademies
 
       //funcíon que actualiza los datos
-      function _updateAcademy(pUpdatedAcademy){
+      function _updateAcademy(pAcademy){
         console.log(pAcademy);
         return $http.put('http://localhost:3000/api/academies',pAcademy);
       }//cierre función updatedAcademy

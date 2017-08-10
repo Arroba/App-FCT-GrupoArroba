@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var placesController = require('./places.controller.js');
+var placesController = require('./place.controller.js');
 
 //para aquellas rutas que ocupen un id
 

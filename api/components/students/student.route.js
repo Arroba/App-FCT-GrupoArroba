@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var studentsController = require('./students.controller.js');
+var studentsController = require('./student.controller.js');
 
 //para aquellas rutas que ocupen un id
 

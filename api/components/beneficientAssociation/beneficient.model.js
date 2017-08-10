@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 //Esquema de usuarios
 var BeneficientSchema = new mongoose.Schema({
-	personName: [type: String, required: true, minlength:9, maxlength:10],
+	personName: String,
     surname : String,
     secondSurname: String,
     name: String,
