@@ -17,20 +17,6 @@
         vm.academiesRel = academiesService.getAcademies();
       }init(); // Cierre de la función init
 
-    // Funciones encargadas de devolver o adelantar la página
-      // $scope.pagina = 1;
-      // $scope.siguiente = function() {
-      //   $scope.pagina++;
-      // } 
-
-      // $scope.anterior = function() {
-      //   $scope.pagina--;
-      // }
-
-      // $scope.registro1 = function() {
-      //   $scope.pagina = 1;
-      // }
-
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newFights = {
