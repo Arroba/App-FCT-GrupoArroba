@@ -108,9 +108,9 @@
   
   <section>
     <div>
-      <md-input-container class="col-md-3" layout="column">
+      <md-input-container class="col-md-12" layout="column">
         <label for="">Competición:</label>
-        <md-select class="select" ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition)" name="competition" required id="calendar" >
+        <md-select class="select" ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);vm.showFights()" name="competition" required id="calendar" >
           <md-optgroup label="Seleccione una competición">
             <md-option value="primera">Primera</md-option>
             <md-option value="segunda">Segunda</md-option>
@@ -133,8 +133,23 @@
           <label>Competidor: {{fight.competitor}}</label>
         </div>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
-        <h4 ng-if="$first" id="prueba"></h2>
+
+      <div class="col-md-12">
+          <div class="text-center">
+            <h6>Primera Pelea</h6>
+            <div class="">
+              <div class="checkbox checkbox-primary">
+                <input id="checkbox1" type="checkbox" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+                <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+              </div>
+            </div>
+            <div>
+              <div class="checkbox checkbox-primary"  >
+                <input ng-disabled="vm.showExportOption == true" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+                <label class="text-weight-normal" for="checkbox2">{{vm.fights[1]["competitor"]}}</label>
+              </div>
+            </div>
+          </div>
       </div>
     </div>
   </section>
