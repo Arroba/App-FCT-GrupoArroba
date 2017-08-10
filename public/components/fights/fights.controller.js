@@ -45,6 +45,7 @@
                 competitors.push(fightsList[i]);
               }
             } // Cierre del ciclo
+          break;
           case 'segunda':
             for (var i = 0; i < fightsList.length; i++) {
               if (fightsList[i].competition == pCompetition) {
