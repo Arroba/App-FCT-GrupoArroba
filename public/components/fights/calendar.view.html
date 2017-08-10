@@ -133,5 +133,8 @@
           <label>Competidor: {{fight.competitor}}</label>
         </div>
       </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+        <h4 ng-if="$first" id="prueba"></h2>
+      </div>
     </div>
   </section>
