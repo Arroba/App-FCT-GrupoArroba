@@ -2,14 +2,18 @@
   angular
     .module('fctApp')
     .controller('academiesController', academiesController);// Declaración del controlador
+    academiesController.$inject = ['academiesService'];
 
     function academiesController(academiesService,$scope){
 
       var vm = this;
+      vm.academies = ""; 
 
-      function init(){
-        vm.academies = academiesService.getAcademies();
-      }init();
+      function loadAcademies(){
+        academiesService.getAcademies().then(function (response) {
+            vm.academies = response.data;
+          });
+        }
       // Función que guarda los datos
 
       $scope.pagina = 1;
@@ -27,13 +31,14 @@
 
       vm.save= function(){// Objeto que obtener
         var newAcademy = {
-          name: vm.name,
-          direction: vm.direction,
-          phone: vm.phone,
-          email: vm.email,
-          contact: vm.contact,
+          name: academiesCtrl.name,
+          direction: academiesCtrl.direction,
+          phone: academiesCtrl.phone,
+          email: academiesCtrl.email,
+          contact: academiesCtrl.contact,
           status: 'Activo'
         }
+
         // intento de restringir los usuarios que se registran
         if(vm.academies.length == 0){
           academiesService.setAcademies(newAcademy);
@@ -68,9 +73,16 @@
               return;
             }
             else{
-              academiesService.setAcademies(newAcademy);
+              academiesService.setAcademies(newAcademy).then(function (response) {
+              vm.name = null;
+              vm.direction = null;
+              vm.phone = null;
+              vm.email = null;
+              vm.contact = null;
+              vm.status = null;
+              loadAcademies();
+            });
               clear();
-              init();
               swal({
                   type: 'success',
                   title: '¡Registro completado!',
@@ -99,16 +111,16 @@
       }
 
       //función que modifica los datos
-      vm.update = function(){
+      vm.update = function(objAcademies){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
         var updatedAcademy = {
-          name: vm.name,
-          direction: vm.direction,
-          phone: vm.phone,
-          email: vm.email,
-          contact: vm.contact,
-          status: 'Activo'
+          vm.name = objAcademies._name;
+          vm.direction = objAcademies._name;
+          vm.phone = objAcademies._name;
+          vm.email = objAcademies._name;
+          vm.contact = objAcademies._name;
+          vm.status = 'Activo';
         }
         swal({
          type: 'success',
@@ -117,11 +129,11 @@
          showConfirmButton: false
         })
         academiesService.updateAcademy(updatedAcademy);
-        init();
+        loadAcademies();
         clear();
       }//cierre funcion update
 
-      //función par limpiar los inputs
+      //función par limpiar los inputs PREGUNTAR
       function clear(){
         vm.name = '';
         vm.direction = '';

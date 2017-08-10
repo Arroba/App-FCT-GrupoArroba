@@ -2,7 +2,6 @@
 var gulp = require('gulp');
 var nib = require('nib');
 var connect = require('gulp-connect');
-var connect = require('gulp-connect');
 var nodemon = require('gulp-nodemon');  
 
 gulp.task('connect', function(){

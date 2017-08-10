@@ -3,7 +3,7 @@
     .module('fctApp')
     .service('academiesService', academiesService);
 
-    function academiesService(){
+    function academiesService($http){
       var academies = [];
       var publicAPI = {
         setAcademies : _setAcademies,
@@ -15,36 +15,24 @@
 
       //Función que envía una dato al localStorage
       function _setAcademies(pAcademy){
-        var academiesList = _getAcademies();
-
-        academiesList.push(pAcademy);
-        localStorage.setItem('lsAcademiesList', JSON.stringify(academiesList));
+        return $http.post('http://localhost:3000/api/save_academy',pAcademy)
       }//cierre función setAcademies
 
       //funcion que toma los datos del localStorage
       function _getAcademies(){
-        var academiesList = JSON.parse(localStorage.getItem('lsAcademiesList'));
-        if(academiesList == null){
-          academiesList = academies;
-        }
-        return academiesList;
+        return $http.get('http://localhost:3000/api/get_all_academies');
       }//cierre de la función getAcademies
 
       //funcíon que actualiza los datos
       function _updateAcademy(pUpdatedAcademy){
-        var academiesList = _getAcademies();
-        for(var i = 0; i < academiesList.length; i++){
-          if(academiesList[i].email == pUpdatedAcademy.email){
-            academiesList[i] = pUpdatedAcademy;
-          }
-        }
-        localStorage.setItem('lsAcademiesList', JSON.stringify(academiesList));
+        console.log(pAcademy);
+        return $http.put('http://localhost:3000/api/academies',pAcademy);
       }//cierre función updatedAcademy
 
       //función que actualiza el estado
       function _updateState(pAcademiesList){
 
-        localStorage.setItem('lsAcademiesList', JSON.stringify(pAcademiesList));
+        return $http.put('http://localhost:3000/api/academies',pAcademy);
       }//cierre función updateState
 
     }//cierre función principal del service
