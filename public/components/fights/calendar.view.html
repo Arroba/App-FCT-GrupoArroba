@@ -120,26 +120,16 @@
         </md-select>
       </md-input-container>
     </div>
-    <div class="col-xs-12">
-      <md-card class="container-fluid col-md-6"><!--Impresión de los datos-->
-        <md-card-header>
-          <md-card-header-text>
-            <span ng-if="$first" class="md-title">Competición: {{fight.competition}}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-title>
-          <md-card-title-text  ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
-            <span>Competidor1: {{fight.length=0.competitor}}</span>
-            <span class="md-subhead">Correo electrónico: {{academy.email}}</span>
-            <span class="md-subhead">{{}}</span>
-          </md-card-title-text>
-        </md-card-title>
-        <!-- Botones para cambiar el status de las academias -->
-        <md-card-actions id="buttons">
-          <md-button class="edit" ng-click="vm.getInfo(academy);vm.hideButton();registro1()">Editar</md-button>
-          <md-button class="Active"  ng-click="vm.active(academy)">Activo</md-button>
-          <md-button class="edit"  ng-click="vm.inactive(academy)">Inactivo</md-button>
-          <md-card-icon-actions>
-            <!-- cierre botones  -->
-          </div><!--Fin de la tabla para impresión de datos-->
-        </section>
+    <div>
+      <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+        <h5 ng-if="$first">Competición: {{fight.competition}}</h5>
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+        <div class="col-xs-12">
+          <label>Competidor: {{fight.competitor}}</label>
+          <input type="checkbox" ng-model="value" ng-value="1" id="winner">
+        </div>
+      </div>
+    </div>
+  </section>
