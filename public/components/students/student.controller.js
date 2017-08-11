@@ -87,7 +87,15 @@
          title: '¡Registro completado!',
          timer: 3000,
          showConfirmButton: false
-       })
+       }).then(
+         function () {},
+         // handling the promise rejection
+         function (dismiss) {
+           if (dismiss === 'timer') {
+             console.log('Registro completado')
+           }
+         }
+       )
          return;
       }else{
         for(var i = 0; i < vm.students.length; i++){
@@ -97,7 +105,15 @@
             title: '¡La identificación ya existe!',
             timer: 3000,
             showConfirmButton: false
-          })
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('La identificación ya existe')
+              }
+            }
+          )
              return;
           }
           else if(newStudent.email == vm.students[i].email){
@@ -106,7 +122,15 @@
                  title: '¡El correo electrónico ya existe!',
                  timer: 3000,
                  showConfirmButton: false
-               })
+               }).then(
+                 function () {},
+                 // handling the promise rejection
+                 function (dismiss) {
+                   if (dismiss === 'timer') {
+                     console.log('El correo electrónico ya existe')
+                   }
+                 }
+               )
                   return;
                 }
                 else{
@@ -118,7 +142,15 @@
                   title: '¡Registro completado!',
                   timer: 3000,
                   showConfirmButton: false
-                })
+                }).then(
+                  function () {},
+                  // handling the promise rejection
+                  function (dismiss) {
+                    if (dismiss === 'timer') {
+                      console.log('Registro completado')
+                    }
+                  }
+                )
                   return;
                 }
                }
@@ -188,7 +220,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
 
         studentService.updateStudent(studentEdited);
         init();

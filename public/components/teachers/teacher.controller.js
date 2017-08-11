@@ -67,7 +67,15 @@
          title: '¡Registro completado!',
          timer: 3000,
          showConfirmButton: false
-       })
+       }).then(
+         function () {},
+         // handling the promise rejection
+         function (dismiss) {
+           if (dismiss === 'timer') {
+             console.log('Registro completado')
+           }
+         }
+       )
 
          return;
       }else{
@@ -78,7 +86,15 @@
            title: '¡La identificación ya existe!',
            timer: 3000,
            showConfirmButton: false
-         })
+         }).then(
+           function () {},
+           // handling the promise rejection
+           function (dismiss) {
+             if (dismiss === 'timer') {
+               console.log('La identificación ya existe')
+             }
+           }
+         )
              return;
           }
           else if(newTeacher.email == vm.teachers[i].email){
@@ -87,7 +103,15 @@
                   title: '¡El correo electrónico ya existe!',
                   timer: 3000,
                   showConfirmButton: false
-                })
+                }).then(
+                  function () {},
+                  // handling the promise rejection
+                  function (dismiss) {
+                    if (dismiss === 'timer') {
+                      console.log('El correo electrónico ya existe')
+                    }
+                  }
+                )
 
                    return;
           }
@@ -100,7 +124,15 @@
                  title: '¡Registro completado!',
                  timer: 3000,
                  showConfirmButton: false
-               })
+               }).then(
+                 function () {},
+                 // handling the promise rejection
+                 function (dismiss) {
+                   if (dismiss === 'timer') {
+                     console.log('Registro completado')
+                   }
+                 }
+               )
 
                  return;
             }
@@ -156,7 +188,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
         teacherService.updateTeacher(teacherEdit);
         init();
         clean();

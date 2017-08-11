@@ -55,7 +55,15 @@
         title: '¡Registro completado!',
         timer: 3000,
         showConfirmButton: false
-      })
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Registro completado')
+          }
+        }
+      )
 
         sponsorService.setSponsors(newSponsor);
         init();
@@ -107,7 +115,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
 
         sponsorService.updateSponsor(sponsorEdited);
         init();
