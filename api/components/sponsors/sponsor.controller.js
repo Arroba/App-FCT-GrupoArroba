@@ -1,4 +1,4 @@
-var sponsor = require('./sponsor.model.js');
+var Sponsor = require('./sponsor.model.js');
 
 module.exports.save = function(req, res){
   var newSponsor = new Sponsor({
@@ -9,6 +9,7 @@ module.exports.save = function(req, res){
     nameSponsor: req.body.nameSponsor,
     nameSponsorCompany: req.body.nameSponsorCompany,
     sponsorType: req.body.sponsorType,
+    sponsorCoinType: req.body.sponsorCoinType,
     sponsorMonetary: req.body.sponsorMonetary,
     sponsorDesc: req.body.sponsorDesc,
     photo: req.body.photo,
@@ -29,3 +30,17 @@ module.exports.findAll = function(req,res){
     res.send(sponsors);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Sponsor.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, sponsor) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

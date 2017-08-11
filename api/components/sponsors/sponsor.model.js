@@ -8,10 +8,10 @@ var SponsorSchema = new mongoose.Schema({
   idSponsorRep: Number,
   nameSponsor: String,
   nameSponsorCompany: String,
-  sponsorType: String,
+  sponsorType: Array,
   sponsorCoinType: String,
   sponsorDesc: String,
-  sponsorMonetary: String,
+  sponsorMonetary: Number,
   photo: String,
   status: String
 

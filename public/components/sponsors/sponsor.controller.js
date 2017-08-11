@@ -2,14 +2,23 @@
   angular
     .module('fctApp')
     .controller('sponsorController', sponsorController);
+
+    sponsorController.$inject = ['sponsorService','ImageService','Upload','$scope'];
+
     function sponsorController(sponsorService,ImageService,Upload,$scope){
 
       var vm = this;
-      vm.cloudObj = ImageService.getConfiguration();
+      vm.sponsors = "";
+      loadSponsors();
 
-      function init(){//Función de inicializar
-        vm.sponsors = sponsorService.getSponsors();
-      }init();//Fin función
+
+      function loadSponsors(){
+        sponsorService.getSponsors().then(function (response) {
+            vm.sponsors = response.data;
+          });
+
+          vm.cloudObj = ImageService.getConfiguration();
+        }
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -66,11 +75,12 @@
       )
 
         sponsorService.setSponsors(newSponsor);
-        init();
+        loadSponsors();
         clear();
       }//fin de función de guardar
 
         vm.getInfo = function(pSponsor){//Función que modifica
+        vm.id = pSponsor._id;
         vm.nameSponsorRep = pSponsor.nameSponsorRep;
         vm.firstNameSponsorRep = pSponsor.firstNameSponsorRep;
         vm.lastNameSponsorRep = pSponsor.lastNameSponsorRep;
@@ -94,7 +104,8 @@
       vm.update = function(){//Función que actualiza
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var sponsorEdited = {
+        var NewSponsor = {
+            _id : vm.id,
             state:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
@@ -125,8 +136,8 @@
           }
         )
 
-        sponsorService.updateSponsor(sponsorEdited);
-        init();
+        sponsorService.updateSponsor(NewSponsor);
+        loadStudents();
         clear();
       }//Fin función que actualiza
 
@@ -154,7 +165,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);
-        init();
+        loadSponsors();
       }// Cierre de la funcion aprobación
 
       vm.active = function(pSponsor){//Inicia función aprobación
@@ -166,7 +177,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         sponsorsService.updateState(sponsorsList);
-        init();
+        loadSponsors();
       }// Cierre de la funcion aprobación
     }
 })();

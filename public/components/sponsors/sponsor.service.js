@@ -3,7 +3,7 @@
   .module('fctApp')
   .service('sponsorService', sponsorService);
 
-  function sponsorService(){//Función oculta datos al público
+  function sponsorService($http){//Función oculta datos al público
     var sponsors = [];
     var publicAPI = {
       setSponsors : _setSponsors,
@@ -14,33 +14,23 @@
     return publicAPI;//Función oculta datos al público
 
     function _setSponsors(pSponsor){//Función envía datos al LS
-      var sponsorsList = _getSponsors();
-
-      sponsorsList.push(pSponsor);
-      localStorage.setItem('lsSponsorsList', JSON.stringify(sponsorsList));
+        return $http.post('http://localhost:3000/api/save_sponsors',pSponsor)
     }//Fin función envía datos al LS
 
     function _getSponsors(){//funcion que toma datos del LS
-      var sponsorsList = JSON.parse(localStorage.getItem('lsSponsorsList'));
-      if(sponsorsList == null){
-        sponsorsList = sponsors;
-      }
-      return sponsorsList;
+      return $http.get('http://localhost:3000/api/get_all_sponsors');
     }//Fin funcion que toma datos del LS
 
-    function _updateSponsor(pobjSponsor){//Funcíon que actualiza patrocinador
-      var sponsorsList = _getSponsors();
-      for(var i = 0; i < sponsorsList.length; i++){
-        if(sponsorsList[i].idSponsorRep === pobjSponsor.idSponsorRep){
-          sponsorsList[i] = pobjSponsor;
-        }
-      }
-      localStorage.setItem('lsSponsorsList', JSON.stringify(sponsorsList));
-    }//Fin funcíon que actualiza patrocinador
+    //funcíon que actualiza los datos
+        function _updateSponsor(pobjSponsor){
+          console.log(pobjSponsor);
+          return $http.put('http://localhost:3000/api/update_sponsor',pobjSponsor);
+        }//cierre función updatedAcademy
 
-    //Función actualiza estado del PATROCINADOR
-      function _updateState(pSponsorList){
-        localStorage.setItem('lsSponsorsList', JSON.stringify(pSponsorList));
-      }//Fin función actualiza estado del PATROCINADOR
-  }//Fin función oculta datos al público
+        //función que actualiza el estado
+        function _updateState(pSponsorList){
+          return $http.put('http://localhost:3000/api/update_sponsor',pSponsorList);
+        }//cierre función updateState
+
+      }//cierre función principal del service
 })();
