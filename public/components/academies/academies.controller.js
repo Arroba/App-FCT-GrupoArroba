@@ -29,7 +29,6 @@
       }
 
 
-
       vm.save= function(){// Objeto que obtener
         var newAcademy = {
           name: vm.name,
@@ -40,7 +39,7 @@
           status: 'Activo'
         }
 
-        // intento de restringir los usuarios que se registran
+        // 
         if(vm.academies.length == 0){
           academiesService.setAcademies(newAcademy);
           clear();
@@ -98,6 +97,7 @@
 
       //función que toma la información para modificar
       vm.getInfo = function(pAcademy){
+        vm.id = pAcademy._id;
         vm.name = pAcademy.name;
         vm.direction = pAcademy.direction;
         vm.phone = pAcademy.phone;
@@ -132,7 +132,7 @@
         })
         academiesService.updateAcademy(newAcademy);
         loadAcademies();
-        clear();
+        //clear();
       }//cierre funcion update
 
       //función par limpiar los inputs PREGUNTAR

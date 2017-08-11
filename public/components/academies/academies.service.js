@@ -26,13 +26,13 @@
       //funcíon que actualiza los datos
       function _updateAcademy(pAcademy){
         console.log(pAcademy);
-        return $http.put('http://localhost:3000/api/academies',pAcademy);
+        return $http.put('http://localhost:3000/api/update_academies',pAcademy);
       }//cierre función updatedAcademy
 
       //función que actualiza el estado
       function _updateState(pAcademiesList){
 
-        return $http.put('http://localhost:3000/api/academies',pAcademy);
+        return $http.put('http://localhost:3000/api/academies',pAcademiesList);
       }//cierre función updateState
 
     }//cierre función principal del service

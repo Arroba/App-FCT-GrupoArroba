@@ -19,4 +19,9 @@ router.route('/get_all_academies')
     academiesController.findAll(req,res);
   });
 
+ router.route('/update_academies')
+  .put(function(req, res){
+    academiesController.update(req,res);
+ 	});
+
 module.exports = router;

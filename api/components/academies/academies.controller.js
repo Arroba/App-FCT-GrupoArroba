@@ -24,3 +24,17 @@ module.exports.findAll = function(req,res){
     res.send(academies);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Academy.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, academy) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}
