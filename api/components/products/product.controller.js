@@ -1,4 +1,6 @@
-var product = require('./product.model.js');
+var Product = require('./product.model.js');
+
+
 
 module.exports.save = function(req, res){
   var newProduct = new Product({
@@ -23,4 +25,17 @@ module.exports.findAll = function(req,res){
   Product.find().then(function(products){
     res.send(products);
   })
-};
+}; 
+
+module.exports.update = function(req,res){
+  Product.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, product) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var productsController = require('./product.controller.js');
+var productController = require('./product.controller.js');
 
 //para aquellas rutas que ocupen un id
 
@@ -9,14 +9,19 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_academy')
+router.route('/save_product')
   .post(function(req,res){
-    productsController.save(req,res);
+    productController.save(req,res);
 
   });
-router.route('/get_all_academies')
+router.route('/get_all_products')
   .get(function(req,res){
-    productsController.findAll(req,res);
+    productController.findAll(req,res);
   });
+
+ router.route('/update_products')
+  .put(function(req, res){
+    productController.update(req,res);
+ 	});
 
 module.exports = router;
