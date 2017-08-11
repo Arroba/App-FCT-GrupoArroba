@@ -28,8 +28,22 @@
           color: vm.color,
           sponsors: vm.sponsors,
           status: 'Activo'
-
         }
+
+        swal({
+         type: 'success',
+         title: '¡Registro completado!',
+         timer: 3000,
+         showConfirmButton: false
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Registro completado')
+            }
+          }
+        )
         eventsGeneralService.setEvents(newEvent);
         init();
         clear();
@@ -71,6 +85,22 @@
           sponsors: vm.sponsors,
           status: 'Activo'
         }
+
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
+        
         eventsGeneralService.updateEvent(updated);
         init();
         clear();

@@ -71,7 +71,15 @@
         title: '¡Registro completado!',
         timer: 3000,
         showConfirmButton: false
-      })
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Registro completado')
+          }
+        }
+      )
 
         ticketsService.setTickets(newTickets);
         init();
@@ -113,7 +121,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
 
         ticketsService.updateTicket(ticketsEdit);
         init();

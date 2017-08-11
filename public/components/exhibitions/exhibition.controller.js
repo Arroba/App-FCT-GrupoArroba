@@ -51,25 +51,60 @@
       // intento de restringir los usuarios que se registran
       if(vm.exhibitions.length == 0){
         exhibitionService.setExhibitions(newExhibition);
-        document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-        console.log(vm.exhibitions);
         clear();
         init();
+        swal({
+        type: 'success',
+        title: '¡Registro completado!',
+        timer: 3000,
+        showConfirmButton: false
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Registro completado')
+          }
+        }
+      )
         return;
       }else{
         for(var i = 0; i < vm.exhibitions.length; i++){
           if(newExhibition.nameExhibition == vm.exhibitions[i].nameExhibition){
-            document.querySelector('.failId').innerHTML = '**El Nombre ya  está registrado, por favor ingrese otro**';
+            swal({
+            type: 'error',
+            title: '¡Nombre ya registrado!',
+            timer: 3000,
+            showConfirmButton: false
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('Nombre ya registrado')
+              }
+            }
+          )
             return;
           }
           else{
-            console.log(newExhibition);
             exhibitionService.setExhibitions(newExhibition);
-            document.querySelector('.failId').innerHTML = '';
-            document.querySelector('.Accepted').innerHTML = 'Registro completado!';
-            console.log(vm.exhibitions);
             clear();
             init();
+            swal({
+            type: 'success',
+            title: '¡Registro completado!',
+            timer: 3000,
+            showConfirmButton: false
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('Registro completado')
+              }
+            }
+          )
             return;
           }
         }
@@ -92,7 +127,7 @@
       document.querySelector('#registrar').classList.add('displayNone');
     }
 
-    // Inicio de la función update, que se encarga de devolver los datos para ser editados.(Pamela)
+    // Inicio de la función update, que se encarga de devolver los datos para ser editados.
     vm.update = function(){
       document.querySelector('#actualizar').classList.add('displayNone');
       document.querySelector('#registrar').classList.remove('displayNone');
@@ -104,7 +139,23 @@
         guestsExhibition: vm.guestsExhibition,
         status: 'Activo',
         photo: vm.photo
-      }// Cierre de exhibitionEdited.(Pamela)
+      }// Cierre de exhibitionEdited.
+
+      swal({
+       type: 'success',
+       title: '¡Información actualizada!',
+       timer: 3000,
+       showConfirmButton: false
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Información actualizada')
+          }
+        }
+      )
+
       exhibitionService.updateExhibitions(exhibitionEdited);
       init();
       clear();
