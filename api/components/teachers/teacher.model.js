@@ -9,7 +9,7 @@ var TeacherSchema = new mongoose.Schema({
   date: Date,
   grade: String,
   email: String,
-  telephone: String,
+  telephone: Number,
   civilStatus: String,
   gender: String,
   password: String,

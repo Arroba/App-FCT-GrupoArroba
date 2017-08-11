@@ -2,18 +2,41 @@
   angular
     .module('fctApp')
     .controller('teacherController', teacherController);
+
+    teacherController.$inject = ['teacherService','ImageService','Upload','academiesService','userService','AuthService','$cookies','$scope'];
+
     function teacherController(teacherService,ImageService,Upload,academiesService,userService,AuthService,$cookies,$scope){
 
       var vm = this;
-      vm.cloudObj = ImageService.getConfiguration();
+      vm.teachers = "";
+      loadTeachers();
+
 
       // Inicio de la función init que es la que se inicializa de primiera
-      function init(){
-        vm.teachers = teacherService.getTeachers();
-        vm.academiesRel = academiesService.getAcademies();
-        vm.foundCredentials = userService.findUsers(userService.getCookie());
+      function loadTeachers(){
+        teacherService.getTeachers().then(function (response) {
+            vm.teachers = response.data;
+          });
+
+        academiesService.getAcademies().then(function (response) {
+            vm.academiesRel = response.data;
+          });
+
+        // userService.findUsers(userService.getCookie()).then(function (response) {
+        //     vm.foundCredentials = response.data;
+        //   });
+
         vm.to = new Date();
-      }init(); // Cierre de la función init
+
+        vm.cloudObj = ImageService.getConfiguration();
+        }
+
+      // function init(){
+      //   vm.teachers = teacherService.getTeachers();
+      //   vm.academiesRel = academiesService.getAcademies();
+      //   vm.foundCredentials = userService.findUsers(userService.getCookie());
+      //   vm.to = new Date();
+      // }init();
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -61,7 +84,7 @@
       if(vm.teachers.length == 0){
          teacherService.setTeachers(newTeacher);
          clean();
-         init();
+         loadTeachers();
          swal({
          type: 'success',
          title: '¡Registro completado!',
@@ -116,9 +139,26 @@
                    return;
           }
             else{
-                 teacherService.setTeachers(newTeacher);
+                teacherService.setTeachers(newTeacher).then(function (response) {
+                vm.name = null;
+                vm.firstName = null;
+                vm.lastName = null;
+                vm.id = null;
+                vm.date = null;
+                vm.grade = null;
+                vm.email = null;
+                vm.telephone = null;
+                vm.civilStatus = null;
+                vm.gender = null;
+                vm.password = null;
+                vm.academies = null;
+                vm.status = null;
+                vm.photo = null;
+                vm.status = null;
+                loadTeachers();
+              });
                  clean();
-                 init();
+                 loadTeachers();
                  swal({
                  type: 'success',
                  title: '¡Registro completado!',
@@ -143,6 +183,7 @@
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pTeacher){
+        vm.id = pTeacher._id;
         vm.name = pTeacher.name;
         vm.firstName = pTeacher.firstName;
         vm.lastName = pTeacher.lastName;
@@ -168,6 +209,7 @@
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
         var teacherEdit = {
+          _id : vm.id,
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
@@ -198,7 +240,7 @@
           }
         )
         teacherService.updateTeacher(teacherEdit);
-        init();
+        loadTeachers();
         clean();
       } // Cierre de la función update
 
@@ -232,7 +274,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         teacherService.updateState(teacherList);
-        init();
+        loadTeachers();
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
@@ -245,7 +287,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         teacherService.updateState(teacherList);
-        init();
+        loadTeachers();
       }// Cierre de la funcion active
 
       vm.logOut = function(){

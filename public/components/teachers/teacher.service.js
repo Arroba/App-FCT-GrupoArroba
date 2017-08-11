@@ -4,7 +4,7 @@
   .service('teacherService', teacherService);
 
   // Inicio de función teacherService
-  function teacherService(){
+  function teacherService($http){
     var teachers = [];
     var publicAPI = {
       setTeachers : _setTeachers,
@@ -17,40 +17,27 @@
 
     // Inicio de la funcion setTeachers, que se encarga de registar los datos en el localStorage
     function _setTeachers(pTeacher){
-      var teachersList = _getTeachers();
-
-      teachersList.push(pTeacher);
-      localStorage.setItem('lsUsersList', JSON.stringify(teachersList));
+      return $http.post('http://localhost:3000/api/save_teachers',pTeacher)
     } // Cierre de la función setTeachers
 
 
     // Inicio de la función getTeachers, que se encarga de obtener los datos más actualizados
     function _getTeachers(){
-      var teachersList = JSON.parse(localStorage.getItem('lsUsersList'));
-      if(teachersList == null){
-        teachersList = teachers;
-      } // Cierre del if
-      return teachersList;
+      return $http.get('http://localhost:3000/api/get_all_teachers');
     } // Cierre de la funcíon getTeachers
 
 
     // Inicio de la función updateTeacher, que se encarga de permitir la edición de datos
     function _updateTeacher(pobjTeacher){
-      var teachersList = _getTeachers();
-      for(var i = 0; i < teachersList.length; i++){
-        if(teachersList[i].id == pobjTeacher.id){
-          teachersList[i] = pobjTeacher;
-        } // Cierre del if
-      } // Cierre del ciclo
-      localStorage.setItem('lsUsersList', JSON.stringify(teachersList));
+      console.log(pobjTeacher);
+      return $http.put('http://localhost:3000/api/update_teacher',pobjTeacher);
     }// Fin de la función updateTeacher
 
 
     //función que actualiza el estado
-      function _updateState(pTeacherList){
-
-        localStorage.setItem('lsUsersList', JSON.stringify(pTeacherList));
-      }//cierre función updateState
+    function _updateState(pTeacherList){
+      return $http.put('http://localhost:3000/api/update_teacher',pTeacherList);
+    }//cierre función updateState
 
 
   }// Fin de función teacherService
