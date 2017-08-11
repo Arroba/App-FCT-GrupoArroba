@@ -7,7 +7,7 @@
     function academiesController(academiesService,$scope){
 
       var vm = this;
-      vm.academies = ""; 
+      vm.academies = "";
       loadAcademies();
 
       function loadAcademies(){
@@ -39,7 +39,7 @@
           status: 'Activo'
         }
 
-        // 
+        //
         if(vm.academies.length == 0){
           academiesService.setAcademies(newAcademy);
           clear();
@@ -60,7 +60,15 @@
                title: '¡El nombre de academia ya existe!',
                timer: 3000,
                showConfirmButton: false
-             })
+             }).then(
+                function () {},
+                // handling the promise rejection
+                function (dismiss) {
+                  if (dismiss === 'timer') {
+                    console.log('El nombre de academia ya existe')
+                  }
+                }
+              )
               return;
             }
             else if(newAcademy.email == vm.academies[i].email){
@@ -69,7 +77,15 @@
              title: '¡El correo electrónico ya existe!',
              timer: 3000,
              showConfirmButton: false
-           })
+           }).then(
+              function () {},
+              // handling the promise rejection
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                  console.log('El correo electrónico ya existe')
+                }
+              }
+            )
               return;
             }
             else{
@@ -88,7 +104,15 @@
                   title: '¡Registro completado!',
                   timer: 3000,
                   showConfirmButton: false
-                })
+                }).then(
+                  function () {},
+                  // handling the promise rejection
+                  function (dismiss) {
+                    if (dismiss === 'timer') {
+                      console.log('Registro completado')
+                    }
+                  }
+                )
               return;
             }
           }
@@ -129,7 +153,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
         academiesService.updateAcademy(newAcademy);
         loadAcademies();
         //clear();

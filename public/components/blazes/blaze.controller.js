@@ -60,7 +60,15 @@
         title: '¡Registro completado!',
         timer: 3000,
         showConfirmButton: false
-      })
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Registro completado')
+          }
+        }
+      )
         return;
       }else{
         for(var i = 0; i < vm.blazes.length; i++){
@@ -71,7 +79,15 @@
            title: '¡El nombre de fogueo ya existe!',
            timer: 3000,
            showConfirmButton: false
-         })
+         }).then(
+           function () {},
+           // handling the promise rejection
+           function (dismiss) {
+             if (dismiss === 'timer') {
+               console.log('El nombre de fogueo ya existe')
+             }
+           }
+         )
 
             return;
           }
@@ -84,7 +100,15 @@
             title: '¡Registro completado!',
             timer: 3000,
             showConfirmButton: false
-          })
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('Registro completado')
+              }
+            }
+          )
             return;
           }
         }
@@ -129,7 +153,15 @@
        title: '¡Información actualizada!',
        timer: 3000,
        showConfirmButton: false
-      })
+      }).then(
+        function () {},
+        // handling the promise rejection
+        function (dismiss) {
+          if (dismiss === 'timer') {
+            console.log('Información actualizada')
+          }
+        }
+      )
 
       blazeService.updateBlazes(blazeEdited);
       init();

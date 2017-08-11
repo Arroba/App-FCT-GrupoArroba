@@ -50,7 +50,15 @@
           title: '¡Registro completado!',
           timer: 3000,
           showConfirmButton: false
-        })
+        }).then(
+           function () {},
+           // handling the promise rejection
+           function (dismiss) {
+             if (dismiss === 'timer') {
+               console.log('Registro completado')
+             }
+           }
+         )
           return;
         }else{
           for(var i = 0; i < vm.beneficient.length; i++){
@@ -60,7 +68,15 @@
                title: '¡El nombre jurídico ya existe!',
                timer: 3000,
                showConfirmButton: false
-             })
+             }).then(
+                function () {},
+                // handling the promise rejection
+                function (dismiss) {
+                  if (dismiss === 'timer') {
+                    console.log('El nombre jurídico ya existe')
+                  }
+                }
+              )
               return;
             }
             else{
@@ -79,7 +95,15 @@
                 title: '¡Registro completado!',
                 timer: 3000,
                 showConfirmButton: false
-            })
+            }).then(
+               function () {},
+               // handling the promise rejection
+               function (dismiss) {
+                 if (dismiss === 'timer') {
+                   console.log('Registro completado')
+                 }
+               }
+             )
               return;
             }
           }
@@ -122,7 +146,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
         beneficientService.updateBeneficient(newBeneficient);
         loadBeneficients();
       } // Cierre de la función update
