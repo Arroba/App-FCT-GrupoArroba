@@ -2,15 +2,22 @@
   angular
     .module('fctApp')
     .controller('productController', productController);
+    productController.$inject = ['productService','ImageService','Upload','sponsorService','$scope'];
 
     function productController(productService,ImageService,Upload,sponsorService,$scope){
 
       var vm = this;
-      vm.cloudObj = ImageService.getConfiguration();
+      vm.products = "";
+      loadProducts();
 
-      function init(){//Función de inicializar
-        vm.products = productService.getProducts();
-      }init();//Fin función
+      function loadProducts(){//Función de inicializar
+        productService.getProducts().then(function(response){
+          vm.products = response.data;
+        });
+        vm.cloudObj = ImageService.getConfiguration();
+      }//Fin función
+
+    
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -38,29 +45,21 @@
           nameProduct: vm.nameProduct,
           brandProduct: vm.brandProduct,
           detailProduct: vm.detailProduct,
-          productType: vm.productType,
+          productType: vm.productType[0],
           photo: vm.photo
         }
 
         if(vm.products.length == 0){
           productService.setProducts(newProduct);
           clear();
-          init();
+          loadProducts();
 
           swal({
             type: 'success',
             title: '¡Registro completado!',
             timer: 3000,
             showConfirmButton: false
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                console.log('Registro completado')
-              }
-            }
-          )
+          })
          return;
         }else{
           for(var i = 0; i < vm.products.length; i++){
@@ -70,43 +69,34 @@
               title: '¡El nombre del producto ya existe!',
               timer: 3000,
               showConfirmButton: false
-             }).then(
-               function () {},
-               // handling the promise rejection
-               function (dismiss) {
-                 if (dismiss === 'timer') {
-                   console.log('El nombre del producto ya existe')
-                 }
-               }
-             )
+             })
               return;
             }
             else{
-              productService.setProducts(newProduct);
+              productService.setProducts(newProduct).then(function(response){
+                vm.nameProduct = null;
+                vm.brandProduct = null;
+                vm.detailProduct = null;
+                vm.productType = null;
+                vm.photo = null;
+                loadProducts();
+            });
               clear();
-              init();
               swal({
                 type: 'success',
                 title: '¡Registro completado!',
                 timer: 3000,
                 showConfirmButton: false
-              }).then(
-                function () {},
-                // handling the promise rejection
-                function (dismiss) {
-                  if (dismiss === 'timer') {
-                    console.log('Registro completado')
-                  }
-                }
-              )
+              })
               return;
             }
           }
-       } //termina el else
+        } //termina el else
 
       } // termina funcion guardar
 
         vm.getInfo = function(pProduct){//Función que modifica
+        vm.id = pProduct._id; 
         vm.nameProduct = pProduct.nameProduct;
         vm.brandProduct = pProduct.brandProduct;
         vm.detailProduct = pProduct.detailProduct;
@@ -123,7 +113,8 @@
       vm.update = function(){//Función que actualiza
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var productEdited = {
+        var newProduct = {
+            _id: vm.id,
             status:'Activo',
             nameProduct: vm.nameProduct,
             brandProduct: vm.brandProduct,
@@ -137,19 +128,10 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        }).then(
-          function () {},
-          // handling the promise rejection
-          function (dismiss) {
-            if (dismiss === 'timer') {
-              console.log('Información actualizada')
-            }
-          }
-        )
+        })
+        loadProducts(); //Funcion que refresca el update
 
-        productService.updateProduct(productEdited);
-        init();
-        clear();
+        productService.updateProduct(newProduct);
       }//Fin función que actualiza
 
       function clear(){//Función que limpia
@@ -169,7 +151,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         productService.updateState(productsList);
-        init();
+        loadProducts();
       }// Cierre de la funcion aprobación
 
       vm.active = function(pProduct){//Inicia función aprobación
@@ -181,7 +163,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         productService.updateState(productsList);
-        init();
+        loadProducts();
       }// Cierre de la funcion aprobación
     }
 })();

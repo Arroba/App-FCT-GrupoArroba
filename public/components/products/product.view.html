@@ -129,7 +129,7 @@
 
                   <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                     <label for="">Detalle:</label>
-                    <input type="text" ng-model="vm.detailProduct" name="detailProduct" ng-maxlength="20" required>
+                    <input type="text" ng-model="vm.detailProduct" name="detailProduct" ng-maxlength="100" required>
                     <div ng-messages="frmRegisterProduct.detailProduct.$error">
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div>
@@ -219,7 +219,7 @@
            <md-card-actions id="buttons">
              <md-button class="edit" ng-click="vm.getInfo(product);vm.hideButton();registro1()">Editar</md-button>
              <md-card-icon-actions><!-- cierre botones  -->
-          <  </div><!--Cierre de cards -->
+            </div><!--Cierre de cards -->
           </div><!--Cierre de segunda pagína -->
         </div><!-- cierre main-panel-->
       </div> <!-- cierre wrapper-->
