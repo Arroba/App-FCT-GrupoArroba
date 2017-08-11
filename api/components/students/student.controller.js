@@ -1,12 +1,11 @@
-var student = require('./student.model.js');
+var Student = require('./student.model.js');
 
 module.exports.save = function(req, res){
   var newStudent = new Student({
     id: req.body.id,
+    name: req.body.name,
     firstName: req.body.firstName,
-    secondName: req.body.secondName,
-    surname: req.body.surname,
-    secondSurname: req.body.secondSurname,
+    lastName: req.body.lastName,
     gender: req.body.gender,
     date: req.body.date,
     civilStatus: req.body.civilStatus,
@@ -40,3 +39,17 @@ module.exports.findAll = function(req,res){
     res.send(students);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Student.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, student) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

@@ -2,21 +2,29 @@
   angular
     .module('fctApp')
     .controller('studentController', studentController);
+
+    studentController.$inject = ['studentService','ImageService','Upload','academiesService','teacherService','userService','AuthService','$cookies','fightsService','eventsService','$scope'];
+
     function studentController(studentService,ImageService,Upload,academiesService,teacherService,userService,AuthService,$cookies,fightsService,eventsService,$scope){
 
       var vm = this;
-      vm.cloudObj = ImageService.getConfiguration();
+      vm.students = "";
+      vm.academiesRel = {};
+      loadStudents();
 
-      // Inicio de la función init que es la que se inicializa de primero.(Pamela)
-      function init(){
-        vm.students = studentService.getStudents();
-        vm.academiesRel = academiesService.getAcademies();
-        vm.teachersRel = teacherService.getTeachers();
-        vm.foundCredentials = userService.findUsers(userService.getCookie());
-        vm.eventsRel = eventsService.getEvents();
-        vm.fights = fightsService.getFights();
-        vm.to = new Date();
-      }init();
+      function loadStudents(){
+      studentService.getStudents().then(function (response) {
+          vm.students = response.data;
+        });
+
+        academiesService.getAcademies().then(function (response) {
+            vm.academiesRel = response.data;
+        });
+    // Función que guarda los datos
+    vm.to = new Date();
+
+    vm.cloudObj = ImageService.getConfiguration();
+        }
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -29,33 +37,23 @@
         $scope.pagina = 1;
       }
 
-      // Inicio de la función presave.(Pamela)
+      // Inicio de la función presave
       vm.presave= function(newStudent){
         vm.cloudObj.data.file = document.getElementById("photo").files[0];
         Upload.upload(vm.cloudObj)
           .success(function(data){
             newStudent.photo = data.url;
             vm.save(newStudent);
-          }); // Cierre de la función success.(Pamela)
-      } // Cierre de la función presave.(Pamela)
-
-             vm.show= function(){
-        document.querySelector('#showRanking').classList.remove('displayNone');
-      }
-
-         vm.hide= function(){
-        document.querySelector('#showRanking').classList.add('displayNone');
-      }
-
+          }); // Cierre de la función success
+      } // Cierre de la función presave
 
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
       vm.save= function(){
         var newStudent = {
-          id: vm.id,
+          idStudent: vm.idStudent,
+          name: vm.name,
           firstName: vm.firstName,
-          secondName: vm.secondName,
-          surname: vm.surname,
-          secondSurname: vm.secondSurname,
+          lastName: vm.lastName,
           gender: vm.gender,
           date: vm.date,
           civilStatus: vm.civilStatus,
@@ -73,20 +71,17 @@
           password: vm.password,
           photo: vm.photo,
           userType: 'student'
-
         }// Cierre de newStudent.(Pamela)
 
-    // intento de restringir los usuarios que se registran
-
-      if(vm.students.length == 0){
-         studentService.setStudents(newStudent);
-         clear();
-         init();
-         swal({
-         type: 'success',
-         title: '¡Registro completado!',
-         timer: 3000,
-         showConfirmButton: false
+        if(vm.students.length == 0){
+          studentService.setStudents(newStudent);
+          clear();
+          loadStudents();
+          swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
        }).then(
          function () {},
          // handling the promise rejection
@@ -96,50 +91,31 @@
            }
          }
        )
+
          return;
       }else{
         for(var i = 0; i < vm.students.length; i++){
-          if(newStudent.id == vm.students[i].id){
-             swal({
-            type: 'error',
-            title: '¡La identificación ya existe!',
-            timer: 3000,
-            showConfirmButton: false
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                console.log('La identificación ya existe')
-              }
-            }
-          )
+          if(newStudent.idStudent == vm.students[i].idStudent){
+            swal({
+           type: 'error',
+           title: '¡La identificación ya existe!',
+           timer: 3000,
+           showConfirmButton: false
+         }).then(
+           function () {},
+           // handling the promise rejection
+           function (dismiss) {
+             if (dismiss === 'timer') {
+               console.log('La identificación ya existe')
+             }
+           }
+         )
              return;
           }
           else if(newStudent.email == vm.students[i].email){
-                  swal({
-                 type: 'error',
-                 title: '¡El correo electrónico ya existe!',
-                 timer: 3000,
-                 showConfirmButton: false
-               }).then(
-                 function () {},
-                 // handling the promise rejection
-                 function (dismiss) {
-                   if (dismiss === 'timer') {
-                     console.log('El correo electrónico ya existe')
-                   }
-                 }
-               )
-                  return;
-                }
-                else{
-                  studentService.setStudents(newStudent);
-                  clear();
-                  init();
-                  swal({
-                  type: 'success',
-                  title: '¡Registro completado!',
+                   swal({
+                  type: 'error',
+                  title: '¡El correo electrónico ya existe!',
                   timer: 3000,
                   showConfirmButton: false
                 }).then(
@@ -147,24 +123,66 @@
                   // handling the promise rejection
                   function (dismiss) {
                     if (dismiss === 'timer') {
-                      console.log('Registro completado')
+                      console.log('El correo electrónico ya existe')
                     }
                   }
                 )
-                  return;
-                }
-               }
-          }
 
-      }// Cierre de la función save.(Pamela)
+                   return;
+          }
+            else{
+                studentService.setStudents(newStudent).then(function (response) {
+                  vm.idStudent = null;
+                  vm.firstName = null;
+                  vm.surname = null;
+                  vm.secondSurname = null;
+                  vm.gender = null;
+                  vm.date = null;
+                  vm.civilStatus = null;
+                  vm.email = null;
+                  vm.telephone = null;
+                  vm.address = null;
+                  vm.weight = null;
+                  vm.height = null;
+                  vm.grade = null;
+                  vm.academies = null;
+                  vm.teachers = null;
+                  vm.status = null;
+                  vm.password = null;
+                  vm.photo = null;
+                loadStudents();
+              });
+                 clear();
+                 loadStudents();
+                 swal({
+                 type: 'success',
+                 title: '¡Registro completado!',
+                 timer: 3000,
+                 showConfirmButton: false
+               }).then(
+                 function () {},
+                 // handling the promise rejection
+                 function (dismiss) {
+                   if (dismiss === 'timer') {
+                     console.log('Registro completado')
+                   }
+                 }
+               )
+
+                 return;
+            }
+          }
+        }
+
+      }// Cierre de la función save.(Fabián)
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
       vm.getInfo = function(pStudent){
-        vm.id = pStudent.id;
+        vm.id = pStudent._id;
+        vm.idStudent = pStudent.idStudent;
+        vm.name = pStudent.name;
         vm.firstName = pStudent.firstName;
-        vm.secondName = pStudent.secondName;
-        vm.surname = pStudent.surname;
-        vm.secondSurname = pStudent.secondSurname;
+        vm.lastName = pStudent.lastName;
         vm.gender = pStudent.gender;
         vm.date = new Date(pStudent.date);
         vm.civilStatus = pStudent.civilStatus;
@@ -173,8 +191,6 @@
         vm.address = pStudent.address;
         vm.weight = pStudent.weight;
         vm.height = pStudent.height;
-        vm.ageCategory = pStudent.ageCategory;
-        vm.weightCategory = pStudent.weightCategory;
         vm.academies = pStudent.academies;
         vm.teachers = pStudent.teachers;
         vm.grade = pStudent.grade;
@@ -188,15 +204,17 @@
     }
 
       // Inicio de la función update, que se encarga de devolver los datos para ser editados.(Pamela)
+
+      //función que modifica los datos
       vm.update = function(){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var studentEdited = {
-          id: vm.id,
+        var newStudent = {
+          _id : vm.id,
+          idStudent: vm.idStudent,
+          name: vm.name,
           firstName: vm.firstName,
-          secondName: vm.secondName,
-          surname: vm.surname,
-          secondSurname: vm.secondSurname,
+          lastName: vm.lastName,
           gender: vm.gender,
           date: vm.date,
           civilStatus: vm.civilStatus,
@@ -205,16 +223,13 @@
           address: vm.address,
           weight: vm.weight,
           height: vm.height,
-          ageCategory: vm.ageCategory,
-          weightCategory: vm.weightCategory,
           academies: vm.academies,
           teachers: vm.teachers,
           grade: vm.grade,
           status: 'Activo',
           password: vm.password,
           photo: vm.photo
-        }// Cierre de studentEdited.(Pamela)
-
+         }
         swal({
          type: 'success',
          title: '¡Información actualizada!',
@@ -229,19 +244,18 @@
             }
           }
         )
-
-        studentService.updateStudent(studentEdited);
-        init();
+        studentService.updateStudent(newStudent);
+        loadStudents();
         clear();
-      }// Cierre de la función update.(Pamela)
+      } // Cierre de la función update
+
 
       // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
       function clear(){
-        vm.id = '';
+        vm.idStudent = '';
+        vm.name =  '';
         vm.firstName =  '';
-        vm.secondName =  '';
-        vm.surname =  '';
-        vm.secondSurname =  '';
+        vm.lastName =  '';
         vm.gender =  '';
         vm.date =  '';
         vm.civilStatus =  '';
@@ -250,8 +264,6 @@
         vm.address =  '';
         vm.weight =  '';
         vm.height =  '';
-        vm.ageCategory= '';
-        vm.weightCategory= '';
         vm.academies = '';
         vm.teachers = '';
         vm.grade =  '';
@@ -270,7 +282,7 @@
           }// Cierre del if.(Pamela)
         }// Cierre del ciclo.(Pamela)
         studentService.updateState(studentsList);
-        init();
+        loadStudents();
       }// Cierre de la funcion inactive.(Pamela)
 
       //función que cambia el estado a activo.(Pamela)
@@ -283,7 +295,7 @@
           }// Cierre del if.(Pamela)
         }// Cierre del ciclo.(Pamela)
         studentService.updateState(studentsList);
-        init();
+        loadStudents();
       }// Cierre de la funcion active.(Pamela)
 
       vm.logOut = function(){
