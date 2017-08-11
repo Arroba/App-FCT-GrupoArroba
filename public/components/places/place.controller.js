@@ -49,7 +49,15 @@
           title: '¡Registro completado!',
           timer: 3000,
           showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Registro completado')
+            }
+          }
+        )
           return;
         }else{
           for(var i = 0; i < vm.place.length; i++){
@@ -59,7 +67,15 @@
               title: '¡Nombre ya registrado!',
               timer: 3000,
               showConfirmButton: false
-            })
+            }).then(
+              function () {},
+              // handling the promise rejection
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                  console.log('Nombre ya registrado')
+                }
+              }
+            )
               return;
             }
             else{
@@ -71,7 +87,15 @@
               title: '¡Registro completado!',
               timer: 3000,
               showConfirmButton: false
-            })
+            }).then(
+              function () {},
+              // handling the promise rejection
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                  console.log('Registro completado')
+                }
+              }
+            )
               return;
             }
           }
@@ -122,7 +146,15 @@
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
 
         placeService.updatePlace(placeEdit);
         init();
