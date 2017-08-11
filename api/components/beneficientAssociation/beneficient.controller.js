@@ -1,4 +1,4 @@
-var beneficient = require('./beneficient.model.js');
+var Beneficient = require('./beneficient.model.js');
 
 module.exports.save = function(req, res){
   var newBeneficient = new Beneficient({
@@ -24,3 +24,14 @@ module.exports.findAll = function(req,res){
     res.send(beneficients);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Beneficient.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, academy) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+  });
+}

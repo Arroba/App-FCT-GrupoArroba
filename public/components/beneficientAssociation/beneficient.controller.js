@@ -3,14 +3,20 @@
   angular
     .module('fctApp')
     .controller('beneficientController', beneficientController);
+    beneficientController.$inject = ['beneficientService','$scope'];
+
     function beneficientController(beneficientService,$scope){
 
       var vm = this;
+      vm.beneficient = "";
+      loadBeneficients();
 
       // Inicio de la función init que es la que se inicializa de primiera
-      function init(){
-        vm.beneficient = beneficientService.getBeneficient();
-      }init(); // Cierre de la función init
+      function loadBeneficients(){
+        beneficientService.getBeneficient().then(function(response){
+          vm.beneficient = response.data;
+         });
+      }
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -31,13 +37,13 @@
           secondSurname: vm.secondSurname,
           name: vm.name,
           type: vm.type,
-          description: vm.description,
+          description: vm.description
         } // Cierre de newBeneficient
         // intento de restringir los usuarios que se registran
         if(vm.beneficient.length == 0){
           beneficientService.setBeneficient(newBeneficient);
           clean();
-          init();
+          loadBeneficients();
 
           swal({
           type: 'success',
@@ -58,15 +64,21 @@
               return;
             }
             else{
-              beneficientService.setBeneficient(newBeneficient);
+              beneficientService.setBeneficient(newBeneficient).then(function (response) {
+               vm.personName = null;
+               vm.surname = null;
+               vm.secondSurname = null;
+               vm.name = null;
+               vm.name = null;
+               vm.type = null;
+               loadBeneficients();
+               });
               clean();
-              init();
-
               swal({
-              type: 'success',
-              title: '¡Registro completado!',
-              timer: 3000,
-              showConfirmButton: false
+                type: 'success',
+                title: '¡Registro completado!',
+                timer: 3000,
+                showConfirmButton: false
             })
               return;
             }
@@ -76,6 +88,7 @@
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pBeneficient){
+        vm.id = pBeneficient._id;
         vm.personName = pBeneficient.personName;
         vm.surname = pBeneficient.surname;
         vm.secondSurname = pBeneficient.secondSurname;
@@ -95,7 +108,8 @@
       vm.update = function(){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var beneficientEdit = {
+        var newBeneficient = {
+          _id : vm.id,
           personName: vm.personName,
           surname: vm.surname,
           secondSurname: vm.secondSurname,
@@ -109,9 +123,8 @@
          timer: 3000,
          showConfirmButton: false
         })
-        beneficientService.updateBeneficient(beneficientEdit);
-        init();
-        clean();
+        beneficientService.updateBeneficient(newBeneficient);
+        loadBeneficients();
       } // Cierre de la función update
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
