@@ -3,17 +3,30 @@
   angular
     .module('fctApp')
     .controller('ticketsController', ticketsController);
+    ticketsController.$inject = ['ticketsService','placeService','eventsGeneralService','$scope'];
+
     function ticketsController(ticketsService,placeService,eventsGeneralService,$scope){
 
       var vm = this;
+      vm.tickets = "";
+      loadTickets();
 
-      // Inicio de la función init que es la que se inicializa de primiera
-      function init(){
+      // Inicio de la función loadtTickets que es la que se inicializa de primiera
+      function loadTickets(){
+        ticketsService.getTickets().then(function (response) {
+          vm.tickets = response.data;
+        });
+/*        eventsGeneralService.getEvents().then(function (response) {
+          vm.eventsRel = response.data;
+        });
+        placeService.getPlace().then(function (response) {
+          vm.placeRel = response.data;
+        });*/
+      }
+        /* ESTO ES LO ANTERIOR
         vm.tickets = ticketsService.getTickets();
         vm.eventsRel = eventsGeneralService.getEvents();
-        vm.placeRel = placeService.getPlace();
-
-      }init(); // Cierre de la función init
+        vm.placeRel = placeService.getPlace();*/
 
       $scope.pagina = 1;
         $scope.siguiente = function() {
@@ -27,7 +40,7 @@
           $scope.pagina = 1;
         }
 
-      // funcion que resta los tickets
+      // funcion que resta los tickets VER VIERNES PILI
 
       vm.ticketsDisp = function(){
         var placeList = placeService.getPlace();
@@ -68,7 +81,7 @@
 
         swal({
         type: 'success',
-        title: '¡Registro completado!',
+        title: 'Reserva completada!',
         timer: 3000,
         showConfirmButton: false
       }).then(
@@ -82,12 +95,13 @@
       )
 
         ticketsService.setTickets(newTickets);
-        init();
+        loadTickets();
         clean();
       } // Cierre de la función save
 
       // Inicio: de la función getInfo, que se encarga de obtener los datos
       vm.getInfo = function(pTickets){
+        vm.id = pTickets._id;
         vm.nameEvent = pTickets.nameEvent;
         vm.place = pTickets.place;
         vm.name = pTickets.name;
@@ -106,7 +120,8 @@
       vm.update = function(){
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
-        var ticketsEdit = {
+        var newTicket = {
+          _id : vm.id,
           nameEvent: vm.nameEvent,
           place: vm.place,
           name: vm.name,
@@ -131,9 +146,8 @@
           }
         )
 
-        ticketsService.updateTicket(ticketsEdit);
-        init();
-        clean();
+        ticketsService.updateTicket(newTicket);
+        loadTickets();
       } // Cierre de la función update
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
@@ -156,7 +170,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         ticketsService.updateState(ticketsList);
-        init();
+        loadTickets();
       }// Cierre funcion reserve
 
       //función cancela entradas
@@ -168,7 +182,7 @@
             }// Cierre del if
           }// Cierre del ciclo
         ticketsService.updateState(ticketsList);
-        init();
+        loadTickets();
       }// Cierre de la funcion cancel
 
     }// Cierre de la función ticketsController

@@ -1,4 +1,4 @@
-var academy = require('./ticket.model.js');
+var Ticket = require('./ticket.model.js');
 
 module.exports.save = function(req, res){
   var newTicket = new Ticket({
@@ -14,9 +14,9 @@ module.exports.save = function(req, res){
 
   newTicket.save(function(err){
     if(err){
-      res.json({success:false, msg:'No se pudo registrar los tiquetes' + err});
+      res.json({success:false, msg:'No se registraron los tiquetes' + err});
     }else{
-      res.json({success:true, msg:'Se registró los tiquetes correctamente'});
+      res.json({success:true, msg:'Se registraron los tiquetes correctamente'});
     }
   });
 }
@@ -26,3 +26,17 @@ module.exports.findAll = function(req,res){
     res.send(tickets);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Ticket.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, ticket) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}
