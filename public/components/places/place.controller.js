@@ -155,13 +155,18 @@
             }
           }
         )
-
-        placeService.updatePlace(placeEdit);
+        placeService.updatePlace(placeEdit).then(function(response){
+          placeService.getPlace()
+            .then(function(response){
+              vm.place = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+         });
         init();
         clean();
       } // Cierre de la función update
-
-
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){

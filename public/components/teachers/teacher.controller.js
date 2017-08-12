@@ -239,7 +239,15 @@
             }
           }
         )
-        teacherService.updateTeacher(teacherEdit);
+        teacherService.updateTeacher(teacherEdit).then(function(response){
+          teacherService.getTeachers()
+            .then(function(response){
+              vm.teachers = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+         });
         loadTeachers();
         clean();
       } // Cierre de la función update

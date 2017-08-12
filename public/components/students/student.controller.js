@@ -244,7 +244,15 @@
             }
           }
         )
-        studentService.updateStudent(newStudent);
+       studentService.updateStudent(newStudent).then(function(response){
+        studentService.getStudents()
+          .then(function(response){
+            vm.students = response.data;
+          })
+          .catch(function(err){
+            console.log(err);
+          })
+       });
         loadStudents();
         clear();
       } // Cierre de la función update
