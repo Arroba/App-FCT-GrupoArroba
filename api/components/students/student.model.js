@@ -10,7 +10,7 @@ var StudentSchema = new mongoose.Schema({
   date: Date,
   civilStatus: String,
   email: String,
-  telephone: String,
+  telephone: Number,
   address: String,
   weight: Number,
   height: Number,

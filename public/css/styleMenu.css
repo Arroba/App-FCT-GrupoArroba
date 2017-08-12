@@ -295,7 +295,7 @@ inut:focus {
   text-transform: uppercase;
 }
 /*hover letra menú principal*/
-.sidebar .nav li:hover > a {
+.sidebar .nav a:hover {
   color:  orange;
   opacity: 1;
   background-color: #212123;

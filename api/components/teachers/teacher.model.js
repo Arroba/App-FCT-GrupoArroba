@@ -13,7 +13,7 @@ var TeacherSchema = new mongoose.Schema({
   civilStatus: String,
   gender: String,
   password: String,
-  academies: String,
+  academies: Array,
   photo: String,
   userType: String,
   status: String
