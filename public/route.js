@@ -762,8 +762,23 @@
       },
       controller: 'profileAdminController',
       controllerAs: 'vm',
+      css:'css/styleMenu.css',
+      css:'css/styleLandingEvents.css'
+    })
+
+    .state('profileAdministrador',{
+      url : '/profileAdministrador',
+      templateUrl: './components/profiles/profileAdministrador.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/profiles/profileAdmin.controller.js')
+        }]
+      },
+      controller: 'profileAdminController',
+      controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+
     //ASISTENTE
     .state('profileAsistent',{
       url : '/profileAsistent',
@@ -775,7 +790,8 @@
       },
       controller: 'profileAsistentController',
       controllerAs: 'vm',
-      css:'css/styleMenu.css'
+      css:'css/styleMenu.css',
+      css:'css/styleLandingEvents.css'
     })
 
     //generalRanking
@@ -791,7 +807,7 @@
       templateUrl: 'components/individualRanking/individualRanking.view.html',
       css:'css/ranking.css'
     })
-    
+
     //calendar
     .state('calendar',{
     url : '/calendar',

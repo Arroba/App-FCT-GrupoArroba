@@ -117,14 +117,14 @@
       <md-card class="container-fluid col-md-6" ng-repeat="sponsor in vm.sponsors | filter:vm.nameFilter">
         <md-card-header>
           <md-card-header-text>
-            <span class="md-title">{{sponsor.nameSponsorRep}} {{sponsor.firstNameSponsorRep}} {{sponsor.lastNameSponsorRep}}</span>
-            <span class="md-subhead">Id:{{sponsor.idSponsorRep}}</span>
+            <span class="md-title">{{sponsor.nameSponsorCompany}}</span>
+            <span class="md-subhead">Nombre Jurídico: {{sponsor.nameSponsor}}</span>
           </md-card-header-text>
         </md-card-header>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-subhead">Nombre Jurídico: {{sponsor.nameSponsor}}</span>
-            <span class="md-subhead">Compañía que representa: {{sponsor.nameSponsorCompany}}</span>
+            <span class="md-subhead">Nombre del representante: {{sponsor.nameSponsorRep}} {{sponsor.firstNameSponsorRep}} {{sponsor.lastNameSponsorRep}}</span>
+            <span class="md-subhead">Id. representante: {{sponsor.idSponsorRep}}</span>
             <span class="md-subhead">{{sponsor.statusSponsor}}</span>
             <span class="md-subhead">Tipo de Patrocinio: {{sponsor.sponsorType}}</span>
             <span class="md-subhead">Equivalente Monetario: {{sponsor.sponsorCoinType}} {{sponsor.sponsorMonetary}}</span>

@@ -359,37 +359,79 @@ input:focus {
 .sidebar .nav {
   margin-top: 20px;
 }
+/*letra menú principal*/
 .sidebar .nav li > a {
   color: #FFFFFF;
   margin: 5px 15px;
   opacity: .86;
   border-radius: 4px;
+  font-family: roboto;
 }
-.sidebar .nav li:hover > a {
-  color:  orange;
-  opacity: 1;
-}
-.sidebar .nav li.active > a {
-  color: #FFFFFF;
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.23);
-}
+/*letra menu principal*/
 .sidebar .nav p {
   margin: 0;
   line-height: 30px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
 }
+/*hover letra menú principal*/
+.sidebar .nav a:hover {
+  color:  orange;
+  opacity: 1;
+  background-color: #212123;
+  cursor: pointer;
+}
+/*iconos menu principal*/
 .sidebar .nav i {
   font-size: 28px;
   float: left;
   margin-right: 15px;
-  line-height: 30px;
+  line-height: 20px;
   width: 30px;
   text-align: center;
 }
-
+/*letra sub menú*/
+.sidebar .dropdown-menu li > a {
+  color: #1C1C1C;
+  margin: 5px 15px;
+  opacity: .86;
+  border-radius: 4px;
+  font-family: roboto;
+  background-color: #FFFFFF;
+}
+/* hover letra sub menú*/
+.sidebar .dropdown-menu li:hover > a {
+  color:  orange;
+  margin: 5px 15px;
+  opacity: .86;
+  border-radius: 4px;
+  font-family: roboto;
+  background-color: #FFFFFF;
+}
+/*iconos submenú*/
+.sidebar .dropdown-menu i {
+  font-size: 22px;
+  float: left;
+  margin-right: 15px;
+  line-height: 20px;
+  width: 30px;
+  text-align: center;
+}
+/*no hace nada
+.sidebar .nav li.active > a {
+  color: #FFFFFF;
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.23);
+}*/
+/*letra grande
+.sidebar .nav a{
+  margin: 0;
+  line-height: 20px;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #26E507;
+}*/
 .sidebar .logo,
 body > .navbar-collapse .logo {
   padding: 10px 15px;
@@ -465,8 +507,6 @@ body > .navbar-collapse[data-image]:after,
 body > .navbar-collapse.has-image:after {
   opacity: .77;
 }
-
-
 .sidebar[data-color="wilken"]:after, body > .navbar-collapse[data-color="wilken"]:after {
   background: #212123;
   background: -moz-linear-gradient(top, #212123 0%, #212123 100%);
