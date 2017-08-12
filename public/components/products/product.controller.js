@@ -131,7 +131,16 @@
         })
         loadProducts(); //Funcion que refresca el update
 
-        productService.updateProduct(newProduct);
+        productService.updateProduct(newProduct).then(function(response){
+          productService.getProducts()
+            .then(function(response){
+              vm.products = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            }) //función que actualiza el update (sabado tarde)
+
+        } );
       }//Fin función que actualiza
 
       function clear(){//Función que limpia
