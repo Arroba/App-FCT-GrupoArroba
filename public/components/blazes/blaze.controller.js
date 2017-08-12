@@ -7,13 +7,13 @@
     var vm = this;
     vm.cloudObj = ImageService.getConfiguration();
 
-    // Inicio de la función init que es la que se inicializa de primera.(Pamela)
-    function init(){
+    // Inicio de la función loadBlazes que es la que se inicializa de primera.(Pamela)
+    function loadBlazes(){
       vm.blazes = blazeService.getBlazes();
       vm.eventsRel = eventsGeneralService.getEvents();
       vm.placeRel = placeService.getPlace();
       vm.to = new Date();
-    }init();
+    }loadBlazes();
 
     $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -53,7 +53,7 @@
       if(vm.blazes.length == 0){
         blazeService.setBlazes(newBlaze);
         clear();
-        init();
+        loadBlazes();
 
         swal({
         type: 'success',
@@ -94,7 +94,7 @@
           else{
             blazeService.setBlazes(newBlaze);
             clear();
-            init();
+            loadBlazes();
             swal({
             type: 'success',
             title: '¡Registro completado!',
@@ -137,7 +137,7 @@
     vm.update = function(){
       document.querySelector('#actualizar').classList.add('displayNone');
       document.querySelector('#registrar').classList.remove('displayNone');
-      var blazeEdited = {
+      var newBlaze = {
         nameBlaze: vm.nameBlaze,
         date1: vm.date1,
         time1: vm.time1,
@@ -162,9 +162,16 @@
           }
         }
       )
-
-      blazeService.updateBlazes(blazeEdited);
-      init();
+      blazeService.updateBlazes(newBlaze).then(function(response){
+        blazeService.getBlazes()
+        .then(function(response){
+          vm.blazes = response.data;
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+      });
+      loadBlazes();
       clear();
     }// Cierre de la función update.(Pamela)
 
@@ -190,7 +197,7 @@
         }// Cierre del if.(Pamela)
       }// Cierre del ciclo.(Pamela)
       blazeService.updateState(blazesList);
-      init();
+      loadBlazes();
     }// Cierre de la funcion inactive.(Pamela)
 
     //función que cambia el estado a activo.(Pamela)
@@ -203,7 +210,7 @@
         }// Cierre del if.(Pamela)
       }// Cierre del ciclo.(Pamela)
       blazeService.updateState(blazesList);
-      init();
+      loadBlazes();
     }// Cierre de la funcion active.(Pamela)
   }// Cierre de la función studentController.(Pamela)
 })();

@@ -11,7 +11,7 @@
       vm.beneficient = "";
       loadBeneficients();
 
-      // Inicio de la función init que es la que se inicializa de primiera
+      // Inicio de la función init que es la que se inicializa de primera
       function loadBeneficients(){
         beneficientService.getBeneficient().then(function(response){
           vm.beneficient = response.data;
@@ -37,7 +37,8 @@
           secondSurname: vm.secondSurname,
           name: vm.name,
           type: vm.type,
-          description: vm.description
+          description: vm.description,
+          status: 'Activo'
         } // Cierre de newBeneficient
         // intento de restringir los usuarios que se registran
         if(vm.beneficient.length == 0){
@@ -87,6 +88,7 @@
                vm.name = null;
                vm.name = null;
                vm.type = null;
+               vm.status = null;
                loadBeneficients();
                });
               clean();
@@ -140,6 +142,7 @@
           name: vm.name,
           type: vm.type,
           description: vm.description,
+          status: 'Activo'
         } // Cierre de beneficientEdit
         swal({
          type: 'success',
@@ -155,8 +158,17 @@
             }
           }
         )
-        beneficientService.updateBeneficient(newBeneficient);
+        beneficientService.updateBeneficient(newBeneficient).then(function(response){
+          beneficientService.getBeneficient()
+            .then(function(response){
+              vm.beneficient = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+        });
         loadBeneficients();
+        clean();
       } // Cierre de la función update
 
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
@@ -169,5 +181,30 @@
         vm.description = '';
       } // Cierre de la función clean
 
+    //función que cambia el estado a inabilitado
+      vm.inactive = function(pBeneficient){
+        var beneficientList = beneficientService.getBeneficient();
+          for (var i = 0; i < beneficientList.length; i++) {
+            if (beneficientList[i].name == pBeneficient.name) {
+              beneficientList[i].status = 'inhabilitado';
+              console.log(beneficientList[i].status)
+            }// Cierre del if
+          }// Cierre del ciclo
+        beneficientService.updateState(beneficientList);
+        loadAcademies();
+      }// Cierre funcion inative
+
+      //función que cambia el estado a activo
+      vm.active = function(pBeneficient){
+        var beneficientList = beneficientService.getBeneficient();
+          for (var i = 0; i < beneficientList.length; i++) {
+            if (beneficientList[i].name == pBeneficient.name) {
+              beneficientList[i].status = 'Activo';
+              console.log(beneficientList[i].status)
+            }// Cierre del if
+          }// Cierre del ciclo
+        beneficientService.updateState(beneficientList);
+        loadAcademies();
+      }// Cierre de la funcion active
     }// Cierre de la función beneficientController
 })();

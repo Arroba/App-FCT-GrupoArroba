@@ -162,9 +162,17 @@
             }
           }
         )
-        academiesService.updateAcademy(newAcademy);
+        academiesService.updateAcademy(newAcademy).then(function(response){
+          academiesService.getAcademies()
+            .then(function(response){
+              vm.academies = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+         });
         loadAcademies();
-        //clear();
+        clear();
       }//cierre funcion update
 
       //función par limpiar los inputs PREGUNTAR

@@ -220,11 +220,14 @@
             <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
             <span class="md-subhead">Tipo de asociación: {{beneficient.type}}</span>
             <span class="md-subhead">Descripción: {{beneficient.description}}</span>
+            <span class="md-subhead">Estado: {{beneficient.status}}</span>
           </md-card-title-text>
         </md-card-title>
 
         <md-card-actions id="buttons">
           <md-button class="edit" ng-click="vm.getInfo(beneficient);vm.hideButton();registro1()">Editar</md-button>
+          <md-button class="Active"  ng-click="vm.active(beneficient)">Activo</md-button>
+          <md-button class="edit"  ng-click="vm.inactive(beneficient)">Inactivo</md-button>
         <md-card-icon-actions>
     </div><!-- cierre pagina2-->
   </div><!-- cierre main-panel-->
