@@ -50,7 +50,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO Academias - ASISTENTE
+    .state('academiesAssistant',{
+      url : '/academiesAssistant',
+      templateUrl: './components/academies/academiesAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/academies/academies.controller.js')
+        }]
+      },
+      controller: 'academiesController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL ACADEMIAS ADMI
     .state('totalAcademies',{
       url : '/totalAcademies',
@@ -64,7 +76,6 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
       //ACADEMIAS TOTAL PROFESOR
     .state('totalAcademiesTeacher',{
       url : '/totalAcademiesTeacher',
@@ -78,8 +89,21 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+    //TOTAL ACADEMIAS ASISTENTE
+    .state('totalAcademiesAssistant',{
+      url : '/totalAcademiesAssistant',
+      templateUrl: './components/academies/totalAcademiesAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/academies/academies.controller.js')
+        }]
+      },
+      controller: 'academiesController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
-  //EVENTOS
+//EVENTOS
     .state('events',{
       url : '/events',
       templateUrl: './components/events/event.view.html',
@@ -303,7 +327,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO PROFESOR  ASISTENTE
+    .state('teacherAssistant',{
+      url : '/teacherAssistant',
+      templateUrl: './components/teachers/teacherAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
+        }]
+      },
+      controller: 'teacherController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //PERFIL PROFESOR
     .state('teacherProfile',{
       url : '/teacherProfile',
@@ -330,6 +366,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+    //TOTAL PROFESORES ASISTENTE
+    .state('totalTeachersAssistant',{
+      url : '/totalTeachersAssistant',
+      templateUrl: './components/teachers/totalTeachersAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/teachers/teacher.controller.js')
+        }]
+      },
+      controller: 'teacherController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
   //REGISTRO PATROCINADOR  ADMI
     .state('sponsors',{
@@ -344,7 +393,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO PATROCINADOR  ASISTENTE
+    .state('sponsorAssistant',{
+      url : '/sponsorAssistant',
+      templateUrl: './components/sponsors/sponsorAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
+        }]
+      },
+      controller: 'sponsorController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL PATROCINADORES ADMI
     .state('totalSponsors',{
       url : '/totalSponsors',
@@ -358,7 +419,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //TOTAL PATROCINADORES ASISTENTE
+    .state('totalSponsorsAssistant',{
+      url : '/totalSponsorsAssistant',
+      templateUrl: './components/sponsors/totalSponsorsAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/sponsors/sponsor.controller.js')
+        }]
+      },
+      controller: 'sponsorController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
 //REGISTROS ESTUDIANTES ADMI
     .state('students',{
@@ -373,7 +446,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO ESTUDIANTES  ASISTENTE
+    .state('studentAssistant',{
+      url : '/studentAssistant',
+      templateUrl: './components/students/studentAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/students/student.controller.js')
+        }]
+      },
+      controller: 'studentController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //REGISTRO ESTUDIANTES  PROFESOR
     .state('studentTeacher',{
       url : '/studentTeacher',
@@ -413,7 +498,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //TOTAL ESTUDIANTES  ASISTENTE
+    .state('totalStudentsAssistant',{
+      url : '/totalStudentsAssistant',
+      templateUrl: './components/students/totalStudentsAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/students/student.controller.js')
+        }]
+      },
+      controller: 'studentController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL ESTUDIANTES  PROFESOR
     .state('totalStudentsTeacher',{
       url : '/totalStudentsTeacher',
@@ -441,7 +538,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO LUGARES  ASISTENTE
+    .state('placeAssistant',{
+      url : '/placeAssistant',
+      templateUrl: './components/places/placeAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/places/place.controller.js')
+        }]
+      },
+      controller: 'placeController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL LUGARES ADMI
     .state('totalPlaces',{
       url : '/totalPlaces',
@@ -455,7 +564,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //TOTAL LUGARES  ASISTENTE
+    .state('totalPlacesAssistant',{
+      url : '/totalPlacesAssistant',
+      templateUrl: './components/places/totalPlacesAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/places/place.controller.js')
+         }]
+        },
+      controller: 'placeController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
 //REGISTRO ASOCIACION ADMI
     .state('beneficients',{
@@ -470,7 +591,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO ASOCIACION  ASISTENTE
+    .state('beneficientAssistant',{
+      url : '/beneficientAssistant',
+      templateUrl: './components/beneficientAssociation/beneficientAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/beneficientAssociation/beneficient.controller.js')
+        }]
+      },
+      controller: 'beneficientController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL ASOCIACIONES ADMI
     .state('totalBeneficients',{
       url : '/totalBeneficients',
@@ -484,7 +617,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //TOTAL ASOCIACIONES  ASISTENTE
+    .state('totalBeneficientsAssistant',{
+      url : '/totalBeneficientsAssistant',
+      templateUrl: './components/beneficientAssociation/totalBeneficientsAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/beneficientAssociation/beneficient.controller.js')
+        }]
+      },
+      controller: 'beneficientController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
 // REGISTRO PRODUCTOS ADMI
     .state('products',{
@@ -499,7 +644,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //REGISTRO PRODUCTOS  ASISTENTE
+    .state('productAssistant',{
+      url : '/productAssistant',
+      templateUrl: './components/products/productAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/products/product.controller.js')
+        }]
+      },
+      controller: 'productController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //TOTAL PRODUCTOS ADMI
     .state('totalProducts',{
       url : '/totalProducts',
@@ -513,7 +670,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
+    //TOTAL PRODUCTOS  ASISTENTE
+    .state('totalProductsAssistant',{
+      url : '/totalProductsAssistant',
+      templateUrl: './components/products/totalProductsAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/products/product.controller.js')
+        }]
+      },
+      controller: 'productController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
 
 //REGISTRO ENTRADAS ADMI
     .state('tickets',{
@@ -528,7 +697,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
       })
-
+      //REGISTRO ENTRADAS  ASISTENTE
+     .state('ticketAssistant',{
+        url : '/ticketAssistant',
+        templateUrl: './components/tickets/ticketAssistant.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', function($ocLazyLoad){
+            return $ocLazyLoad.load('./components/tickets/tickets.controller.js')
+          }]
+        },
+        controller: 'ticketsController',
+        controllerAs: 'vm',
+        css:'css/styleMenu.css'
+      })
      //REGISTRO ENTRADAS  PUBLICO
      .state('ticketPublic',{
         url : '/ticketPublic',
@@ -581,23 +762,8 @@
       },
       controller: 'profileAdminController',
       controllerAs: 'vm',
-      css:'css/styleMenu.css',
-      css:'css/styleLandingEvents.css'
-    })
-
-    .state('profileAdministrador',{
-      url : '/profileAdministrador',
-      templateUrl: './components/profiles/profileAdministrador.html',
-      resolve: {
-        load: ['$ocLazyLoad', function($ocLazyLoad){
-          return $ocLazyLoad.load('./components/profiles/profileAdmin.controller.js')
-        }]
-      },
-      controller: 'profileAdminController',
-      controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
-
     //ASISTENTE
     .state('profileAsistent',{
       url : '/profileAsistent',
@@ -609,8 +775,7 @@
       },
       controller: 'profileAsistentController',
       controllerAs: 'vm',
-      css:'css/styleMenu.css',
-      css:'css/styleLandingEvents.css'
+      css:'css/styleMenu.css'
     })
 
     //generalRanking

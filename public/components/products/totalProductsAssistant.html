@@ -1,0 +1,144 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#!/landing"><img src="images/logoFederacion.png" width="100px"></a>
+      </div>
+      <ul class="nav">
+       <li>
+          <a href="#!/profileAdmi"><i class="pe-7s-user"></i><p>Perfil</p></a>
+      </li>
+
+      <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registrar<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/academies"><i class="pe-7s-users"></i>Academia</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/teachers"><i class="pe-7s-note"></i>Profesor</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/students"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/places"><i class="pe-7s-map-marker"></i>Lugar</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/products"><i class="pe-7s-shopbag"></i>Producto</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/sponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/beneficients"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+              </li>
+            </li>
+          </ul>
+
+          <li class="dropdown">
+              <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
+              <div class="dropdown-backdrop"></div>
+                <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalAcademies"><i class="pe-7s-users"></i>Academia</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalTeachers"><i class="pe-7s-note"></i>Profesor</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalStudents"><i class="pe-7s-study"></i>Estudiante</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalPlaces"><i class="pe-7s-map-marker"></i>Lugar</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalProducts"><i class="pe-7s-shopbag"></i>Producto</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalSponsors"><i class="pe-7s-gift"></i>Patrocinador</a>
+                  </li>
+                  <li style="background-color: #FFFFFF;">
+                    <a href="#!/totalBeneficients"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+                  </li>
+                </li>
+              </ul>
+      <li>
+          <a href="#"><i class="pe-7s-note2"></i><p>Bitácora</p></a>
+      </li>
+
+      <li class=>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
+      </li>
+
+        </ul>
+    	</div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
+    <div class="main-panel">
+      <nav class="navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
+        <div class="collapse navbar-collapse"></div>
+      </nav>
+
+
+  <!-- Page Content -->
+  <section>
+	<div class="col-md-12">
+		<h1>Productos</h1>
+        <hr>
+          <!--Crear buscar producto-->
+          <section class="inputSearch">
+            <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+             <form action="" class="search-form">
+               <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+               </div>
+             </form>
+            </div>
+          </section><!--fin buscar producto-->
+
+          <div class="col-xs-12"><!--inicio de los cards -->
+           <md-card  class="container-fluid col-md-6" ng-repeat="product in vm.products | filter:vm.nameFilter">
+           <md-card-header>
+           <md-card-header-text>
+             <span class="md-title">Nombre: {{product.nameProduct}}</span>
+             <span class="md-subhead">Tipo: {{product.productType}}</span>
+           </md-card-header-text>
+           </md-card-header>
+           <md-card-title>
+             <md-card-title-text>
+               <div>
+                 <span class="md-subhead">Marca: {{product.brandProduct}}</span>
+                 <span class="md-subhead">Detalle: {{product.detailProduct}}</span>
+               </div>
+             </md-card-title-text>
+             <md-card-title-media>
+               <div class="md-media-lg card-media">
+                 <img ng-src="{{product.photo}}" alt="Description">
+               </div>
+             </md-card-title-media>
+            </md-card-title>
+          </div><!--fin de los cards -->
+
+	</div><!-- cierrecol-md-12-->
+</section><!-- cierre page content-->
+</div><!-- cierre main-panel-->
+</div><!-- cierre wrapper-->
