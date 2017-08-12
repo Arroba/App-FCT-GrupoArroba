@@ -762,7 +762,10 @@
       },
       controller: 'profileAdminController',
       controllerAs: 'vm',
-      css:'css/styleMenu.css'
+      css:'css/styleMenu.css',
+      css:'css/styleLandingEvents.css'
+
+
     })
     //ASISTENTE
     .state('profileAsistent',{
@@ -776,6 +779,7 @@
       controller: 'profileAsistentController',
       controllerAs: 'vm',
       css:'css/styleMenu.css'
+      css:'css/styleLandingEvents.css'
     })
 
     //generalRanking
