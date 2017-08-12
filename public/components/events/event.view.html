@@ -115,17 +115,7 @@
     <h1>Registro de Torneos</h1>
     <hr>
 
-    <section class="inputSearch">
-      <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-        <form action="" class="search-form">
-          <div class="form-group has-feedback">
-            <label for="Buscar" class="sr-only">Buscar</label>
-            <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-            <span class="glyphicon glyphicon-search form-control-feedback"></span>
-          </div>
-        </form>
-      </div>
-    </section>
+
 
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -136,7 +126,7 @@
           <div ng-messages-include="components/includes/messages.html"></div>
         </div><!--cierre del ng-messages -->
       </md-input-container>
-
+  
       <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
         <label for="">Lugar del torneo:</label>
         <input type="text" list="placeList" ng-model="vm.place" name="place" required>
@@ -346,7 +336,7 @@
     <!--tercera Competición -->
     <md-input-container class="col-md-4" layout="column">
       <label for="">Género:</label>
-      <md-select class="select" ng-model="vm.gender" name="genderComp3" required>
+      <md-select class="select" ng-model="vm.genderComp3" name="genderComp3" required>
         <md-option value="">--Seleccione una opción</md-option>
         <md-option value="Masculino">Masculino</md-option>
         <md-option value="Femenino">Femenino</md-option>
@@ -446,8 +436,9 @@
     </md-input-container>
 
     <div class="col-xs-12 col-sm-12 col-md-12">
-        <button class="atras" ng-click="anterior()">Atrás</button>
-        <button class="atras" ng-click="registro1()">Regresar al registro</button>
+        <md-button class="atras" ng-click="anterior()">Atrás</md-button>
+        <md-button class="atras" ng-click="registro1()">Regresar</md-button>
+        <md-button  class="siguiente" type="submit" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" ng-disabled="frmRegisterEvent.$invalid">Finalizar Registro</md-button>        
     </div>
 
 
@@ -458,6 +449,18 @@
 
   </form>
 
+
+    <section class="inputSearch">
+      <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+        <form action="" class="search-form">
+          <div class="form-group has-feedback">
+            <label for="Buscar" class="sr-only">Buscar</label>
+            <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+            <span class="glyphicon glyphicon-search form-control-feedback"></span>
+          </div>
+        </form>
+      </div>
+    </section>
 
   <!--inicio de los cards -->
 <div class="col-xs-12 col-sm-12 col-md-12">

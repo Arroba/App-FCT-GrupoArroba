@@ -9,6 +9,22 @@ module.exports.save = function(req, res){
     academies: req.body.academies,
     sponsors: req.body.sponsors,
     status: req.body.status,
+
+    genderComp1: req.body.genderComp1,
+    weightCategoryComp1: req.body.weightCategoryComp1,
+    ageCategoryComp1: req.body.ageCategoryComp1,
+    // Segunda competición
+    genderComp2: req.body.genderComp2,
+    weightCategoryComp2: req.body.weightCategoryComp2,
+    ageCategoryComp2: req.body.ageCategoryComp2,
+    // Tercera Competición
+    genderComp3: req.body.genderComp3,
+    weightCategoryComp3: req.body.weightCategoryComp3,
+    ageCategoryComp3: req.body.ageCategoryComp3,
+    // Cuarta Competición
+    genderComp4: req.body.genderComp4,
+    weightCategoryComp4: req.body.weightCategoryComp4,
+    ageCategoryComp4: req.body.ageCategoryComp4,
     fights: []
   });
 
@@ -26,3 +42,17 @@ module.exports.findAll = function(req,res){
     res.send(events);
   })
 };
+
+module.exports.update = function(req,res){
+
+  Event.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, event) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

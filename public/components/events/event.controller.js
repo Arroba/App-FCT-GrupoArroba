@@ -3,17 +3,40 @@
     .module('fctApp')
     .controller('eventsController', eventsController);// Declaración del controlador
 
+    eventsController.$inject = ['eventsService','$scope', 'academiesService', 'sponsorService', 'placeService']
+
+
+
     function eventsController(eventsService,$scope, academiesService, sponsorService, placeService){
 
       var vm = this;
 
-      function init(){
-        vm.events = eventsService.getEvents();
-        vm.academiesRel = academiesService.getAcademies();
-        vm.sponsorsRel = sponsorService.getSponsors();
-        vm.placeRel = placeService.getPlace();
-        vm.to = new Date();
-      }init();
+      vm.events = "";
+      loadEvents();
+
+
+      function loadEvents(){
+      eventsService.getEvents().then(function (response) {
+          vm.events = response.data;
+        });
+
+      academiesService.getAcademies().then(function (response) {
+          vm.academiesRel = response.data;
+        });
+
+      sponsorService.getSponsors().then(function (response) {
+          vm.sponsorsRel = response.data;
+        });
+      vm.to = new Date();
+      }
+
+      // function init(){
+      //   vm.events = eventsService.getEvents();
+      //   vm.academiesRel = academiesService.getAcademies();
+      //   vm.sponsorsRel = sponsorService.getSponsors();
+      //   vm.placeRel = placeService.getPlace();
+      //   vm.to = new Date();
+      // }init();
 
       // funciones encargadas de pasar página
         $scope.pagina = 1;
@@ -47,7 +70,7 @@
           genderComp1: vm.genderComp1,
           weightCategoryComp1: vm.weightCategoryComp1,
           ageCategoryComp1: vm.ageCategoryComp1,
-          // Segunda competición
+          // S egunda competición
           genderComp2: vm.genderComp2,
           weightCategoryComp2: vm.weightCategoryComp2,
           ageCategoryComp2: vm.ageCategoryComp2,
@@ -60,13 +83,61 @@
           weightCategoryComp4: vm.weightCategoryComp4,
           ageCategoryComp4: vm.ageCategoryComp4
         }
-        eventsService.setEvents(newEvent);
-        init();
+        eventsService.setEvents(newEvent).then(function (response) {
+          vm.name = null;
+          vm.place = null;
+          vm.dateStart = null;
+          vm.dateFinish = null;
+          vm.academies = null;
+          vm.sponsors = null;
+          vm.status = null;
+          // Fin datos generales del evento
+          // Datos de las competiciones
+          // Primera competición
+          vm.genderComp1 = null;
+          vm.weightCategoryComp1 = null;
+          vm.ageCategoryComp1 = null;
+          // S egunda competición
+          vm.genderComp2 = null;
+          vm.weightCategoryComp2 = null;
+          vm.ageCategoryComp2 = null;
+          // Tercera Competición
+          vm.genderComp3 = null;
+          vm.weightCategoryComp3 = null;
+          vm.ageCategoryComp3 = null;
+          // Cuarta Competición
+          vm.genderComp4 = null;
+          vm.weightCategoryComp4 = null;
+          vm.ageCategoryComp4 = null;
+
+          loadEvents();
+
+          });
         clear();
+        swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Registro completado')
+            }
+          }
+        )
+
+
+
+
+
       }//cierre de la función save
 
       //función que toma la información para modificar
       vm.getInfo = function(pEvent){
+        vm.id = pEvent._id;
         vm.name = pEvent.name;
         vm.place = pEvent.place;
         vm.dateStart = new Date(pEvent.dateStart);
@@ -106,6 +177,7 @@
         document.querySelector('#actualizar').classList.add('displayNone');
         document.querySelector('#registrar').classList.remove('displayNone');
         var updated = {
+          _id : vm.id,
           name: vm.name,
           place: vm.place,
           dateStart: vm.dateStart,
@@ -135,9 +207,24 @@
           weightCategoryComp4: vm.weightCategoryComp4,
           ageCategoryComp4: vm.ageCategoryComp4
         }
+        swal({
+           type: 'success',
+           title: '¡Información actualizada!',
+           timer: 3000,
+           showConfirmButton: false
+          }).then(
+            function () {},
+            // handling the promise rejection
+            function (dismiss) {
+              if (dismiss === 'timer') {
+                console.log('Información actualizada')
+              }
+            }
+          )
+
         eventsService.updateEvent(updated);
-        init();
-        clear();
+        loadEvents();
+        // clear();
       }//cierre funcion update
 
       //función par limpiar los inputs
