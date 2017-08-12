@@ -128,28 +128,364 @@
       <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
         <h4 ng-if="$first">Competidores Registrados</h2>
       </div>
-      <div class="col-xs-12 col-sm-2 col-md-2" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
+      <div class="col-xs-3 col-sm-3 col-md-3" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
         <div class="col-xs-12">
-          <label>Competidor: {{fight.competitor}}</label>
+          <label>{{fight.competitor}}</label>
         </div>
       </div>
 
-      <div class="col-md-12">
-          <div class="text-center">
-            <h6>Primera Pelea</h6>
-            <div class="">
-              <div class="checkbox checkbox-primary">
-                <input id="checkbox1" type="checkbox" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
-                <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
-              </div>
-            </div>
-            <div>
-              <div class="checkbox checkbox-primary"  >
-                <input ng-disabled="vm.showExportOption == true" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
-                <label class="text-weight-normal" for="checkbox2">{{vm.fights[1]["competitor"]}}</label>
-              </div>
+
+      <h5 class="col-xs-12 col-sm-12 col-md-12">Primera Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="" type="checkbox" ng-click="vm.addPoint0()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
             </div>
           </div>
+          <div>
+            <div class="checkbox checkbox-primary">
+              <input ng-disabled="vm.showExportOption == true" ng-click="vm.addPoint1()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
       </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox" ng-click="vm.addPoint2()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true" ng-click="vm.addPoint3()" ng-click="vm.addPoint1()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h5  class="col-xs-12 col-sm-12 col-md-12">Segunda Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox" ng-click="vm.addPoint0()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint2()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox" ng-click="vm.addPoint1()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true" ng-click="vm.addPoint4()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h5  class="col-xs-12 col-sm-12 col-md-12">Tercera Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox" ng-click="vm.addPoint0()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true" ng-click="vm.addPoint4()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint1()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint3()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <h5  class="col-xs-12 col-sm-12 col-md-12">Cuarta Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint0()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint3()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint2()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint4()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <h5  class="col-xs-12 col-sm-12 col-md-12">Tercera Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox" ng-click="vm.addPoint0()"  ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint4()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint1()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint3()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <h5  class="col-xs-12 col-sm-12 col-md-12">Quinta Ronda</h5>
+      <!-- Calendario Ronda 1  pelea 1-->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Primera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint1()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[1]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint2()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[2]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Pelea 2 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Segunda Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <input id="checkbox1" type="checkbox"  ng-click="vm.addPoint3()" ng-model="vm.showExportOption" ng-disabled="vm.showImportOption == true">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[3]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <input ng-disabled="vm.showExportOption == true"  ng-click="vm.addPoint4()" id="checkbox2" type="checkbox" ng-model="vm.showImportOption">
+              <label class="text-weight-normal" for="checkbox2">{{vm.fights[4]["competitor"]}}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pelea 3 -->
+      <div class="col-xs-4 col-sm-4 col-md-4">
+        <div class="text-center">
+          <h6>Tercera Pelea</h6>
+          <div class="">
+            <div class="checkbox checkbox-primary">
+              <label class="styleLabel2" for="checkbox1">{{vm.fights[0]["competitor"]}}</label>
+            </div>
+          </div>
+          <div>
+            <div class="checkbox checkbox-primary"  >
+              <label class="text-weight-normal" for="checkbox2">Fecha Libre</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
     </div>
   </section>

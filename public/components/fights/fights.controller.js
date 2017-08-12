@@ -93,31 +93,7 @@
       vm.getInfo = function(pFights){
         vm.nameEvent = pFights.nameEvent;
         // datos de la primera competición
-        vm.name1Compe1 = pFights.name1Compe1;
-        vm.name2Compe1 = pFights.name2Compe1;
-        vm.name3Compe1 = pFights.name3Compe1;
-        vm.name4Compe1 = pFights.name4Compe1;
-        vm.name5Compe1 = pFights.name5Compe1;
-        // fin datos primera competición
-        // datos de la segunda competición
-        vm.name1Compe2 = pFights.name1Compe2;
-        vm.name2Compe2 = pFights.name2Compe2;
-        vm.name3Compe2 = pFights.name3Compe2;
-        vm.name4Compe2 = pFights.name4Compe2;
-        vm.name5Compe2 = pFights.name5Compe2;
-        // fin datos segunda competición
-        // datos de la tercera competición
-        vm.name1Compe3 = pFights.name1Compe3;
-        vm.name2Compe3 = pFights.name2Compe3;
-        vm.name3Compe3 = pFights.name3Compe3;
-        vm.name4Compe3 = pFights.name4Compe3;
-        vm.name5Compe3 = pFights.name5Compe3;
-        // fin datos cuarta competición
-        vm.name1Compe4 = pFights.name1Compe4;
-        vm.name2Compe4 = pFights.name2Compe4;
-        vm.name3Compe4 = pFights.name3Compe4;
-        vm.name4Compe4 = pFights.name4Compe4;
-        vm.name5Compe4 = pFights.name5Compe4
+
         // fin datos cuarta competición
       } // Cierre de la función getInfo
 
@@ -126,29 +102,7 @@
         var fightsEdit = {
           nameEvent: vm.nameEvent,
           // Primera Competición
-          name1Compe1: vm.name1Compe1,
-          name2Compe1: vm.name2Compe1,
-          name3Compe1: vm.name3Compe1,
-          name4Compe1: vm.name4Compe1,
-          name5Compe1: vm.name5Compe1,
-          // datos de la segunda competición
-          name1Compe2: vm.name1Compe2,
-          name2Compe2: vm.name2Compe2,
-          name3Compe2: vm.name3Compe2,
-          name4Compe2: vm.name4Compe2,
-          name5Compe2: vm.name5Compe2,
-          // datos de la tercera competición
-          name1Compe3: vm.name1Compe3,
-          name2Compe3: vm.name2Compe3,
-          name3Compe3: vm.name3Compe3,
-          name4Compe3: vm.name4Compe3,
-          name5Compe3: vm.name5Compe3,
-          // Inicio datos cuarta competición
-          name1Compe4: vm.name1Compe4,
-          name2Compe4: vm.name2Compe4,
-          name3Compe4: vm.name3Compe4,
-          name4Compe4: vm.name4Compe4,
-          name5Compe4: vm.name5Compe3,
+
         } // Cierre de fightsEdit
         fightsService.updateFight(fightsEdit);
         init();
@@ -158,266 +112,60 @@
       // Inicio de la función clean, que se encarga de limpiar los datos despúes de un registro
       function clean(){
         vm.nameEvent='';
-        // datos de la primera competición
-        vm.name1Compe1='';
-        vm.name2Compe1='';
-        vm.name3Compe1='';
-        vm.name4Compe1='';
-        // fin datos primera competición
-        // datos de la segunda competición
-        vm.name1Compe2='';
-        vm.name2Compe2='';
-        vm.name3Compe2='';
-        vm.name4Compe2='';
-        // fin datos segunda competición
-        // datos de la tercera competición
-        vm.name1Compe3='';
-        vm.name2Compe3='';
-        vm.name3Compe3='';
-        vm.name4Compe3='';
-        // fin datos cuarta competición
-        vm.name1Compe4='';
-        vm.name2Compe4='';
-        vm.name3Compe4='';
-        vm.name4Compe4='';
-        // fin datos cuarta competición
-        status: 'Activo'
+
       } // Cierre de la función clean
 
 
       //Puntuación competición 1
       //función que asigna puntos. Funcion final
-      $scope.assingPointsOneName1Comp1 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name1Compe1 == pFights.name1Compe1) {
-            fightsList[i].points1Compe1 = Number(pFights.points1Compe1 + 1);
-            document.querySelector("#points1Compe1").value=  Number(fightsList[i].points1Compe1) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
+      vm. addPoint0 = function(){
+        var fightsList = vm.fights;
+          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          console.log(vm.fights[0].points);
+          fightsService.setFights(fightsList);
+
       }// Cierre de la funcion assingPoints
 
-      $scope.assingPointsOneName2Comp1 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name2Compe1 == pFights.name2Compe1) {
-            fightsList[i].points2Compe1 = Number(pFights.points2Compe1 + 1);
-            document.querySelector("#points2Compe1").value=  Number(fightsList[i].points2Compe1) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
+      //Puntuación competición 1
+      //función que asigna puntos. Funcion final
+      vm. addPoint1 = function(){
+        var fightsList = vm.fights;
+          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          console.log(vm.fights[0].points);
+          fightsService.setFights(fightsList);
+
       }// Cierre de la funcion assingPoints
 
-      $scope.assingPointsOneName3Comp1 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name3Compe1 == pFights.name3Compe1) {
-            fightsList[i].points3Compe1 = Number(pFights.points3Compe1 + 1);
-            document.querySelector("#points3Compe1").value=  Number(fightsList[i].points3Compe1) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
+      //Puntuación competición 1
+      //función que asigna puntos. Funcion final
+      vm. addPoint2 = function(){
+        var fightsList = vm.fights;
+          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          console.log(vm.fights[0].points);
+          fightsService.setFights(fightsList);
 
-      $scope.assingPointsOneName4Comp1 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name4Compe1 == pFights.name4Compe1) {
-            fightsList[i].points4Compe1 = Number(pFights.points4Compe1 + 1);
-            document.querySelector("#points4Compe1").value=  Number(fightsList[i].points4Compe1) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName5Comp1 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name5Compe1 == pFights.name5Compe1) {
-            fightsList[i].points5Compe1 = Number(pFights.points5Compe1 + 1);
-            document.querySelector("#points5Compe1").value=  Number(fightsList[i].points5Compe1) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-      // cierre asignación de puntos para la primera competición
-
-
-      //Puntuación competición 2
-      //función que asigna puntos
-      $scope.assingPointsOneName1Comp2 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name1Compe2 == pFights.name1Compe2) {
-            fightsList[i].points1Compe2 = Number(pFights.points1Compe2 + 1);
-            document.querySelector("#points1Compe2").value=  Number(fightsList[i].points1Compe2) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName2Comp2 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name2Compe2 == pFights.name2Compe2) {
-            fightsList[i].points2Compe2 = Number(pFights.points2Compe2 + 1);
-            document.querySelector("#points2Compe2").value=  Number(fightsList[i].points2Compe2) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName3Comp2 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name3Compe2 == pFights.name3Compe2) {
-            fightsList[i].points3Compe2 = Number(pFights.points3Compe2 + 1);
-            document.querySelector("#points3Compe2").value=  Number(fightsList[i].points3Compe2) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName4Comp2 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name4Compe2 == pFights.name4Compe2) {
-            fightsList[i].points4Compe2 = Number(pFights.points4Compe2 + 1);
-            document.querySelector("#points4Compe2").value=  Number(fightsList[i].points4Compe2) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName5Comp2 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name5Compe2 == pFights.name5Compe2) {
-            fightsList[i].points5Compe2 = Number(pFights.points5Compe2 + 1);
-            document.querySelector("#points5Compe2").value=  Number(fightsList[i].points5Compe2) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
       }// Cierre de la funcion assingPoints
 
 
+      //Puntuación competición 1
+      //función que asigna puntos. Funcion final
+      vm. addPoint3 = function(){
+        var fightsList = vm.fights;
+          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          console.log(vm.fights[0].points);
+          fightsService.setFights(fightsList);
 
-      //Puntuación competición 3
-      //función que asigna puntos
-      $scope.assingPointsOneName1Comp3 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name1Compe3 == pFights.name1Compe3) {
-            fightsList[i].points1Compe3 = Number(pFights.points1Compe3 + 1);
-            document.querySelector("#points1Compe3").value=  Number(fightsList[i].points1Compe3) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
       }// Cierre de la funcion assingPoints
 
-      $scope.assingPointsOneName2Comp3 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name2Compe3 == pFights.name2Compe3) {
-            fightsList[i].points2Compe3 = Number(pFights.points2Compe3 + 1);
-            document.querySelector("#points2Compe3").value=  Number(fightsList[i].points2Compe3) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
+      //Puntuación competición 1
+      //función que asigna puntos. Funcion final
+      vm. addPoint4 = function(){
+        var fightsList = vm.fights;
+          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          console.log(vm.fights[0].points);
+          fightsService.setFights(fightsList);
+
       }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName3Comp3 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name3Compe3 == pFights.name3Compe3) {
-            fightsList[i].points3Compe3 = Number(pFights.points3Compe3 + 1);
-            document.querySelector("#points3Compe3").value=  Number(fightsList[i].points3Compe3) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName4Comp3 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name4Compe3 == pFights.name4Compe3) {
-            fightsList[i].points4Compe3 = Number(pFights.points4Compe3 + 1);
-            document.querySelector("#points4Compe3").value=  Number(fightsList[i].points4Compe3) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName5Comp3 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name5Compe3 == pFights.name5Compe3) {
-            fightsList[i].points5Compe3 = Number(pFights.points5Compe3 + 1);
-            document.querySelector("#points5Compe3").value=  Number(fightsList[i].points5Compe3) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-
-      //Puntuación competición 4
-      //función que asigna puntos
-      $scope.assingPointsOneName1Comp4 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name1Compe4 == pFights.name1Compe4) {
-            fightsList[i].points1Compe4 = Number(pFights.points1Compe4 + 1);
-            document.querySelector("#points1Compe4").value=  Number(fightsList[i].points1Compe4) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName2Comp4 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name2Compe4 == pFights.name2Compe4) {
-            fightsList[i].points2Compe4 = Number(pFights.points2Compe4 + 1);
-            document.querySelector("#points2Compe4").value=  Number(fightsList[i].points2Compe4) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName3Comp4 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name3Compe4 == pFights.name3Compe4) {
-            fightsList[i].points3Compe4 = Number(pFights.points3Compe4 + 1);
-            document.querySelector("#points3Compe4").value=  Number(fightsList[i].points3Compe4) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName4Comp4 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name4Compe4 == pFights.name4Compe4) {
-            fightsList[i].points4Compe4 = Number(pFights.points4Compe4 + 1);
-            document.querySelector("#points4Compe4").value=  Number(fightsList[i].points4Compe4) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints
-
-      $scope.assingPointsOneName5Comp4 = function(pFights){
-        var fightsList = fightsService.getFights();
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].name5Compe4 == pFights.name5Compe4) {
-            fightsList[i].points5Compe4 = Number(pFights.points5Compe4 + 1);
-            document.querySelector("#points5Compe4").value=  Number(fightsList[i].points5Compe4) ;
-          }
-          } // Cierre del ciclo
-          $scope.showConfirm(fightsList);
-      }// Cierre de la funcion assingPoints4
-
 
       $scope.showConfirm = function(fightsList) {
       // Appending dialog to document.body to cover sidenav in docs app
