@@ -9,14 +9,23 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_academy')
+router.route('/save_event')
   .post(function(req,res){
     eventsController.save(req,res);
 
   });
-router.route('/get_all_academies')
+router.route('/get_all_events')
   .get(function(req,res){
     eventsController.findAll(req,res);
   });
 
+router.route('/create_fight')
+	.post(function(req,res){
+    eventsController.save(req,res);
+  });
+
+router.route('/update_events')
+	.post(function(req,res){
+    eventsController.save(req,res);
+  });	
 module.exports = router;

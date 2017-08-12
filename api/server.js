@@ -44,7 +44,6 @@ var index = require('./index'),
     eventsRoutes = require('./components/events/event.route'),
     eventsGeneralRoutes = require('./components/eventsGeneral/eventGeneral.route'),
     exhibitionsRoutes = require('./components/exhibitions/exhibition.route'),
-    fightsRoutes = require('./components/fights/fight.route'),
     generalRankingsRoutes = require('./components/generalRanking/generalRanking.route'),
     placesRoutes = require('./components/places/place.route'),
     productsRoutes = require('./components/products/product.route'),
@@ -60,7 +59,6 @@ app.use('/api', blazesRoutes);
 app.use('/api', eventsRoutes);
 app.use('/api', eventsGeneralRoutes);
 app.use('/api', exhibitionsRoutes);
-app.use('/api', fightsRoutes);
 app.use('/api', generalRankingsRoutes);
 app.use('/api', placesRoutes);
 app.use('/api', productsRoutes);

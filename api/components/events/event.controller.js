@@ -1,4 +1,4 @@
-var event = require('./event.model.js');
+var Event = require('./event.model.js');
 
 module.exports.save = function(req, res){
   var newEvent = new Event({
@@ -8,7 +8,8 @@ module.exports.save = function(req, res){
     dateFinish: req.body.dateFinish,
     academies: req.body.academies,
     sponsors: req.body.sponsors,
-    status: req.body.status
+    status: req.body.status,
+    fights: []
   });
 
   newEvent.save(function(err){
