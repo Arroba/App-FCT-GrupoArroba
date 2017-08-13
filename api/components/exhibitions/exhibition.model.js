@@ -7,9 +7,7 @@ var ExbitionSchema = new mongoose.Schema({
   time: Date,
   place: String,
   guestsExhibition: String,
-  photo: String,
   status: String
-
 });
 
 module.exports = mongoose.model('Exhibition', ExbitionSchema); //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

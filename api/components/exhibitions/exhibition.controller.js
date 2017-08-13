@@ -24,3 +24,6 @@ module.exports.findAll = function(req,res){
     res.send(exhibitions);
   })
 };
+
+
+

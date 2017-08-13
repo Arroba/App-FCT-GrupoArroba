@@ -9,14 +9,21 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_academy')
+router.route('/save_exhibitions')
   .post(function(req,res){
     exhibitionsController.save(req,res);
 
   });
-router.route('/get_all_academies')
+router.route('/get_all_exhibitions')
   .get(function(req,res){
     exhibitionsController.findAll(req,res);
   });
 
+  router.route('/update_exhibitions')
+  .put(function(req, res){
+    sponsorsController.update(req,res);
+  });
+
 module.exports = router;
+
+
