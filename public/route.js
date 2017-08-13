@@ -778,7 +778,7 @@
       },
       controller: 'profileAsistentController',
       controllerAs: 'vm',
-      css:'css/styleMenu.css'
+      css:'css/styleMenu.css',
       css:'css/styleLandingEvents.css'
     })
 
