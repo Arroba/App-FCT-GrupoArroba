@@ -15,27 +15,16 @@
       vm.to = new Date();
     }init();
 
-    $scope.pagina = 1;
+       $scope.pagina = 1;
       $scope.siguiente = function() {
-        $scope.pagina++;
+        $scope.pagina = 2;
       }
-
       $scope.anterior = function() {
-        $scope.pagina--;
+        $scope.pagina = 1;
       }
       $scope.registro1 = function() {
         $scope.pagina = 1;
       }
-
-    // Inicio de la función presave.(Pamela)
-    vm.presave= function(newExhibition){
-      vm.cloudObj.data.file = document.getElementById("photo").files[0];
-      Upload.upload(vm.cloudObj)
-        .success(function(data){
-          newExhibition.photo = data.url;
-          vm.save(newExhibition);
-        }); // Cierre de la función success.(Pamela)
-    } // Cierre de la función presave.(Pamela)
 
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
     vm.save= function(){
