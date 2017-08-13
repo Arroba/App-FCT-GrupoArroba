@@ -2,40 +2,43 @@
   angular
   .module('fctApp')
   .controller('blazeController', blazeController);
-  function blazeController(blazeService,ImageService,Upload, eventsGeneralService,placeService,$scope){
+  blazeController.$inject = ['blazeService','$scope'];
+
+  function blazeController(blazeService,$scope){
 
     var vm = this;
-    vm.cloudObj = ImageService.getConfiguration();
+    vm.blazes = "";
+    //vm.placeRel = {};
+    loadBlazes();
 
     // Inicio de la función loadBlazes que es la que se inicializa de primera.(Pamela)
     function loadBlazes(){
-      vm.blazes = blazeService.getBlazes();
-      vm.eventsRel = eventsGeneralService.getEvents();
-      vm.placeRel = placeService.getPlace();
+      blazeService.getBlazes().then(function(response){
+        vm.blazes = response.data;
+      });
+
+     // eventsGeneralService.getEvents().then(function (response) {
+       // vm.eventsRel = response.data;
+      //});
+
+     // placeService.getPlace().then(function(response){
+       //   vm.placeRel = response.data;
+      //});
+
       vm.to = new Date();
-    }loadBlazes();
+    }
 
     $scope.pagina = 1;
       $scope.siguiente = function() {
-        $scope.pagina++;
+        $scope.pagina = 2;
       }
 
       $scope.anterior = function() {
-        $scope.pagina--;
+        $scope.pagina = 1;
       }
       $scope.registro1 = function() {
         $scope.pagina = 1;
       }
-
-    // Inicio de la función presave.(Pamela)
-    vm.presave= function(newBlaze){
-      vm.cloudObj.data.file = document.getElementById("photo").files[0];
-      Upload.upload(vm.cloudObj)
-        .success(function(data){
-          newBlaze.photo = data.url;
-          vm.save(newBlaze);
-        }); // Cierre de la función success.(Pamela)
-    } // Cierre de la función presave.(Pamela)
 
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
     vm.save= function(){
@@ -46,8 +49,7 @@
         time2: vm.time2,
         date2: vm.date2,
         place: vm.place,
-        status: 'Activo',
-        photo: vm.photo
+       status: 'Activo',
       }// Cierre de newBlaze.(Pamela)
       // intento de restringir los usuarios que se registran
       if(vm.blazes.length == 0){
@@ -74,7 +76,7 @@
         for(var i = 0; i < vm.blazes.length; i++){
           if(newBlaze.nameBlaze == vm.blazes[i].nameBlaze){
 
-            swal({
+          swal({
            type: 'error',
            title: '¡El nombre de fogueo ya existe!',
            timer: 3000,
@@ -92,20 +94,28 @@
             return;
           }
           else{
-            blazeService.setBlazes(newBlaze);
-            clear();
+            blazeService.setBlazes(newBlaze).then(function(response){
+              vm.nameBlaze = null;
+              vm.date1 = null;
+              vm.time1 = null;
+              vm.time2 = null;
+              vm.date2 = null;
+              vm.place = null;
+              vm.status = null;
             loadBlazes();
+            });
+            clear();
             swal({
-            type: 'success',
-            title: '¡Registro completado!',
-            timer: 3000,
-            showConfirmButton: false
-          }).then(
-            function () {},
+              type: 'success',
+              title: '¡Registro completado!',
+              timer: 3000,
+              showConfirmButton: false
+            }).then(
+              function () {},
             // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                console.log('Registro completado')
+              function (dismiss) {
+                if (dismiss === 'timer') {
+                  console.log('Registro completado')
               }
             }
           )
@@ -118,13 +128,13 @@
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pBlaze){
+      vm.id = pBlaze._id;
       vm.nameBlaze = pBlaze.nameBlaze;
       vm.date1 = new Date (pBlaze.date1);
       vm.time1 = new Date (pBlaze.time1);
       vm.time2 = new Date (pBlaze.time2);
       vm.date2 = new Date (pBlaze.date2);
       vm.place = pBlaze.place;
-      vm.photo = pBlaze.photo;
     }// Cierre de la función getInfo.(Pamela)
 
     //función que cambia boton segun la información para modificar
@@ -138,16 +148,15 @@
       document.querySelector('#actualizar').classList.add('displayNone');
       document.querySelector('#registrar').classList.remove('displayNone');
       var newBlaze = {
+        _id: vm.id,
         nameBlaze: vm.nameBlaze,
         date1: vm.date1,
         time1: vm.time1,
         time2: vm.time2,
         date2: vm.date2,
         place: vm.place,
-        status: 'Activo',
-        photo: vm.photo
+        status: 'Activo'
       }// Cierre de blazeEdited.(Pamela)
-
       swal({
        type: 'success',
        title: '¡Información actualizada!',
@@ -183,7 +192,6 @@
       vm.time2 =  '';
       vm.date2 =  '';
       vm.place =  '';
-      vm.photo =  '';
     }// Cierre de la función clear.(Pamela)
 
     // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)

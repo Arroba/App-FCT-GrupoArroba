@@ -24,12 +24,12 @@
     //funcíon que actualiza los datos
         function _updateExhibition(pobjExhibiton){
           console.log(pobjExhibiton);
-          return $http.put('http://localhost:3000/api/update_sponsor',pobjExhibiton);
+          return $http.put('http://localhost:3000/api/update_exhibitions',pobjExhibiton);
         }//cierre función updatedAcademy
 
         //función que actualiza el estado
         function _updateState(pExhibitionList){
-          return $http.put('http://localhost:3000/api/update_sponsor',pExhibitionList);
+          return $http.put('http://localhost:3000/api/update_state_exhibitions',pExhibitionList);
         }//cierre función updateState
 
       }//cierre función principal del service
