@@ -1,201 +1,199 @@
-(function() {
+(function(){
   angular
-  .module('fctApp')
-  .controller('exhibitionController', exhibitionController);
-  function exhibitionController(exhibitionService,ImageService,Upload,eventsGeneralService,placeService,$scope){
+    .module('fctApp')
+    .controller('exhibitionController', exhibitionController);// Declaración del controlador
+    exhibitionController.$inject = ['exhibitionService','$scope'];
 
-    var vm = this;
-    vm.cloudObj = ImageService.getConfiguration();
+    function exhibitionController(exhibitionService,$scope){
 
-    // Inicio de la función init que es la que se inicializa de primera.(Pamela)
-    function init(){
-      vm.exhibitions = exhibitionService.getExhibitions();
-      vm.eventsRel = eventsGeneralService.getEvents();
-      vm.placeRel = placeService.getPlace();
-      vm.to = new Date();
-    }init();
+      var vm = this;
+      vm.exhibitions = "";
+      loadExhibitions();
 
-    $scope.pagina = 1;
+      function loadExhibitions(){
+        exhibitionService.getExhibitions().then(function (response) {
+            vm.exhibitions = response.data;
+          });
+        }
+      // Función que guarda los datos
+
+      $scope.pagina = 1;
       $scope.siguiente = function() {
-        $scope.pagina++;
+        $scope.pagina = 2;
       }
-
       $scope.anterior = function() {
-        $scope.pagina--;
+        $scope.pagina = 1;
       }
       $scope.registro1 = function() {
         $scope.pagina = 1;
       }
 
-    // Inicio de la función presave.(Pamela)
-    vm.presave= function(newExhibition){
-      vm.cloudObj.data.file = document.getElementById("photo").files[0];
-      Upload.upload(vm.cloudObj)
-        .success(function(data){
-          newExhibition.photo = data.url;
-          vm.save(newExhibition);
-        }); // Cierre de la función success.(Pamela)
-    } // Cierre de la función presave.(Pamela)
 
-    // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
-    vm.save= function(){
-      var newExhibition = {
+      vm.save= function(){// Objeto que obtener
+        var newExhibition = {
         nameExhibition: vm.nameExhibition,
         date: vm.date,
         time: vm.time,
         place: vm.place,
         guestsExhibition: vm.guestsExhibition,
         status: 'Activo',
-        photo: vm.photo
-      }// Cierre de newExhibition.(Pamela)
-      // intento de restringir los usuarios que se registran
-      if(vm.exhibitions.length == 0){
-        exhibitionService.setExhibitions(newExhibition);
-        clear();
-        init();
-        swal({
-        type: 'success',
-        title: '¡Registro completado!',
-        timer: 3000,
-        showConfirmButton: false
-      }).then(
-        function () {},
-        // handling the promise rejection
-        function (dismiss) {
-          if (dismiss === 'timer') {
-            console.log('Registro completado')
-          }
-        }
-      )
-        return;
-      }else{
-        for(var i = 0; i < vm.exhibitions.length; i++){
-          if(newExhibition.nameExhibition == vm.exhibitions[i].nameExhibition){
-            swal({
-            type: 'error',
-            title: '¡Nombre ya registrado!',
-            timer: 3000,
-            showConfirmButton: false
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                console.log('Nombre ya registrado')
-              }
-            }
-          )
-            return;
-          }
-          else{
-            exhibitionService.setExhibitions(newExhibition);
-            clear();
-            init();
-            swal({
-            type: 'success',
-            title: '¡Registro completado!',
-            timer: 3000,
-            showConfirmButton: false
-          }).then(
-            function () {},
-            // handling the promise rejection
-            function (dismiss) {
-              if (dismiss === 'timer') {
-                console.log('Registro completado')
-              }
-            }
-          )
-            return;
-          }
-        }
       }
-    }// Cierre de la función save.(Pamela)
 
-    // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
-    vm.getInfo = function(pExhibition){
-      vm.nameExhibition = pExhibition.nameExhibition;
-      vm.Date = new Date (pExhibition.date);
-      vm.time = new Date (pExhibition.time);
-      vm.place = pExhibition.place;
-      vm.guestsExhibition = pExhibition.guestsExhibition;
-      vm.photo = pExhibition.photo;
-    }// Cierre de la función getInfo.(Pamela)
+        //
+        if(vm.exhibitions.length == 0){
+          exhibitionService.setExhibitions(newExhibition);
+          clear();
+          loadExhibitions();
 
-    //función que cambia boton segun la información para modificar Pili
-    vm.hideButton = function(){
-      document.querySelector('#actualizar').classList.remove('displayNone');
-      document.querySelector('#registrar').classList.add('displayNone');
-    }
+          swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        })
+          return;
+        }else{
+          for(var i = 0; i < vm.exhibitions.length; i++){
+            if(newExhibition.nameExhibition == vm.exhibitions[i].nameExhibition){
+                swal({
+               type: 'error',
+               title: '¡El nombre de la exhibición ya existe!',
+               timer: 3000,
+               showConfirmButton: false
+             }).then(
+                function () {},
+                // handling the promise rejection
+                function (dismiss) {
+                  if (dismiss === 'timer') {
+                    console.log('El nombre de la exhibición ya existe')
+                  }
+                }
+              )
+              return;
+            }
 
-    // Inicio de la función update, que se encarga de devolver los datos para ser editados.
-    vm.update = function(){
-      document.querySelector('#actualizar').classList.add('displayNone');
-      document.querySelector('#registrar').classList.remove('displayNone');
-      var exhibitionEdited = {
-        nameExhibition: vm.nameExhibition,
-        date: vm.date,
-        time: vm.time,
-        place: vm.place,
-        guestsExhibition: vm.guestsExhibition,
-        status: 'Activo',
-        photo: vm.photo
-      }// Cierre de exhibitionEdited.
-
-      swal({
-       type: 'success',
-       title: '¡Información actualizada!',
-       timer: 3000,
-       showConfirmButton: false
-      }).then(
-        function () {},
-        // handling the promise rejection
-        function (dismiss) {
-          if (dismiss === 'timer') {
-            console.log('Información actualizada')
+            else{
+              exhibitionService.setExhibitions(newExhibition).then(function (response) {
+              vm.nameExhibition = null;
+              vm.date = null;
+              vm.time = null;
+              vm.place = null;
+              vm.guestsExhibition = null;
+              vm.status = null;
+              loadExhibitions();
+            });
+              clear();
+              swal({
+                  type: 'success',
+                  title: '¡Registro completado!',
+                  timer: 3000,
+                  showConfirmButton: false
+                }).then(
+                  function () {},
+                  // handling the promise rejection
+                  function (dismiss) {
+                    if (dismiss === 'timer') {
+                      console.log('Registro completado')
+                    }
+                  }
+                )
+              return;
+            }
           }
         }
-      )
+      }// Cierre de la función save.()
 
-      exhibitionService.updateExhibitions(exhibitionEdited);
-      init();
-      clear();
-    }// Cierre de la función update.(Pamela)
+      //función que toma la información para modificar
+      vm.getInfo = function(pExhibition){
+        vm.id = pExhibition._id;
+        vm.nameExhibition = pExhibition.nameExhibition;
+        vm.date = pExhibition.date;
+        vm.time = pExhibition.time;
+        vm.place = pExhibition.place;
+        vm.guestsExhibition = pExhibition.guestsExhibition;
+      }//cierrre función info
 
-    // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
-    function clear(){
-      vm.nameExhibition = '';
-      vm.date = '';
-      vm.time =  '';
-      vm.place =  '';
-      vm.guestsExhibition =  '';
-      vm.photo =  '';
-    }// Cierre de la función clear.(Pamela)
+      //función que cambia boton segun la información para modificar
+      vm.hideButton = function(){
+        document.querySelector('#actualizar').classList.remove('displayNone');
+        document.querySelector('#registrar').classList.add('displayNone');
+      }
 
-    // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
-    //función que cambia el estado a inabilitado.(Pamela)
-    vm.inactive = function(pExhibition){
-      var exhibitionsList = exhibitionService.getExhibitions();
-      for (var i = 0; i < exhibitionsList.length; i++) {
-        if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
-          exhibitionsList[i].status = 'inhabilitado';
-          console.log(exhibitionsList[i].status)
-        }// Cierre del if.(Pamela)
-      }// Cierre del ciclo.(Pamela)
-      exhibitionService.updateState(exhibitionsList);
-      init();
-    }// Cierre de la funcion inactive.(Pamela)
+      //función que modifica los datos
+      vm.update = function(){
+        document.querySelector('#actualizar').classList.add('displayNone');
+        document.querySelector('#registrar').classList.remove('displayNone');
+        var newExhibition = {
+          _id : vm.id,
+          nameExhibition : vm.nameExhibition,
+          date : vm.date,
+          time : vm.time,
+          place : vm.place,
+          guestsExhibition : vm.guestsExhibition,
+          status : 'Activo'
+        }
+        swal({
+         type: 'success',
+         title: '¡Información actualizada!',
+         timer: 3000,
+         showConfirmButton: false
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
+        exhibitionService.updateExhibition(newExhibition).then(function(response){
+          exhibitionService.getExhibitions()
+            .then(function(response){
+              vm.exhibitions = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })
+         });
+        loadExhibitions();
+        clear();
+      }//cierre funcion update
 
-    //función que cambia el estado a activo.(Pamela)
-    vm.active = function(pExhibition){
-      var exhibitionsList = exhibitionService.getExhibitions();
-      for (var i = 0; i < exhibitionsList.length; i++) {
-        if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
-          exhibitionsList[i].status = 'Activo';
-          console.log(exhibitionsList[i].status)
-        }// Cierre del if.(Pamela)
-      }// Cierre del ciclo.(Pamela)
-      exhibitionService.updateState(exhibitionsList);
-      init();
-    }// Cierre de la funcion active.(Pamela)
-  }
-})();
+      //función par limpiar los inputs PREGUNTAR
+      function clear(){
+        vm.nameExhibition = '';
+        vm.date = '';
+        vm.time = '';
+        vm.place = '';
+        vm.guestsExhibition = '';
+      } //cierre función clear
+
+      //función que cambia el estado a inabilitado
+      vm.inactive = function(pExhibition){
+        var exhibitionsList = exhibitionService.getExhibitions();
+          for (var i = 0; i < exhibitionsList.length; i++) {
+            if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
+              exhibitionsList[i].status = 'inhabilitado';
+              console.log(exhibitionsList[i].status)
+            }// Cierre del if
+          }// Cierre del ciclo
+        academiesService.updateState(exhibitionsList);
+        loadExhibitions();
+      }// Cierre funcion inative
+
+      //función que cambia el estado a activo
+      vm.active = function(pExhibition){
+        var exhibitionsList = exhibitionService.getExhibitions();
+          for (var i = 0; i < exhibitionsList.length; i++) {
+            if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
+              exhibitionsList[i].status = 'Activo';
+              console.log(exhibitionsList[i].status)
+            }// Cierre del if
+          }// Cierre del ciclo
+        exhibitionService.updateState(exhibitionsList);
+        loadExhibitions();
+      }// Cierre de la funcion active
+
+    }//Cierre de la función para el controlador
+
+})();//Cierre de la función principal

@@ -10,7 +10,7 @@ module.exports.save = function(req, res){
     status: req.body.status
   });
 
-  Exhibition.save(function(err){
+  newExhibition.save(function(err){
     if(err){
       res.json({success:false, msg:'No se pudo registrar la exhibition' + err});
     }else{
@@ -24,3 +24,6 @@ module.exports.findAll = function(req,res){
     res.send(exhibitions);
   })
 };
+
+
+

@@ -7,7 +7,8 @@ var BeneficientSchema = new mongoose.Schema({
     secondSurname: String,
     name: String,
     type: String,
-    description: String
+    description: String,
+    status: String
 });
 
 module.exports = mongoose.model('Beneficient', BeneficientSchema); //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

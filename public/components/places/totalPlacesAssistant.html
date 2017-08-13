@@ -70,14 +70,14 @@
                   </li>
                 </li>
               </ul>
-      <li>
+
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
         </ul>
-    	</div>
-    </div>
+    	</div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -88,18 +88,17 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
 
   <!-- Page Content -->
 <section>
-    <div class=" col-md-12">
-      <h1>Fogueos</h1>
-      <hr>
-      <!--Crear buscar fogueo-->
+    <div class=" col-md-12"><!-- inicio col-md-12-->
+      <h1>Lugares para eventos</h1>
+      <!--Crear buscar places-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -110,30 +109,24 @@
             </div>
           </form>
         </div>
-      </section>
+      </section><!--fin buscar places-->
 
-    <div class="col-xs-12">
-      <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
-    | filter:vm.nameFilter"><!--Impresión de los datos-->
+      <md-card class="container-fluid col-md-4" ng-repeat="place in vm.place | filter:vm.nameFilter">
         <md-card-header>
           <md-card-header-text>
-            <span class="md-subhead">Fogueo: {{blaze.nameBlaze}}</span>
+            <span class="md-title">Nombre del lugar:{{place.namePlace}}</span>
+            <span class="md-subhead">Ubicación:{{place.location}}</span>
           </md-card-header-text>
         </md-card-header>
         <md-card-title>
           <md-card-title-text>
-              <span class="md-subhead">Hora a realizarse: {{blaze.time | date: "hh:mm a"}}</span>
-              <span class="md-subhead">Lugar: {{blaze.place}}</span>
-              <span class="md-subhead">Estado: {{blaze.status}}</span>
+            <span class="md-subhead">Capacidad:{{place.capacity}} personas</span>
+            <span class="md-subhead">Teléfono:{{place.phone}}</span>
+            <span class="md-subhead">Disponibilidad:{{place.timestart | date:'shortTime'}} - {{place.timeFinish | date:'shortTime'}}</span>
+            <span class="md-subhead">Persona de contacto:{{place.nameContact}} {{place.firstName}} {{place.secondName}}</span>
           </md-card-title-text>
         </md-card-title>
-        <!-- Boton para cambiar el editar las fogueos -->
-        <md-card-actions id="buttons" >
-          <md-button class="edit" ng-click="vm.getInfo(blaze);vm.hideButton()">Editar</md-button>
-          <md-button class="Active" ng-click="vm.active(blaze)">Activo</md-button>
-          <md-button class="edit" ng-click="vm.inactive(blaze)">Inactivo</md-button>
-      <md-card-icon-actions><!-- cierre botones  -->
-    </div>
-    </div>
-  </section>
-</div>
+      </div><!-- cierre col-md-12-->
+    </section><!-- cierre page content-->
+    </div><!-- cierre main-panel-->
+    </div><!-- cierre wrapper-->

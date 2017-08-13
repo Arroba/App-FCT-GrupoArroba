@@ -136,8 +136,19 @@
           }
         )
 
-        sponsorService.updateSponsor(NewSponsor);
-        loadStudents();
+        sponsorService.updateSponsor(NewSponsor).then(function(response){
+          sponsorService.getSponsors()
+            .then(function(response){
+              vm.sponsors = response.data;
+            })
+            .catch(function(err){
+              console.log(err);
+            })  //función que actualiza el update (sabado tarde)
+
+        } );;
+
+
+        loadSponsors();
         clear();
       }//Fin función que actualiza
 

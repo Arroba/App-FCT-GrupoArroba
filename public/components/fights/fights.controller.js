@@ -3,28 +3,81 @@
   angular
   .module('fctApp')
   .controller('fightsController', fightsController);
+fightsController.$inject = ['fightsService','$scope','academiesService','studentService','eventsService','$scope','$mdDialog']
 
 
   function fightsController(fightsService,$scope,academiesService,studentService,eventsService,$scope,$mdDialog){
 
     var vm = this;
 
+    vm.fights = "";
+    loadFights();
+
       // Inicio de la función init que es la que se inicializa de primiera
-      function init(){
-        vm.fights;
-        vm.eventsRel = eventsService.getEvents();
-        vm.studentRel = datalistFilter();
-        vm.academiesRel = academiesService.getAcademies();
-      }init(); // Cierre de la función init
+      function loadFights(){
+      eventsService.getEvents().then(function (response) {
+          vm.eventsRel = response.data;
+        });
+
+      academiesService.getAcademies().then(function (response) {
+          vm.academiesRel = response.data;
+        });
+
+      studentService.getStudents().then(function (response) {
+          vm.studentRel = response.data;
+        });
+      vm.to = new Date();
+      }
+
+      // function init(){
+      //   vm.fights;
+      //   vm.eventsRel = eventsService.getEvents();
+      //   vm.studentRel = datalistFilter();
+      //   vm.academiesRel = academiesService.getAcademies();
+      // }init(); // Cierre de la función init
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newFights = {
+          event: vm.nameEvent;
           competition: vm.competition,
           competitor: vm.competitor,
           points: Number(0)
         } // Cierre de newFights
-        fightsService.setFights(newFights);
+        eventsService.getEvents().then(function (response) {
+            vm.events = response.data;
+          });
+
+        for (var i = 0; i < vm.events.length; i++) {
+          if (vm.events[i].name = vm.nameEvent) {
+              vm.events.push(nameEvent);
+          }
+        }
+
+        eventsService.setEvents(newEvent).then(function (response) {
+          vm.name = null;
+          vm.place = null;
+          vm.dateStart = null;
+          vm.dateFinish = null;
+          loadEvents();
+
+          });
+        clear();
+        swal({
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Registro completado')
+            }
+          }
+        )
+
         init();
         clean();
       } // Cierre de la función save

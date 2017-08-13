@@ -10,7 +10,6 @@ var BlazeSchema = new mongoose.Schema({
   place: String,
   photo: String,
   status: String
-
 });
 
 module.exports = mongoose.model('Blaze', BlazeSchema); //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

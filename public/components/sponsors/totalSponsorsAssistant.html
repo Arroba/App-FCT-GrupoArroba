@@ -70,14 +70,14 @@
                   </li>
                 </li>
               </ul>
-      <li>
 
       <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
       </li>
+
         </ul>
-    	</div>
-    </div>
+    	</div><!--Cierre de sidebar-wrapper-->
+    </div><!--Cierre de sidebar-->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -88,8 +88,8 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--Cierre de navbar-header-->
+        </div><!--Cierre de container-fluid-->
         <div class="collapse navbar-collapse"></div>
       </nav>
 
@@ -97,9 +97,8 @@
   <!-- Page Content -->
 <section>
     <div class=" col-md-12">
-      <h1>Fogueos</h1>
-      <hr>
-      <!--Crear buscar fogueo-->
+      <h1>Patrocinadores</h1>
+      <!--Crear buscar patrocinador-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -109,31 +108,33 @@
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
             </div>
           </form>
-        </div>
+        </div><!--Fin buscar patrocinador-->
       </section>
 
-    <div class="col-xs-12">
-      <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
-    | filter:vm.nameFilter"><!--Impresión de los datos-->
+      <md-card class="container-fluid col-md-6" ng-repeat="sponsor in vm.sponsors | filter:vm.nameFilter">
         <md-card-header>
           <md-card-header-text>
-            <span class="md-subhead">Fogueo: {{blaze.nameBlaze}}</span>
+            <span class="md-title">{{sponsor.nameSponsorRep}} {{sponsor.firstNameSponsorRep}} {{sponsor.lastNameSponsorRep}}</span>
+            <span class="md-subhead">Id:{{sponsor.idSponsorRep}}</span>
           </md-card-header-text>
         </md-card-header>
         <md-card-title>
           <md-card-title-text>
-              <span class="md-subhead">Hora a realizarse: {{blaze.time | date: "hh:mm a"}}</span>
-              <span class="md-subhead">Lugar: {{blaze.place}}</span>
-              <span class="md-subhead">Estado: {{blaze.status}}</span>
+            <span class="md-subhead">Nombre Jurídico:{{sponsor.nameSponsor}}</span>
+            <span class="md-subhead">Compañía que representa:{{sponsor.nameSponsorCompany}}</span>
+            <span class="md-subhead">{{sponsor.statusSponsor}}</span>
+            <span class="md-subhead">Tipo de Patrocinio:{{sponsor.sponsorType}}</span>
+            <span class="md-subhead">Equivalente Monetario: {{sponsor.sponsorCoinType}}{{sponsor.sponsorMonetary}}</span>
+            <span class="md-subhead">Descripción:{{sponsor.sponsorDesc}}</span>
           </md-card-title-text>
+        <md-card-title-media>
+          <div class="md-media-lg card-media">
+            <img ng-src="{{sponsor.photo}}" alt="Description" class="photoStudent">
+            <img ng-src="{{sponsor.photo}}" alt="Description" class="photoStudent">
+          </div>
+        </md-card-title-media>
         </md-card-title>
-        <!-- Boton para cambiar el editar las fogueos -->
-        <md-card-actions id="buttons" >
-          <md-button class="edit" ng-click="vm.getInfo(blaze);vm.hideButton()">Editar</md-button>
-          <md-button class="Active" ng-click="vm.active(blaze)">Activo</md-button>
-          <md-button class="edit" ng-click="vm.inactive(blaze)">Inactivo</md-button>
-      <md-card-icon-actions><!-- cierre botones  -->
-    </div>
-    </div>
   </section>
-</div>
+</div><!-- cierre class col-md-12 -->
+</div> <!-- cierre main-panel-->
+</div> <!-- cierre wrapper-->

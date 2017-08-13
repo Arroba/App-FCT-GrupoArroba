@@ -1,0 +1,137 @@
+<div class="wrapper">
+  <div class="sidebar" data-color="wilken">
+    <div class="sidebar-wrapper">
+      <div class="logo">
+        <a href="#!/landing"><img src="images/logoFederacion.png" width="100px"></a>
+      </div>
+      <ul class="nav">
+        <li>
+          <a href="#!/profileAsistent"><i class="pe-7s-user"></i><p>Perfil</p></a>
+        </li>
+
+        <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i><p>Registrar<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/academiesAssistant"><i class="pe-7s-users"></i>Academia</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/teacherAssistant"><i class="pe-7s-note"></i>Profesor</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/studentAssistant"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/placeAssistant"><i class="pe-7s-map-marker"></i>Lugar</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/productAssistant"><i class="pe-7s-shopbag"></i>Producto</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/sponsorAssistant"><i class="pe-7s-gift"></i>Patrocinador</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/beneficientAssistant"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+              </li>
+            </ul>
+        </li><!-- Cierre dropdown-->
+
+        <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalAcademiesAssistant"><i class="pe-7s-users"></i>Academia</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalTeachersAssistant"><i class="pe-7s-note"></i>Profesor</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalStudentsAssistant"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalPlacesAssistant"><i class="pe-7s-map-marker"></i>Lugar</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/eventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalProductsAssistant"><i class="pe-7s-shopbag"></i>Producto</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalSponsorsAssistant"><i class="pe-7s-gift"></i>Patrocinador</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/totalBeneficientsAssistant"><i class="pe-7s-culture"></i>Asociación Benéfica</a>
+              </li>
+            </ul>
+        </li><!-- Cierre dropdown-->
+
+        <li><!-- quite class-->
+          <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
+        </li>
+      </ul> <!-- Cierre nav-->
+    </div><!-- Cierre sidebar-wrapper-->
+  </div><!-- Cierre sidebar-->
+
+  <div class="main-panel">
+    <nav class="navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+      <div class="collapse navbar-collapse"></div>
+    </nav><!-- Cierre navbar-default-->
+
+    <!-- Page Content -->
+    <section>
+      <div class=" col-md-12">
+        <h1>Asociaciones benéficas</h1>
+        <hr>
+        <!--Crear buscar academia-->
+        <section class="inputSearch">
+          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </section><!-- Cierre inputSearch-->
+
+        <div class="col-xs-12">
+          <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
+                | filter:vm.nameFilter">
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Asociación: {{beneficient.name}}</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
+                <span class="md-subhead">Tipo de Asociación: {{beneficient.type}}</span>
+                <span class="md-subhead">Descripción: {{beneficient.description}}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <md-card-actions id="buttons">
+              <md-button class="edit" ng-click="vm.getInfo(beneficient);vm.hideButton()">Editar</md-button>
+            <md-card-icon-actions>
+        </div> <!-- Cierre col-xs-12-->
+      </div><!-- Cierre col-md-12-->
+    </section>
+
+  </div><!-- Cierre main-panel-->
+</div><!-- Cierre wrapper-->

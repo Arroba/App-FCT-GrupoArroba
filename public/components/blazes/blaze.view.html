@@ -96,54 +96,17 @@
   <!-- Page Content -->
 
 <!--Registrar Fogueos, listar v y modificar Fogueos en conjunto con impresión de los datos.(Pilar)-->
-
- <!-- <md-toolbar layout="row" layout-sm="column" layout-align="left center" layout-wrap class="md-whiteframe-1dp">
-    <div class="btn-group">
-     <md-button class="btn" type="button">Fogueos</md-button>
-     <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
-     <ul class="dropdown-menu">
-      <li><a ng-click="siguiente()">Fogueos registrados</a></li>
-       <li><a href="#!/blazes">Registro de fogueos</a></li>
-     </ul>
-    </div>
-
-    <div class="btn-group">
-     <md-button ng-click="siguiente()" class="btn" type="button">Exhibiciones</md-button>
-     <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
-     <ul class="dropdown-menu">
-      <li><a href="#!/totalexhibitions">Exhibiciones registradas</a></li>
-       <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
-     </ul>
-    </div>
-
-    <div class="btn-group">
-      <md-button ng-click="siguiente()" class="btn" type="button">Torneos</md-button>
-      <md-button data-toggle="dropdown" class="btn dropdown-toggle" type="button"><span class="caret"></span></md-button>
-        <ul class="dropdown-menu">
-          <li><a href="#!/totalFights">Torneos registrados</a></li>
-          <li><a href="#!/fightsAdmin">Registro de competidores</a></li>
-          <li><a href="#!/fights">Registro de competiciones</a></li>
-          <li><a href="#!/fights">Registro de torneo</a></li>
-          <li><a href="#">Ver calendarios</a></li>
-        </ul>
-      </div>
-      <span flex></span>
-  </md-toolbar>-->
   <div class="container-fluid" >
     <section id="registerBlaze">
       <h1>Fogueos</h1>
       <hr>
 
       <!--Creación del formulario para registro  -->
-      <form name="frmRegisterBlaze" ng-submit="vm.presave(vm)" novalidate autocomplete="off">
+      <form name="frmRegisterBlaze" novalidate autocomplete="off">
 
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro de Fogueos</a></li>
           <li><a data-toggle="tab" ng-click="siguiente()" href="">Fogueos registrados</a></li>
-          <li><a href="#!/exhibitions">Registro de exhibiciones</a></li>
-          <li><a href="#!/totalexhibitions">Exhibiciones registradas</a></li>
-          <li><a href="#!/fights">Registro de torneo</a></li>
-          <li><a href="#!/totalFights">Torneos registrados</a></li>
         </ul>
           <!--Inicio de los inputs para el formulario  -->
         <div class="row" ng-show="pagina==1">
@@ -203,23 +166,12 @@
             </md-input-container>
           </div>
 
-          <!-- Botones de Seleccione foto, Registrar y Actualizar -->
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="input-group">
-              <label class="input-group-btn">
-                <span class="btn btn-info">Seleccionar foto
-                  <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
-                </span>
-              </label>
-            </div>
-
             <div id="registrar">
-              <md-button class="button Active" type="submit" ng-disabled="frmRegisterBlaze.$invalid">Registrar</md-button>
+              <md-button class="button Active" type="submit" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.save(blaze)">Registrar</md-button>
             </div>
             <div class="displayNone" id="actualizar">
               <md-button class="button edit" type="button" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.update(blaze)">Actualizar</md-button>
             </div>
-            <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
           </div>
       </form><!-- Cierra FORM -->
     </section> <!-- Cierre section Register -->
@@ -254,11 +206,6 @@
               <span class="md-subhead">Lugar: {{blaze.place}}</span>
               <span class="md-subhead">Estado: {{blaze.status}}</span>
           </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media">
-              <img ng-src="{{blaze.photo}}" alt="Description" class="photoStudent">
-            </div>
-          </md-card-title-media>
         </md-card-title>
         <!-- Boton para cambiar el editar las fogueos -->
         <md-card-actions id="buttons" >

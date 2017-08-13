@@ -7,7 +7,8 @@ module.exports.save = function(req, res){
     secondSurname: req.body.secondSurname,
     name: req.body.name,
     type: req.body.type,
-    description: req.body.description
+    description: req.body.description,
+    status: req.body.status
   });
 
   newBeneficient.save(function(err){
