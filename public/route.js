@@ -143,6 +143,19 @@
       css:'css/styleMenu.css'
     })
 
+    .state('eventsGeneralAssistant',{
+      url : '/eventsGeneralAssistant',
+      templateUrl: './components/eventsGeneral/eventsGeneralAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+        }]
+      },
+      controller: 'eventsGeneralController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
     //FOGUEOS REGISTRO
     .state('blazes',{
       url : '/blazes',
