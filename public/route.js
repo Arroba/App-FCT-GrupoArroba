@@ -116,6 +116,19 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+
+    .state('eventAssistant',{
+      url : '/eventAssistant',
+      templateUrl: './components/events/eventAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/events/event.controller.js')
+        }]
+      },
+      controller: 'eventsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //EVENTOS GENERALES
     .state('eventsGeneral',{
       url : '/eventsGeneral',
