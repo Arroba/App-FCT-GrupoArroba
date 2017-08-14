@@ -55,7 +55,7 @@
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
       vm.save= function(){
         var newStudent = {
-          id: vm.id,
+          identi: vm.identi,
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
@@ -137,7 +137,7 @@
           }
             else{
                 studentService.setStudents(newStudent).then(function (response) {
-                  vm.id = null;
+                  vm.identi = null;
                   vm.firstName = null;
                   vm.surname = null;
                   vm.secondSurname = null;
@@ -184,7 +184,7 @@
       // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
       vm.getInfo = function(pStudent){
         vm.id = pStudent._id;
-        vm.id = pStudent.id;
+        vm.identi = pStudent.identi;
         vm.name = pStudent.name;
         vm.firstName = pStudent.firstName;
         vm.lastName = pStudent.lastName;
@@ -216,7 +216,7 @@
         document.querySelector('#registrar').classList.remove('displayNone');
         var newStudent = {
           _id : vm.id,
-          id: vm.id,
+          identi: vm.identi,
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
@@ -265,7 +265,7 @@
 
       // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
       function clear(){
-        vm.id = '';
+        vm.identi = '';
         vm.name =  '';
         vm.firstName =  '';
         vm.lastName =  '';

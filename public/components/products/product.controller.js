@@ -17,7 +17,7 @@
         vm.cloudObj = ImageService.getConfiguration();
       }//Fin función
 
-    
+
 
       $scope.pagina = 1;
       $scope.siguiente = function() {
@@ -45,7 +45,7 @@
           nameProduct: vm.nameProduct,
           brandProduct: vm.brandProduct,
           detailProduct: vm.detailProduct,
-          productType: vm.productType[0],
+          productType: vm.productType,
           photo: vm.photo
         }
 
@@ -96,7 +96,7 @@
       } // termina funcion guardar
 
         vm.getInfo = function(pProduct){//Función que modifica
-        vm.id = pProduct._id; 
+        vm.id = pProduct._id;
         vm.nameProduct = pProduct.nameProduct;
         vm.brandProduct = pProduct.brandProduct;
         vm.detailProduct = pProduct.detailProduct;

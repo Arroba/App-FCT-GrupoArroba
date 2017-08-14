@@ -5,7 +5,7 @@ module.exports.save = function(req, res){
     name: req.body.name,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
-    id: req.body.id,
+    identi: req.body.identi,
     date: req.body.date,
     grade: req.body.grade,
     email: req.body.email,
@@ -16,7 +16,7 @@ module.exports.save = function(req, res){
     academies: req.body.academies,
     photo: req.body.photo,
     userType: req.body.userType,
-    status: req.body.name
+    status: req.body.status
   });
 
   newTeacher.save(function(err){
@@ -38,7 +38,7 @@ module.exports.update = function(req,res){
 
   Teacher.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, teacher) {
     if (err){
-      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+      res.json({success:true,msg:'No se ha actualizado.'+ handleError(err)});
 
     } else{
       res.json({success:true,msg:'Se ha actualizado correctamente.' + res});

@@ -2,7 +2,7 @@
 var mongoose = require('mongoose');
 //Esquema de usuarios
 var StudentSchema = new mongoose.Schema({
-  id : String,
+  identi : String,
   name: String,
   firstName: String,
   lastName: String,

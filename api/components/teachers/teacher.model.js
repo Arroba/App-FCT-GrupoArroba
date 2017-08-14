@@ -5,7 +5,7 @@ var TeacherSchema = new mongoose.Schema({
   name: String,
   firstName: String,
   lastName: String,
-  id: String,
+  identi: String,
   date: Date,
   grade: String,
   email: String,
