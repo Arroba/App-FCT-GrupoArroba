@@ -104,7 +104,39 @@
 
 
   <section>
-    <div>
+
+    <i class="fa fa-info-circle CellWithComment pull-left fa-lg" aria-hidden="true"><span class="CellComment">Seleccione el evento del que desea ver calendarios</span></i>
+
+    <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">          
+      <label for="">Nombre del evento:</label>
+      <input ng-change="vm.callCategories(vm.nameEvent)" 
+      placeholder="--Seleccione un evento--" list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
+      <datalist id="eventsList" >
+        <option value="">--Seleccione un evento--</option>
+        <option ng-repeat="event in vm.eventsRel" value="{{event.name}}">{{vm.name}}</option>
+      </datalist>
+      <div ng-messages="frmRegisterFights.nameEvent.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+    <md-input-container class="col-md-3" layout="column">
+      <label for="">Categoria:</label>
+      <md-select class="select"  ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);vm.showFights()" name="competition" required>
+        <md-optgroup label="Seleccione una competición">
+          <md-option>{{vm.selectEvent.genderComp1}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp2"]}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp3"]}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp4"]}}</md-option>
+        </md-optgroup>
+      </md-select>
+      <div ng-messages="frmRegisterStudent.competition.$error">
+        <div ng-messages-include="components/includes/messages.html"></div>
+      </div><!--cierre del ng-messages -->
+    </md-input-container>
+
+
+<!--     <div>
       <md-input-container class="col-md-12" layout="column">
         <label for="">Competición:</label>
         <md-select class="select" ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);vm.showFights()" name="competition" required id="calendar" >
@@ -116,7 +148,7 @@
           </md-optgroup>
         </md-select>
       </md-input-container>
-    </div>
+    </div> -->
     <div>
       <div class="col-xs-12 col-sm-12 col-md-12 text-center" ng-repeat="fight in vm.fights | filter:vm.nameFilter track by $index">
         <h5 ng-if="$first">Competición: {{fight.competition}}</h5>

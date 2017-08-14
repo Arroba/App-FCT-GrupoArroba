@@ -87,8 +87,25 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
         showCalendar(pCompetition);
       }
 
+
+
       function showCalendar(pCompetition){
-        var fightsList = fightsService.getFights();
+        var calendarList =     vm.selectEvent;
+        var findCompetitors = [];
+
+      for (var i = 0; i < calendarList.fights[i].length; i++) {
+        if (calendarList.fights[i].competition == pCompetition) {
+          findCompetitors.push(vm.selectEvent[i].fights[i]);
+        }
+
+        vm.fights = findCompetitors;
+
+      }
+
+
+
+
+
         var competitors = [];
           switch (pCompetition) {
             case 'primera':
@@ -124,7 +141,7 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
 
         }
         vm.fights = competitors;
-        init();
+
       }
     // fin filtrar los datos para calendarios
 
