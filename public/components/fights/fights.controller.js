@@ -11,6 +11,7 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
     var vm = this;
 
     vm.fights = "";
+    vm.selectEvent = {};
     loadFights();
 
       // Inicio de la función init que es la que se inicializa de primiera
@@ -39,7 +40,7 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){
         var newFights = {
-          event: vm.nameEvent;
+          event: vm.nameEvent,
           competition: vm.competition,
           competitor: vm.competitor,
           points: Number(0)
@@ -54,35 +55,28 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
           }
         }
 
-        eventsService.setEvents(newEvent).then(function (response) {
-          vm.name = null;
-          vm.place = null;
-          vm.dateStart = null;
-          vm.dateFinish = null;
-          loadEvents();
 
-          });
-        clear();
-        swal({
-          type: 'success',
-          title: '¡Registro completado!',
-          timer: 3000,
-          showConfirmButton: false
-        }).then(
-          function () {},
-          // handling the promise rejection
-          function (dismiss) {
-            if (dismiss === 'timer') {
-              console.log('Registro completado')
-            }
-          }
-        )
 
         init();
         clean();
       } // Cierre de la función save
 
       // Filtrar los datos para calendarios
+
+      vm.callCategories = function(pEventSelected){
+      eventsService.getEvents().then(function (response) {
+          vm.eventsRel = response.data;
+        });
+
+        var SelectedEvent = {};
+        for (var i = 0; i < vm.eventsRel.length; i++) {
+          if (vm.eventsRel[i].name == pEventSelected) {
+             SelectedEvent = vm.eventsRel[i];
+          }
+        }
+        vm.selectEvent = SelectedEvent;
+      }
+
 
       vm.callCalendar = function(pCompetition){
         showCalendar(pCompetition);

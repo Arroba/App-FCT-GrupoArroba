@@ -100,13 +100,15 @@
 
     <form name="frmRegisterFights" novalidate autocomplete="off">
 
-        <h1>Asignación de Estudiantes a una competición</h1>
+        <h1>Asignación de estudiantes a una competición</h1>
 
+            <i class="fa fa-info-circle CellWithComment pull-left fa-lg" aria-hidden="true"><span class="CellComment">Seleccione el evento al que desea asignar competidores</span></i>
 
-          <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">
-            <label for="">Nombre del Evento:</label>
-            <input list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
-            <datalist id="eventsList">
+          <md-input-container class="col-xs-12 col-sm-12 col-md-12" layout="column">          
+            <label for="">Nombre del evento:</label>
+            <input ng-change="vm.callCategories(vm.nameEvent)" 
+            placeholder="--Seleccione un evento--" list="eventsList" type="text" ng-model="vm.nameEvent" name="nameEvent"  required>
+            <datalist id="eventsList" >
             <option value="">--Seleccione un evento--</option>
             <option ng-repeat="event in vm.eventsRel" value="{{event.name}}">{{vm.name}}</option>
             </datalist>
@@ -118,14 +120,16 @@
           <!--Primera Competición -->
           <div class="col-xs-12 col-sm-12 col-md-12 row">
 
+            <i class="fa fa-info-circle CellWithComment pull-left fa-lg" aria-hidden="true"><span class="CellComment">Seleccione la categoría a la que desea inscribir el estudiante</span></i>
+
               <md-input-container class="col-md-3" layout="column">
-                <label for="">Competición:</label>
+                <label for="">Categoria:</label>
                 <md-select class="select" ng-model="vm.competition" name="competition" required>
                   <md-optgroup label="Seleccione una competición">
-                    <md-option value="primera">Primera</md-option>
-                    <md-option value="segunda">Segunda</md-option>
-                    <md-option value="tercera">Tercera</md-option>
-                    <md-option value="cuarta">Cuarta</md-option>
+                    <md-option value="{{vm.selectEvent["genderComp1"]}}">{{vm.selectEvent["genderComp1"]}}</md-option>
+                    <md-option value="{{vm.selectEvent["genderComp2"]}}">{{vm.selectEvent["genderComp2"]}}</md-option>
+                    <md-option value="{{vm.selectEvent["genderComp3"]}}">{{vm.selectEvent["genderComp3"]}}</md-option>
+                    <md-option value="{{vm.selectEvent["genderComp4"]}}">{{vm.selectEvent["genderComp4"]}}</md-option>
                   </md-optgroup>
                 </md-select>
                 <div ng-messages="frmRegisterStudent.competition.$error">
@@ -134,11 +138,11 @@
               </md-input-container>
 
               <md-input-container class="col-md-3" layout="column">
-                <label for="">Seleccione al Competidor</label>
-                <input list="studentsList" type="text" ng-model="vm.competitor" name="" required>
+                <label for="">Seleccione al competidor</label>
+                <input placeholder="--Seleccione un competidor--" list="studentsList" type="text" ng-model="vm.competitor" name="" required>
                 <datalist id="studentsList">
                   <option value="">--Seleccione un competidor--</option>
-                  <option ng-repeat="students in vm.studentRel" value="{{students.firstName}} | {{students.id}}">{{vm.students.firstName}}</option>
+                  <option ng-repeat="students in vm.studentRel" value="{{students.firstName}} - {{students.idStudent}}">{{vm.students.firstName}} </option>
                 </datalist>
                 <div ng-messages="frmRegisterFights.competitor.$error">
                   <div ng-messages-include="components/includes/messages.html"></div>
