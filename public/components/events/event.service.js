@@ -8,6 +8,7 @@
       var publicAPI = {
         setEvents : _setEvents,
         getEvents : _getEvents,
+        updateEvent: _updateEvent,
         updateWinner : _updateWinner
       };
       return publicAPI;
@@ -21,6 +22,11 @@
       function _getEvents(){
         return $http.get('http://localhost:3000/api/get_all_events');
       }//cierre de la función getEvents
+
+      function _updateEvent(pEvent){
+        return $http.put('http://localhost:3000/api/update_events',pEvent);
+      }//cierre función updatedAcademy
+
 
       function _updateWinner(pEvent){
         return $http.put('http://localhost:3000/api/update_events',pEvent);

@@ -45,14 +45,25 @@ module.exports.findAll = function(req,res){
 
 module.exports.update = function(req,res){
 
-  Event.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, event) {
-    if (err){
-      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+  // Event.findByIdAndUpdate(req.body._id, { $push: { fights: req.body.fights }}, function (err, event) {
+  //   if (err){
+  //     res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
 
-    } else{
-      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
-    }
+  //   } else{
+  //     res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+  //   }
 
-  });
+  // });
+
+Event.update({_id: req.body._id}, {$push: {fights: req.body.fights}}, {upsert:true}, function(err){
+        if(err){
+                console.log(err);
+        }else{
+                console.log("Successfully added");
+        }
+});
+
+
+
 
 }

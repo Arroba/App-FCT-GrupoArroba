@@ -126,10 +126,10 @@
                 <label for="">Categoria:</label>
                 <md-select class="select" ng-model="vm.competition" name="competition" required>
                   <md-optgroup label="Seleccione una competición">
-                    <md-option value="{{vm.selectEvent["genderComp1"]}}">{{vm.selectEvent["genderComp1"]}}</md-option>
-                    <md-option value="{{vm.selectEvent["genderComp2"]}}">{{vm.selectEvent["genderComp2"]}}</md-option>
-                    <md-option value="{{vm.selectEvent["genderComp3"]}}">{{vm.selectEvent["genderComp3"]}}</md-option>
-                    <md-option value="{{vm.selectEvent["genderComp4"]}}">{{vm.selectEvent["genderComp4"]}}</md-option>
+                    <md-option>{{vm.selectEvent.genderComp1}}</md-option>
+                    <md-option>{{vm.selectEvent["genderComp2"]}}</md-option>
+                    <md-option>{{vm.selectEvent["genderComp3"]}}</md-option>
+                    <md-option>{{vm.selectEvent["genderComp4"]}}</md-option>
                   </md-optgroup>
                 </md-select>
                 <div ng-messages="frmRegisterStudent.competition.$error">

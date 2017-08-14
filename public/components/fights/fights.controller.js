@@ -46,25 +46,30 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
           points: Number(0)
         } // Cierre de newFights
         eventsService.getEvents().then(function (response) {
-            vm.events = response.data;
-          });
+          vm.eventsRel = response.data;
+        });
 
-        for (var i = 0; i < vm.events.length; i++) {
-          if (vm.events[i].name = vm.nameEvent) {
-              vm.events.push(nameEvent);
+        for (var i = 0; i < vm.eventsRel.length; i++) {
+          if (vm.eventsRel[i].name == vm.nameEvent) {
+              vm.eventsRel[i].fights =newFights;
+              vm.eventUpdate =  vm.eventsRel[i];
           }
         }
 
+        eventsService.updateEvent(vm.eventUpdate).then(function (response) {
+        loadFights();
+        vm.event = true;
+        vm.competition = false;
+        vm.competitor = null;
 
-
-        init();
-        clean();
+      });
+        clear();
       } // Cierre de la función save
 
       // Filtrar los datos para calendarios
 
       vm.callCategories = function(pEventSelected){
-      eventsService.getEvents().then(function (response) {
+        eventsService.getEvents().then(function (response) {
           vm.eventsRel = response.data;
         });
 
@@ -213,6 +218,18 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
           fightsService.setFights(fightsList);
 
       }// Cierre de la funcion assingPoints
+
+
+
+      function clear(){
+        vm.nameEvent = '';
+        vm.competition = '';
+        vm.competitor= '';     
+      }
+
+
+
+
 
       $scope.showConfirm = function(fightsList) {
       // Appending dialog to document.body to cover sidenav in docs app

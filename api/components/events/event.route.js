@@ -25,7 +25,7 @@ router.route('/create_fight')
   });
 
 router.route('/update_events')
-	.post(function(req,res){
-    eventsController.save(req,res);
+	.put(function(req,res){
+    eventsController.update(req,res);
   });	
 module.exports = router;
