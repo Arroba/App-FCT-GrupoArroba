@@ -20,6 +20,11 @@
         academiesService.getAcademies().then(function (response) {
             vm.academiesRel = response.data;
         });
+
+        teacherService.getTeachers().then(function (response) {
+            vm.teachersRel = response.data;
+        });
+
     // Función que guarda los datos
     vm.to = new Date();
 
@@ -50,7 +55,7 @@
     // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados.(Pamela)
       vm.save= function(){
         var newStudent = {
-          idStudent: vm.idStudent,
+          id: vm.id,
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
@@ -95,7 +100,7 @@
          return;
       }else{
         for(var i = 0; i < vm.students.length; i++){
-          if(newStudent.idStudent == vm.students[i].idStudent){
+          if(newStudent.id == vm.students[i].id){
             swal({
            type: 'error',
            title: '¡La identificación ya existe!',
@@ -132,7 +137,7 @@
           }
             else{
                 studentService.setStudents(newStudent).then(function (response) {
-                  vm.idStudent = null;
+                  vm.id = null;
                   vm.firstName = null;
                   vm.surname = null;
                   vm.secondSurname = null;
@@ -179,7 +184,7 @@
       // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
       vm.getInfo = function(pStudent){
         vm.id = pStudent._id;
-        vm.idStudent = pStudent.idStudent;
+        vm.id = pStudent.id;
         vm.name = pStudent.name;
         vm.firstName = pStudent.firstName;
         vm.lastName = pStudent.lastName;
@@ -211,7 +216,7 @@
         document.querySelector('#registrar').classList.remove('displayNone');
         var newStudent = {
           _id : vm.id,
-          idStudent: vm.idStudent,
+          id: vm.id,
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
@@ -260,7 +265,7 @@
 
       // Inicio de la función clear, que se encarga de limpiar los datos despúes de un registro.(Pamela)
       function clear(){
-        vm.idStudent = '';
+        vm.id = '';
         vm.name =  '';
         vm.firstName =  '';
         vm.lastName =  '';
