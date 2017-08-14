@@ -751,7 +751,7 @@
       })
 
 //PERFILES
-     //ADMINISTRADOR
+     //Perfil de entrada
     .state('profileAdmi',{
       url : '/profileAdmi',
       templateUrl: './components/profiles/profile.admi.html',
@@ -765,6 +765,20 @@
       css:'css/styleMenu.css',
       css:'css/styleLandingEvents.css'
 
+    })
+
+    //ADMINISTRADOR
+    .state('profileAdministrador',{
+      url : '/profileAdministrador',
+      templateUrl: './components/profiles/profileAdministrador.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/profiles/profileAdmin.controller.js')
+        }]
+      },
+      controller: 'profileAdminController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css',
 
     })
     //ASISTENTE
@@ -786,6 +800,7 @@
     .state('gRanking',{
       url : '/generalRanking',
       templateUrl: 'components/generalRanking/generalRanking.view.html',
+      css:'css/styleMenu.css',
       css:'css/ranking.css'
     })
 
@@ -793,6 +808,7 @@
     .state('iRanking',{
       url : '/individualRanking',
       templateUrl: 'components/individualRanking/individualRanking.view.html',
+      css:'css/styleMenu.css',
       css:'css/ranking.css'
     })
 
