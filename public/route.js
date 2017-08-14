@@ -300,6 +300,20 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+    //Fights Asistente
+    .state('fightsAssistant',{
+      url : '/fightsAssistant',
+      templateUrl: './components/fights/fightsAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/fights/fights.controller.js')
+        }]
+      },
+      controller: 'fightsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
     //FOGUEOS REGISTRADOS
     .state('totalfights',{
       url : '/totalfights',
