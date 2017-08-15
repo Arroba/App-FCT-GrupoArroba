@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 //Esquema de usuarios
 var ExbitionSchema = new mongoose.Schema({
   nameExhibition:String,
-  Date: Date,
+  date: Date,
   time: Date,
   place: String,
   guestsExhibition: String,

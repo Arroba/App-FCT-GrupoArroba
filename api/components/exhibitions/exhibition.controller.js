@@ -25,5 +25,18 @@ module.exports.findAll = function(req,res){
   })
 };
 
+module.exports.update = function(req,res){
+  Exhibition.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, exhibitions) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}
+
 
 
