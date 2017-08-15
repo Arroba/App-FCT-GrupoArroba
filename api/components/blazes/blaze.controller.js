@@ -1,4 +1,4 @@
-var blaze = require('./blaze.model.js');
+var Blaze = require('./blaze.model.js');
 
 module.exports.save = function(req, res){
   var newBlaze = new Blaze({
