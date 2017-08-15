@@ -67,7 +67,7 @@
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
-          id: vm.id,
+          identi: vm.identi,
           date: vm.date,
           grade: vm.grade,
           email: vm.email,
@@ -143,7 +143,7 @@
                 vm.name = null;
                 vm.firstName = null;
                 vm.lastName = null;
-                vm.id = null;
+                vm.identi = null;
                 vm.date = null;
                 vm.grade = null;
                 vm.email = null;
@@ -158,7 +158,7 @@
                 loadTeachers();
               });
                  clean();
-                 loadTeachers();
+                //  loadTeachers();
                  swal({
                  type: 'success',
                  title: '¡Registro completado!',
@@ -187,7 +187,7 @@
         vm.name = pTeacher.name;
         vm.firstName = pTeacher.firstName;
         vm.lastName = pTeacher.lastName;
-        vm.id = pTeacher.id;
+        vm.identi = pTeacher.identi;
         vm.date = new Date(pTeacher.date);
         vm.grade = pTeacher.grade;
         vm.email = pTeacher.email;
@@ -213,7 +213,7 @@
           name: vm.name,
           firstName: vm.firstName,
           lastName: vm.lastName,
-          id: vm.id,
+          identi: vm.identi,
           date: vm.date,
           grade: vm.grade,
           email: vm.email,
@@ -258,7 +258,7 @@
         vm.name = '';
         vm.firstName =  '';
         vm.lastName =  '';
-        vm.id =  '';
+        vm.identi =  '';
         vm.date =  '';
         vm.grade =  '';
         vm.email =  '';
@@ -276,7 +276,7 @@
       vm.inactive = function(pTeacher){
         var teacherList = teacherService.getTeachers();
           for (var i = 0; i < teacherList.length; i++) {
-            if (teacherList[i].id == pTeacher.id) {
+            if (teacherList[i].identi == pTeacher.identi) {
               teacherList[i].status = 'inhabilitado';
               console.log(teacherList[i].status)
             }// Cierre del if
@@ -289,7 +289,7 @@
       vm.active = function(pTeacher){
         var teacherList = teacherService.getTeachers();
           for (var i = 0; i < teacherList.length; i++) {
-            if (teacherList[i].id == pTeacher.id) {
+            if (teacherList[i].identi == pTeacher.identi) {
               teacherList[i].status = 'Activo';
               console.log(teacherList[i].status)
             }// Cierre del if

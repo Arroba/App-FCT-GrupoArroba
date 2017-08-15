@@ -116,10 +116,36 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+
+    .state('eventAssistant',{
+      url : '/eventAssistant',
+      templateUrl: './components/events/eventAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/events/event.controller.js')
+        }]
+      },
+      controller: 'eventsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
     //EVENTOS GENERALES
     .state('eventsGeneral',{
       url : '/eventsGeneral',
       templateUrl: './components/eventsGeneral/eventsGeneral.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+        }]
+      },
+      controller: 'eventsGeneralController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
+    .state('eventsGeneralAssistant',{
+      url : '/eventsGeneralAssistant',
+      templateUrl: './components/eventsGeneral/eventsGeneralAssistant.view.html',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
@@ -300,6 +326,20 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
     })
+    //Fights Asistente
+    .state('fightsAssistant',{
+      url : '/fightsAssistant',
+      templateUrl: './components/fights/fightsAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/fights/fights.controller.js')
+        }]
+      },
+      controller: 'fightsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
     //FOGUEOS REGISTRADOS
     .state('totalfights',{
       url : '/totalfights',

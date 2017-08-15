@@ -9,8 +9,8 @@
     var publicAPI = {
       setTeachers : _setTeachers,
       getTeachers : _getTeachers,
-      updateTeacher : _updateTeacher,
-      updateState: _updateState
+      updateTeacher : _updateTeacher
+      // updateState: _updateState
     }; // Cierre del publicAPI
     return publicAPI;
 
@@ -34,10 +34,10 @@
     }// Fin de la función updateTeacher
 
 
-    //función que actualiza el estado
-    function _updateState(pTeacherList){
-      return $http.put('http://localhost:3000/api/update_teacher',pTeacherList);
-    }//cierre función updateState
+
+    // function _updateState(pTeacherList){
+    //   return $http.put('http://localhost:3000/api/update_teacher',pTeacherList);
+    // }
 
 
   }// Fin de función teacherService

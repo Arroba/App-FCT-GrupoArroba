@@ -2,7 +2,7 @@ var Student = require('./student.model.js');
 
 module.exports.save = function(req, res){
   var newStudent = new Student({
-    id: req.body.id,
+    identi: req.body.identi,
     name: req.body.name,
     firstName: req.body.firstName,
     lastName: req.body.lastName,
