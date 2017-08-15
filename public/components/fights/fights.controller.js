@@ -93,9 +93,9 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
         var calendarList =     vm.selectEvent;
         var findCompetitors = [];
 
-      for (var i = 0; i < calendarList.fights[i].length; i++) {
+      for (var i = 0; i < calendarList.fights.length; i++) {
         if (calendarList.fights[i].competition == pCompetition) {
-          findCompetitors.push(vm.selectEvent[i].fights[i]);
+          findCompetitors.push(vm.selectEvent.fights[i]);
         }
 
         vm.fights = findCompetitors;
@@ -106,41 +106,41 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
 
 
 
-        var competitors = [];
-          switch (pCompetition) {
-            case 'primera':
-            for (var i = 0; i < fightsList.length; i++) {
-              if (fightsList[i].competition == pCompetition) {
-                competitors.push(fightsList[i]);
-              }
-            } // Cierre del ciclo
-          break;
-          case 'segunda':
-            for (var i = 0; i < fightsList.length; i++) {
-              if (fightsList[i].competition == pCompetition) {
-                competitors.push(fightsList[i]);
-              }
-            } // Cierre del ciclo
-          break;
-          case 'tercera':
-            for (var i = 0; i < fightsList.length; i++) {
-              if (fightsList[i].competition == pCompetition) {
-                competitors.push(fightsList[i]);
-              }
-            } // Cierre del ciclo
-          break;
-          case 'cuarta':
-            for (var i = 0; i < fightsList.length; i++) {
-              if (fightsList[i].competition == pCompetition) {
-                competitors.push(fightsList[i]);
-              }
-            } // Cierre del ciclo
-          break;
-          default:
-          break;
+        // var competitors = [];
+        //   switch (pCompetition) {
+        //     case 'primera':
+        //     for (var i = 0; i < fightsList.length; i++) {
+        //       if (fightsList[i].competition == pCompetition) {
+        //         competitors.push(fightsList[i]);
+        //       }
+        //     } // Cierre del ciclo
+        //   break;
+        //   case 'segunda':
+        //     for (var i = 0; i < fightsList.length; i++) {
+        //       if (fightsList[i].competition == pCompetition) {
+        //         competitors.push(fightsList[i]);
+        //       }
+        //     } // Cierre del ciclo
+        //   break;
+        //   case 'tercera':
+        //     for (var i = 0; i < fightsList.length; i++) {
+        //       if (fightsList[i].competition == pCompetition) {
+        //         competitors.push(fightsList[i]);
+        //       }
+        //     } // Cierre del ciclo
+        //   break;
+        //   case 'cuarta':
+        //     for (var i = 0; i < fightsList.length; i++) {
+        //       if (fightsList[i].competition == pCompetition) {
+        //         competitors.push(fightsList[i]);
+        //       }
+        //     } // Cierre del ciclo
+        //   break;
+        //   default:
+        //   break;
 
-        }
-        vm.fights = competitors;
+        // }
+        // vm.fights = competitors;
 
       }
     // fin filtrar los datos para calendarios
@@ -191,17 +191,14 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
         var fightsList = vm.fights;
           vm.fights[0].points = Number(vm.fights[0].points + 1);
           console.log(vm.fights[0].points);
-          fightsService.setFights(fightsList);
-
       }// Cierre de la funcion assingPoints
 
       //Puntuación competición 1
       //función que asigna puntos. Funcion final
       vm. addPoint1 = function(){
         var fightsList = vm.fights;
-          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          vm.fights[1].points = Number(vm.fights[0].points + 1);
           console.log(vm.fights[0].points);
-          fightsService.setFights(fightsList);
 
       }// Cierre de la funcion assingPoints
 
@@ -209,9 +206,8 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
       //función que asigna puntos. Funcion final
       vm. addPoint2 = function(){
         var fightsList = vm.fights;
-          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          vm.fights[2].points = Number(vm.fights[0].points + 1);
           console.log(vm.fights[0].points);
-          fightsService.setFights(fightsList);
 
       }// Cierre de la funcion assingPoints
 
@@ -220,9 +216,8 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
       //función que asigna puntos. Funcion final
       vm. addPoint3 = function(){
         var fightsList = vm.fights;
-          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          vm.fights[3].points = Number(vm.fights[0].points + 1);
           console.log(vm.fights[0].points);
-          fightsService.setFights(fightsList);
 
       }// Cierre de la funcion assingPoints
 
@@ -230,11 +225,23 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
       //función que asigna puntos. Funcion final
       vm. addPoint4 = function(){
         var fightsList = vm.fights;
-          vm.fights[0].points = Number(vm.fights[0].points + 1);
+          vm.fights[4].points = Number(vm.fights[0].points + 1);
           console.log(vm.fights[0].points);
-          fightsService.setFights(fightsList);
 
       }// Cierre de la funcion assingPoints
+
+      vm.calculateWinner = function(){
+        var fightsList = vm.fights;
+        var nPuntajeMayor = 0;
+        var Winner =
+
+        for (var i = 0; i < fightsList.length; i++) {
+          if (fightsList[i].points > nPuntajeMayor) {
+            nPuntajeMayor = fightsList[i].points
+          }
+        }
+      }
+
 
 
 
@@ -243,6 +250,7 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
         vm.competition = '';
         vm.competitor= '';     
       }
+
 
 
 
