@@ -89,6 +89,41 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
 
 
 
+      vm.calculateWinner = function(){
+        var fightsList = vm.fights;
+        var nPuntajeMayor = 0;
+        var winner = "";
+        var objetWinner = "";
+
+        for (var i = 0; i < fightsList.length; i++) {
+          if (fightsList[i].points > nPuntajeMayor) {
+            nPuntajeMayor = fightsList[i].points;
+            winner = fightsList[i].competitor;
+            objetWinner = fightsList[i];
+          }
+        }
+
+        document.querySelector('#winner').value = winner;
+
+        vm.selectEvent.winners = objetWinner;
+
+
+
+        eventsService.updateWinner(vm.selectEvent).then(function (response) {
+        vm.event = true;
+        vm.competition = false;
+        vm.competitor = null;
+
+      });
+
+
+
+
+      }
+
+
+
+
       function showCalendar(pCompetition){
         var calendarList =     vm.selectEvent;
         var findCompetitors = [];
@@ -99,7 +134,6 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
         }
 
         vm.fights = findCompetitors;
-
       }
 
 
@@ -230,17 +264,7 @@ fightsController.$inject = ['fightsService','$scope','academiesService','student
 
       }// Cierre de la funcion assingPoints
 
-      vm.calculateWinner = function(){
-        var fightsList = vm.fights;
-        var nPuntajeMayor = 0;
-        var Winner =
 
-        for (var i = 0; i < fightsList.length; i++) {
-          if (fightsList[i].points > nPuntajeMayor) {
-            nPuntajeMayor = fightsList[i].points
-          }
-        }
-      }
 
 
 

@@ -28,4 +28,9 @@ router.route('/update_events')
 	.put(function(req,res){
     eventsController.update(req,res);
   });	
+
+router.route('/update_eventsWinners')
+  .put(function(req,res){
+    eventsController.updateWinners(req,res);
+  }); 
 module.exports = router;

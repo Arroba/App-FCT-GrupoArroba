@@ -25,7 +25,8 @@ module.exports.save = function(req, res){
     genderComp4: req.body.genderComp4,
     weightCategoryComp4: req.body.weightCategoryComp4,
     ageCategoryComp4: req.body.ageCategoryComp4,
-    fights: []
+    fights: [],
+    winners: []
   });
 
   newEvent.save(function(err){
@@ -63,7 +64,27 @@ Event.update({_id: req.body._id}, {$push: {fights: req.body.fights}}, {upsert:tr
         }
 });
 
+}
 
 
+module.exports.updateWinners = function(req,res){
+
+  // Event.findByIdAndUpdate(req.body._id, { $push: { fights: req.body.fights }}, function (err, event) {
+  //   if (err){
+  //     res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+  //   } else{
+  //     res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+  //   }
+
+  // });
+
+Event.update({_id: req.body._id}, {$push: {winners: req.body.winners}}, {upsert:true}, function(err){
+        if(err){
+                console.log(err);
+        }else{
+                console.log("Successfully added");
+        }
+});
 
 }

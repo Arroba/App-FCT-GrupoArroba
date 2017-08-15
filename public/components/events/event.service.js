@@ -29,7 +29,7 @@
 
 
       function _updateWinner(pEvent){
-        return $http.put('http://localhost:3000/api/update_events',pEvent);
+        return $http.put('http://localhost:3000/api/update_eventsWinners',pEvent);
       }//cierre función updatedAcademy
 
 

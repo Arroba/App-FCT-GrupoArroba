@@ -122,7 +122,7 @@
 
     <md-input-container class="col-md-3" layout="column">
       <label for="">Categoria:</label>
-      <md-select class="select"  ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);vm.showFights()" name="competition" required>
+      <md-select class="select"  ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);" name="competition" required>
         <md-optgroup label="Seleccione una competición">
           <md-option>{{vm.selectEvent.genderComp1}}</md-option>
           <md-option>{{vm.selectEvent["genderComp2"]}}</md-option>
@@ -515,11 +515,20 @@
 
 
 
-
     </div>
 
 
     <div id="registrar" class="col-md-3" >
-  <md-button class="button Active" ng-click="vm.calculateWinner();" type="submit">Finalizar Competición</button>
-  </div>
+      <md-button class="button Active" ng-click="vm.calculateWinner();" type="submit">Finalizar Competición</button>
+    </div>
+
+
+
   </section>
+
+
+    <div>
+        <h6>Ganador de la competición</h6>
+        <input id="winner"></input>
+    </div>
+
