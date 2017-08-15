@@ -29,6 +29,7 @@
     }
 
     $scope.pagina = 1;
+      
       $scope.siguiente = function() {
         $scope.pagina = 2;
       }
@@ -49,7 +50,7 @@
         time2: vm.time2,
         date2: vm.date2,
         place: vm.place,
-       status: 'Activo',
+        status: 'Activo',
       }// Cierre de newBlaze.(Pamela)
       // intento de restringir los usuarios que se registran
       if(vm.blazes.length == 0){
@@ -58,39 +59,29 @@
         loadBlazes();
 
         swal({
-        type: 'success',
-        title: '¡Registro completado!',
-        timer: 3000,
-        showConfirmButton: false
-      }).then(
-        function () {},
-        // handling the promise rejection
-        function (dismiss) {
-          if (dismiss === 'timer') {
-            console.log('Registro completado')
-          }
-        }
-      )
+          type: 'success',
+          title: '¡Registro completado!',
+          timer: 3000,
+          showConfirmButton: false
+        })
         return;
       }else{
         for(var i = 0; i < vm.blazes.length; i++){
           if(newBlaze.nameBlaze == vm.blazes[i].nameBlaze){
-
-          swal({
-           type: 'error',
-           title: '¡El nombre de fogueo ya existe!',
-           timer: 3000,
-           showConfirmButton: false
-         }).then(
-           function () {},
-           // handling the promise rejection
-           function (dismiss) {
-             if (dismiss === 'timer') {
-               console.log('El nombre de fogueo ya existe')
-             }
-           }
-         )
-
+            swal({
+               type: 'error',
+               title: '¡El nombre del fogueo ya existe!',
+               timer: 3000,
+               showConfirmButton: false
+             }).then(
+               function () {},
+               // handling the promise rejection
+               function (dismiss) {
+                 if (dismiss === 'timer') {
+                   console.log('El nombre del fogueo ya existe')
+                 }
+               }
+             )
             return;
           }
           else{
@@ -124,7 +115,6 @@
         }
       }
     }// Cierre de la función save.(Pamela)
-
 
     // Inicio: de la función getInfo, que se encarga de obtener los datos.(Pamela)
     vm.getInfo = function(pBlaze){
@@ -195,7 +185,6 @@
     }// Cierre de la función clear.(Pamela)
 
     // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
-    //función que cambia el estado a inabilitado.(Pamela)
     vm.inactive = function(pBlaze){
       var blazesList = blazeService.getBlazes();
       for (var i = 0; i < blazesList.length; i++) {

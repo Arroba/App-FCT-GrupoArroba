@@ -7,7 +7,7 @@ module.exports.save = function(req, res){
     time1: req.body.time1,
     time2: req.body.time2,
     date2: req.body.date2,
-    photo: req.body.photo,
+    place: req.body.place,
     status: req.body.status
   });
 
@@ -25,3 +25,16 @@ module.exports.findAll = function(req,res){
     res.send(blazes);
   })
 };
+
+module.exports.update = function(req,res){
+  Blaze.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, blazes) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

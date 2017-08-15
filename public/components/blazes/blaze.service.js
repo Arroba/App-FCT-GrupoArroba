@@ -31,10 +31,9 @@
     }// Cierre de la función updateBlazes
 
     //función que actualiza el estado.
-    //function _updateState(pBlazesList){
-
-     // $http.put('http://localhost:3000/api/update_state_blaze',pBlazesList);
-   // }//cierre función updateState.
+    function _updateState(pBlazesList){
+     $http.put('http://localhost:3000/api/update_state_blaze',pBlazesList);
+    }//cierre función updateState.
 
   }// Fin de función blazeservice
 })();

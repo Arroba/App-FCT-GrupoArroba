@@ -73,6 +73,4 @@
    function _getCookie(){
     return $cookies.get('currentUserActive');
    }
-  }
-
 })();

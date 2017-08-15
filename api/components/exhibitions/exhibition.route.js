@@ -12,19 +12,19 @@ router.param('id', function(req, res, next, id){
 router.route('/save_exhibitions')
   .post(function(req,res){
     exhibitionsController.save(req,res);
-
   });
+
 router.route('/get_all_exhibitions')
   .get(function(req,res){
     exhibitionsController.findAll(req,res);
   });
 
-  router.route('/update_exhibitions')
+router.route('/update_exhibitions')
   .put(function(req, res){
     exhibitionsController.update(req,res);
   });
 
-  router.route('/update_state_exhibitions')
+router.route('/update_state_exhibitions')
   .put(function(req, res){
     exhibitionsController.update(req,res);
   });
