@@ -1,13 +1,23 @@
 (function() {
 angular.module('fctApp')
   .controller('LoginController',LoginController);
-  function LoginController(AuthService, userService){
+
+  LoginController.$inject = ['AuthService', 'userService', 'teacherService'];
+
+
+  function LoginController(AuthService, userService, teacherService){
     var vm = this;
-  	function init(){ // función que se llama así misma para indicar que sea lo primero que se ejecute
-    	vm.users = userService.getUsers();
-    	vm.email = '';
-    	vm.password = '';
-  	}init();
+
+    function loadTeachers(){
+      teacherService.getTeachers().then(function (response) {
+          vm.users = response.data;
+          vm.email = '';
+          vm.password = '';
+        });
+      vm.to = new Date();
+      vm.cloudObj = ImageService.getConfiguration();
+      }
+
     vm.login = function(){
       AuthService.getCredencials(vm.email,vm.password);
     }

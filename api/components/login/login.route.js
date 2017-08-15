@@ -14,7 +14,7 @@ router.route('/save_users')
     loginController.save(req,res);
 
   });
-router.route('/get_all_users')
+router.route('/get_all_teachers')
   .get(function(req,res){
     loginController.findAll(req,res);
   });

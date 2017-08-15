@@ -4,7 +4,7 @@
   .module('fctApp')
   .service('userService', userService);
 
-  function userService($cookies,teacherService,studentService){
+  function userService($http,$cookies,teacherService,studentService){
     var users = [];
     var publicAPI = {
       setUsers : _setUsers,
@@ -18,48 +18,12 @@
     function _setUsers(pUser){
       return $http.post('http://localhost:3000/api/save_user',pUser)
       }
-    }
-
+    } 
+    // Inicio de la función getTeachers, que se encarga de obtener los datos más actualizados
     function _getUsers(){
-      var usersList = JSON.parse(localStorage.getItem('lsUsersList'));
-      // Objeto que introduce los datos del administrador
-      var Administrator = {
-        name: 'Pilar',
-        firstName: 'Granados',
-        lastName: 'Acosta',
-        id: 'admin',
-        email: 'pilarGA@gmail.com',
-        telephone: 83043948,
-        password: 123456789,
-        year: '12 de Julio 1998',
-        status: 'Activo',
-        photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755560/pilar_ay71zu.jpg',
-        userType: 'administrator'
-      } // Cierre del objeto Administrator
+      return $http.get('http://localhost:3000/api/get_all_teachers');
+    } // Cierre de la funcíon getTeachers
 
-      // Objeto que introduce los datos del Assistant
-      var Assistant = {
-        name: 'Wilken',
-        firstName: 'Chacón',
-        lastName: 'Acosta',
-        id: 'asist',
-        email: 'wilkenCA@gmail.com',
-        telephone: 83043948,
-        password: 123456789,
-        year: '25 de Julio 1990',
-        status: 'Activo',
-        photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755417/wilken_inimbl.jpg',
-        userType: 'assistant'
-      } // Cierre del objeto Assistant
-
-      if(usersList == null){
-        usersList = users;
-        usersList.push(Administrator,Assistant)
-      }else {
-        usersList.push(Administrator,Assistant)
-      }
-      return usersList;
-    }
 
     function _updateUser(pobjUsuario){
       console.log(pAcademy);
@@ -67,7 +31,12 @@
     }
 
     function _findUsers(pUsernameToFind){
-      return $http.put('http://localhost:3000/api/users',pUsernameToFind);
+      var userStorage = _getUsers();
+     for (var i = 0; i < userStorage.length; i++) {
+       if(userStorage[i].email == pUsernameToFind){
+         return userStorage[i];
+       }
+     }
    }
 
    function _getCookie(){

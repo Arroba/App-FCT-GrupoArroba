@@ -17,8 +17,8 @@ module.exports.save = function(req, res){
 }
 
 module.exports.findAll = function(req,res){
-  User.find().then(function(users){
-    res.send(users);
+  User.find().then(function(teachers){
+    res.send(teachers);
   })
 };
 
