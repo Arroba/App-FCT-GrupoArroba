@@ -4,7 +4,7 @@
   .module('fctApp')
   .service('userService', userService);
 
-  function userService($cookies){
+  function userService($cookies,teacherService,studentService){
     var users = [];
     var publicAPI = {
       setUsers : _setUsers,
@@ -16,10 +16,8 @@
     return publicAPI; // todas las funciones que sean llamadas por ajax deben estar debajo del return, para que cuando angular corra el script haga el return y devuelva el api , las funciones debajo del return son privadas y se devuelve el api que es el que contiene las funciones
 
     function _setUsers(pUser){
-      var usersList = _getUsers();
-
-      usersList.push(pUser);
-      localStorage.setItem('lsUsersList', JSON.stringify(usersList));
+      return $http.post('http://localhost:3000/api/save_user',pUser)
+      }
     }
 
     function _getUsers(){
@@ -33,7 +31,6 @@
         email: 'pilarGA@gmail.com',
         telephone: 83043948,
         password: 123456789,
-        resident: 'Montes de Oca',
         year: '12 de Julio 1998',
         status: 'Activo',
         photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755560/pilar_ay71zu.jpg',
@@ -49,7 +46,6 @@
         email: 'wilkenCA@gmail.com',
         telephone: 83043948,
         password: 123456789,
-        resident: 'Montes de Oca',
         year: '25 de Julio 1990',
         status: 'Activo',
         photo: 'http://res.cloudinary.com/dbvdk8f2r/image/upload/v1499755417/wilken_inimbl.jpg',
@@ -64,22 +60,14 @@
       }
       return usersList;
     }
+
     function _updateUser(pobjUsuario){
-      var usersList = _getUsers();
-      for(var i = 0; i < usersList.length; i++){
-        if(usersList[i].id == pobjUsuario.id){
-          usersList[i] = pobjUsuario;
-        }
-      }
-      localStorage.setItem('lsUsersList', JSON.stringify(usersList));
+      console.log(pAcademy);
+        return $http.put('http://localhost:3000/api/update_users',pobjUsuario);
     }
+
     function _findUsers(pUsernameToFind){
-      var userStorage = _getUsers();
-     for (var i = 0; i < userStorage.length; i++) {
-       if(userStorage[i].email == pUsernameToFind){
-         return userStorage[i];
-       }
-     }
+      return $http.put('http://localhost:3000/api/users',pUsernameToFind);
    }
 
    function _getCookie(){
