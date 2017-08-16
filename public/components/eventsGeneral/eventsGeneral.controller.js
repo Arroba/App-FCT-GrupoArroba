@@ -11,7 +11,7 @@
         vm.events = eventsGeneralService.getEvents();
         vm.academiesRel = academiesService.getAcademies();
         vm.sponsorsRel = sponsorService.getSponsors();
-        vm.placeRel = placeService.getPlace();
+        vm.placeRel = placeService.getPlaces();
         vm.to = new Date();
       }init();
       // Función que guarda los datos
@@ -100,7 +100,7 @@
             }
           }
         )
-        
+
         eventsGeneralService.updateEvent(updated);
         init();
         clear();
