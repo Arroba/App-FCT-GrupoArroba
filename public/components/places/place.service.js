@@ -1,45 +1,32 @@
-// Hecho por Fabián Quirós
 (function(){
   angular
-  .module('fctApp')
-  .service('placeService', placeService);
+    .module('fctApp')
+    .service('placeService', placeService);
 
-  // Inicio de función placeService
-  function placeService(){
-    var place = [];
-    var publicAPI = {
-      setPlace : _setPlace,
-      getPlace : _getPlace,
-      updatePlace : _updatePlace,
-    }; // Cierre del publicAPI
-    return publicAPI;
+    function placeService($http){
+      var places = [];
+      var publicAPI = {
+        setPlaces : _setPlaces,
+        getPlaces : _getPlaces,
+        updatePlace : _updatePlace,
+      };
+      return publicAPI;
 
-    // Inicio de la funcion setPlace, que se encarga de registar los datos en el localStorage
-    function _setPlace(pPlace){
-      var placeList = _getPlace();
-      placeList.push(pPlace);
-      localStorage.setItem('lsPlaceList', JSON.stringify(placeList));
-    } // Cierre de la función setPlace
+      //Función que envía una dato al localStorage
+      function _setPlaces(pPlace){
+        return $http.post('http://localhost:3000/api/save_place',pPlace)
+      }//cierre función setAcademies
 
-    // Inicio de la función getPlace, que se encarga de obtener los datos más actualizados
-    function _getPlace(){
-      var placeList = JSON.parse(localStorage.getItem('lsPlaceList'));
-      if(placeList == null){
-        placeList = place;
-      } // Cierre del if
-      return placeList;
-    } // Cierre de la funcíon getPlace
+      //funcion que toma los datos del localStorage
+      function _getPlaces(){
+        return $http.get('http://localhost:3000/api/get_all_places');
+      }//cierre de la función getAcademies
 
-    // Inicio de la función updatePlace, que se encarga de permitir la edición de datos
-    function _updatePlace(pobjplace){
-      var placeList = _getPlace();
-      for(var i = 0; i < placeList.length; i++){
-        if(placeList[i].namePlace == pobjplace.namePlace){
-          placeList[i] = pobjplace;
-        } // Cierre del if
-      } // Cierre del ciclo
-      localStorage.setItem('lsPlaceList', JSON.stringify(placeList));
-    }// Fin de la función updatePlace
+      //funcíon que actualiza los datos
+      function _updatePlace(pPlace){
+        console.log(pPlace);
+        return $http.put('http://localhost:3000/api/update_places',pPlace);
+      }//cierre función updatedAcademy
+    }//cierre función principal del service
 
-  }// Fin de función placeService
 })();

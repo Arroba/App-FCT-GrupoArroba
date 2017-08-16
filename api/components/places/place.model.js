@@ -4,8 +4,8 @@ var mongoose = require('mongoose');
 var PlaceSchema = new mongoose.Schema({
   namePlace:String,
   location: String,
-  capacity: String,
-  phone: String,
+  capacity: Number,
+  phone: Number,
   timestart: Date,
   timeFinish: Date,
   nameContact: String,
