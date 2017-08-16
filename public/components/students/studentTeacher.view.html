@@ -299,34 +299,34 @@
           <div class="col-xs-12">
            <md-card  class="container-fluid col-md-6" ng-repeat="student in vm.students | filter:vm.nameFilter">
            <md-card-header>
-           <md-card-header-text>
-             <span class="md-title">{{student.firstName}} {{student.secondName}} {{student.surname}} {{student.secondSurname}}</span>
-             <span class="md-subhead">{{student.id}}</span>
-           </md-card-header-text>
-           </md-card-header>
-           <md-card-title>
-           <md-card-title-text>
-             <div>
-               <span class="md-subhead">Género: {{student.gender}}</span>
-               <span class="md-subhead">Fecha de nacimiento: {{student.date | date}}</span>
-               <span class="md-subhead">Teléfono: {{student.telephone}}</span>
-               <span class="md-subhead">Dirección: {{student.address}}</span>
-               <span class="md-subhead">Estado civil: {{student.civilStatus}}</span>
-               <span class="md-subhead">Peso: {{student.weight}} Kg</span>
-               <span class="md-subhead">Altura: {{student.height}} cm</span>
-               <span class="md-subhead">Grado: {{student.grade}}</span>
-               <span class="md-subhead">Academia: {{student.academies}}</span>
-               <span class="md-subhead">Profesor: {{student.teachers}}</span>
-               <span class="md-subhead">Correo electrónico: {{student.email}}</span>
-               <span class="md-subhead">Estado: {{student.status}}</span>
-             </div>
-           </md-card-title-text>
-           <md-card-title-media>
-             <div class="md-media-lg card-media">
-               <img ng-src="{{student.photo}}" alt="Description">
-             </div>
-           </md-card-title-media>
-           </md-card-title>
+             <md-card-header-text>
+               <span class="md-title">{{student.name}} {{student.firstName}} {{student.lastName}}</span>
+               <span class="md-subhead">{{student.identi}}</span>
+             </md-card-header-text>
+             </md-card-header>
+             <md-card-title>
+             <md-card-title-text>
+               <div>
+                 <span class="md-subhead">Género: {{student.gender}}</span>
+                 <span class="md-subhead">Fecha de nacimiento: {{student.date | date}}</span>
+                 <span class="md-subhead">Teléfono: {{student.telephone}}</span>
+                 <span class="md-subhead">Dirección: {{student.address}}</span>
+                 <span class="md-subhead">Estado civil: {{student.civilStatus}}</span>
+                 <span class="md-subhead">Peso: {{student.weight}} Kg</span>
+                 <span class="md-subhead">Altura: {{student.height}} cm</span>
+                 <span class="md-subhead">Grado: {{student.grade}}</span>
+                 <span class="md-subhead">Academia: {{student.academies}}</span>
+                 <span class="md-subhead">Profesor: {{student.teachers}}</span>
+                 <span class="md-subhead">Correo electrónico: {{student.email}}</span>
+                 <span class="md-subhead">Estado: {{student.status}}</span>
+               </div>
+             </md-card-title-text>
+             <md-card-title-media>
+               <div class="md-media-lg card-media">
+                 <img ng-src="{{student.photo}}" alt="Description">
+               </div>
+             </md-card-title-media>
+             </md-card-title>
                <!-- Boton para cambiar el editar las estudiantes -->
            <md-card-actions id="buttons">
              <md-button class="edit" ng-click="vm.getInfo(student);vm.hideButton();registro1()">Editar</md-button>
