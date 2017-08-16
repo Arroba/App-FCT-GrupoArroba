@@ -27,6 +27,10 @@
       sponsorService.getSponsors().then(function (response) {
           vm.sponsorsRel = response.data;
         });
+
+        placeService.getPlaces().then(function(response){
+            vm.placeRel = response.data;
+         });
       vm.to = new Date();
       }
 

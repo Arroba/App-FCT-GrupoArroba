@@ -2,9 +2,9 @@
   angular
   .module('fctApp')
   .controller('blazeController', blazeController);
-  blazeController.$inject = ['blazeService','$scope'];
+  blazeController.$inject = ['blazeService','$scope','placeService'];
 
-  function blazeController(blazeService,$scope){
+  function blazeController(blazeService,$scope,placeService){
 
     var vm = this;
     vm.blazes = "";
@@ -21,15 +21,15 @@
        // vm.eventsRel = response.data;
       //});
 
-     // placeService.getPlace().then(function(response){
-       //   vm.placeRel = response.data;
-      //});
+     placeService.getPlaces().then(function(response){
+         vm.placeRel = response.data;
+      });
 
       vm.to = new Date();
     }
 
     $scope.pagina = 1;
-      
+
       $scope.siguiente = function() {
         $scope.pagina = 2;
       }
