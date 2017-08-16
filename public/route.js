@@ -35,6 +35,12 @@
     css:'css/styleLandingEvents.css',
 })
 
+.state('landingPageEventsPublic',{
+   url : '/landingPageEventsPublic',
+   templateUrl: 'components/landingPageEvents/landingPageEventsPublic.view.html',
+   css:'css/styleLandingEvents.css',
+})
+
 //LOGIN
     .state('login',{
       url : '/login',
@@ -966,6 +972,15 @@
           css:'css/styleMenu.css',
           css:'css/ranking.css'
         })
+
+        //generalRanking public
+        .state('generalRankingPublic',{
+          url : '/generalRankingPublic',
+          templateUrl: 'components/generalRanking/generalRankingPublic.view.html',
+          css:'css/styleMenu.css',
+          css:'css/ranking.css'
+        })
+
 
      //individualRanking
     .state('iRanking',{

@@ -45,34 +45,27 @@
         </div>
         <div class="collapse navbar-collapse"></div>
       </nav>
-          <!-- Page Content -->
 
-<md-content class="image-responsive imageTaek md-padding"  layout-align="left">
-  <div class="container-fluid">
-
-  <form id="form-background" ng-submit="vm.login()" novalidate name="frmLogin" id="formLogin" autocomplete="off">
-    <div  layout-align="center">
-      <div layout="row">
-        <md-input-container layout="column" flex="50" flex-gt-sm>
-          <label>Correo Electrónico</label>
-          <input type="email" name="email" ng-model="vm.email" required/>
-        </md-input-container>
-      </div>
-      <div layout="row">
-        <md-input-container layout="column" flex="50" flex-gt-sm>
-          <label>Contraseña</label>
-          <input type="password" name="password" ng-model="vm.password" required/>
-        </md-input-container>
-      </div>
-      <p class="blocked"></p>
-      <div layout="row" layout-align="left">
-        <md-button class="md-raised md-warn Active" id="login-button" layout="column" type="submit" ng-disabled="frmLogin.$invalid">Entrar</md-button>
-      </div>
-     </div>
-  </form>
-  <footer>
-      <p class="style-footer">©Arroba - All rights reserved 2017.</p>
-  </footer>
-</div>
-
-</md-content>
+    <!-- Page Content -->
+      <br>
+      <h1 class="text-center">Ranking General</h1>
+      <table class="container">
+        <thead>
+          <tr>
+            <th><h1>Posición</h1></th>
+            <th><h1>Competidor</h1></th>
+            <th><h1>Academia</h1></th>
+            <th><h1>Torneos Ganados</h1></th>
+            <th><h1>Puntos Ganados</h1></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Pamela Brenes</td>
+            <td>Academia Fabi</td>
+            <td>0</td>
+            <td>0</td>
+          </tr>
+       </tbody>
+    </table>
