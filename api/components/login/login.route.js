@@ -5,7 +5,7 @@ var loginController = require('./login.controller.js');
 //para aquellas rutas que ocupen un id
 
 router.param('id', function(req, res, next, id){
-  req.body.id = id;
+  req.body.id = id; 
   next();
 });
 

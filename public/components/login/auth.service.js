@@ -1,20 +1,13 @@
 (function() {
   angular.module('fctApp')
   .service('AuthService',AuthService);
-  function AuthService(userService, $cookies,$location){
+  function AuthService(userService, $cookies,$location,teacherService){
     return {
-      getCredencials:_getAuthCredencials,
-      logOut : _destroyAuthCredentials
+
+      logOut : _destroyAuthCredentials,
+      validateFields: _validateFields
     }
-    function _getAuthCredencials(pEmail,pPassword){
-      //console.log("Yass work correctly auth service. The user is %s and the password is %s",pUsername,pPassword);
-      var userFounded = userService.findUsers(pEmail);
-      if(userFounded == undefined){
-        document.querySelector('.blocked').innerHTML = 'Usuario o contraseña incorrectos';
-      }
-      _validateFields(pEmail, pPassword, userFounded);
-      $cookies.put('currentUserActive',userFounded.email);
-    }
+
     function _destroyAuthCredentials(){
       var currentUser = $cookies.get('currentUserActive');
       $cookies.remove('currentUserActive');
@@ -33,6 +26,22 @@
         _redirectTo(false);
       }
     }
+
+
+    function findUsers(pUsernameToFind){
+      teacherService.getTeachers().then(function (response) {
+            vm.teachers = response.data;
+      });
+     for (var i = 0; i < vm.teachers.length; i++) {
+       if(vm.teachers[i].email == pUsernameToFind){
+         return vm.teachers[i];
+       }
+     }
+   }
+
+
+
+
     function _redirectTo(pValidUser){
       switch (pValidUser.userType) {
         case 'administrator':
