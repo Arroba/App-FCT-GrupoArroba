@@ -82,7 +82,7 @@
               </li>
 
               <li style="background-color: #FFFFFF;">
-                <a href="#!/totaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                <a href="#!/TotaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
               </li>
 
               <li style="background-color: #FFFFFF;">
@@ -123,43 +123,46 @@
         </nav>
 
 
+  <!-- Page Content -->
+  <section>
+    <div class=" col-md-12">
+      <h1>Entradas</h1>
+      <hr>
 
-    <!-- Page Content -->
-    <section>
-      <div class=" col-md-12">
-        <h1>Asociaciones benéficas</h1>
-        <hr>
-        <!--Crear buscar academia-->
-        <section class="inputSearch">
-          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-            <form action="" class="search-form">
-              <div class="form-group has-feedback">
-                <label for="Buscar" class="sr-only">Buscar</label>
-                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-              </div>
-            </form>
-          </div>
-        </section><!-- Cierre inputSearch-->
-
-        <div class="col-xs-12">
-          <md-card class="container-fluid col-md-6"  ng-repeat="beneficient in vm.beneficient
-                | filter:vm.nameFilter">
-            <md-card-header>
-              <md-card-header-text>
-                <span class="md-title">Asociación: {{beneficient.name}}</span>
-              </md-card-header-text>
-            </md-card-header>
-            <md-card-title>
-              <md-card-title-text>
-                <span class="md-subhead">Persona a cargo: {{beneficient.personName}} {{beneficient.surname}} {{beneficient.secondSurname}}</span>
-                <span class="md-subhead">Tipo de Asociación: {{beneficient.type}}</span>
-                <span class="md-subhead">Descripción: {{beneficient.description}}</span>
-              </md-card-title-text>
-            </md-card-title>
-
+      <!--Crear buscar academia-->
+      <section class="inputSearch">
+        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+          <form action="" class="search-form">
+            <div class="form-group has-feedback">
+              <label for="Buscar" class="sr-only">Buscar</label>
+              <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </form>
         </div>
-      </div><!-- Cierre botones-->
-    </section>
-  </div><!-- Cierre main-panel-->
-</div><!-- Cierre wrapper-->
+      </section>
+
+    <!--inicio de los cards -->
+    <div class="col-xs-12">
+
+      <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
+        <md-card-header>
+          <md-card-header-text>
+            <span class="md-title">{{tickets.nameEvent}}</span>
+            <span class="md-subhead">{{tickets.name}} {{tickets.firstName}} {{tickets.secondName}}</span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">{{tickets.email}}</span>
+            <span class="md-subhead">Entradas: <br><input type="submit" value="Cancelar" ng-click="vm.cancel(tickets)"> {{tickets.reservedTickets}} reservadas <input type="submit" value="Reservar" ng-click="vm.reserve(tickets)"></span>
+          </md-card-title-text>
+        </md-card-title>
+        <!-- Boton para cambiar el editar las profesores -->
+        <md-card-actions>
+          <md-card-icon-actions><!-- cierre botones  -->
+          </section>
+  </div><!--fin de los cards -->
+</div><!--cierre de div despues de section -->
+</div><!--cierre de main-panel -->
+</div><!--cierre de wrapper -->

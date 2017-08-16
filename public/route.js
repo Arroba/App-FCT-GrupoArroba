@@ -143,6 +143,34 @@
       css:'css/styleMenu.css'
     })
 
+    //TOTAL EVENTOS GENERALES
+    .state('totaleventsGeneral',{
+      url : '/totaleventsGeneral',
+      templateUrl: './components/eventsGeneral/totaleventsGeneral.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+        }]
+      },
+      controller: 'eventsGeneralController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
+    //TOTAL EVENTOS GENERALES
+    .state('totaleventsGeneralAssistant',{
+      url : '/totaleventsGeneralAssistant',
+      templateUrl: './components/eventsGeneral/totaleventsGeneralAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+        }]
+      },
+      controller: 'eventsGeneralController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
     .state('eventsGeneralAssistant',{
       url : '/eventsGeneralAssistant',
       templateUrl: './components/eventsGeneral/eventsGeneralAssistant.view.html',
@@ -737,6 +765,35 @@
       controllerAs: 'vm',
       css:'css/styleMenu.css'
       })
+
+      //TOTAL ENTRADAS ADMI
+          .state('totaltickets',{
+            url : '/totaltickets',
+            templateUrl: './components/tickets/totaltickets.view.html',
+            resolve: {
+              load: ['$ocLazyLoad', function($ocLazyLoad){
+                return $ocLazyLoad.load('./components/tickets/tickets.controller.js')
+              }]
+            },
+            controller: 'ticketsController',
+            controllerAs: 'vm',
+            css:'css/styleMenu.css'
+            })
+
+            //TOTAL ENTRADAS ASISTENTE
+                .state('totalticketsAssistant',{
+                  url : '/totalticketsAssistant',
+                  templateUrl: './components/tickets/totalticketsAssistant.view.html',
+                  resolve: {
+                    load: ['$ocLazyLoad', function($ocLazyLoad){
+                      return $ocLazyLoad.load('./components/tickets/tickets.controller.js')
+                    }]
+                  },
+                  controller: 'ticketsController',
+                  controllerAs: 'vm',
+                  css:'css/styleMenu.css'
+                  })
+
       //REGISTRO ENTRADAS  ASISTENTE
      .state('ticketAssistant',{
         url : '/ticketAssistant',
@@ -836,6 +893,22 @@
       css:'css/styleLandingEvents.css'
     })
 
+    //ASISTENTE
+    .state('visualizeAsistent',{
+      url : '/visualizeAsistent',
+      templateUrl: './components/profiles/visualizeAsistent.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/profiles/profileAsistent.controller.js')
+        }]
+      },
+      controller: 'profileAsistentController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css',
+      css:'css/styleLandingEvents.css'
+    })
+
+
     //generalRanking
     .state('gRanking',{
       url : '/generalRanking',
@@ -843,6 +916,15 @@
       css:'css/styleMenu.css',
       css:'css/ranking.css'
     })
+
+
+        //generalRanking
+        .state('generalRankingAssistant',{
+          url : '/generalRankingAssistant',
+          templateUrl: 'components/generalRanking/generalRankingAssistant.view.html',
+          css:'css/styleMenu.css',
+          css:'css/ranking.css'
+        })
 
      //individualRanking
     .state('iRanking',{

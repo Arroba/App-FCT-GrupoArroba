@@ -110,11 +110,12 @@
 
 
   <!-- Page Content -->
-<section>
+  <section>
     <div class=" col-md-12">
-      <h1>Profesores</h1>
+      <h1>Entradas</h1>
       <hr>
-      <!--inicio de botón buscar -->
+
+      <!--Crear buscar academia-->
       <section class="inputSearch">
         <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
           <form action="" class="search-form">
@@ -122,39 +123,32 @@
               <label for="Buscar" class="sr-only">Buscar</label>
               <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
               <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div><!--cierre de botón buscar -->
+            </div>
           </form>
         </div>
       </section>
-        <!--inicio de los cards -->
-          <div class="col-xs-12">
 
-      <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
+    <!--inicio de los cards -->
+    <div class="col-xs-12">
+
+      <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
         <md-card-header>
           <md-card-header-text>
-            <span class="md-title">{{teacher.name}} {{teacher.firstName}} {{teacher.lastName}}</span>
-            <span class="md-subhead">{{teacher.id}}</span>
+            <span class="md-title">{{tickets.nameEvent}}</span>
+            <span class="md-subhead">{{tickets.name}} {{tickets.firstName}} {{tickets.secondName}}</span>
           </md-card-header-text>
         </md-card-header>
         <md-card-title>
           <md-card-title-text>
-            <span class="md-subhead">{{teacher.gender}}</span>
-            <span class="md-subhead">{{teacher.email}}</span>
-            <span class="md-subhead">Nacimiento: {{teacher.date | date}}</span>
-            <span class="md-subhead">Estado Civil: {{teacher.civilStatus}}</span>
-            <span class="md-subhead">Teléfono: {{teacher.telephone}}</span>
-            <span class="md-subhead">Grado: {{teacher.grade}}</span>
-            <span class="md-subhead">Academias: {{teacher.academies}}</span>
-            <span class="md-subhead">Estado: {{teacher.status}}</span>
+            <span class="md-subhead">{{tickets.email}}</span>
+            <span class="md-subhead">Entradas: <br><input type="submit" value="Cancelar" ng-click="vm.cancel(tickets)"> {{tickets.reservedTickets}} reservadas <input type="submit" value="Reservar" ng-click="vm.reserve(tickets)"></span>
           </md-card-title-text>
-          <md-card-title-media>
-            <div class="md-media-lg card-media">
-              <img ng-src="{{teacher.photo}}" alt="Description" class="photoStudent">
-            </div>
-          </md-card-title-media>
         </md-card-title>
-  </section>
-</div><!--cierre de cards -->
-</div><!--cierre de pagina2 -->
+        <!-- Boton para cambiar el editar las profesores -->
+        <md-card-actions>
+          <md-card-icon-actions><!-- cierre botones  -->
+          </section>
+  </div><!--fin de los cards -->
+</div><!--cierre de div despues de section -->
 </div><!--cierre de main-panel -->
 </div><!--cierre de wrapper -->

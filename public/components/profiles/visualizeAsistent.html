@@ -110,51 +110,41 @@
 
 
   <!-- Page Content -->
-<section>
-    <div class=" col-md-12">
-      <h1>Profesores</h1>
-      <hr>
-      <!--inicio de botón buscar -->
-      <section class="inputSearch">
-        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-          <form action="" class="search-form">
-            <div class="form-group has-feedback">
-              <label for="Buscar" class="sr-only">Buscar</label>
-              <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-              <span class="glyphicon glyphicon-search form-control-feedback"></span>
-            </div><!--cierre de botón buscar -->
-          </form>
-        </div>
-      </section>
-        <!--inicio de los cards -->
-          <div class="col-xs-12">
 
-      <md-card class="container-fluid col-md-6" ng-repeat="teacher in vm.teachers | filter:vm.nameFilter">
+  <div><!--inicio perfil-->
+    <md-card>
+      <div class="col-md-12">
+
         <md-card-header>
-          <md-card-header-text>
-            <span class="md-title">{{teacher.name}} {{teacher.firstName}} {{teacher.lastName}}</span>
-            <span class="md-subhead">{{teacher.id}}</span>
-          </md-card-header-text>
+        <md-card-header-text>
+          <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
+          <h1>Bienvenido!</h1>
+          <hr>
+          <span style="font-size:25px; " class="md-title">{{vm.foundCredentials.name}} {{vm.foundCredentials.firstName}} {{vm.foundCredentials.lastName}}</span>
+        </md-card-header-text>
         </md-card-header>
-        <md-card-title>
-          <md-card-title-text>
-            <span class="md-subhead">{{teacher.gender}}</span>
-            <span class="md-subhead">{{teacher.email}}</span>
-            <span class="md-subhead">Nacimiento: {{teacher.date | date}}</span>
-            <span class="md-subhead">Estado Civil: {{teacher.civilStatus}}</span>
-            <span class="md-subhead">Teléfono: {{teacher.telephone}}</span>
-            <span class="md-subhead">Grado: {{teacher.grade}}</span>
-            <span class="md-subhead">Academias: {{teacher.academies}}</span>
-            <span class="md-subhead">Estado: {{teacher.status}}</span>
+        <md-card-title class="col-md-10">
+          <md-card-title-text >
+            <span class="md-subhead">Email: {{vm.foundCredentials.email}}</span>
+            <span class="md-subhead">Residencia: {{vm.foundCredentials.resident}}</span>
+            <span class="md-subhead">Teléfono: {{vm.foundCredentials.telephone}}</span>
+            <span class="md-subhead">Nacimiento: {{vm.foundCredentials.year}}</span>
+            <span class="md-subhead">Estado: {{vm.foundCredentials.status}}</span>
           </md-card-title-text>
-          <md-card-title-media>
+        </md-card-title>
+          <md-card-title-media class="col-md-2">
             <div class="md-media-lg card-media">
-              <img ng-src="{{teacher.photo}}" alt="Description" class="photoStudent">
+              <img ng-src="{{vm.foundCredentials.photo}}" alt="Description">
             </div>
           </md-card-title-media>
-        </md-card-title>
-  </section>
-</div><!--cierre de cards -->
-</div><!--cierre de pagina2 -->
-</div><!--cierre de main-panel -->
-</div><!--cierre de wrapper -->
+      </div>
+
+    <md-card-actions layout="row" layout-align="end center">
+      <md-card-icon-actions>
+      </div>
+    </md-card>
+        <!--fin de los cards -->
+
+</section>
+</div><!-- Cierre main-panel -->
+</div>  <!-- Cierre wrapper -->
