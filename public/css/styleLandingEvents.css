@@ -220,7 +220,7 @@ body,
 }
 
 a {
-  color: #1DC7EA;
+  color: white;
 }
 a:hover, a:focus {
   color: #42d0ed;
@@ -240,13 +240,13 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 
 .ui-slider-handle:focus,
 .navbar-toggle,
-input:focus {
+inut:focus {
   outline: 0 !important;
 }
 
 /*           Animations              */
 .form-control,
-.input-group-addon,
+.inut-grou-addon,
 .tagsinput,
 .navbar,
 .navbar .alert {
@@ -286,9 +286,8 @@ input:focus {
 .wrapper {
   position: relative;
   top: 0;
-  height: 100vh;
+  height: 70px;
 }
-
 .sidebar {
   position: absolute;
   top: 0;
@@ -466,11 +465,13 @@ body > .navbar-collapse .logo-tim {
   width: 61px;
   float: left;
   overflow: hidden;
+
 }
 .sidebar .logo-tim img,
 body > .navbar-collapse .logo-tim img {
   width: 60px;
   height: 60px;
+
 }
 .sidebar:after, .sidebar:before,
 body > .navbar-collapse:after,
@@ -488,6 +489,8 @@ body > .navbar-collapse:before {
 body > .navbar-collapse:before {
   opacity: .33;
   background: #000000;
+  background-color: orange;
+
 }
 .sidebar:after,
 body > .navbar-collapse:after {
@@ -517,7 +520,6 @@ body > .navbar-collapse.has-image:after {
   background: linear-gradient(to bottom, #212123 0%, #212123 100%);
   background-size: 150% 150%;
 }
-
 
 .main-panel {
   background: rgba(203, 203, 210, 0.15);
@@ -567,6 +569,7 @@ body > .navbar-collapse.has-image:after {
   -ms-user-select: none;
   -o-user-select: none;
   user-select: none;
+  /*   this code is for fixing safari bug with hidden overflow for border-radius   */
   -webkit-mask: url("../img/mask.png") 0 0 no-repeat;
   -webkit-mask-size: 60px 24px;
   mask: url("../img/mask.png") 0 0 no-repeat;
@@ -2223,7 +2226,25 @@ body > .navbar-collapse.has-image:after {
     width: 100%;
   }
   body > .navbar-collapse .nav > li > a {
-    padding: 30px 25px;
+    margin: 0;
+    line-height: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+
+  }
+  body > .navbar-collapse .nav > li > a:hover {
+    color:  orange;
+    opacity: 1;
+    background-color: #212123;
+    cursor: pointer;
+  }
+  body > .navbar-collapse .sidebar .dropdown-menu > li > p {
+    color:  orange;
+    opacity: 1;
+    background-color: #212123;
+    cursor: pointer;
+    font-family: "Roboto";
   }
   body > .navbar-collapse::before {
     top: 0;
@@ -2574,17 +2595,22 @@ body > .navbar-collapse.has-image:after {
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a,
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:hover,
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:focus,
-  [class*="navbar-"] .navbar-nav .navbar-nav .open .dropdown-menu > li > a:active {
-    color: white;
-  }
   [class*="navbar-"] .navbar-nav > li > a,
   [class*="navbar-"] .navbar-nav > li > a:hover,
   [class*="navbar-"] .navbar-nav > li > a:focus,
-  [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a,
-  [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:hover,
+  [class*="navbar-"] .sidebar .nav a:hover.open > a{
+    color: white;
+  }
+  [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a{
+    color: black;
+  }
+  [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:hover{
+    color: orange;
+    background: white;
+  }
   [class*="navbar-"] .navbar-nav .open .dropdown-menu > li > a:focus {
     opacity: .7;
-    background: transparent;
+    background: black;
   }
   [class*="navbar-"] .navbar-nav.navbar-nav .open .dropdown-menu > li > a:active {
     opacity: 1;
@@ -2703,6 +2729,7 @@ body > .navbar-collapse.has-image:after {
     margin-right: 10px;
   }
 }
+
 
 /* Footer */
 
