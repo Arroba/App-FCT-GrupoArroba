@@ -28,7 +28,7 @@ module.exports.findAll = function(req,res){
 
 module.exports.update = function(req,res){
 
-  Beneficient.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, academy) {
+  Beneficient.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, beneficient) {
     if (err){
       res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
     } else{

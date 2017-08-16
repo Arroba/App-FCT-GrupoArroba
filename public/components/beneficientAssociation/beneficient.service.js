@@ -25,10 +25,15 @@
     } // Cierre del if
       
     // Inicio de la función updatePlace, que se encarga de permitir la edición de datos
-    function _updateBeneficient(pBeneficientList){
+    function _updateBeneficient(pBeneficient){
       console.log(pBeneficient);
         return $http.put('http://localhost:3000/api/update_beneficients',pBeneficient);
     }// Fin de la función updatePlace
+
+    //función que actualiza el estado
+    function _updateState(pBeneficientList){
+      return $http.put('http://localhost:3000/api/update_state_beneficients',pBeneficientList);
+    }//cierre función updateState
 
   }// Fin de función placeService
 })();
