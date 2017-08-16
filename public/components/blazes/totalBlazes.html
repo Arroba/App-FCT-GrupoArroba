@@ -143,21 +143,20 @@
     <div class="col-xs-12">
       <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
     | filter:vm.nameFilter"><!--Impresión de los datos-->
-        <md-card-header>
-          <md-card-header-text>
-            <span class="md-subhead">Fogueo: {{blaze.nameBlaze}}</span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-title>
-          <md-card-title-text>
-              <span class="md-subhead">Hora a realizarse: {{blaze.time | date: "hh:mm a"}}</span>
-              <span class="md-subhead">Lugar: {{blaze.place}}</span>
-              <span class="md-subhead">Estado: {{blaze.status}}</span>
-          </md-card-title-text>
-        </md-card-title>
-        <!-- Boton para cambiar el editar las fogueos -->
-        <md-card-actions >
-      <md-card-icon-actions><!-- cierre botones  -->
+    <md-card-header>
+      <md-card-header-text>
+        <span class="md-title">Fogueo: {{blaze.nameBlaze}}</span>
+        <span class="md-subhead">Fecha de inicio: {{blaze.date1 | date}} | Fecha de cierre: {{blaze.date2 | date}}</span>
+      </md-card-header-text>
+    </md-card-header>
+    <md-card-title>
+      <md-card-title-text>
+        <span class="md-subhead">Hora a realizarse: {{blaze.time1 | date: "hh:mm a"}}</span>
+        <span class="md-subhead">Hora a cierre: {{blaze.time2 | date: "hh:mm a"}}</span>
+        <span class="md-subhead">Lugar: {{blaze.place}}</span>
+        <span class="md-subhead">Estado: {{blaze.status}}</span>
+      </md-card-title-text>
+    </md-card-title>
     </div>
     </div>
   </section>
