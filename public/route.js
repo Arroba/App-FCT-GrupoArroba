@@ -23,6 +23,12 @@
       css:'css/styleLandingEvents.css'
   })
 
+  .state('landingPageEventsTeacher',{
+     url : '/landingPageEventsTeacher',
+     templateUrl: 'components/landingPageEvents/landingPageEventsTeacher.view.html',
+     css:'css/styleLandingEvents.css',
+ })
+
 //LOGIN
     .state('login',{
       url : '/login',
@@ -161,6 +167,19 @@
     .state('totaleventsGeneralAssistant',{
       url : '/totaleventsGeneralAssistant',
       templateUrl: './components/eventsGeneral/totaleventsGeneralAssistant.view.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
+        }]
+      },
+      controller: 'eventsGeneralController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
+    .state('totaleventsGeneralTeacher',{
+      url : '/totaleventsGeneralTeacher',
+      templateUrl: './components/eventsGeneral/totaleventsGeneralTeacher.view.html',
       resolve: {
         load: ['$ocLazyLoad', function($ocLazyLoad){
           return $ocLazyLoad.load('./components/eventsGeneral/eventsGeneral.controller.js')
@@ -918,10 +937,18 @@
     })
 
 
-        //generalRanking
+        //generalRanking Asistente
         .state('generalRankingAssistant',{
           url : '/generalRankingAssistant',
           templateUrl: 'components/generalRanking/generalRankingAssistant.view.html',
+          css:'css/styleMenu.css',
+          css:'css/ranking.css'
+        })
+
+        //generalRanking Teacher
+        .state('generalRankingTeacher',{
+          url : '/generalRankingTeacher',
+          templateUrl: 'components/generalRanking/generalRankingTeacher.view.html',
           css:'css/styleMenu.css',
           css:'css/ranking.css'
         })

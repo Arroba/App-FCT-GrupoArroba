@@ -7,38 +7,54 @@
       <ul class="nav">
        <li>
           <a href="#!/teacherProfile"><i class="pe-7s-user"></i><p>Perfil</p></a>
-       </li>
+      </li>
 
-       <li class="dropdown">
-        <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
-        <div class="dropdown-backdrop"></div>
-          <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
-            <li style="background-color: #FFFFFF;">
-              <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+      <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
+          <div class="dropdown-backdrop"></div>
+            <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+              <li style="background-color: #FFFFFF;">
+                <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+              </li>
             </li>
           </ul>
-       </li>
 
-       <li class="dropdown">
-        <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Listar<span class="caret"></span></p></a>
-        <div class="dropdown-backdrop"></div>
-          <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
-            <li style="background-color: #FFFFFF;">
-              <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
-            </li>
-            <li style="background-color: #FFFFFF;">
-              <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
-            </li>
-          </ul>
-       </li>
+              <li class="dropdown">
+                  <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-news-paper"></i> <p>Listar<span class="caret"></span></p></a>
+                  <div class="dropdown-backdrop"></div>
+                    <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+                      <li style="background-color: #FFFFFF;">
+                        <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
+                      </li>
+                      <li style="background-color: #FFFFFF;">
+                        <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+                      </li>
+                      <li style="background-color: #FFFFFF;">
+                        <a href="#!/totaleventsGeneralTeacher"><i class="pe-7s-note2"></i>Evento</a>
+                      </li>
+                      </li>
+                  </ul>
 
-       <li > <!-- borre class= PILI -->
+                  <li class=>
+                   <a href="#!/generalRankingTeacher"><i class="pe-7s-graph2"></i><p>Ranking General</p></a>
+                  </li>
+
+                  <li class=>
+                   <a href="#!/landingPageEventsTeacher"><i class="pe-7s-star"></i><p>Destacados</p></a>
+                  </li>
+
+                  <li>
+                    <a href="#!/ticketTeacher"><i class="pe-7s-ticket"></i><p>Tickets</p></a>
+                  </li>
+
+      <li>
           <a href="#!/landing"><i class="pe-7s-cup"></i><p>Federación</p></a>
-       </li>
-      </ul><!-- cierre nav -->
-    </div><!-- Cierre sidebar-wrapper -->
-  </div><!-- Cierre sidebar -->
+      </li>
 
+
+        </ul>
+    	</div><!--cierre de sidebar-wrapper -->
+    </div><!--cierre de sidebar -->
     <div class="main-panel">
       <nav class="navbar-default">
         <div class="container-fluid">
@@ -49,10 +65,10 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-          </div>
-        </div>
+          </div><!--cierre de navbar-header -->
+        </div><!--cierre de container-fluid -->
         <div class="collapse navbar-collapse"></div>
-      </nav><!-- Cierre navbar-default -->
+      </nav>
 
       <!-- Page Content -->
       <div class="container-fluid">
@@ -88,10 +104,7 @@
               </md-card-title-text>
             </md-card-title>
             <!-- Botones para cambiar el status de las academias -->
-            <md-card-actions id="buttons">
-              <md-button class="edit" ng-click="vm.getInfo(academy);vm.hideButton();registro1()">Editar</md-button>
-              <md-button class="Active"  ng-click="vm.active(academy)">Activo</md-button>
-              <md-button class="edit"  ng-click="vm.inactive(academy)">Inactivo</md-button>
+            <md-card-actions>
             <md-card-icon-actions>
               <!-- cierre botones  -->
         </div><!--Fin de la card para impresión de datos-->
