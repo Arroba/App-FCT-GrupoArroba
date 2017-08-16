@@ -29,6 +29,12 @@
      css:'css/styleLandingEvents.css',
  })
 
+ .state('landingPageEventsStudent',{
+    url : '/landingPageEventsStudent',
+    templateUrl: 'components/landingPageEvents/landingPageEventsStudent.view.html',
+    css:'css/styleLandingEvents.css',
+})
+
 //LOGIN
     .state('login',{
       url : '/login',
@@ -949,6 +955,14 @@
         .state('generalRankingTeacher',{
           url : '/generalRankingTeacher',
           templateUrl: 'components/generalRanking/generalRankingTeacher.view.html',
+          css:'css/styleMenu.css',
+          css:'css/ranking.css'
+        })
+
+        //generalRanking student
+        .state('generalRankingStudent',{
+          url : '/generalRankingStudent',
+          templateUrl: 'components/generalRanking/generalRankingStudent.view.html',
           css:'css/styleMenu.css',
           css:'css/ranking.css'
         })
