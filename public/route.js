@@ -1004,6 +1004,19 @@
     css:'css/styleMenu.css'
   })
 
+   .state('calendarAssistant',{
+    url : '/calendarAssistant',
+    templateUrl: './components/fights/calendar.assistant.view.html',
+    resolve: {
+      load: ['$ocLazyLoad', function($ocLazyLoad){
+        return $ocLazyLoad.load('./components/fights/fights.controller.js')
+      }]
+    },
+    controller: 'fightsController',
+    controllerAs: 'vm',
+    css:'css/styleMenu.css'
+  })
+
     $urlRouterProvider.otherwise('/landing');
   }//cierre de las rutas
 })();
