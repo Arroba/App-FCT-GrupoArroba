@@ -83,7 +83,7 @@
               </li>
 
               <li style="background-color: #FFFFFF;">
-                <a href="#!/totaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                <a href="#!/TotaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
               </li>
 
               <li style="background-color: #FFFFFF;">
@@ -122,12 +122,21 @@
           </div>
           <div class="collapse navbar-collapse"></div>
         </nav>
-<section>
-    <div class=" col-md-12">
-      <h1>Torneos</h1>
-      <!--Crear buscar academia-->
+          <!-- Page Content -->
+
+<!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
+<!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
+<div class="container-fluid">
+<section id="registerEvent">
+  <!--inicio form para registrar -->
+  <form name="frmRegisterEvent" novalidate autocomplete="off">
+
+    <h1>Registro de Eventos</h1>
+    <hr>
+
+    <!--Crear buscar fogueo-->
       <section class="inputSearch">
-        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+        <div class="col-md-3 col-md-offset-9">
           <form action="" class="search-form">
             <div class="form-group has-feedback">
               <label for="Buscar" class="sr-only">Buscar</label>
@@ -138,7 +147,98 @@
         </div>
       </section>
 
-      <md-card class="col-xs-12 col-sm-12 col-md-4 col-md-offset-1" ng-repeat="event in vm.events | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter">
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+        <label for="">Nombre del evento:</label>
+        <input type="text" ng-model="vm.name" name="name" required>
+        <div ng-messages="frmRegisterEvent.name.$error">
+          <div ng-messages-include="components/includes/messages.html"></div>
+        </div><!--cierre del ng-messages -->
+      </md-input-container>
+
+      <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+        <label for="">Lugar del evento:</label>
+        <input type="text" list="placeList" ng-model="vm.place" name="place" required>
+        <datalist id="placeList">
+          <option value="">--Seleccione un lugar--</option>
+          <option ng-repeat="place in vm.placeRel" value="{{place.namePlace}}">{{vm.place.namePlace}}</option>
+        </datalist>
+        <div ng-messages="frmRegisterEvent.place.$error">
+          <div ng-messages-include="components/includes/messages.html"></div>
+        </div> <!--cierre del ng-messages -->
+      </md-input-container>
+
+      <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+        <label for="">Fecha de inicio:</label>
+        <input type="date" ng-model="vm.dateStart" name="dateStart" required>
+          <div ng-messages="frmRegisterEvent.dateStart.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+        </div><!--cierre del ng-messages -->
+      </md-input-container>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+        <label for="">Fecha de cierre:</label>
+        <input type="date" ng-model="vm.dateFinish" name="dateFinish" required>
+          <div ng-messages="frmRegisterEvent.dateFinish.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+      </md-input-container>
+
+      <div>
+        <div>
+          <div>
+            <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
+              <label>Academias</label>
+              <md-select ng-model="vm.academies"  class="select" md-on-close="clearSearchTerm()" name='academies' data-md-container-class="selectdemoSelectHeader" multiple required>
+                <md-optgroup label="Seleccione una o más academias">
+                  <md-option value="{{academy.name}}" ng-repeat="academy in vm.academiesRel |
+                    filter:searchTerm">{{academy.name}}</md-option>
+                </md-optgroup>
+              </md-select>
+              <div ng-messages="frmRegisterEvent.academies.$error">
+                <div ng-messages-include="components/includes/messages.html"></div>
+              </div><!--cierre del ng-messages -->
+            </md-input-container>
+          </div>
+       </div>
+
+    <div>
+      <div>
+        <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
+          <label>Patrocinadores</label>
+          <md-select ng-model="vm.sponsors" class="select" md-on-close="clearSearchTerm()" name='sponsors' data-md-container-class="selectdemoSelectHeader" multiple required>
+            <md-optgroup label="Seleccione uno o más patrocinadores">
+              <md-option value="{{sponsor.nameSponsorCompany}}" ng-repeat="sponsor in vm.sponsorsRel |
+                filter:searchTerm">{{sponsor.nameSponsorCompany}}</md-option>
+            </md-optgroup>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.sponsors.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
+      </div>
+   </div>
+  </div>
+
+    <!-- Botones de Registro y Actualizar -->
+    <div class="col-xs-12 col-sm-12 col-md-12">
+      <div id="registrar">
+        <input  class="button Active" type="submit" value="Registrar" ng-disabled="registerEvent.$invalid" ng-click="vm.save(event)" >
+      </div>
+      <div class="displayNone" id="actualizar">
+      <input  class="button edit" type="button" value="Actualizar" ng-disabled="registerEvent.$invalid" ng-click="vm.update(event)">
+      </div>
+      <p class="Accepted"></p>   <!-- parrafo que muestra el estado correcto de un registro -->
+    </div>
+  </form>
+
+
+  <!--inicio de los cards -->
+<div class="col-xs-12 col-sm-12 col-md-12">
+      <md-card class="col-xs-12 col-sm-12 col-md-6 col-md-offset-1" ng-repeat="event in vm.events | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter">
       <md-card-header>
         <md-card-header-text>
           <span class="md-title">Nombre del evento: {{event.name}}</span>
@@ -150,9 +250,22 @@
           <span class="md-subhead">Fecha de inicio: {{event.dateStart | date: 'dd-MM-yyyy'}}</span>
           <span class="md-subhead">Fecha de cierre: {{event.dateFinish | date: 'dd-MM-yyyy'}}</span>
           <span class="md-subhead">Academias afiliadas: {{event.academies}}</span>
+          <span class="md-subhead">Categoría por edad: {{event.categoryAge}}</span>
+          <span class="md-subhead">Categoría por peso: {{event.categoryWeight}} Kg</span>
+          <span class="md-subhead">Categoría por género: {{event.categoryGender}} M</span>
+          <span class="md-subhead">Cinturón del Competidor: {{event.color}}</span>
           <span class="md-subhead">Patrocinadores: {{event.sponsors}}</span>
           <span class="md-subhead">Estado: {{event.status}}</span>
         </md-card-title-text>
       </md-card-title>
       <!-- Boton para cambiar el editar las eventos -->
-  </section>
+      <md-card-actions class="col-xs-offset-0 col-sm-offset-7 col-md-offset-0 col-xs-12 col-sm-12 col-md-12">
+        <md-button class="edit" ng-click="vm.getInfo(event); vm.hideButton()">Editar</md-button>
+        <md-button class="Active" ng-click="vm.active(event)">Activo</md-button>
+        <md-button class="edit" ng-click="vm.inactive(event)">Inactivo</md-button>
+        <md-card-icon-actions><!-- cierre botones  -->
+  </div>
+  <!--fin de los cards -->
+</section>
+</div> <!-- Cierre container fluid -->
+</div>

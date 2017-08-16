@@ -82,7 +82,7 @@
               </li>
 
               <li style="background-color: #FFFFFF;">
-                <a href="#!/totaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
+                <a href="#!/TotaleventsGeneral"><i class="pe-7s-note2"></i>Evento</a>
               </li>
 
               <li style="background-color: #FFFFFF;">
@@ -122,43 +122,47 @@
           <div class="collapse navbar-collapse"></div>
         </nav>
 
+
   <!-- Page Content -->
+  <section>
+    <div class=" col-md-12">
+      <h1>Entradas</h1>
+      <hr>
 
-<section>
-  <div>  <!-- inicio de perfil -->
-    <md-card>
-      <div class="col-md-12">
+      <!--Crear buscar academia-->
+      <section class="inputSearch">
+        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+          <form action="" class="search-form">
+            <div class="form-group has-feedback">
+              <label for="Buscar" class="sr-only">Buscar</label>
+              <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+            </div>
+          </form>
+        </div>
+      </section>
 
+    <!--inicio de los cards -->
+    <div class="col-xs-12">
+
+      <md-card class="container-fluid col-md-4" ng-repeat="tickets in vm.tickets | filter:vm.nameFilter">
         <md-card-header>
-        <md-card-header-text>
-          <md-button class="edit col-xs-5 col-md-2 col-sm-2 col-xs-offset-7 col-md-offset-10 col-sm-offset-10" ng-click="vm.logOut()"> Cerrar Sesión </md-button>
-          <h1>Bienvenida!</h1>
-          <hr>
-          <span style="font-size:25px; " class="md-title">{{vm.foundCredentials.name}} {{vm.foundCredentials.firstName}} {{vm.foundCredentials.lastName}}</span>
-        </md-card-header-text>
+          <md-card-header-text>
+            <span class="md-title">{{tickets.nameEvent}}</span>
+            <span class="md-subhead">{{tickets.name}} {{tickets.firstName}} {{tickets.secondName}}</span>
+          </md-card-header-text>
         </md-card-header>
-        <md-card-title class="col-md-10">
-          <md-card-title-text >
-            <span class="md-subhead">Email: {{vm.foundCredentials.email}}</span>
-            <span class="md-subhead">Residencia: {{vm.foundCredentials.resident}}</span>
-            <span class="md-subhead">Teléfono: {{vm.foundCredentials.telephone}}</span>
-            <span class="md-subhead">Nacimiento: {{vm.foundCredentials.year}}</span>
-            <span class="md-subhead">Estado: {{vm.foundCredentials.status}}</span>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-subhead">{{tickets.email}}</span>
+            <span class="md-subhead">Entradas: <br><input type="submit" value="Cancelar" ng-click="vm.cancel(tickets)"> {{tickets.reservedTickets}} reservadas <input type="submit" value="Reservar" ng-click="vm.reserve(tickets)"></span>
           </md-card-title-text>
         </md-card-title>
-          <md-card-title-media class="col-md-2">
-            <div class="md-media-lg card-media">
-              <img ng-src="{{vm.foundCredentials.photo}}" alt="Description">
-            </div>
-          </md-card-title-media>
-      </div>
-
-    <md-card-actions layout="row" layout-align="end center">
-      <md-card-icon-actions>
-      </div>
-    </md-card>
-
-
-</section>
-</div><!--Cierre Main Panel -->
-</div><!--Cierre Wrapper -->
+        <!-- Boton para cambiar el editar las profesores -->
+        <md-card-actions>
+          <md-card-icon-actions><!-- cierre botones  -->
+          </section>
+  </div><!--fin de los cards -->
+</div><!--cierre de div despues de section -->
+</div><!--cierre de main-panel -->
+</div><!--cierre de wrapper -->
