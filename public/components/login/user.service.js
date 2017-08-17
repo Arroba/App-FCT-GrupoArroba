@@ -10,7 +10,8 @@
       setUsers : _setUsers,
       getUsers : _getUsers,
       updateUser : _updateUser,
-      getCookie: _getCookie
+      getCookie: _getCookie,
+      getAllUsers: _getAllUsers
     };
     return publicAPI; // todas las funciones que sean llamadas por ajax deben estar debajo del return, para que cuando angular corra el script haga el return y devuelva el api , las funciones debajo del return son privadas y se devuelve el api que es el que contiene las funciones
 
@@ -26,6 +27,21 @@
 
     function _updateUser(pobjUsuario){
         return $http.put('http://localhost:3000/api/update_users',pobjUsuario);
+    }
+
+        function _getAllUsers(pobjUsuario){
+        var teachers = $http.get('http://localhost:3000/api/get_all_teachers');
+        var students = $http.get('http://localhost:3000/api/get_all_students');
+
+
+        var teachersList = [];
+        var studentsList = [];
+        teachersList.push(teachers);
+        studentsList.push(students);
+
+        var users = teachersList.concat(studentsList);
+
+        return  users;
     }
 
 

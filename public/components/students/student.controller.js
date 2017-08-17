@@ -1,4 +1,4 @@
-(function(){
+(function(){ 
   angular
     .module('fctApp')
     .controller('studentController', studentController);
@@ -11,6 +11,7 @@
       vm.students = "";
       vm.academiesRel = {};
       loadStudents();
+      vm.foundCredentials = JSON.parse(sessionStorage.getItem('currentUserActive'));
 
       function loadStudents(){
       studentService.getStudents().then(function (response) {

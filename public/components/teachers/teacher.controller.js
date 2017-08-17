@@ -10,6 +10,8 @@
       var vm = this;
       vm.teachers = "";
       loadTeachers();
+      vm.foundCredentials = JSON.parse(sessionStorage.getItem('currentUserActive'));
+
 
 
       // Inicio de la función init que es la que se inicializa de primiera

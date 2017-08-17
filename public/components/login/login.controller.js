@@ -2,15 +2,28 @@
 angular.module('fctApp')
   .controller('LoginController',LoginController);
 
-  LoginController.$inject = ['AuthService', 'userService', 'teacherService'];
+  LoginController.$inject = ['AuthService', 'userService', 'teacherService','$cookies','studentService'];
 
 
-  function LoginController(AuthService, userService, teacherService,$cookies){
+  function LoginController(AuthService, userService, teacherService,$cookies,studentService){
     var vm = this;
+    vm.teachers = {};
+    vm.students = {};
+     teacherService.getTeachers().then(function (response) {
+            vm.teachers = response.data;
+      });
+      studentService.getStudents().then(function (response) {
+          vm.students = response.data;
+        });
+
+
+    var users = userService.getAllUsers();
+
+
 
     function loadUsers(){
-      userService.getUsers().then(function (response) {
-          vm.users = response.data;
+      teacherService.getTeachers().then(function (response) {
+          vm.teachers = response.data;
           vm.email = '';
           vm.password = '';
         });
@@ -29,23 +42,41 @@ angular.module('fctApp')
         document.querySelector('.blocked').innerHTML = 'Usuario o contraseña incorrectos';
       }
       AuthService.validateFields(pEmail, pPassword, userFounded);
-      $cookies.put('currentUserActive',userFounded.email);
+      // $cookies.put('currentUserActive',userFounded.email);
+      sessionStorage.setItem('currentUserActive',JSON.stringify(userFounded));
     }
 
 
 
 
 
-        function findUsers(pUsernameToFind){
-      teacherService.getTeachers().then(function (response) {
-            vm.teachers = response.data;
-      });
+    function findUsers(pUsernameToFind){
+
+      var bNoEncontrado = false;
      for (var i = 0; i < vm.teachers.length; i++) {
        if(vm.teachers[i].email == pUsernameToFind){
          return vm.teachers[i];
+       }else{
+          bNoEncontrado = true;
        }
      }
+     if(bNoEncontrado == true){
+
+       for (var i = 0; i < vm.students.length; i++) {
+         if(vm.students[i].email == pUsernameToFind){
+           return vm.students[i];
+         }
+       }
+
+     }
+
    }
+
+
+
+
+
+
   }
 
 

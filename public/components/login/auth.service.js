@@ -5,12 +5,14 @@
     return {
 
       logOut : _destroyAuthCredentials,
-      validateFields: _validateFields
+      validateFields: _validateFields,
+      findUsers: _findUsers
     }
 
     function _destroyAuthCredentials(){
-      var currentUser = $cookies.get('currentUserActive');
-      $cookies.remove('currentUserActive');
+      sessionStorage.clear();
+      // var currentUser = $cookies.get('currentUserActive');
+      // $cookies.remove('currentUserActive');
       _redirectTo(false);
     }
     function _validateFields(pEmail, pPassField, userFound){
@@ -28,7 +30,7 @@
     }
 
 
-    function findUsers(pUsernameToFind){
+    function _findUsers(pUsernameToFind){
       teacherService.getTeachers().then(function (response) {
             vm.teachers = response.data;
       });
@@ -38,6 +40,9 @@
        }
      }
    }
+
+
+
 
 
 
