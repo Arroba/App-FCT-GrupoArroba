@@ -9,14 +9,19 @@ router.param('id', function(req, res, next, id){
   next();
 });
 
-router.route('/save_academy')
+router.route('/save_eventGeneral')
   .post(function(req,res){
     eventsGeneralController.save(req,res);
 
   });
-router.route('/get_all_academies')
+router.route('/get_all_eventsGeneral')
   .get(function(req,res){
     eventsGeneralController.findAll(req,res);
   });
+
+  router.route('/update_eventsGeneral')
+   .put(function(req, res){
+     eventsGeneralController.update(req,res);
+  	});
 
 module.exports = router;

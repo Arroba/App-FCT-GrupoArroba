@@ -1,4 +1,4 @@
-var eventsGeneral = require('./eventsGeneral.model.js');
+var EventsGeneral = require('./eventsGeneral.model.js');
 
 module.exports.save = function(req, res){
   var newEventsGeneral = new EventsGeneral({
@@ -25,7 +25,22 @@ module.exports.save = function(req, res){
 }
 
 module.exports.findAll = function(req,res){
-  EventsGeneral.find().then(function(academies){
-    res.send(academies);
+  EventsGeneral.find().then(function(eventsGeneral){
+    res.send(eventsGeneral);
   })
 };
+
+
+module.exports.update = function(req,res){
+
+  EventsGeneral.findByIdAndUpdate(req.body._id, { $set: req.body}, function (err, eventsGeneral) {
+    if (err){
+      res.json({success:true,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+
+  });
+
+}

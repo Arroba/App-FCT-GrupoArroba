@@ -6,12 +6,8 @@ var EventGeneralSchema = new mongoose.Schema({
   place: String,
   dateStart: Date,
   dateFinish: Date,
-  academies: String,
-  categoryAge: String,
-  categoryWeight: String,
-  categoryGender: String,
-  color: String,
-  sponsors: String,
+  academies: Array,
+  sponsors: Array,
   status: String
 
 });
