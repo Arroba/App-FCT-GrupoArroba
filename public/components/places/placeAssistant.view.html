@@ -224,12 +224,15 @@
             </div><!--labels -->
 
             <!-- Botones de Registro y Actualizar -->
-            <div id="registrar">
-              <md-button class="button Active" type="button" ng-disabled="frmRegisterPlace.$invalid" ng-click="vm.save(place)">Registrar</md-button>
+            <div class="col-xs-12">
+              <div id="registrar">
+                <md-button class="button Active" type="button" ng-disabled="frmRegisterPlace.$invalid" ng-click="vm.save(place)">Registrar</md-button>
+              </div>
+              <div class="displayNone" id="actualizar">
+                <md-button class="button edit" type="button" ng-disabled="frmRegisterPlace.$invalid" ng-click="vm.update(place);siguiente()">Actualizar</md-button>
+              </div>
             </div>
-            <div class="displayNone" id="actualizar">
-              <md-button class="button edit" type="button" ng-disabled="frmRegisterPlace.$invalid" ng-click="vm.update(place);siguiente()">Actualizar</md-button>
-            </div>
+
           </div><!-- Cierre pagina1  -->
         </form> <!-- Cierre del formulario Places  -->
 

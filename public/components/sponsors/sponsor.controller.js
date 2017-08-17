@@ -3,9 +3,9 @@
     .module('fctApp')
     .controller('sponsorController', sponsorController);
 
-    sponsorController.$inject = ['sponsorService','ImageService','Upload','$scope'];
+    sponsorController.$inject = ['sponsorService','ImageService','Upload','$scope','productService'];
 
-    function sponsorController(sponsorService,ImageService,Upload,$scope){
+    function sponsorController(sponsorService,ImageService,Upload,$scope,productService){
 
       var vm = this;
       vm.sponsors = "";
@@ -16,6 +16,10 @@
         sponsorService.getSponsors().then(function (response) {
             vm.sponsors = response.data;
           });
+
+          productService.getProducts().then(function (response) {
+              vm.productRel = response.data;
+            });
 
           vm.cloudObj = ImageService.getConfiguration();
         }
@@ -55,7 +59,7 @@
             sponsorCoinType: vm.sponsorCoinType,
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
-            photo: vm.photo,
+            product: vm.product,
             photo: vm.photo
         }
 
@@ -92,7 +96,7 @@
         vm.sponsorDesc = pSponsor.sponsorDesc;
         vm.sponsorMonetary = pSponsor.sponsorMonetary;
         vm.photo = pSponsor.photo;
-        vm.photo = pSponsor.photo;
+        vm.product = pSponsor.product;
       }//Fin función modificar
 
       //función que cambia boton segun la información para modificar
@@ -118,7 +122,7 @@
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
             photo: vm.photo,
-            photo: vm.photo
+            product: vm.product
         }
 
         swal({
@@ -164,7 +168,7 @@
         vm.sponsorDesc =  '';
         vm.sponsorMonetary =  '';
         vm.photo =  '';
-        vm.photo =  '';
+        vm.product =  '';
       }//Fin función que limpia
 
       vm.inactive = function(pSponsor){//Inicia función aprobación

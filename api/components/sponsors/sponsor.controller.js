@@ -12,6 +12,7 @@ module.exports.save = function(req, res){
     sponsorCoinType: req.body.sponsorCoinType,
     sponsorMonetary: req.body.sponsorMonetary,
     sponsorDesc: req.body.sponsorDesc,
+    product: req.body.product,
     photo: req.body.photo,
     status: req.body.status
   });

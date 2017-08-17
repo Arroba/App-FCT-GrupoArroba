@@ -260,27 +260,28 @@
             </div>
 
 
-              <!-- Botones de Selleccione foto, Registrar y Actualizar -->
-              <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="input-group">
-                  <label class="input-group-btn">
-                      <span class="btn btn-info">
-                          Seleccionar foto
-                          <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
-                      </span>
-                  </label>
+            <!-- Botones de Selleccione foto, Registrar y Actualizar -->
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="input-group">
+                <label class="input-group-btn">
+                    <span class="btn btn-info col-xs-12">
+                        Seleccionar foto
+                        <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
+                    </span>
+                </label>
+              </div>
+            </div><!-- cierre de Botones de Selleccione foto, Registrar y Actualizar -->
+
+
+              <div class="col-xs-12">
+                <div id="registrar">
+                  <md-button class="button Active" type="submit" ng-disabled="frmRegisterTeacher.$invalid">Registrar</md-button>
                 </div>
 
-                <div class="col-xs-12">
-                  <div id="registrar">
-                    <md-button class="button Active" type="submit" ng-disabled="frmRegisterTeacher.$invalid">Registrar</md-button>
-                  </div>
-
-                  <div class="displayNone" id="actualizar">
-                    <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher)">Actualizar</md-button>
-                  </div>
+                <div class="displayNone" id="actualizar">
+                  <md-button class="button edit" type="button" ng-disabled="frmRegisterTeacher.$invalid" ng-click="vm.update(teacher);siguiente()">Actualizar</md-button>
                 </div>
-              </div><!-- Cierre de botones -->
+              </div>
             </div><!--cierre de pagina1 -->
             </section> <!-- Cierre de la sección registerTeacher -->
 

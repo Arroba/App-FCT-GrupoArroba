@@ -287,13 +287,26 @@
                       <div ng-messages-include="components/includes/messages.html"></div>
                     </div>
                   </md-input-container>
+
+                  <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <label>Producto:</label>
+                    <md-select class="select" ng-model="vm.product" md-on-close="clearSearchTerm()" name='product' data-md-container-class="selectdemoSelectHeader" multiple>
+                      <md-optgroup label="Seleccione uno o más productos">
+                        <md-option value="{{product.nameProduct}}" ng-repeat="product in vm.productRel | filter:searchTerm">{{product.nameProduct}}</md-option>
+                      </md-optgroup>
+                    </md-select>
+                    <div ng-messages="frmRegisterSponsor.product.$error">
+                      <div ng-messages-include="components/includes/messages.html"></div>
+                    </div><!--cierre del ng-messages -->
+                  </md-input-container>
+
                 </div>
 
                 <!-- Botones Foto, Registro y Actualizar -->
               <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="input-group">
                   <label class="input-group-btn">
-                    <span class="btn btn-info">Seleccionar foto
+                    <span class="btn btn-info col-xs-12">Seleccionar foto
                       <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
                     </span>
                   </label>
@@ -348,6 +361,7 @@
                 <span class="md-subhead">Tipo de Patrocinio: {{sponsor.sponsorType}}</span>
                 <span class="md-subhead">Equivalente Monetario: {{sponsor.sponsorCoinType}} {{sponsor.sponsorMonetary}}</span>
                 <span class="md-subhead">Descripción: {{sponsor.sponsorDesc}}</span>
+                <span class="md-subhead">Producto: {{sponsor.product}}</span>
               </md-card-title-text>
             <md-card-title-media>
             <div class="md-media-lg card-media">

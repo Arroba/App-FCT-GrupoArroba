@@ -354,12 +354,13 @@
 
               <div class="input-group">
                 <label class="input-group-btn">
-                    <span class="btn btn-info">
+                    <span class="btn btn-info col-xs-12">
                         Seleccionar foto
                         <input type="file" style="display: none;" ng-model="vm.photo" name="photo" id="photo">
                     </span>
                 </label>
               </div>
+            </div><!-- Cierre Botones de Selleccione foto, Registrar y Actualizar -->
 
               <div class="col-xs-12">
                 <div id="registrar">
@@ -369,7 +370,6 @@
                   <md-button class="button edit" type="button" ng-disabled="frmRegisterTickets.$invalid" ng-click="vm.update(student);siguiente()">Actualizar</md-button>
                 </div>
               </div>
-            </div><!-- Cierre Botones de Selleccione foto, Registrar y Actualizar -->
 
           </form><!--cierre del formulario para registrar -->
         </div><!--cierre de pagina1-->

@@ -12,6 +12,7 @@ var SponsorSchema = new mongoose.Schema({
   sponsorCoinType: String,
   sponsorDesc: String,
   sponsorMonetary: Number,
+  product: Array,
   photo: String,
   status: String
 

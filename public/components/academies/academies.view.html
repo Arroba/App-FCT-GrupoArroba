@@ -190,7 +190,7 @@
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
 
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4 select2" layout="column">
+                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Dirección:</label>
                       <input type="text" ng-model="vm.direction" name="direction" ng-maxlength="150" required>
                       <div ng-messages="frmRegisterAcademies.direction.$error">
@@ -198,7 +198,7 @@
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
 
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4 select2" layout="column">
+                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
                       <label for="">Persona de contacto:</label>
                       <input type="text" ng-model="vm.contact" name="contact" ng-maxlength="50" required>
                       <div ng-messages="frmRegisterAcademies.contact.$error">
@@ -216,7 +216,7 @@
                       </div><!--cierre del ng-messages -->
                     </md-input-container>
 
-                    <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+                    <md-input-container class="col-xs-12 col-sm-4 col-md-4 select2" layout="column">
                       <label for="">Correo electrónico:</label>
                       <input type="email" ng-model="vm.email" placeholder="nombre@dominio.com" name="email" required>
                       <div ng-messages="frmRegisterAcademies.email.$error">
@@ -226,12 +226,15 @@
                   </div>
 
                 <!-- Botones de Registro y Actualizar -->
-                <div id="registrar">
-                  <md-button class="button Active" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.save(academy)">Registrar</md-button>
+                <div class="col-xs-12">
+                  <div id="registrar">
+                    <md-button class="button Active" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.save(academy)">Registrar</md-button>
+                  </div>
+                  <div class="displayNone" id="actualizar">
+                    <md-button class="button edit" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy);siguiente()">Actualizar</md-button>
+                  </div>
                 </div>
-                <div class="displayNone" id="actualizar">
-                  <md-button class="button edit" type="button" ng-disabled="frmRegisterAcademies.$invalid" ng-click="vm.update(academy);siguiente()">Actualizar</md-button>
-                </div>
+
               </form><!-- Cierra FORM -->
             </section> <!-- Cierre section Register -->
           </div><!-- Cierre pagina1 -->
