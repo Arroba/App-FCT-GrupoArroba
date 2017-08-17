@@ -6,35 +6,53 @@
       </div>
       <ul class="nav">
        <li>
-          <a href="#!/teacherProfile"><i class="pe-7s-user"></i><p>Perfil</p></a>
+        <a href="#!/teacherProfile"><i class="pe-7s-user"></i><p>Perfil</p></a>
       </li>
 
       <li class="dropdown">
-          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
+        <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Registro<span class="caret"></span></p></a>
+        <div class="dropdown-backdrop"></div>
+        <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+          <li style="background-color: #FFFFFF;">
+            <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+          </li>
+        </ul>
+
+        <li class="dropdown">
+          <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Listar<span class="caret"></span></p></a>
           <div class="dropdown-backdrop"></div>
+          <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
+            <li style="background-color: #FFFFFF;">
+              <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
+            </li>
+            <li style="background-color: #FFFFFF;">
+              <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+            </li>
+          </ul>
+          
+          <li class="dropdown">
+            <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-cloud-download"></i> <p>Descargar<span class="caret"></span></p></a>
+            <div class="dropdown-backdrop"></div>
             <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
               <li style="background-color: #FFFFFF;">
-                <a href="#!/studentTeacher"><i class="pe-7s-study"></i>Estudiante</a>
+                <a href="pdf_fct/academias_registradas.pdf" download="Academias Registradas"><i class="pe-7s-note"></i>Reporte Academias</a>
               </li>
-          </ul>
 
-              <li class="dropdown">
-                  <a style="background-color: #212123;" class="dropdown-toggle" data-toggle="dropdown"><i class="pe-7s-id"></i> <p>Listar<span class="caret"></span></p></a>
-                  <div class="dropdown-backdrop"></div>
-                    <ul class="dropdown-menu" role="" style="background-color: #FFFFFF;">
-                      <li style="background-color: #FFFFFF;">
-                        <a href="#!/totalAcademiesTeacher"><i class="pe-7s-users"></i>Academia</a>
-                      </li>
-                      <li style="background-color: #FFFFFF;">
-                        <a href="#!/totalStudentsTeacher"><i class="pe-7s-study"></i>Estudiante</a>
-                      </li>
-                  </ul>
+              <li style="background-color: #FFFFFF;">
+                <a href="pdf_fct/estudiantes_registrados.pdf" download="Estudiantes Registrados"><i class="pe-7s-note"></i>Reporte Estudiantes</a>
+              </li>
+              <li style="background-color: #FFFFFF;">
+                <a href="pdf_fct/eventos_registrados.pdf" download="Eventos Registrados"><i class="pe-7s-note"></i>Reporte Eventos </a>
 
-      <li class=>
-          <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
-      </li>
+              </li>
+            </ul>
+          </li>
+
+          <li class=>
+            <a href="#federacion"><i class="pe-7s-cup"></i><p>Federación</p></a>
+          </li>
         </ul>
-    	</div>
+      </div>
     </div>
     <div class="main-panel">
       <nav class="navbar-default">
@@ -52,44 +70,44 @@
       </nav>
 
 
-  <!-- Page Content -->
+      <!-- Page Content -->
 
-<section>
-    <div class=" col-md-12">
-      <h1>Fogueos</h1>
-      <hr>
-      <!--Crear buscar fogueo-->
-      <section class="inputSearch">
-        <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-          <form action="" class="search-form">
-            <div class="form-group has-feedback">
-              <label for="Buscar" class="sr-only">Buscar</label>
-              <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-              <span class="glyphicon glyphicon-search form-control-feedback"></span>
+      <section>
+        <div class=" col-md-12">
+          <h1>Fogueos</h1>
+          <hr>
+          <!--Crear buscar fogueo-->
+          <section class="inputSearch">
+            <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+              <form action="" class="search-form">
+                <div class="form-group has-feedback">
+                  <label for="Buscar" class="sr-only">Buscar</label>
+                  <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                  <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </div>
+              </form>
             </div>
-          </form>
+          </section>
+
+          <div class="col-xs-12">
+            <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
+            | filter:vm.nameFilter"><!--Impresión de los datos-->
+            <md-card-header>
+              <md-card-header-text>
+                <span class="md-title">Fogueo: {{blaze.nameBlaze}}</span>
+                <span class="md-subhead">Fecha de inicio: {{blaze.date1 | date}} | Fecha de cierre: {{blaze.date2 | date}}</span>
+              </md-card-header-text>
+            </md-card-header>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-subhead">Hora a realizarse: {{blaze.time1 | date: "hh:mm a"}}</span>
+                <span class="md-subhead">Hora a cierre: {{blaze.time2 | date: "hh:mm a"}}</span>
+                <span class="md-subhead">Lugar: {{blaze.place}}</span>
+                <span class="md-subhead">Estado: {{blaze.status}}</span>
+              </md-card-title-text>
+            </md-card-title>
+            <!-- Boton para cambiar el editar las fogueos -->
+          </div>
         </div>
       </section>
-
-    <div class="col-xs-12">
-      <md-card class="container-fluid col-md-6" ng-repeat="blaze in vm.blazes
-    | filter:vm.nameFilter"><!--Impresión de los datos-->
-    <md-card-header>
-      <md-card-header-text>
-        <span class="md-title">Fogueo: {{blaze.nameBlaze}}</span>
-        <span class="md-subhead">Fecha de inicio: {{blaze.date1 | date}} | Fecha de cierre: {{blaze.date2 | date}}</span>
-      </md-card-header-text>
-    </md-card-header>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-subhead">Hora a realizarse: {{blaze.time1 | date: "hh:mm a"}}</span>
-        <span class="md-subhead">Hora a cierre: {{blaze.time2 | date: "hh:mm a"}}</span>
-        <span class="md-subhead">Lugar: {{blaze.place}}</span>
-        <span class="md-subhead">Estado: {{blaze.status}}</span>
-      </md-card-title-text>
-    </md-card-title>
-    <!-- Boton para cambiar el editar las fogueos -->
     </div>
-    </div>
-  </section>
-</div>
