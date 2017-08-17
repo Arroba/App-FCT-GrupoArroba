@@ -1019,7 +1019,7 @@
     },
     controller: 'fightsController',
     controllerAs: 'vm',
-    css:'css/styleMenu.css'
+    css:'css/styleCalendar.css'
   })
 
     $urlRouterProvider.otherwise('/landing');
