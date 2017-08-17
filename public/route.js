@@ -413,6 +413,20 @@
       css:'css/styleMenu.css'
     })
 
+    //FOGUEOS REGISTRADOS
+    .state('totalfightsAssistant',{
+      url : '/totalfightsAssistant',
+      templateUrl: './components/events/totalfightsAssistant.html',
+      resolve: {
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/events/event.controller.js')
+        }]
+      },
+      controller: 'eventsController',
+      controllerAs: 'vm',
+      css:'css/styleMenu.css'
+    })
+
 //Registro PROFESOR ADMI
     .state('teachers',{
       url : '/teachers',
@@ -992,7 +1006,7 @@
     },
     controller: 'fightsController',
     controllerAs: 'vm',
-    css:'css/styleMenu.css'
+    css:'css/styleCalendar.css'
   })
 
    .state('calendarAssistant',{

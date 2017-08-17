@@ -173,7 +173,7 @@
           <input placeholder="--Seleccione un competidor--" list="studentsList" type="text" ng-model="vm.competitor" name="" required>
           <datalist id="studentsList">
             <option value="">--Seleccione un competidor--</option>
-            <option ng-repeat="students in vm.studentRel" value="{{students.firstName}} - {{students.idStudent}}">{{vm.students.firstName}} </option>
+            <option ng-repeat="students in vm.studentRel" value="{{students.name}}  {{students.firstName}}">{{vm.students.name}} {{vm.students.firstName}}</option>
           </datalist>
           <div ng-messages="frmRegisterFights.competitor.$error">
             <div ng-messages-include="components/includes/messages.html"></div>
