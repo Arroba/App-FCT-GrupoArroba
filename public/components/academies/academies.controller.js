@@ -186,32 +186,22 @@
 
       //función que cambia el estado a inabilitado
       vm.inactive = function(pAcademy){
-        academiesService.getAcademies().then(function (response) {
-            vm.academies = response.data;
-          });
 
-          for (var i = 0; i < vm.academies.length; i++) {
-            if (vm.academies[i].email == pAcademy.email) {
-              vm.academies[i].status = 'inhabilitado';
-              console.log(vm.academies[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        academiesService.updateAcademy(vm.academies).then(function(response){
+        pAcademy.status = "inhabilitado";
+
+        academiesService.updateAcademy(pAcademy).then(function(response){
          });
 
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
       vm.active = function(pAcademy){
-        var academiesList = academiesService.getAcademies();
-          for (var i = 0; i < academiesList.length; i++) {
-            if (academiesList[i].email == pAcademy.email) {
-              academiesList[i].status = 'Activo';
-              console.log(academiesList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        academiesService.updateState(academiesList);
-        loadAcademies();
+
+
+        pAcademy.status = "Activo";
+
+        academiesService.updateAcademy(pAcademy).then(function(response){
+         });
       }// Cierre de la funcion active
 
     }//Cierre de la función para el controlador
