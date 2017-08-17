@@ -217,3 +217,8 @@ line-height: 25px;
 .CellWithComment:hover span.CellComment{
   display:block;
 }
+
+.w3-modal{
+  margin-left: 100px;
+  margin-right: 30px;
+}

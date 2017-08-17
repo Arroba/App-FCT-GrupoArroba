@@ -144,10 +144,12 @@
             <md-input-container class="col-xs-12 col-sm-4 col-md-4"layout="column">
               <p class="failId"></p>
               <label for="">Nombre</label>
-              <input type="text" ng-model="vm.namePlace" name="namePlace" ng-maxlength="100" required>
+              <input type="text" ng-model="vm.namePlace" name="namePlace" id="address" ng-maxlength="100" required>
               <div ng-messages="frmRegisterPlace.namePlace.$error">
                 <div ng-messages-include="components/includes/messages.html"></div>
               </div><!--cierre del ng-messages -->
+              <input type="button" ng-click="vm.getAddress()" id="search" value="Buscar" />
+
             </md-input-container>
 
             <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
@@ -227,7 +229,14 @@
             </md-input-container>
           </div><!--labels -->
 
-          <!-- Botones de Registro y Actualizar -->
+
+        <div id='map_canvas' style="width:600px; height:400px;"></div>
+
+
+
+
+
+
           <div id="registrar">
             <md-button class="button Active" type="button" ng-disabled="frmRegisterPlace.$invalid" ng-click="vm.save(place)">Registrar</md-button>
           </div>
@@ -272,7 +281,21 @@
       <!-- Boton para cambiar el editar las lugares -->
       <md-card-actions id="buttons">
         <md-button class="edit" ng-click="vm.getInfo(place);vm.hideButton();registro1()">Editar</md-button>
-        <md-card-icon-actions><!-- cierre botones  -->
+        <md-button onclick="document.getElementById('id01').style.display='block'" data-toggle="modal" data-target="#myModal" ng-click="vm.getAddressCard(place)" id="search" class="edit">Ver Ubicación</md-button>
+      </md-card-icon-actions><!-- cierre botones  -->
+      </md-card>  
+        
+
+        <div id="id01" class="w3-modal">
+          <div class="w3-modal-content">
+            <div class="w3-container">
+              <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+              <div  id='map_modal' style="width:850px; height:400px;"></div>
+
+            </div>
+          </div>
+        </div>
+
 
         </div><!--fin de los segunda pagína  -->
       </section> <!-- Cierre de la sección place -->

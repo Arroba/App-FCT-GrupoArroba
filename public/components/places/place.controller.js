@@ -10,6 +10,7 @@
       var vm = this;
       vm.places = "";
       loadPlaces();
+      load_map();
 
 
       function loadPlaces(){
@@ -127,6 +128,98 @@
       }
     }
       }// Cierre de la función save.()
+
+      var map;
+
+      function load_map() {
+          var myLatlng = new google.maps.LatLng(9.748917, -83.753428);
+          var myOptions = {
+              zoom: 4,
+              center: myLatlng,
+              mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          map = new google.maps.Map($("#map_canvas").get(0), myOptions);
+      }
+
+      vm.getAddress = function(){
+          // Obtenemos la dirección y la asignamos a una variable
+          var address = $('#address').val() + ',Costa Rica';
+          // Creamos el Objeto Geocoder
+          var geocoder = new google.maps.Geocoder();
+          // Hacemos la petición indicando la dirección e invocamos la función
+          // geocodeResult enviando todo el resultado obtenido
+          geocoder.geocode({ 'address': address}, geocodeResult);
+      }
+
+      function geocodeResult(results, status) {
+          // Verificamos el estatus
+          if (status == 'OK') {
+              // Si hay resultados encontrados, centramos y repintamos el mapa
+              // esto para eliminar cualquier pin antes puesto
+              var mapOptions = {
+                  center: results[0].geometry.location,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+
+
+
+              map = new google.maps.Map($("#map_canvas").get(0), mapOptions);
+              // fitBounds acercará el mapa con el zoom adecuado de acuerdo a lo buscado
+              map.fitBounds(results[0].geometry.viewport);
+              // Dibujamos un marcador con la ubicación del primer resultado obtenido
+              var markerOptions = { position: results[0].geometry.location }
+              var marker = new google.maps.Marker(markerOptions);
+              marker.setMap(map);
+          } else {
+              // En caso de no haber resultados o que haya ocurrido un error
+              // lanzamos un mensaje con el error
+              vm.showAlert();
+          }
+      }
+
+
+
+      vm.getAddressCard = function(place){
+          // Obtenemos la dirección y la asignamos a una variable
+          var address = place.namePlace + ',Costa Rica';
+          // Creamos el Objeto Geocoder
+          var geocoder = new google.maps.Geocoder();
+          // Hacemos la petición indicando la dirección e invocamos la función
+          // geocodeResult enviando todo el resultado obtenido
+          geocoder.geocode({ 'address': address}, geocodeResultCard);
+      }
+
+      function geocodeResultCard(results, status) {
+          // Verificamos el estatus
+          if (status == 'OK') {
+              // Si hay resultados encontrados, centramos y repintamos el mapa
+              // esto para eliminar cualquier pin antes puesto
+              var mapOptions = {
+                  center: results[0].geometry.location,
+                  mapTypeId: google.maps.MapTypeId.ROADMAP
+              };
+
+              map = new google.maps.Map($("#map_modal").get(0), mapOptions);
+              // fitBounds acercará el mapa con el zoom adecuado de acuerdo a lo buscado
+              map.fitBounds(results[0].geometry.viewport);
+              // Dibujamos un marcador con la ubicación del primer resultado obtenido
+              var markerOptions = { position: results[0].geometry.location }
+              var marker = new google.maps.Marker(markerOptions);
+              marker.setMap(map);
+          } else {
+              // En caso de no haber resultados o que haya ocurrido un error
+              // lanzamos un mensaje con el error
+              vm.showAlert();
+          }
+      }
+
+
+
+
+
+
+
+
 
       //función que toma la información para modificar
       vm.getInfo = function(pPlace){
