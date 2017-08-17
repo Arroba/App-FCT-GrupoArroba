@@ -186,15 +186,19 @@
 
       //función que cambia el estado a inabilitado
       vm.inactive = function(pAcademy){
-        var academiesList = academiesService.getAcademies();
-          for (var i = 0; i < academiesList.length; i++) {
-            if (academiesList[i].email == pAcademy.email) {
-              academiesList[i].status = 'inhabilitado';
-              console.log(academiesList[i].status)
+        academiesService.getAcademies().then(function (response) {
+            vm.academies = response.data;
+          });
+
+          for (var i = 0; i < vm.academies.length; i++) {
+            if (vm.academies[i].email == pAcademy.email) {
+              vm.academies[i].status = 'inhabilitado';
+              console.log(vm.academies[i].status)
             }// Cierre del if
           }// Cierre del ciclo
-        academiesService.updateState(academiesList);
-        loadAcademies();
+        academiesService.updateAcademy(vm.academies).then(function(response){
+         });
+
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
