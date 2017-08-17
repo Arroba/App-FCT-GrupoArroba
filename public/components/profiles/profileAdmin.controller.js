@@ -7,7 +7,7 @@
       var vm = this;
 
       function init(){
-        vm.foundCredentials = userService.findUsers(userService.getCookie());
+        vm.foundCredentials = JSON.parse(sessionStorage.getItem('currentUserActive'));
       }init();
 
       vm.logOut = function(){
