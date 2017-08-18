@@ -24,9 +24,4 @@ router.route('/update_blaze')
     blazeController.update(req,res);
   });
 
- router.route('/update_state_blaze')
- .put(function(req, res){
-    blazeController.update(req,res);
- });
-
 module.exports = router;

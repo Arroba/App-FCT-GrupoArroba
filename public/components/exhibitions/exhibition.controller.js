@@ -172,29 +172,17 @@
 
       //función que cambia el estado a inabilitado
       vm.inactive = function(pExhibition){
-        var exhibitionsList = exhibitionService.getExhibitions();
-        for (var i = 0; i < exhibitionsList.length; i++) {
-          if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
-            exhibitionsList[i].status = 'inhabilitado';
-            console.log(exhibitionsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-          academiesService.updateState(exhibitionsList);
-          loadExhibitions();
+        pExhibition.status = "Inhabilitado";
+        exhibitionService.updateExhibition(pExhibition).then(function(response){
+        });
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
       vm.active = function(pExhibition){
-        var exhibitionsList = exhibitionService.getExhibitions();
-        for (var i = 0; i < exhibitionsList.length; i++) {
-          if (exhibitionsList[i].nameExhibition == pExhibition.nameExhibition) {
-            exhibitionsList[i].status = 'Activo';
-            console.log(exhibitionsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-          exhibitionService.updateState(exhibitionsList);
-          loadExhibitions();
-      }// Cierre de la funcion active
+        pExhibition.status = "Activo";
+        exhibitionService.updateExhibition(pExhibition).then(function(response){
+        });
+      }// Cierre funcion inative
 
     }//Cierre de la función para el controlador
 

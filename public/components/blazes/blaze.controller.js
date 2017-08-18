@@ -186,28 +186,17 @@
 
     // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
     vm.inactive = function(pBlaze){
-      var blazesList = blazeService.getBlazes();
-      for (var i = 0; i < blazesList.length; i++) {
-        if (blazesList[i].nameBlaze == pBlaze.nameBlaze) {
-          blazesList[i].status = 'inhabilitado';
-          console.log(blazesList[i].status)
-        }// Cierre del if.(Pamela)
-      }// Cierre del ciclo.(Pamela)
-      blazeService.updateState(blazesList);
-      loadBlazes();
-    }// Cierre de la funcion inactive.(Pamela)
+      pBlaze.status = "Inhabilitado";
+      blazeService.updateBlazes(pBlaze).then(function(response){
+      });
+    }// Cierre funcion inative
 
     //función que cambia el estado a activo.(Pamela)
     vm.active = function(pBlaze){
-      var blazesList = blazeService.getBlazes();
-      for (var i = 0; i < blazesList.length; i++) {
-        if (blazesList[i].nameBlaze == pBlaze.nameBlaze) {
-          blazesList[i].status = 'Activo';
-          console.log(blazesList[i].status)
-        }// Cierre del if.(Pamela)
-      }// Cierre del ciclo.(Pamela)
-      blazeService.updateState(blazesList);
-      loadBlazes();
-    }// Cierre de la funcion active.(Pamela)
+      pBlaze.status = "Activo";
+      blazeService.updateBlazes(pBlaze).then(function(response){
+      });
+    }// Cierre funcion inative
+      
   }// Cierre de la función studentController.(Pamela)
 })();

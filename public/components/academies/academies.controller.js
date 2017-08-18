@@ -187,7 +187,7 @@
       //función que cambia el estado a inabilitado
       vm.inactive = function(pAcademy){
 
-        pAcademy.status = "inhabilitado";
+        pAcademy.status = "Inhabilitado";
 
         academiesService.updateAcademy(pAcademy).then(function(response){
          });

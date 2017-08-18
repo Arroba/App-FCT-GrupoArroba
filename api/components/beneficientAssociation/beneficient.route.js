@@ -24,9 +24,9 @@ router.route('/get_all_beneficients')
     beneficientController.update(req,res);
  	});
 
-router.route('/update_state_beneficients')
- .put(function(req, res){
-    beneficientController.update(req,res);
- });
+//router.route('/update_state_beneficients')
+ //.put(function(req, res){
+ //   beneficientController.update(req,res);
+ //});
 
 module.exports = router;

@@ -278,6 +278,8 @@
         <!-- Boton para cambiar el editar las exhibiciones -->
         <md-card-actions id="buttons">
           <md-button class="edit" ng-click="vm.getInfo(exhibition);vm.hideButton();registro1()">Editar</md-button>
+          <md-button class="Active"  ng-click="vm.active(exhibition)">Activo</md-button>
+          <md-button class="edit"  ng-click="vm.inactive(exhibition)">Inactivo</md-button>
           <md-card-icon-actions><!-- cierre botones  -->
           </div><!--fin de los cards -->
         </div> <!--fin pagina2 -->

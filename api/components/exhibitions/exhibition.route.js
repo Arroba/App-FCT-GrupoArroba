@@ -24,11 +24,6 @@ router.route('/update_exhibitions')
     exhibitionsController.update(req,res);
   });
 
-router.route('/update_state_exhibitions')
-  .put(function(req, res){
-    exhibitionsController.update(req,res);
-  });
-
 module.exports = router;
 
 

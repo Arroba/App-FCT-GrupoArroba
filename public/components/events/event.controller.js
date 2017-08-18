@@ -262,29 +262,17 @@
 
       //función que cambia el estado a inabilitado
       vm.inactive = function(pEvent){
-        var eventsList = eventsService.getEvents();
-          for (var i = 0; i < eventsList.length; i++) {
-            if (eventsList[i].name == pEvent.name) {
-              eventsList[i].status = 'inhabilitado';
-              console.log(eventsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        eventsService.updateState(eventsList);
-        init();
+        pEvent.status = "Inhabilitado";
+        eventsService.updateEvent(pEvent).then(function(response){
+        });
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
       vm.active = function(pEvent){
-        var eventsList = eventsService.getEvents();
-          for (var i = 0; i < eventsList.length; i++) {
-            if (eventsList[i].name == pEvent.name) {
-              eventsList[i].status = 'Activo';
-              console.log(eventsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        eventsService.updateState(eventsList);
-        init();
-      }// Cierre de la funcion active
+        pEvent.status = "Activo";
+        eventsService.updateEvent(pEvent).then(function(response){
+        });
+      }// Cierre funcion inative
 
     }//Cierre de la función para el controlador
 

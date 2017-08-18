@@ -183,28 +183,21 @@
 
     //función que cambia el estado a inabilitado
       vm.inactive = function(pBeneficient){
-        var beneficientList = beneficientService.getBeneficient();
-          for (var i = 0; i < beneficientList.length; i++) {
-            if (beneficientList[i].name == pBeneficient.name) {
-              beneficientList[i].status = 'inhabilitado';
-              console.log(beneficientList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        beneficientService.updateState(beneficientList);
-        loadAcademies();
+         pBeneficient.status = "Inhabilitado";
+
+        beneficientService.updateBeneficient(pBeneficient).then(function(response){
+        });
+
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
       vm.active = function(pBeneficient){
-        var beneficientList = beneficientService.getBeneficient();
-          for (var i = 0; i < beneficientList.length; i++) {
-            if (beneficientList[i].name == pBeneficient.name) {
-              beneficientList[i].status = 'Activo';
-              console.log(beneficientList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        beneficientService.updateState(beneficientList);
-        loadAcademies();
-      }// Cierre de la funcion active
+        pBeneficient.status = "Activo";
+
+        beneficientService.updateBeneficient(pBeneficient).then(function(response){
+        });
+
+      }// Cierre funcion inative
+
     }// Cierre de la función beneficientController
 })();
