@@ -2,9 +2,9 @@
   angular
   .module('fctApp')
   .controller('eventsGeneralController', eventsGeneralController);// Declaración del controlador
-  eventsGeneralController.$inject = ['eventsGeneralService','$scope','academiesService','sponsorService'];
+  eventsGeneralController.$inject = ['eventsGeneralService','$scope','academiesService','sponsorService','placeService'];
 
-  function eventsGeneralController(eventsGeneralService,$scope,academiesService,sponsorService){
+  function eventsGeneralController(eventsGeneralService,$scope,academiesService,sponsorService,placeService){
 
     var vm = this;
     vm.eventsGeneral = "";
@@ -23,6 +23,11 @@
       sponsorService.getSponsors().then(function (response) {
         vm.sponsorsRel = response.data;
       });
+
+      placeService.getPlaces().then(function(response){
+          vm.placeRel = response.data;
+      });
+
       vm.to = new Date();
     }
     // Función que guarda los datos

@@ -2,9 +2,9 @@
   angular
   .module('fctApp')
     .controller('exhibitionController', exhibitionController);// Declaración del controlador
-    exhibitionController.$inject = ['exhibitionService','$scope'];
+    exhibitionController.$inject = ['exhibitionService','$scope','placeService'];
 
-    function exhibitionController(exhibitionService,$scope){
+    function exhibitionController(exhibitionService,$scope,placeService){
 
       var vm = this;
       vm.exhibitions = "";
@@ -14,6 +14,10 @@
       function loadExhibitions(){
         exhibitionService.getExhibitions().then(function (response) {
           vm.exhibitions = response.data;
+        });
+
+        placeService.getPlaces().then(function(response){
+            vm.placeRel = response.data;
         });
         vm.to = new Date();
       }
