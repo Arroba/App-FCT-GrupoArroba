@@ -171,13 +171,13 @@
 
       vm.inactive = function(pSponsor){//Inicia función aprobación
         pSponsor.status = "Inhabilitado";
-        sponsorsService.updateSponsor(pSponsor).then(function(response){
+        sponsorService.updateSponsor(pSponsor).then(function(response){
         });
       }// Cierre funcion inative
 
       vm.active = function(pSponsor){//Inicia función aprobación
         pSponsor.status = "Activo";
-        sponsorsService.updateSponsor(pSponsor).then(function(response){
+        sponsorService.updateSponsor(pSponsor).then(function(response){
         });
       }// Cierre funcion inative
 
