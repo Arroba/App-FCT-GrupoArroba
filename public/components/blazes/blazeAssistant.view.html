@@ -228,12 +228,15 @@
             </md-input-container>
           </div>
 
+          <div class="col-xs-12">
             <div id="registrar">
               <md-button class="button Active" type="submit" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.save(blaze)">Registrar</md-button>
             </div>
             <div class="displayNone" id="actualizar">
-              <md-button class="button edit" type="button" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.update(blaze)">Actualizar</md-button>
+              <md-button class="button edit" type="button" ng-disabled="frmRegisterBlaze.$invalid" ng-click="vm.update(blaze);siguiente()">Actualizar</md-button>
             </div>
+          </div>
+
           </div>
       </form><!-- Cierra FORM -->
     </section> <!-- Cierre section Register -->
