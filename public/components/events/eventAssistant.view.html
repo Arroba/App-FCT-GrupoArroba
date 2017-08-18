@@ -1,4 +1,4 @@
-<<div class="wrapper">
+<div class="wrapper">
   <div class="sidebar" data-color="wilken">
     <div class="sidebar-wrapper">
       <div class="logo">
@@ -153,394 +153,404 @@
         <div class="collapse navbar-collapse"></div>
       </nav> <!-- Cierre navbar -->
 
+      <!-- Page Content -->
+    <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
+    <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
       <div class="container-fluid">
+        <form >
+          <h1>Registro de Torneos</h1>
+          <hr>
 
 
-  <!-- Page Content -->
-  <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
-  <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
-  <div ng-show="pagina==1">
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro de torneos</a></li>
+          <li><a href="#!/exhibitionAssistant">Registro de exhibición</a></li>
+          <li><a href="#!/blazeAssistant">Registro de fogueo</a></li>
+          <li><a href="#!/fightsAssistant">Registro de competición</a></li>
+        </ul>
+    <div ng-show="pagina==1">
     <section id="registerEvent">
       <!--inicio form para registrar -->
-      <form name="frmRegisterEvent" novalidate autocomplete="off">
-
-        <h1>Registro de Torneos</h1>
-        <hr>
+    <form name="frmRegisterEvent" novalidate autocomplete="off">
 
 
 
-        <div class="row">
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-              <label for="">Nombre del torneo:</label>
-              <input type="text" ng-model="vm.name" name="name" required>
-              <div ng-messages="frmRegisterEvent.name.$error">
-                <div ng-messages-include="components/includes/messages.html"></div>
-              </div><!--cierre del ng-messages -->
-            </md-input-container>
 
-            <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-              <label for="">Lugar del torneo:</label>
-              <input type="text" list="placeList" ng-model="vm.place" name="place" required>
-              <datalist id="placeList">
-                <option value="">--Seleccione un lugar--</option>
-                <option ng-repeat="place in vm.placeRel" value="{{place.namePlace}}">{{vm.place.namePlace}}</option>
-              </datalist>
-              <div ng-messages="frmRegisterEvent.place.$error">
-                <div ng-messages-include="components/includes/messages.html"></div>
-              </div> <!--cierre del ng-messages -->
-            </md-input-container>
 
-            <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-              <label for="">Fecha de inicio:</label>
-              <input type="date" ng-model="vm.dateStart" name="dateStart" required>
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+            <label for="">Nombre del torneo:</label>
+            <input type="text" ng-model="vm.name" name="name" required>
+            <div ng-messages="frmRegisterEvent.name.$error">
+              <div ng-messages-include="components/includes/messages.html"></div>
+            </div><!--cierre del ng-messages -->
+          </md-input-container>
+
+          <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+            <label for="">Lugar del torneo:</label>
+            <input type="text" list="placeList" ng-model="vm.place" name="place" required>
+            <datalist id="placeList">
+              <option value="">--Seleccione un lugar--</option>
+              <option ng-repeat="place in vm.placeRel" value="{{place.namePlace}}">{{vm.place.namePlace}}</option>
+            </datalist>
+            <div ng-messages="frmRegisterEvent.place.$error">
+              <div ng-messages-include="components/includes/messages.html"></div>
+            </div> <!--cierre del ng-messages -->
+          </md-input-container>
+
+          <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+            <label for="">Fecha de inicio:</label>
+            <input type="date" ng-model="vm.dateStart" name="dateStart" required>
               <div ng-messages="frmRegisterEvent.dateStart.$error">
                 <div ng-messages-include="components/includes/messages.html"></div>
-              </div><!--cierre del ng-messages -->
-            </md-input-container>
-          </div>
+            </div><!--cierre del ng-messages -->
+          </md-input-container>
+        </div>
 
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
-              <label for="">Fecha de cierre:</label>
-              <input type="date" ng-model="vm.dateFinish" name="dateFinish" required>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <md-input-container class="col-xs-12 col-sm-4 col-md-4" layout="column">
+            <label for="">Fecha de cierre:</label>
+            <input type="date" ng-model="vm.dateFinish" name="dateFinish" required>
               <div ng-messages="frmRegisterEvent.dateFinish.$error">
                 <div ng-messages-include="components/includes/messages.html"></div>
               </div><!--cierre del ng-messages -->
-            </md-input-container>
+          </md-input-container>
 
-            <div>
-              <div>
-                <div>
-                  <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
-                    <label>Academias</label>
-                    <md-select ng-model="vm.academies"  class="select" md-on-close="clearSearchTerm()" name='academies' data-md-container-class="selectdemoSelectHeader" multiple required>
-                      <md-optgroup label="Seleccione una o más academias">
-                        <md-option value="{{academy.name}}" ng-repeat="academy in vm.academiesRel |
-                        filter:searchTerm">{{academy.name}}</md-option>
-                      </md-optgroup>
-                    </md-select>
-                    <div ng-messages="frmRegisterEvent.academies.$error">
-                      <div ng-messages-include="components/includes/messages.html"></div>
-                    </div><!--cierre del ng-messages -->
-                  </md-input-container>
-                </div>
-              </div>
-            </div>
-
+          <div>
             <div>
               <div>
                 <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
-                  <label>Patrocinadores</label>
-                  <md-select ng-model="vm.sponsors" class="select" md-on-close="clearSearchTerm()" name='sponsors' data-md-container-class="selectdemoSelectHeader" multiple required>
-                    <md-optgroup label="Seleccione uno o más patrocinadores">
-                      <md-option value="{{sponsor.nameSponsorCompany}}" ng-repeat="sponsor in vm.sponsorsRel |
-                      filter:searchTerm">{{sponsor.nameSponsorCompany}}</md-option>
+                  <label>Academias</label>
+                  <md-select ng-model="vm.academies"  class="select" md-on-close="clearSearchTerm()" name='academies' data-md-container-class="selectdemoSelectHeader" multiple required>
+                    <md-optgroup label="Seleccione una o más academias">
+                      <md-option value="{{academy.name}}" ng-repeat="academy in vm.academiesRel |
+                        filter:searchTerm">{{academy.name}}</md-option>
                     </md-optgroup>
                   </md-select>
-                  <div ng-messages="frmRegisterEvent.sponsors.$error">
+                  <div ng-messages="frmRegisterEvent.academies.$error">
                     <div ng-messages-include="components/includes/messages.html"></div>
                   </div><!--cierre del ng-messages -->
                 </md-input-container>
               </div>
-            </div>
+           </div>
           </div>
-          <div class="col-xs-12 col-sm-12 col-md-12">
-            <md-button id="registrar" class="button Active"ng-click="siguiente()">Registrar competiciones</md-button>
 
-          </div>
+          <div>
+            <div>
+              <md-input-container layout="column" class="col-xs-12 col-sm-4 col-md-4" flex-gt-sm>
+                <label>Patrocinadores</label>
+                <md-select ng-model="vm.sponsors" class="select" md-on-close="clearSearchTerm()" name='sponsors' data-md-container-class="selectdemoSelectHeader" multiple required>
+                  <md-optgroup label="Seleccione uno o más patrocinadores">
+                    <md-option value="{{sponsor.nameSponsorCompany}}" ng-repeat="sponsor in vm.sponsorsRel |
+                      filter:searchTerm">{{sponsor.nameSponsorCompany}}</md-option>
+                  </md-optgroup>
+                </md-select>
+                <div ng-messages="frmRegisterEvent.sponsors.$error">
+                  <div ng-messages-include="components/includes/messages.html"></div>
+                </div><!--cierre del ng-messages -->
+              </md-input-container>
+            </div>
+         </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <md-button id="registrar" class="button Active"ng-click="siguiente()">Registrar competiciones</md-button>
+
         </div>
       </div>
-
-
-      <!--Inicio de la segunda vista  -->
-      <!-- Registro de competiciones -->
-
-      <div ng-show="pagina==2">
-        <h1>Registro de competiciones</h1>
-    <!-- <hr>
-    <md-input-container class="col-md-12" layout="column">
-      <label for="">Nombre del evento:</label>
-      <input type="text" ng-model="vm.nameEvent" name="nameEvent" required>
-      <div ng-messages="frmRegisterFights.nameEvent.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div>
-    </md-input-container> -->
-
-    <label for="">Primera Competición:</label>
-    <br>
-
-    <!--Primera Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Género:</label>
-      <md-select class="select" ng-model="vm.genderComp1" name="genderComp1" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Masculino">Masculino</md-option>
-        <md-option value="Femenino">Femenino</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.genderComp1.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <!--Primera Competición -->
-    <md-input-container class=" col-sm-4" layout="column">
-      <label for="">Categoría por Peso:</label>
-      <md-select class="select" ng-model="vm.weightCategoryComp1" name="weightCategoryComp1" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
-        <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
-        <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
-        <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
-        <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.weightCategoryComp1.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <!--Primera Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Categoría por Edad:</label>
-      <md-select class="select" ng-model="vm.ageCategoryComp1" name="ageCategoryComp1" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Infantil">Infantil(4-11 años)</md-option>
-        <md-option value="Cadete">Cadete(12-16 años)</md-option>
-        <md-option value="Elite">Elite(17-23 años)</md-option>
-        <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.ageCategoryComp1.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <button class="atras" ng-click="anterior()">Atrás</button>
-      <button class="siguiente" ng-click="siguiente()">Siguiente</button>
     </div>
-  </div>
+
+
+    <!--Inicio de la segunda vista  -->
+    <!-- Registro de competiciones -->
+
+    <div ng-show="pagina==2">
+        <!-- <hr>
+        <md-input-container class="col-md-12" layout="column">
+          <label for="">Nombre del evento:</label>
+          <input type="text" ng-model="vm.nameEvent" name="nameEvent" required>
+          <div ng-messages="frmRegisterFights.nameEvent.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div>
+        </md-input-container> -->
+        <br>
+        <label for="">Primera Competición:</label>
+        <br>
+
+        <!--Primera Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Género:</label>
+          <md-select class="select" ng-model="vm.genderComp1" name="genderComp1" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Masculino">Masculino</md-option>
+            <md-option value="Femenino">Femenino</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.genderComp1.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
+
+        <!--Primera Competición -->
+        <md-input-container class=" col-sm-4" layout="column">
+          <label for="">Categoría por Peso:</label>
+          <md-select class="select" ng-model="vm.weightCategoryComp1" name="weightCategoryComp1" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
+            <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
+            <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
+            <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
+            <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.weightCategoryComp1.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
+
+        <!--Primera Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Categoría por Edad:</label>
+          <md-select class="select" ng-model="vm.ageCategoryComp1" name="ageCategoryComp1" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Infantil">Infantil(4-11 años)</md-option>
+            <md-option value="Cadete">Cadete(12-16 años)</md-option>
+            <md-option value="Elite">Elite(17-23 años)</md-option>
+            <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.ageCategoryComp1.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <button class="atras" ng-click="anterior()">Atrás</button>
+          <button class="siguiente" ng-click="siguiente()">Siguiente</button>
+      </div>
+    </div>
 
 
 
-  <div ng-show="pagina==3">
-    <!--Segunda competicion-->
-
-    <label for="">Segunda Competición:</label>
-    <br>
+    <div ng-show="pagina==3">
+        <!--Segunda competicion-->
+        <br>
+        <label for="">Segunda Competición:</label>
+        <br>
 
     <!--Segunda Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Género:</label>
-      <md-select class="select" ng-model="vm.genderComp2" name="gender" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Masculino">Masculino</md-option>
-        <md-option value="Femenino">Femenino</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.genderComp2.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Género:</label>
+          <md-select class="select" ng-model="vm.genderComp2" name="gender" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Masculino">Masculino</md-option>
+            <md-option value="Femenino">Femenino</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.genderComp2.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-    <!--Segunda Competición -->
-    <md-input-container class=" col-sm-4" layout="column">
-      <label for="">Categoría por Peso:</label>
-      <md-select class="select" ng-model="vm.weightCategoryComp2" name="weightCategoryComp2" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
-        <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
-        <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
-        <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
-        <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.weightCategoryComp2.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
+        <!--Segunda Competición -->
+        <md-input-container class=" col-sm-4" layout="column">
+          <label for="">Categoría por Peso:</label>
+          <md-select class="select" ng-model="vm.weightCategoryComp2" name="weightCategoryComp2" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
+            <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
+            <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
+            <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
+            <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.weightCategoryComp2.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-    <!--Segunda Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Categoría por Edad:</label>
-      <md-select class="select" ng-model="vm.ageCategoryComp2" name="ageCategoryComp2" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Infantil">Infantil(4-11 años)</md-option>
-        <md-option value="Cadete">Cadete(12-16 años)</md-option>
-        <md-option value="Elite">Elite(17-23 años)</md-option>
-        <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.ageCategoryComp2.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
+        <!--Segunda Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Categoría por Edad:</label>
+          <md-select class="select" ng-model="vm.ageCategoryComp2" name="ageCategoryComp2" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Infantil">Infantil(4-11 años)</md-option>
+            <md-option value="Cadete">Cadete(12-16 años)</md-option>
+            <md-option value="Elite">Elite(17-23 años)</md-option>
+            <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.ageCategoryComp2.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
     <!--Fin segunda competición  -->
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <button class="atras" ng-click="anterior()">Atrás</button>
-      <button class="siguiente" ng-click="siguiente()">Siguiente</button>
-      <button class="atras" ng-click="registro1()">Regresar al registro</button>
+      <div class="col-xs-12 col-sm-12 col-md-12">
+            <button class="atras" ng-click="anterior()">Atrás</button>
+            <button class="siguiente" ng-click="siguiente()">Siguiente</button>
+            <button class="atras" ng-click="registro1()">Regresar al registro</button>
+        </div>
     </div>
-  </div>
 
 
-  <div ng-show="pagina==4">
+    <div ng-show="pagina==4">
     <!--Tercera competicón  -->
-    <label for="">Tercera Competición:</label>
-    <br>
+        <br>
+        <label for="">Tercera Competición:</label>
+        <br>
 
-    <!--tercera Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Género:</label>
-      <md-select class="select" ng-model="vm.genderComp3" name="genderComp3" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Masculino">Masculino</md-option>
-        <md-option value="Femenino">Femenino</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.genderComp3.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
+        <!--tercera Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Género:</label>
+          <md-select class="select" ng-model="vm.genderComp3" name="genderComp3" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Masculino">Masculino</md-option>
+            <md-option value="Femenino">Femenino</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.genderComp3.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-    <!--tercera Competición -->
-    <md-input-container class=" col-sm-4" layout="column">
-      <label for="">Categoría por Peso:</label>
-      <md-select class="select" ng-model="vm.weightCategoryComp3" name="weightCategoryComp3" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
-        <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
-        <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
-        <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
-        <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.weightCategoryComp3.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
+        <!--tercera Competición -->
+        <md-input-container class=" col-sm-4" layout="column">
+          <label for="">Categoría por Peso:</label>
+          <md-select class="select" ng-model="vm.weightCategoryComp3" name="weightCategoryComp3" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
+            <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
+            <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
+            <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
+            <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.weightCategoryComp3.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-    <!--tercera Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Categoría por Edad:</label>
-      <md-select class="select" ng-model="vm.ageCategoryComp3" name="ageCategoryComp3" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Infantil">Infantil(4-11 años)</md-option>
-        <md-option value="Cadete">Cadete(12-16 años)</md-option>
-        <md-option value="Elite">Elite(17-23 años)</md-option>
-        <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.ageCategoryComp3.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-    <!--Fin tercera competición  -->
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <button class="atras" ng-click="anterior()">Atrás</button>
-      <button class="siguiente" ng-click="siguiente()">Siguiente</button>
-      <button class="atras" ng-click="registro1()">Regresar al registro</button>
-    </div>
-  </div>
-
-
-  <div ng-show="pagina==5">
-    <!-- Cuarta Competición -->
-
-    <label for="">Cuarta Competición:</label>
-    <br>
-
-    <!--cuarta Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Género:</label>
-      <md-select class="select" ng-model="vm.genderComp4" name="genderComp4" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Masculino">Masculino</md-option>
-        <md-option value="Femenino">Femenino</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.genderComp4.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <!--cuarta Competición -->
-    <md-input-container class=" col-sm-4" layout="column">
-      <label for="">Categoría por Peso:</label>
-      <md-select class="select" ng-model="vm.weightCategoryComp4" name="weightCategoryComp4" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
-        <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
-        <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
-        <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
-        <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.weightCategoryComp4.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <!--cuarta Competición -->
-    <md-input-container class="col-md-4" layout="column">
-      <label for="">Categoría por Edad:</label>
-      <md-select class="select" ng-model="vm.ageCategoryComp4" name="ageCategoryComp4" required>
-        <md-option value="">--Seleccione una opción</md-option>
-        <md-option value="Infantil">Infantil(4-11 años)</md-option>
-        <md-option value="Cadete">Cadete(12-16 años)</md-option>
-        <md-option value="Elite">Elite(17-23 años)</md-option>
-        <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
-      </md-select>
-      <div ng-messages="frmRegisterEvent.ageCategoryComp4.$error">
-        <div ng-messages-include="components/includes/messages.html"></div>
-      </div><!--cierre del ng-messages -->
-    </md-input-container>
-
-    <div class="col-xs-12 col-sm-12 col-md-12">
-      <md-button class="atras" ng-click="anterior()">Atrás</md-button>
-      <md-button class="atras" ng-click="registro1()">Regresar</md-button>
-      <md-button  class="siguiente" type="submit" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" ng-disabled="frmRegisterEvent.$invalid">Finalizar Registro</md-button>
+        <!--tercera Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Categoría por Edad:</label>
+          <md-select class="select" ng-model="vm.ageCategoryComp3" name="ageCategoryComp3" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Infantil">Infantil(4-11 años)</md-option>
+            <md-option value="Cadete">Cadete(12-16 años)</md-option>
+            <md-option value="Elite">Elite(17-23 años)</md-option>
+            <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.ageCategoryComp3.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
+        <!--Fin tercera competición  -->
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <button class="atras" ng-click="anterior()">Atrás</button>
+            <button class="siguiente" ng-click="siguiente()">Siguiente</button>
+            <button class="atras" ng-click="registro1()">Regresar al registro</button>
+        </div>
     </div>
 
 
-  </div>
+    <div ng-show="pagina==5">
+        <!-- Cuarta Competición -->
+        <br>
+        <label for="">Cuarta Competición:</label>
+        <br>
 
+        <!--cuarta Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Género:</label>
+          <md-select class="select" ng-model="vm.genderComp4" name="genderComp4" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Masculino">Masculino</md-option>
+            <md-option value="Femenino">Femenino</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.genderComp4.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-  <!-- Botones de Registro y Actualizar -->
+        <!--cuarta Competición -->
+        <md-input-container class=" col-sm-4" layout="column">
+          <label for="">Categoría por Peso:</label>
+          <md-select class="select" ng-model="vm.weightCategoryComp4" name="weightCategoryComp4" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="il-Yang (Pluma)">Pluma(Menos de 51kg)</md-option>
+            <md-option value="i-Yang (Gallo) ">Gallo(52kg a 59kg) </md-option>
+            <md-option value="o-Yang (Supergallo)">Supergallo(60kg a 65kg)</md-option>
+            <md-option value="Sam-Yang (Wélter)">Wélter(66kg a 74kg)</md-option>
+            <md-option value="Siu-Yang (Pesado)">Pesado(Mayor a 75kg)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.weightCategoryComp4.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
-</form>
+        <!--cuarta Competición -->
+        <md-input-container class="col-md-4" layout="column">
+          <label for="">Categoría por Edad:</label>
+          <md-select class="select" ng-model="vm.ageCategoryComp4" name="ageCategoryComp4" required>
+            <md-option value="">--Seleccione una opción</md-option>
+            <md-option value="Infantil">Infantil(4-11 años)</md-option>
+            <md-option value="Cadete">Cadete(12-16 años)</md-option>
+            <md-option value="Elite">Elite(17-23 años)</md-option>
+            <md-option value="Senior">Senior(Mayor de 23 años)</md-option>
+          </md-select>
+          <div ng-messages="frmRegisterEvent.ageCategoryComp4.$error">
+            <div ng-messages-include="components/includes/messages.html"></div>
+          </div><!--cierre del ng-messages -->
+        </md-input-container>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <md-button class="atras" ng-click="anterior()">Atrás</md-button>
+            <md-button class="atras" ng-click="registro1()">Regresar</md-button>
+            <md-button  class="siguiente" type="submit" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" ng-disabled="frmRegisterEvent.$invalid">Finalizar Registro</md-button>
+        </div>
 
-<section class="inputSearch">
-  <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
-    <form action="" class="search-form">
-      <div class="form-group has-feedback">
-        <label for="Buscar" class="sr-only">Buscar</label>
-        <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
-        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+        <section class="inputSearch">
+          <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
+            <form action="" class="search-form">
+              <div class="form-group has-feedback">
+                <label for="Buscar" class="sr-only">Buscar</label>
+                <input type="text" class="form-control" name="nameFilter" ng-model="vm.nameFilter" placeholder="Buscar...">
+                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+              </div>
+            </form>
+          </div>
+        </section>
+
+      <!--inicio de los cards -->
+    <div class="col-xs-12 col-sm-12 col-md-12">
+          <md-card class="col-xs-12 col-sm-12 col-md-4 col-md-offset-1" ng-repeat="event in vm.events | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter">
+          <md-card-header>
+            <md-card-header-text>
+              <span class="md-title">Nombre del evento: {{event.name}}</span>
+              <span class="md-subhead">Lugar: {{event.place}}</span>
+            </md-card-header-text>
+          </md-card-header>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-subhead">Fecha de inicio: {{event.dateStart | date: 'dd-MM-yyyy'}}</span>
+              <span class="md-subhead">Fecha de cierre: {{event.dateFinish | date: 'dd-MM-yyyy'}}</span>
+              <span class="md-subhead">Academias afiliadas: {{event.academies}}</span>
+              <span class="md-subhead">Patrocinadores: {{event.sponsors}}</span>
+              <span class="md-subhead">Estado: {{event.status}}</span>
+            </md-card-title-text>
+          </md-card-title>
+          <!-- Boton para cambiar el editar las eventos -->
+          <md-card-actions class="col-xs-offset-0 col-sm-offset-7 col-md-offset-0 col-xs-12 col-sm-12 col-md-12">
+            <md-button class="edit" ng-click="vm.getInfo(event); vm.hideButton()">Editar</md-button>
+            <md-button class="Active" ng-click="vm.active(event)">Activo</md-button>
+            <md-button class="edit" ng-click="vm.inactive(event)">Inactivo</md-button>
+            <md-card-icon-actions><!-- cierre botones  -->
       </div>
-    </form>
-  </div>
-</section>
 
-<!--inicio de los cards -->
-<div class="col-xs-12 col-sm-12 col-md-12">
-  <md-card class="col-xs-12 col-sm-12 col-md-4 col-md-offset-1" ng-repeat="event in vm.events | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter">
-    <md-card-header>
-      <md-card-header-text>
-        <span class="md-title">Nombre del evento: {{event.name}}</span>
-        <span class="md-subhead">Lugar: {{event.place}}</span>
-      </md-card-header-text>
-    </md-card-header>
-    <md-card-title>
-      <md-card-title-text>
-        <span class="md-subhead">Fecha de inicio: {{event.dateStart | date: 'dd-MM-yyyy'}}</span>
-        <span class="md-subhead">Fecha de cierre: {{event.dateFinish | date: 'dd-MM-yyyy'}}</span>
-        <span class="md-subhead">Academias afiliadas: {{event.academies}}</span>
-        <span class="md-subhead">Patrocinadores: {{event.sponsors}}</span>
-        <span class="md-subhead">Estado: {{event.status}}</span>
-      </md-card-title-text>
-    </md-card-title>
-    <!-- Boton para cambiar el editar las eventos -->
-    <md-card-actions class="col-xs-offset-0 col-sm-offset-7 col-md-offset-0 col-xs-12 col-sm-12 col-md-12">
-      <md-button class="edit" ng-click="vm.getInfo(event); vm.hideButton()">Editar</md-button>
-      <md-button class="Active" ng-click="vm.active(event)">Activo</md-button>
-      <md-button class="edit" ng-click="vm.inactive(event)">Inactivo</md-button>
-      <md-card-icon-actions><!-- cierre botones  -->
+
       </div>
+
+
+        <!-- Botones de Registro y Actualizar -->
+
+      </form>
+
+
+
       <!--fin de los cards -->
     </section>
-  </div>
-</div>
-</div>
+    </div>
+    </div>

@@ -1,4 +1,4 @@
-(function(){ 
+(function(){
   angular
     .module('fctApp')
     .controller('studentController', studentController);
@@ -101,7 +101,7 @@
          return;
       }else{
         for(var i = 0; i < vm.students.length; i++){
-          if(newStudent.id == vm.students[i].id){
+          if(newStudent.identi == vm.students[i].identi){
             swal({
            type: 'error',
            title: '¡La identificación ya existe!',

@@ -174,13 +174,24 @@
 <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
 <!--Regristrar eventos, listar eventos y modificar eventos en conjunto con impresión de los datos  -->
   <div class="container-fluid">
+    <form >
+      <h1>Registro de Torneos</h1>
+      <hr>
+
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" ng-click="anterior()" href="">Registro de torneos</a></li>
+      <li><a href="#!/exhibitions">Registro de exhibición</a></li>
+      <li><a href="#!/blazes">Registro de fogueo</a></li>
+      <li><a href="#!/fights">Registro de competición</a></li>
+    </ul>
 <div ng-show="pagina==1">
 <section id="registerEvent">
   <!--inicio form para registrar -->
 <form name="frmRegisterEvent" novalidate autocomplete="off">
 
-    <h1>Registro de Torneos</h1>
-    <hr>
+
+
 
 
 
@@ -272,7 +283,6 @@
 <!-- Registro de competiciones -->
 
 <div ng-show="pagina==2">
-    <h1>Registro de competiciones</h1>
     <!-- <hr>
     <md-input-container class="col-md-12" layout="column">
       <label for="">Nombre del evento:</label>
@@ -281,7 +291,7 @@
         <div ng-messages-include="components/includes/messages.html"></div>
       </div>
     </md-input-container> -->
-
+    <br>
     <label for="">Primera Competición:</label>
     <br>
 
@@ -339,7 +349,7 @@
 
 <div ng-show="pagina==3">
     <!--Segunda competicion-->
-
+    <br>
     <label for="">Segunda Competición:</label>
     <br>
 
@@ -397,6 +407,7 @@
 
 <div ng-show="pagina==4">
 <!--Tercera competicón  -->
+    <br>
     <label for="">Tercera Competición:</label>
     <br>
 
@@ -454,7 +465,7 @@
 
 <div ng-show="pagina==5">
     <!-- Cuarta Competición -->
-
+    <br>
     <label for="">Cuarta Competición:</label>
     <br>
 
@@ -508,15 +519,6 @@
         <md-button  class="siguiente" type="submit" ng-disabled="frmRegisterEvent.$invalid" ng-click="vm.save(event)" ng-disabled="frmRegisterEvent.$invalid">Finalizar Registro</md-button>
     </div>
 
-
-  </div>
-
-
-    <!-- Botones de Registro y Actualizar -->
-
-  </form>
-
-
     <section class="inputSearch">
       <div class="col-sm-3 col-md-3 col-sm-offset-9 col-md-offset-9">
         <form action="" class="search-form">
@@ -554,6 +556,17 @@
         <md-button class="edit" ng-click="vm.inactive(event)">Inactivo</md-button>
         <md-card-icon-actions><!-- cierre botones  -->
   </div>
+
+
+  </div>
+
+
+    <!-- Botones de Registro y Actualizar -->
+
+  </form>
+
+
+
   <!--fin de los cards -->
 </section>
 </div>

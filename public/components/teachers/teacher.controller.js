@@ -105,7 +105,7 @@
          return;
       }else{
         for(var i = 0; i < vm.teachers.length; i++){
-          if(newTeacher.id == vm.teachers[i].id){
+          if(newTeacher.identi == vm.teachers[i].identi){
             swal({
            type: 'error',
            title: '¡La identificación ya existe!',
