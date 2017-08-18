@@ -6,7 +6,7 @@
 rankingController.$inject = ['fightsService','$scope','academiesService','studentService','eventsService','$scope','$mdDialog']
 
 
-  function rankingController(fightsService,$scope,academiesService,studentService,eventsService,$scope,$mdDialog){
+  function rankingController(fightsServic,e$scope,academiesService,studentService,eventsService,$scope,$mdDialog){
 
     var vm = this;
 
@@ -17,8 +17,9 @@ rankingController.$inject = ['fightsService','$scope','academiesService','studen
       // Inicio de la función init que es la que se inicializa de primiera
       function loadFights(){
       eventsService.getEvents().then(function (response) {
-          vm.eventsRel = response.data;
+          vm.events = response.data;
         });
+
 
       academiesService.getAcademies().then(function (response) {
           vm.academiesRel = response.data;

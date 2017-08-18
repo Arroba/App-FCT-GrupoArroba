@@ -46,24 +46,20 @@
         <div class="collapse navbar-collapse"></div>
       </nav>
     <!-- Page Content -->
-    <h1 class="text-center">Ranking Individual</h1>
-  <table class="container">
-    <thead>
-     <tr>
-       <th><h1>Posición</h1></th>
-        <th><h1>Torneos Participados</h1></th>
-        <th><h1>Torneos Ganados</h1></th>
-        <th><h1>Puntos Obtenidos</h1></th>
-        <th><h1>Puntos Totales</h1></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>3</td>
-        <td>1</td>
-        <td>3</td>
-        <td>3</td>
-      </tr>
-    </tbody>
-  </table>
+    <!-- Page Content -->
+      <br>
+      <h1 class="text-center">Ranking General</h1>
+      <table class="container text-center" >
+        <thead>
+          <tr>
+            <th class="text-center"><h1 style="text-align: center;" >Torneos Participados</h1></th>
+            <th class="text-center"><h1>Categoría en la que participó</h1></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{vm.eventSelected["event"]}}</td>
+            <td>{{vm.eventSelected["competition"]}}</td>
+          </tr>
+       </tbody>
+    </table>

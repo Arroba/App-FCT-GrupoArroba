@@ -91,25 +91,22 @@
   </nav>
 
   <!-- Page Content -->
-  <br>
-  <h1 class="text-center">Ranking General</h1>
-  <table class="container">
-    <thead>
-      <tr>
-        <th><h1>Posición</h1></th>
-        <th><h1>Competidor</h1></th>
-        <th><h1>Academia</h1></th>
-        <th><h1>Torneos Ganados</h1></th>
-        <th><h1>Puntos Ganados</h1></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>Pamela Brenes</td>
-        <td>Academia Fabi</td>
-        <td>0</td>
-        <td>0</td>
-      </tr>
-    </tbody>
-  </table>
+      <br>
+      <h1 class="text-center">Ranking General</h1>
+      <table class="container text-center" >
+        <thead>
+          <tr>
+            <th class="text-center"><h1 style="text-align: center;" >Nombre del torneo</h1></th>
+            <th class="text-center"><h1>Categoría - Ganador</h1></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  ng-repeat="event in vm.events | filter:{status:vm.statusFiltrer} | filter:vm.nameFilter">
+            <td>{{event.name}}</td>
+<!--             <td>{{event.ageCategoryComp1 + ' ' +event.ageCategoryComp2 + ' '+ event.ageCategoryComp3 + ' '+ event.ageCategoryComp4}}</td> -->
+            <td>
+              <span class="divider-light" ng-repeat="winner in event.winners">{{winner.competition}} - Ganador: {{winner.competitor}}</span>
+            </td>
+          </tr>
+       </tbody>
+    </table>

@@ -12,12 +12,31 @@ rankingController.$inject = ['fightsService','$scope','academiesService','studen
 
     vm.fights = "";
     vm.selectEvent = {};
+    vm.eventSelected = [];
+    vm.foundCredentials = JSON.parse(sessionStorage.getItem('currentUserActive'));
     loadFights();
 
       // Inicio de la función init que es la que se inicializa de primiera
       function loadFights(){
       eventsService.getEvents().then(function (response) {
-          vm.eventsRel = response.data;
+          vm.events = response.data;
+
+
+          for (var i = 0; i < vm.events.length; i++) {
+            for (var j = 0; j < vm.events[i].fights.length; j++) {
+               if ((vm.foundCredentials.name + '  ' +vm.foundCredentials.firstName)  == vm.events[i].fights[j].competitor) {
+                  vm.eventSelected = vm.events[i].fights[j];
+              }
+
+            }
+           
+          }
+
+
+
+
+
+
         });
 
       academiesService.getAcademies().then(function (response) {
@@ -36,6 +55,11 @@ rankingController.$inject = ['fightsService','$scope','academiesService','studen
       //   vm.studentRel = datalistFilter();
       //   vm.academiesRel = academiesService.getAcademies();
       // }init(); // Cierre de la función init
+
+
+
+
+
 
       // Inicio de la función save, que se encarga de obtener los datos y enviarlos para ser guardados
       vm.save= function(){

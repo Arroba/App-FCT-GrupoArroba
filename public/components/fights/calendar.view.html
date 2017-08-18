@@ -189,10 +189,11 @@
       <label for="">Categoria:</label>
       <md-select class="select"  ng-model="vm.competition" ng-change="vm.callCalendar(vm.competition);" name="competition" required>
         <md-optgroup label="Seleccione una competición">
-          <md-option>{{vm.selectEvent.genderComp1}}</md-option>
-          <md-option>{{vm.selectEvent["genderComp2"]}}</md-option>
-          <md-option>{{vm.selectEvent["genderComp3"]}}</md-option>
-          <md-option>{{vm.selectEvent["genderComp4"]}}</md-option>
+          <md-option>{{vm.selectEvent.genderComp1}}-{{vm.selectEvent.weightCategoryComp1}}-{{vm.selectEvent.ageCategoryComp1}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp2"]}}-{{vm.selectEvent.weightCategoryComp2}}-{{vm.selectEvent.ageCategoryComp2}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp3"]}}-{{vm.selectEvent.weightCategoryComp3}}-{{vm.selectEvent.ageCategoryComp3}}</md-option>
+          <md-option>{{vm.selectEvent["genderComp4"]}}-{{vm.selectEvent.weightCategoryComp4}}-{{vm.selectEvent.ageCategoryComp4}}</md-option>
+        </md-optgroup>
         </md-optgroup>
       </md-select>
       <div ng-messages="frmRegisterStudent.competition.$error">
