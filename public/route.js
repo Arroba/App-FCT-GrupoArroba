@@ -955,44 +955,85 @@
     .state('gRanking',{
       url : '/generalRanking',
       templateUrl: 'components/generalRanking/generalRanking.view.html',
-      css:'css/ranking.css'
+      resolve:{
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/generalRanking/ranking.controller.js')
+        }]
+      },
+      controller: 'rankingController',
+      controllerAs: 'vm',
+      css:'css/ranking.css',
     })
-
 
         //generalRanking Asistente
         .state('generalRankingAssistant',{
           url : '/generalRankingAssistant',
           templateUrl: 'components/generalRanking/generalRankingAssistant.view.html',
-          css:'css/ranking.css'
+          resolve:{
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/generalRanking/ranking.controller.js')
+            }]
+          },
+          controller: 'rankingController',
+          controllerAs: 'vm',
+          css:'css/ranking.css',
         })
 
         //generalRanking Teacher
         .state('generalRankingTeacher',{
           url : '/generalRankingTeacher',
           templateUrl: 'components/generalRanking/generalRankingTeacher.view.html',
-          css:'css/ranking.css'
+          resolve:{
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/generalRanking/ranking.controller.js')
+            }]
+          },
+          controller: 'rankingController',
+          controllerAs: 'vm',
+          css:'css/ranking.css',
         })
 
         //generalRanking student
         .state('generalRankingStudent',{
           url : '/generalRankingStudent',
           templateUrl: 'components/generalRanking/generalRankingStudent.view.html',
-          css:'css/ranking.css'
+          resolve:{
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/generalRanking/ranking.controller.js')
+            }]
+          },
+          controller: 'rankingController',
+          controllerAs: 'vm',
+          css:'css/ranking.css',
         })
 
         //generalRanking public
         .state('generalRankingPublic',{
           url : '/generalRankingPublic',
           templateUrl: 'components/generalRanking/generalRankingPublic.view.html',
-          css:'css/ranking.css'
+          resolve:{
+            load: ['$ocLazyLoad', function($ocLazyLoad){
+              return $ocLazyLoad.load('./components/generalRanking/ranking.controller.js')
+            }]
+          },
+          controller: 'rankingController',
+          controllerAs: 'vm',
+          css:'css/ranking.css',
         })
 
 
      //individualRanking
-    .state('iRanking',{
+     .state('iRanking',{
       url : '/individualRanking',
       templateUrl: 'components/individualRanking/individualRanking.view.html',
-      css:'css/ranking.css'
+      resolve:{
+        load: ['$ocLazyLoad', function($ocLazyLoad){
+          return $ocLazyLoad.load('./components/individualRanking/ranking.controller.js')
+        }]
+      },
+      controller: 'rankingController',
+      controllerAs: 'vm',
+      css:'css/ranking.css',
     })
 
     //calendar
