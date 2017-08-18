@@ -288,29 +288,16 @@
       // Inicio de la función inactive, que se encarga de cambiar el estado del profesor.(Pamela)
       //función que cambia el estado a inabilitado.(Pamela)
       vm.inactive = function(pStudent){
-        var studentsList = studentService.getStudents();
-        for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].email == pStudent.email) {
-            studentsList[i].status = 'inhabilitado';
-            console.log(studentsList[i].status)
-          }// Cierre del if.(Pamela)
-        }// Cierre del ciclo.(Pamela)
-        studentService.updateState(studentsList);
-        loadStudents();
-      }// Cierre de la funcion inactive.(Pamela)
-
+        pStudent.status = "Inhabilitado";
+        studentService.updateStudent(pStudent).then(function(response){
+        });
+      }// Cierre funcion inative
       //función que cambia el estado a activo.(Pamela)
       vm.active = function(pStudent){
-        var studentsList = studentService.getStudents();
-        for (var i = 0; i < studentsList.length; i++) {
-          if (studentsList[i].email == pStudent.email) {
-            studentsList[i].status = 'Activo';
-            console.log(studentsList[i].status)
-          }// Cierre del if.(Pamela)
-        }// Cierre del ciclo.(Pamela)
-        studentService.updateState(studentsList);
-        loadStudents();
-      }// Cierre de la funcion active.(Pamela)
+        pStudent.status = "Activo";
+        studentService.updateStudent(pStudent).then(function(response){
+        });
+      }// Cierre funcion inative
 
       vm.logOut = function(){
         AuthService.logOut();

@@ -48,7 +48,6 @@
 
       vm.save= function(){//Función de guardar
         var newSponsor = {
-            state:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -60,7 +59,8 @@
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
             product: vm.product,
-            photo: vm.photo
+            photo: vm.photo,
+            status:'Activo'
         }
 
         swal({
@@ -110,7 +110,6 @@
         document.querySelector('#registrar').classList.remove('displayNone');
         var NewSponsor = {
             _id : vm.id,
-            state:'Activo',
             nameSponsorRep: vm.nameSponsorRep,
             firstNameSponsorRep: vm.firstNameSponsorRep,
             lastNameSponsorRep: vm.lastNameSponsorRep,
@@ -122,7 +121,8 @@
             sponsorDesc: vm.sponsorDesc,
             sponsorMonetary: vm.sponsorMonetary,
             photo: vm.photo,
-            product: vm.product
+            product: vm.product,
+            status:'Activo'
         }
 
         swal({
@@ -149,9 +149,7 @@
               console.log(err);
             })  //función que actualiza el update (sabado tarde)
 
-        } );;
-
-
+        });;
         loadSponsors();
         clear();
       }//Fin función que actualiza
@@ -172,27 +170,16 @@
       }//Fin función que limpia
 
       vm.inactive = function(pSponsor){//Inicia función aprobación
-        var sponsorsList = sponsorsService.getSponsors();
-          for (var i = 0; i < sponsorsList.length; i++) {//Inicia ciclo for
-            if (sponsorsList[i].email == pSponsor.email) {//Inicia función if
-              sponsorsList[i].state = 'inhabilitado';
-              console.log(sponsorsList[i].state)
-            }// Cierre del if
-          }// Cierre del ciclo
-        sponsorsService.updateState(sponsorsList);
-        loadSponsors();
-      }// Cierre de la funcion aprobación
+        pSponsor.status = "Inhabilitado";
+        sponsorsService.updateSponsor(pSponsor).then(function(response){
+        });
+      }// Cierre funcion inative
 
       vm.active = function(pSponsor){//Inicia función aprobación
-        var sponsorsList = sponsorsService.getSponsors();
-          for (var i = 0; i < sponsorsList.length; i++) {
-            if (sponsorsList[i].email == pAcademy.email) {
-              sponsorsList[i].state = 'Activo';
-              console.log(sponsorsList[i].state)
-            }// Cierre del if
-          }// Cierre del ciclo
-        sponsorsService.updateState(sponsorsList);
-        loadSponsors();
-      }// Cierre de la funcion aprobación
+        pSponsor.status = "Activo";
+        sponsorsService.updateSponsor(pSponsor).then(function(response){
+        });
+      }// Cierre funcion inative
+
     }
 })();

@@ -46,7 +46,8 @@
           brandProduct: vm.brandProduct,
           detailProduct: vm.detailProduct,
           productType: vm.productType,
-          photo: vm.photo
+          photo: vm.photo,
+          status: 'Activo'
         }
 
         if(vm.products.length == 0){
@@ -69,7 +70,15 @@
               title: '¡El nombre del producto ya existe!',
               timer: 3000,
               showConfirmButton: false
-             })
+             }).then(
+                function () {},
+                // handling the promise rejection
+                function (dismiss) {
+                  if (dismiss === 'timer') {
+                    console.log('El nombre de academia ya existe')
+                  }
+                }
+              )
               return;
             }
             else{
@@ -79,6 +88,7 @@
                 vm.detailProduct = null;
                 vm.productType = null;
                 vm.photo = null;
+                vm.status = null;
                 loadProducts();
             });
               clear();
@@ -87,7 +97,15 @@
                 title: '¡Registro completado!',
                 timer: 3000,
                 showConfirmButton: false
-              })
+              }).then(
+                function () {},
+                // handling the promise rejection
+                function (dismiss) {
+                  if (dismiss === 'timer') {
+                    console.log('El nombre de academia ya existe')
+                  }
+                }
+              )
               return;
             }
           }
@@ -115,22 +133,27 @@
         document.querySelector('#registrar').classList.remove('displayNone');
         var newProduct = {
             _id: vm.id,
-            status:'Activo',
             nameProduct: vm.nameProduct,
             brandProduct: vm.brandProduct,
             detailProduct: vm.detailProduct,
             productType: vm.productType,
-            photo: vm.photo
+            photo: vm.photo,
+            status:'Activo',
         }
-
         swal({
          type: 'success',
          title: '¡Información actualizada!',
          timer: 3000,
          showConfirmButton: false
-        })
-        loadProducts(); //Funcion que refresca el update
-
+        }).then(
+          function () {},
+          // handling the promise rejection
+          function (dismiss) {
+            if (dismiss === 'timer') {
+              console.log('Información actualizada')
+            }
+          }
+        )
         productService.updateProduct(newProduct).then(function(response){
           productService.getProducts()
             .then(function(response){
@@ -139,8 +162,9 @@
             .catch(function(err){
               console.log(err);
             }) //función que actualiza el update (sabado tarde)
-
-        } );
+        });
+        loadProducts();
+        clear();
       }//Fin función que actualiza
 
       function clear(){//Función que limpia
@@ -152,27 +176,15 @@
       }//Fin función que limpia
 
       vm.inactive = function(pProduct){//Inicia función aprobación
-        var productsList = productService.getProducts();
-          for (var i = 0; i < productsList.length; i++) {//Inicia ciclo for
-            if (productsList[i].nameProduct == pProduct.nameProduct) {//Inicia función if
-              productsList[i].status = 'inhabilitado';
-              console.log(productsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        productService.updateState(productsList);
-        loadProducts();
-      }// Cierre de la funcion aprobación
+        pProduct.status = "Inhabilitado";
+        productService.updateProduct(pProduct).then(function(response){
+        });
+      }// Cierre funcion inative
 
       vm.active = function(pProduct){//Inicia función aprobación
-        var productsList = productService.getProducts();
-          for (var i = 0; i < productsList.length; i++) {
-            if (productsList[i].nameProduct == pProduct.nameProduct) {
-              productsList[i].status = 'Activo';
-              console.log(productsList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        productService.updateState(productsList);
-        loadProducts();
-      }// Cierre de la funcion aprobación
+        pProduct.status = "Activo";
+        productService.updateProduct(pProduct).then(function(response){
+        });
+      }// Cierre funcion inative
     }
 })();

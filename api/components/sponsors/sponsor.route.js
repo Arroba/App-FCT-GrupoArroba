@@ -19,10 +19,9 @@ router.route('/get_all_sponsors')
     sponsorsController.findAll(req,res);
   });
 
-  router.route('/update_sponsor')
+router.route('/update_sponsor')
   .put(function(req, res){
     sponsorsController.update(req,res);
  	});
-
 
 module.exports = router;

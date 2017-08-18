@@ -362,6 +362,7 @@
                 <span class="md-subhead">Equivalente Monetario: {{sponsor.sponsorCoinType}} {{sponsor.sponsorMonetary}}</span>
                 <span class="md-subhead">Descripción: {{sponsor.sponsorDesc}}</span>
                 <span class="md-subhead">Producto: {{sponsor.product}}</span>
+                <span class="md-subhead">Estado: {{sponsor.status}}</span>
               </md-card-title-text>
             <md-card-title-media>
             <div class="md-media-lg card-media">
@@ -372,6 +373,8 @@
           <!--Inicio de boton edición PATROCINADOR-->
           <md-card-actions id="buttons">
             <md-button class="edit" ng-click="vm.getInfo(sponsor);vm.hideButton();registro1()">Editar</md-button>
+            <md-button class="Active"  ng-click="vm.active(sponsor)">Activo</md-button>
+            <md-button class="edit"  ng-click="vm.inactive(sponsor)">Inactivo</md-button>
           <md-card-icon-actions><!--Fin de boton edición PATROCINADOR-->
           </div><!--Fin de cards PATROCINADOR-->
         </div><!--Cierre de segunda pagína -->

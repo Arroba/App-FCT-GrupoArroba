@@ -276,29 +276,17 @@
       // Inicio de la función inactive, que se encarga de cambiar el estado del profesor
       //función que cambia el estado a inabilitado
       vm.inactive = function(pTeacher){
-        var teacherList = teacherService.getTeachers();
-          for (var i = 0; i < teacherList.length; i++) {
-            if (teacherList[i].identi == pTeacher.identi) {
-              teacherList[i].status = 'inhabilitado';
-              console.log(teacherList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        teacherService.updateState(teacherList);
-        loadTeachers();
+        pTeacher.status = "Inhabilitado";
+        teacherService.updateTeacher(pTeacher).then(function(response){
+         });
       }// Cierre funcion inative
 
       //función que cambia el estado a activo
       vm.active = function(pTeacher){
-        var teacherList = teacherService.getTeachers();
-          for (var i = 0; i < teacherList.length; i++) {
-            if (teacherList[i].identi == pTeacher.identi) {
-              teacherList[i].status = 'Activo';
-              console.log(teacherList[i].status)
-            }// Cierre del if
-          }// Cierre del ciclo
-        teacherService.updateState(teacherList);
-        loadTeachers();
-      }// Cierre de la funcion active
+        pTeacher.status = "Activo";
+        teacherService.updateTeacher(pTeacher).then(function(response){
+        });
+      }// Cierre funcion inative
 
       vm.logOut = function(){
         AuthService.logOut();

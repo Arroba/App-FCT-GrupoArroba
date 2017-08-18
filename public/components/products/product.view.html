@@ -277,7 +277,8 @@
            <md-card-title>
              <md-card-title-text>
                <span class="md-subhead">Marca: {{product.brandProduct}}</span>
-                 <span class="md-subhead">Detalle: {{product.detailProduct}}</span>
+               <span class="md-subhead">Detalle: {{product.detailProduct}}</span>
+               <span class="md-subhead">Estado: {{product.status}}</span>
              </md-card-title-text>
              <md-card-title-media>
                <div class="md-media-lg card-media">
@@ -288,6 +289,8 @@
           <!-- Boton para cambiar el editar las PRODUCTOS -->
            <md-card-actions id="buttons">
              <md-button class="edit" ng-click="vm.getInfo(product);vm.hideButton();registro1()">Editar</md-button>
+             <md-button class="Active"  ng-click="vm.active(product)">Activo</md-button>
+             <md-button class="edit"  ng-click="vm.inactive(product)">Inactivo</md-button>
              <md-card-icon-actions><!-- cierre botones  -->
             </div><!--Cierre de cards -->
           </div><!--Cierre de segunda pagína -->
